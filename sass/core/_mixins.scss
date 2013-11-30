@@ -1,62 +1,62 @@
 /***********************************************************************************
 	MIXIN: MEDIA QUERY
 ***********************************************************************************/
-@mixin mediaQuery($mediaEnd: "", $mediaStart: "", $mediaOrientation: "") {
-	$breakpointMinWidth:	$minWidthSmall;
-	$breakpointMaxWidth:	$maxWidth;
+@mixin media-query($media-end: "", $media-start: "", $media-orientation: "") {
+	$breakpoint-min-width:	$min-width-small;
+	$breakpoint-max-width:	$max-width;
 
-	@if type-of($mediaEnd) == string and $mediaEnd != "" {
-		@if $mediaEnd == $breakpointClassPrefixLarge {
-			$breakpointMaxWidth: $maxWidthLarge;
+	@if type-of($media-end) == string and $media-end != "" {
+		@if $media-end == $breakpoint-class-prefix-large {
+			$breakpoint-max-width: $max-width-large;
 		}
-		@else if $mediaEnd == $breakpointClassPrefixMedium {
-			$breakpointMaxWidth: $maxWidthMedium;
+		@else if $media-end == $breakpoint-class-prefix-medium {
+			$breakpoint-max-width: $max-width-medium;
 		}
-		@else if $mediaEnd == $breakpointClassPrefixSmall {
-			$breakpointMaxWidth: $maxWidthSmall;
+		@else if $media-end == $breakpoint-class-prefix-small {
+			$breakpoint-max-width: $max-width-small;
 		}
 	}
-	@else if type-of($mediaEnd) == number {
-		$breakpointMaxWidth: $mediaEnd;
+	@else if type-of($media-end) == number {
+		$breakpoint-max-width: $media-end;
 	}
 
-	@if type-of($mediaStart) == string and $mediaStart != "" {
-		@if $mediaStart == $breakpointClassPrefixLarge {
-			$breakpointMinWidth: $minWidthLarge;
+	@if type-of($media-start) == string and $media-start != "" {
+		@if $media-start == $breakpoint-class-prefix-large {
+			$breakpoint-min-width: $min-width-large;
 		}
-		@if $mediaStart ==  $breakpointClassPrefixMedium {
-			$breakpointMinWidth: $minWidthMedium;
+		@if $media-start ==  $breakpoint-class-prefix-medium {
+			$breakpoint-min-width: $min-width-medium;
 		}
-		@if $mediaStart == $breakpointClassPrefixSmall {
-			$breakpointMinWidth: $minWidthSmall;
+		@if $media-start == $breakpoint-class-prefix-small {
+			$breakpoint-min-width: $min-width-small;
 		}
-	}@else if type-of($mediaStart) == number {
-		$breakpointMinWidth: $mediaStart;
+	}@else if type-of($media-start) == number {
+		$breakpoint-min-width: $media-start;
 	}
 
-	@if $mediaOrientation != "" and ($mediaOrientation == 'portrait' or $mediaOrientation == 'landscape') {
-		@media only screen and (min-width: $breakpointMinWidth) and (max-width: $breakpointMaxWidth) and (orientation: $mediaOrientation), print { @content; }
+	@if $media-orientation != "" and ($media-orientation == 'portrait' or $media-orientation == 'landscape') {
+		@media only screen and (min-width: $breakpoint-min-width) and (max-width: $breakpoint-max-width) and (orientation: $media-orientation), print { @content; }
 	}@else {
-		@media only screen and (min-width: $breakpointMinWidth) and (max-width: $breakpointMaxWidth), print { @content; }
+		@media only screen and (min-width: $breakpoint-min-width) and (max-width: $breakpoint-max-width), print { @content; }
 	}
 }
 
 /***********************************************************************************
 	DEFAULT TRANSITION
 ***********************************************************************************/
-@mixin transition-default($transitionProperty1:all, $transitionProperty2:false, $transitionProperty3:false, $transitionProperty4:false, $transitionProperty5:false) {
-	@if $transitionProperty5 {
-		@include transition-property($transitionProperty1, $transitionProperty2, $transitionProperty3, $transitionProperty4, $transitionProperty5);
-	} @else if $transitionProperty4 {
-		@include transition-property($transitionProperty1, $transitionProperty2, $transitionProperty3, $transitionProperty4);
-	} @else if $transitionProperty3 {
-		@include transition-property($transitionProperty1, $transitionProperty2, $transitionProperty3);
-	} @else if $transitionProperty2 {
-		@include transition-property($transitionProperty1, $transitionProperty2);
+@mixin transition-default($transition-property-1:all, $transition-property-2:false, $transition-property-3:false, $transition-property-4:false, $transition-property-5:false) {
+	@if $transition-property-5 {
+		@include transition-property($transition-property-1, $transition-property-2, $transition-property-3, $transition-property-4, $transition-property-5);
+	} @else if $transition-property-4 {
+		@include transition-property($transition-property-1, $transition-property-2, $transition-property-3, $transition-property-4);
+	} @else if $transition-property-3 {
+		@include transition-property($transition-property-1, $transition-property-2, $transition-property-3);
+	} @else if $transition-property-2 {
+		@include transition-property($transition-property-1, $transition-property-2);
 	} @else {
-		@include transition-property($transitionProperty1);
+		@include transition-property($transition-property-1);
 	}
 
-	@include transition-timing-function($transitionTimingFunctionDefault);
-	@include transition-duration($transitionDurationDefault);
+	@include transition-timing-function($transition-timing-function-default);
+	@include transition-duration($transition-durationDefault);
 }

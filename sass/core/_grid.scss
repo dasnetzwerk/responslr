@@ -1,21 +1,21 @@
 /***********************************************************************************
 	MIXIN: COLUMN WIDTH
 ***********************************************************************************/
-@mixin columnWidth($columnPart, $size){
+@mixin columnWidth($column-part, $size){
 	@if type-of($size) == string {
-		$columnTotal: $gridColumnWidthLarge;
+		$column-total: $grid-column-width-large;
 
 		@if $size == medium {
-			$columnTotal: $gridColumnsMedium;
+			$column-total: $grid-columns-medium;
 		}
 		@else if $size == small {
-			$columnTotal: $gridColumnsSmall;
+			$column-total: $grid-columns-small;
 		}
 
-		width: (100% / $columnTotal * $columnPart);
+		width: (100% / $column-total * $column-part);
 	}
 	@else {
-		width: (($columnPart / $size) * 100%);
+		width: (($column-part / $size) * 100%);
 	}
 }
 
@@ -27,15 +27,15 @@ tr.row {
 }
 
 .row .row {
-	margin-left: -$gridGutter;
-	margin-right: -$gridGutter;
+	margin-left: -$grid-gutter;
+	margin-right: -$grid-gutter;
 }
 
 .column {
 	display: inline-block;
 	vertical-align: top;
-	padding-left: $gridGutter;
-	padding-right: $gridGutter;
+	padding-left: $grid-gutter;
+	padding-right: $grid-gutter;
 }
 
 td.column {
@@ -47,108 +47,108 @@ td.column {
 	line-height: 0;
 
 	& > * {
-		font-size: $fontSizeDefault;
-		line-height: $lineHeightDefault;
+		font-size: $font-size-default;
+		line-height: $line-height-default;
 	}
 }
 
-$columnIndex: $gridColumnsLarge;
+$column-index: $gridcolumns-large;
 
 .row {
 	/* Large */
-	@while $columnIndex > 0 {
-		.#{$breakpointClassPrefixLarge}-#{$columnIndex} {
-			width: $gridColumnWidthLarge * $columnIndex;
+	@while $column-index > 0 {
+		.#{$breakpoint-class-prefix-large}-#{$column-index} {
+			width: $grid-column-width-large * $column-index;
 
-			$subColumnIndex: $columnIndex;
+			$sub-column-index: $column-index;
 
-			@while $subColumnIndex > 0 {
-				.#{$breakpointClassPrefixLarge}-#{$subColumnIndex} {
-					width: (($gridColumnWidthLarge * $subColumnIndex) / ($gridColumnWidthLarge * $columnIndex)) * 100%;
+			@while $sub-column-index > 0 {
+				.#{$breakpoint-class-prefix-large}-#{$sub-column-index} {
+					width: (($grid-column-width-large * $sub-column-index) / ($grid-column-width-large * $column-index)) * 100%;
 				}
 
-				$subColumnIndex: $subColumnIndex - 1;
+				$sub-column-index: $sub-column-index - 1;
 			}
 		}
 
-		.offset-#{$breakpointClassPrefixLarge}-#{$columnIndex} {
-			margin-left: $gridColumnWidthLarge * $columnIndex;
+		.offset-#{$breakpoint-class-prefix-large}-#{$column-index} {
+			margin-left: $grid-column-width-large * $column-index;
 		}
 
-		.inset-#{$breakpointClassPrefixLarge}-#{$columnIndex} {
-			margin-left: (-$gridColumnWidthLarge * $columnIndex) - 0.01%;
+		.inset-#{$breakpoint-class-prefix-large}-#{$column-index} {
+			margin-left: (-$grid-column-width-large * $column-index) - 0.01%;
 		}
 
-		$columnIndex: $columnIndex - 1;
+		$column-index: $column-index - 1;
 	}
 
 	/* Medium */
-	$columnIndex: $gridColumnsMedium;
+	$column-index: $grid-columns-medium;
 
-	@media only screen and (max-width: $gridEndAtMedium), print {
-		@while $columnIndex > 0 {
-			.#{$breakpointClassPrefixMedium}-#{$columnIndex} {
-				width: $gridColumnWidthMedium * $columnIndex;
+	@media only screen and (max-width: $grid-end-at-medium), print {
+		@while $column-index > 0 {
+			.#{$breakpoint-class-prefix-medium}-#{$column-index} {
+				width: $grid-column-width-medium * $column-index;
 
-				$subColumnIndex: $columnIndex;
+				$sub-column-index: $column-index;
 
-				@while $subColumnIndex > 0 {
-					.#{$breakpointClassPrefixMedium}-#{$subColumnIndex} {
-						width: (($gridColumnWidthMedium * $subColumnIndex) / ($gridColumnWidthMedium * $columnIndex)) * 100%;
+				@while $sub-column-index > 0 {
+					.#{$breakpoint-class-prefix-medium}-#{$sub-column-index} {
+						width: (($grid-column-width-medium * $sub-column-index) / ($grid-column-width-medium * $column-index)) * 100%;
 					}
 
-					$subColumnIndex: $subColumnIndex - 1;
+					$sub-column-index: $sub-column-index - 1;
 				}
 			}
 
-			.offset-#{$breakpointClassPrefixMedium}-#{$columnIndex} {
-				margin-left: $gridColumnWidthMedium * $columnIndex;
+			.offset-#{$breakpoint-class-prefix-medium}-#{$column-index} {
+				margin-left: $grid-column-width-medium * $column-index;
 			}
 
-			.inset-#{$breakpointClassPrefixMedium}-#{$columnIndex} {
-				margin-left: (-$gridColumnWidthMedium * $columnIndex) - 0.01%;
+			.inset-#{$breakpoint-class-prefix-medium}-#{$column-index} {
+				margin-left: (-$grid-column-width-medium * $column-index) - 0.01%;
 			}
 
-			.reset-#{$breakpointClassPrefixMedium} {
+			.reset-#{$breakpoint-class-prefix-medium} {
 				margin-left: 0;
 			}
 
-			$columnIndex: $columnIndex - 1;
+			$column-index: $column-index - 1;
 		}
 	}
 
 	/* Small */
-	$columnIndex: $gridColumnsSmall;
+	$column-index: $grid-columns-small;
 
-	@media only screen and (max-width: $gridEndAtSmall), print {
-		@while $columnIndex > 0 {
-			.#{$breakpointClassPrefixSmall}-#{$columnIndex} {
-				width: $gridColumnWidthSmall * $columnIndex;
+	@media only screen and (max-width: $grid-end-at-small), print {
+		@while $column-index > 0 {
+			.#{$breakpoint-class-prefix-small}-#{$column-index} {
+				width: $grid-column-width-small * $column-index;
 
-				$subColumnIndex: $columnIndex;
+				$sub-column-index: $column-index;
 
-				@while $subColumnIndex > 0 {
-					.#{$breakpointClassPrefixSmall}-#{$subColumnIndex} {
-						width: (($gridColumnWidthSmall * $subColumnIndex) / ($gridColumnWidthSmall * $columnIndex)) * 100%;
+				@while $sub-column-index > 0 {
+					.#{$breakpoint-class-prefix-small}-#{$sub-column-index} {
+						width: (($grid-column-width-small * $sub-column-index) / ($grid-column-width-small * $column-index)) * 100%;
 					}
 
-					$subColumnIndex: $subColumnIndex - 1;
+					$sub-column-index: $sub-column-index - 1;
 				}
 			}
 
-			.offset-#{$breakpointClassPrefixSmall}-#{$columnIndex} {
-				margin-left: $gridColumnWidthSmall * $columnIndex;
+			.offset-#{$breakpoint-class-prefix-small}-#{$column-index} {
+				margin-left: $grid-column-width-small * $column-index;
 			}
 
-			.inset-#{$breakpointClassPrefixSmall}-#{$columnIndex} {
-				margin-left: (-$gridColumnWidthSmall * $columnIndex) - 0.01%;
+			.inset-#{$breakpoint-class-prefix-small}-#{$column-index} {
+				margin-left: (-$grid-column-width-small * $column-index) - 0.01%;
 			}
 
-			.reset-#{$breakpointClassPrefixSmall} {
+			.reset-#{$breakpoint-class-prefix-small} {
 				margin-left: 0;
 			}
 
-			$columnIndex: $columnIndex - 1;
+			$column-index: $column-index - 1;
 		}
 	}
 }
@@ -180,11 +180,11 @@ $columnIndex: $gridColumnsLarge;
 
 
 	left: 50%;
-	max-width: $gridMaxWidth;
+	max-width: $grid-max-width;
 	width: 100%;
-	margin-left: -($gridMaxWidth / 2);
+	margin-left: -($grid-max-width / 2);
 
-	@include mediaQuery($gridMaxWidth) {
+	@include media-query($grid-max-width) {
 		left: auto;
 		margin-left: 0;
 		max-width: 100%;
@@ -194,14 +194,14 @@ $columnIndex: $gridColumnsLarge;
 		display: inline-block;
 		height: 100%;
 
-		@include mediaQuery($breakpointClassPrefixMedium) {
-			&:nth-child(1n+#{$gridColumnsMedium + 1}) {
+		@include media-query($breakpoint-class-prefix-medium) {
+			&:nth-child(1n+#{$grid-columns-medium + 1}) {
 				display: none;
 			}
 		}
 
-		@include mediaQuery($breakpointClassPrefixSmall) {
-			&:nth-child(1n+#{$gridColumnsSmall + 1}) {
+		@include media-query($breakpoint-class-prefix-small) {
+			&:nth-child(1n+#{$grid-columns-small + 1}) {
 				display: none;
 			}
 		}

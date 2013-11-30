@@ -39,7 +39,7 @@ $grid-gutter-half: $grid-gutter / 2 !default;
 $grid-gutter-double: $grid-gutter * 2 !default;
 
 // Grid Device Settings
-$grid-start-at-large: $$min-width-large !default;
+$grid-start-at-large: $min-width-large !default;
 $grid-end-at-large: $max-width-large !default;
 $grid-start-at-medium: $min-width-medium !default;
 $grid-end-at-medium: $max-width-medium !default;
@@ -53,20 +53,18 @@ $grid-end-at-small: $max-width-small !default;
 $white: rgb(255,255,255) !default;
 $black: rgb(0,0,0) !default;
 
-$colorList:
+$colors:
 	'white'		$white,
 	'black'		$black
- !default;
+!default;
 
 
 /***********************************************************************************
 	FONTS
 ***********************************************************************************/
-$fontRegular: 'Arial' !default;
-$fontBold: 'Arial' !default;
 
 /*  Font Name				Is Custom */
-$fontFamilyList:
+$fontFamilies:
 	Arial					false	Arial								normal,
 	ArialBold				false	Arial								bold,
 	ArialItalic				false	Arial								italic,
@@ -74,7 +72,7 @@ $fontFamilyList:
 	AlteHaasGroteskBold		true	'altehaasgroteskbold-webfont'		normal
 !default;
 
-$fontSizeList:
+$fontSizes:
 	tiny		13px,
 	small		15px,
 	default		22px,
@@ -83,64 +81,64 @@ $fontSizeList:
 	xlarge		62px
 !default;
 
-$lineHeightDifference: 8px !default;
+$line-height-difference: 8px !default;
 
-$fontSizeLarge: 48px !default;
-$lineHeightLarge: 68px !default;
+$font-size-default: 48px !default;
+$line-height-default: 68px !default;
 
 
 
 /***********************************************************************************
 	BOX
 ***********************************************************************************/
-$borderSize: 3px !default;
-$borderRadius: 2px !default;
+$border-size: 3px !default;
+$border-radius: 2px !default;
 
 
 /***********************************************************************************
 	BUTTONS
 ***********************************************************************************/
-$buttonPaddingX: 18px !default;
-$buttonPaddingY: 8px !default;
-$buttonHeight: 50px !default;
+$button-padding-x: 18px !default;
+$button-padding-y: 8px !default;
+$button-height: 50px !default;
 
-$buttonBorderRadius: $borderRadius !default;
+$button-border-radius: $border-radius !default;
 
-$buttonBorderWidth: 0 !default;
-$buttonBorderStyle: solid !default;
-$buttonBorderColorType: 'lighten' !default;
-$buttonBorderColorPercent: 7% !default;
-$buttonBorderHoverType: 'darken' !default;
-$butotnBorderHoverPercent: 7% !default;
+$button-border-width: 0 !default;
+$button-border-style: solid !default;
+$button-border-color-type: 'lighten' !default;
+$button-border-color-percent: 7% !default;
+$button-border-hover-type: 'darken' !default;
+$butotn-border-hover-percent: 7% !default;
 
-$buttonBackgroundHoverType: 'lighten' !default;
-$buttonBackgroundHoverPercent: 7% !default;
+$button-background-hover-type: 'lighten' !default;
+$button-background-hover-percent: 7% !default;
 
 
 /***********************************************************************************
 	ARROWS
 ***********************************************************************************/
-$arrowSize:	18px !default;
-$arrowWidth: 4px !default;
-$arrowTransition: 2px !default;
-$arrowBubbleSize: 50px !default;
-$colorArrow: $colorWhite !default;
+$arrow-size: 18px !default;
+$arrow-width: 4px !default;
+$arrow-transition: 2px !default;
+$arrow-bubble-size: 50px !default;
+$color-arrow: $white !default;
 
 
 /***********************************************************************************
 	SPACINGS
 ***********************************************************************************/
-$spacingDefault: 80px !default;
-$spacingTextDefault: $spacingDefault - $lineHeightDifference - 2px !default;
-$spacingSmall: $spacingDefault / 2 !default;
-$spacingTextSmall: $spacingSmall - ($lineHeightDifference / 2) !default;
-$spacingContainerFull: 0 !default;
+$spacing-default: 80px !default;
+$spacing-text-default: $spacing-default - $line-height-difference - 2px !default;
+$spacing-small: $spacing-default / 2 !default;
+$spacing-text-small: $spacing-small - ($line-height-difference / 2) !default;
+$spacing-container-full: 0 !default;
 
 
 /***********************************************************************************
 	SPRITES
 ***********************************************************************************/
-$defaultSpriteMap: sprite-map(
+$default-sprite-map: sprite-map(
 	"sprite/*.png",
 
 	$spacing: 50px
@@ -148,7 +146,7 @@ $defaultSpriteMap: sprite-map(
 	/* $sprite-icon-facebook-position: 50% */
 ) !default;
 
-$defaultSpriteMapRetina: sprite-map(
+$default-sprite-map-retina: sprite-map(
 	"retina-sprite/*.png",
 
 	$spacing: 50px
@@ -160,5 +158,5 @@ $defaultSpriteMapRetina: sprite-map(
 /***********************************************************************************
 	TRANSITIONS
 ***********************************************************************************/
-$transitionDurationDefault: .25s !default;
-$transitionTimingFunctionDefault: ease !default;
+$transition-duration-default: .25s !default;
+$transition-timing-function-default: ease !default;

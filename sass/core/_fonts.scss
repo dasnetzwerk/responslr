@@ -2,7 +2,7 @@
 	FONTS
 ***********************************************************************************/
 
-@each $i in $fontFamilyList {
+@each $i in $fontFamilies {
 	@if nth($i, 2) {
 		@font-face {
 			font-family: nth($i, 1);

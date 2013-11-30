@@ -3,44 +3,44 @@
 	HELPERS
 ***********************************************************************************/
 // Hiders
-.hide-#{$breakpointClassPrefixSmall} {
-	@include mediaQuery($breakpointClassPrefixSmall) {
+.hide-#{$breakpoint-class-prefix-small} {
+	@include media-query($breakpoint-class-prefix-small) {
 		display: none;
 	}
 }
 
-.hide-#{$breakpointClassPrefixMedium} {
-	@include mediaQuery($breakpointClassPrefixMedium, $breakpointClassPrefixMedium) {
+.hide-#{$breakpoint-class-prefix-medium} {
+	@include media-query($breakpoint-class-prefix-medium, $breakpoint-class-prefix-medium) {
 		display: none;
 	}
 }
 
-.hide-#{$breakpointClassPrefixMedium}-up {
-	@include mediaQuery($maxWidth, $breakpointClassPrefixMedium) {
+.hide-#{$breakpoint-class-prefix-medium}-up {
+	@include media-query($max-width, $breakpoint-class-prefix-medium) {
 		display: none;
 	}
 }
 
-.hide-#{$breakpointClassPrefixMedium}-down {
-	@include mediaQuery($breakpointClassPrefixMedium) {
+.hide-#{$breakpoint-class-prefix-medium}-down {
+	@include media-query($breakpoint-class-prefix-medium) {
 		display: none;
 	}
 }
 
-.hide-#{$breakpointClassPrefixLarge} {
-	@include mediaQuery($breakpointClassPrefixLarge, $breakpointClassPrefixLarge) {
+.hide-#{$breakpoint-class-prefix-large} {
+	@include media-query($breakpoint-class-prefix-large, $breakpoint-class-prefix-large) {
 		display: none;
 	}
 }
 
-.hide-#{$breakpointClassPrefixLarge}-up {
-	@include mediaQuery($maxWidth, $breakpointClassPrefixLarge) {
+.hide-#{$breakpoint-class-prefix-large}-up {
+	@include media-query($max-width, $breakpoint-class-prefix-large) {
 		display: none;
 	}
 }
 
-.hide-#{$breakpointClassPrefixLarge}-down {
-	@include mediaQuery($breakpointClassPrefixLarge) {
+.hide-#{$breakpoint-class-prefix-large}-down {
+	@include media-query($breakpoint-class-prefix-large) {
 		display: none;
 	}
 }
@@ -78,7 +78,7 @@
 
 .position-right {
 	position: absolute;
-	right: $gridGutterHalf;
+	right: $grid-gutter-half;
 
 	&.column {
 		right: 0;
@@ -92,7 +92,7 @@
 
 .position-left {
 	position: absolute;
-	left: $gridGutterHalf;
+	left: $grid-gutter-half;
 
 	&.column {
 		left: 0;

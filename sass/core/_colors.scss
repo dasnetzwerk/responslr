@@ -1,4 +1,4 @@
-﻿@each $i in $colorList {
+﻿@each $i in $colors {
 	.bg-#{nth($i,1)} {
 		background-color: nth($i,2);
 	}
