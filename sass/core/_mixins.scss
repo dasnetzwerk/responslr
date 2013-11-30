@@ -8,15 +8,12 @@
 	@if type-of($media-end) == string and $media-end != "" {
 		@if $media-end == $breakpoint-class-prefix-large {
 			$breakpoint-max-width: $max-width-large;
-		}
-		@else if $media-end == $breakpoint-class-prefix-medium {
+		} @else if $media-end == $breakpoint-class-prefix-medium {
 			$breakpoint-max-width: $max-width-medium;
-		}
-		@else if $media-end == $breakpoint-class-prefix-small {
+		} @else if $media-end == $breakpoint-class-prefix-small {
 			$breakpoint-max-width: $max-width-small;
 		}
-	}
-	@else if type-of($media-end) == number {
+	} @else if type-of($media-end) == number {
 		$breakpoint-max-width: $media-end;
 	}
 
@@ -30,13 +27,13 @@
 		@if $media-start == $breakpoint-class-prefix-small {
 			$breakpoint-min-width: $min-width-small;
 		}
-	}@else if type-of($media-start) == number {
+	} @else if type-of($media-start) == number {
 		$breakpoint-min-width: $media-start;
 	}
 
 	@if $media-orientation != "" and ($media-orientation == 'portrait' or $media-orientation == 'landscape') {
 		@media only screen and (min-width: $breakpoint-min-width) and (max-width: $breakpoint-max-width) and (orientation: $media-orientation), print { @content; }
-	}@else {
+	} @else {
 		@media only screen and (min-width: $breakpoint-min-width) and (max-width: $breakpoint-max-width), print { @content; }
 	}
 }
