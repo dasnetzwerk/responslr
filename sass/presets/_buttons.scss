@@ -6,17 +6,17 @@
 a.button,
 .row .button {
 	display: inline-block;
-	padding: 0 $buttonPaddingX;
-	height: $buttonHeight;
+	padding: 0 $button-padding-x;
+	height: $button-height;
 	font-size: $font-size-default;
-	line-height: $buttonHeight;
+	line-height: $button-height;
 
-	@include border-radius($buttonBorderRadius);
+	@include border-radius($button-border-radius);
 	@include transition-default(background-color);
 
-	@if($buttonBorderWidth != 0) {
-		border-width: $buttonBorderWidth;
-		border-style: $buttonBorderStyle;
+	@if($button-border-width != 0) {
+		border-width: $button-border-width;
+		border-style: $button-border-style;
 		@include transition-default(background-color,border-color);
 	}
 }
