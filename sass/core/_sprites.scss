@@ -1,39 +1,39 @@
 /***********************************************************************************
 	RETINA SPRITE
 ***********************************************************************************/
-@mixin loadSprite($spriteMap: $defaultSpriteMap, $spriteMapRetina: $defaultSpriteMapRetina) {
-	%#{sprite-map-name($spriteMap)} {
-		background-image: sprite-url($spriteMap);
+@mixin load-sprite($sprite-map: $default-sprite-map, $sprite-map-retina: $default-sprite-map-retina) {
+	%#{sprite-map-name($sprite-map)} {
+		background-image: sprite-url($sprite-map);
 		background-repeat: no-repeat;
 
 		@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-			background-image: sprite-url($spriteMapRetina);
-			@include background-size(ceil(image-width(sprite-path($spriteMapRetina)) / 2) ceil(image-height(sprite-path($spriteMapRetina)) / 2));
+			background-image: sprite-url($sprite-map-retina);
+			@include background-size(ceil(image-width(sprite-path($sprite-map-retina)) / 2) ceil(image-height(sprite-path($sprite-map-retina)) / 2));
 		}
 	}
 }
 
-@mixin getSprite($spriteImage, $offset-x: 0px, $offset-y: 0px, $spriteMap: $defaultSpriteMap, $spriteMapRetina: $defaultSpriteMapRetina) {
-	@extend %#{sprite-map-name($spriteMap)};
-	@include getSpritePosition($spriteImage, $offset-x, $offset-y, $spriteMap, $spriteMapRetina);
+@mixin get-sprite($sprite-image, $offset-x: 0px, $offset-y: 0px, $sprite-map: $default-sprite-map, $sprite-map-retina: $default-sprite-map-retina) {
+	@extend %#{sprite-map-name($sprite-map)};
+	@include get-sprite-position($sprite-image, $offset-x, $offset-y, $sprite-map, $sprite-map-retina);
 
 	.lt-ie10 & {
-		background-image: url('../img/#{sprite-map-name($spriteMap)}/#{$spriteImage}.png');
+		background-image: url('../img/#{sprite-map-name($sprite-map)}/#{$sprite-image}.png');
 		background-position: $offset-x $offset-y;
 		background-repeat: no-repeat;
 	}
 }
 
-@mixin getSpritePosition($spriteImage, $offset-x: 0px, $offset-y: 0px, $spriteMap: $defaultSpriteMap, $spriteMapRetina: $defaultSpriteMapRetina) {
-	background-position: sprite-position($spriteMap, $spriteImage, $offset-x, $offset-y);
+@mixin get-sprite-position($sprite-image, $offset-x: 0px, $offset-y: 0px, $sprite-map: $default-sprite-map, $sprite-map-retina: $default-sprite-map-retina) {
+	background-position: sprite-position($sprite-map, $sprite-image, $offset-x, $offset-y);
 
 	@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-		$spriteImagePosition: sprite-position($spriteMapRetina, $spriteImage, $offset-x * 2, $offset-y * 2);
-		background-position: nth($spriteImagePosition, 1) / 2 nth($spriteImagePosition, 2) / 2;
+		$sprite-image-position: sprite-position($sprite-map-retina, $sprite-image, $offset-x * 2, $offset-y * 2);
+		background-position: nth($sprite-image-position, 1) / 2 nth($sprite-image-position, 2) / 2;
 	}
 }
 
 /***********************************************************************************
 	LOAD SPRITE
 ***********************************************************************************/
-@include loadSprite();
+@include load-sprite();

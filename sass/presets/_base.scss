@@ -4,11 +4,11 @@
 html, body {
 	margin: 0;
 	padding: 0;
-	background-color: $colorBlack;
-	color: $colorWhite;
-	font-family: $fontRegular;
-	font-size: $fontSizeDefault;
-	line-height: $lineHeightDefault;
+	background-color: $black;
+	color: $white;
+	font-family: $font-regular;
+	font-size: $font-size-default;
+	line-height: $line-height-default;
 }
 
 body * {
@@ -25,13 +25,13 @@ body *,
 }
 
 h1, h2, h3, h4, h5, h6, strong {
-	font-family: $fontRegular;
+	font-family: $font-regular;
 	font-weight: normal;
-	color: $colorWhite;
+	color: $white;
 	text-transform: uppercase;
 
 	span {
-		font-family: $fontRegular;
+		font-family: $font-regular;
 	}
 }
 
@@ -43,14 +43,14 @@ h1 {
 h2,
 h3,
 h4 {
-	margin-bottom: $spacingSmall;
-	font-size: $fontSizeDefault;
-	line-height: $lineHeightDefault;
+	margin-bottom: $spacing-small;
+	font-size: $font-size-default;
+	line-height: $line-height-default;
 	text-align: center;
 }
 
 a {
-	color: $colorWhite;
+	color: $white;
 
 	&:active {
 		background-color: transparent;
@@ -58,15 +58,15 @@ a {
 }
 
 a {
-	font-size: $fontSizeDefault;
-	line-height: $lineHeightDefault;
+	font-size: $font-size-default;
+	line-height: $line-height-default;
 	outline: none;
 	text-decoration: none;
 	cursor: pointer;
 
 	@include transition-default(background-color, color);
 
-	@include mediaQuery(medium) {
+	@include media-query($breakpoint-class-prefix-medium) {
 		@include transition(none);
 	}
 }
@@ -74,17 +74,17 @@ a {
 p,
 table,
 label {
-	font-size: $fontSizeDefault;
-	line-height: $lineHeightDefault;
+	font-size: $font-size-default;
+	line-height: $line-height-default;
 	text-align: center;
 }
 
 ol,
 ul {
-	font-size: $fontSizeDefault;
-	line-height: $lineHeightDefault;
+	font-size: $font-size-default;
+	line-height: $line-height-default;
 	list-style: none;
-	margin: 0 0 $spacingSmall 0;
+	margin: 0 0 $spacing-small 0;
 
 	li {
 
@@ -124,9 +124,9 @@ footer {
 .container {
 	position: relative;
 	margin: 0 auto;
-	max-width: $gridMaxWidth;
+	max-width: $grid-max-width;
 
-	@include mediaQuery($gridMaxWidth) {
+	@include media-query($grid-max-width) {
 		margin: 0;
 		width: 100%;
 		max-width: 100%;
@@ -136,13 +136,13 @@ footer {
 .stripe {
 	position: relative;
 	z-index: 50;
-	padding: $spacingTextDefault 0 0 0;
+	padding: $spacing-text-default 0 0 0;
 }
 
 .bg-transition {
 	@include transition-default(background-color);
 
-	@include mediaQuery(medium) {
+	@include media-query($breakpoint-class-prefix-medium) {
 		@include transition(none);
 	}
 }

@@ -1,34 +1,34 @@
 /***********************************************************************************
 	COLORS
 ***********************************************************************************/
-$colorWhite: rgb(255,255,255);
-$colorBlack: rgb(26,32,37);
-$colorGrey: rgb(45,55,63);
+$white: rgb(255,255,255);
+$black: rgb(26,32,37);
+$grey: rgb(45,55,63);
 
-$colorGreen: rgb(39,174,96);
-$colorBlue: rgb(36,156,213);
-$colorPurple: rgb(142,68,173);
-$colorRed: rgb(192,57,43);
-$colorOrange: rgb(242,98,50);
+$green: rgb(39,174,96);
+$blue: rgb(36,156,213);
+$purple: rgb(142,68,173);
+$red: rgb(192,57,43);
+$orange: rgb(242,98,50);
 
-$colorList:
-	'green'		$colorGreen,
-	'blue'		$colorBlue,
-	'purple'	$colorPurple,
-	'red'		$colorRed,
-	'orange'	$colorOrange
+$colors:
+	'green'		$green,
+	'blue'		$blue,
+	'purple'	$purple,
+	'red'		$red,
+	'orange'	$orange
 ;
 
 
 /***********************************************************************************
 	FONTS
 ***********************************************************************************/
-$fontRegular: 'AlteHaasGroteskRegular';
-$fontBold: 'AlteHaasGroteskBold';
+$font-regular: 'AlteHaasGroteskRegular';
+$font-bold: 'AlteHaasGroteskBold';
 
-$lineHeightDifferenceDefault: 8px;
+$line-height-difference-default: 8px;
 
-$fontSizeList:
+$font-sizes:
 	'tiny'		13px,
 	'small'		15px,
 	'default'	22px,
@@ -37,60 +37,60 @@ $fontSizeList:
 	'xlarge'	150px
 ;
 
-$fontSizeLarge: 48px;
-$lineHeightLarge: 68px;
+$font-size-large: 48px;
+$line-height-large: 68px;
 
-$fontSizeMedium: 36px;
-$lineHeightMedium: $fontSizeMedium + $lineHeightDifferenceDefault;
+$font-size-medium: 36px;
+$line-height-medium: $font-size-medium + $line-height-difference-default;
 
-$fontSizeDefault: 22px;
-$lineHeightDefault: $fontSizeDefault + $lineHeightDifferenceDefault;
+$font-size-default: 22px;
+$line-height-default: $font-size-default + $line-height-difference-default;
 
-$fontSizeSmall: 15px;
-$lineHeightSmall: $fontSizeSmall + $lineHeightDifferenceDefault;
+$font-size-small: 15px;
+$line-height-small: $font-size-small + $line-height-difference-default;
 
 
 /***********************************************************************************
 	BOX
 ***********************************************************************************/
-$borderSize: 3px;
-$borderRadius: 2px;
+$border-size: 3px;
+$border-radius: 2px;
 
 
 /***********************************************************************************
 	BUTTONS
 ***********************************************************************************/
-$buttonPaddingX: 18px;
-$buttonPaddingY: 8px;
-$buttonHeight: 50px;
+$button-padding-x: 18px;
+$button-padding-y: 8px;
+$button-height: 50px;
 
-$buttonBorderRadius: $borderRadius;
+$button-border-radius: $border-radius;
 
-$buttonBorderWidth: 0;
-$buttonBorderStyle: solid;
-$buttonBorderColorType: 'lighten';// lighten || darken || color!!!!!!!
-$buttonBorderColorPercent: 7%;
-$buttonBorderHoverType: 'darken';
-$butotnBorderHoverPercent: 7%;
+$button-border-width: 0;
+$button-border-style: solid;
+$button-border-color-type: 'lighten';// lighten || darken || color!!!!!!!
+$button-border-color-percent: 7%;
+$button-border-hover-type: 'darken';
+$butotn-border-hover-percent: 7%;
 
-$buttonBackgroundHoverType: 'lighten'; // lighten || darken
-$buttonBackgroundHoverPercent: 7%;
+$button-background-hover-type: 'lighten'; // lighten || darken
+$button-background-hover-percent: 7%;
 
 
 /***********************************************************************************
 	ARROWS
 ***********************************************************************************/
-$arrowSize:	18px;
-$arrowWidth: 4px;
-$arrowTransition: 2px;
-$arrowBubbleSize: 50px;
-$colorArrow: $colorWhite;
+$arrow-size: 18px;
+$arrow-width: 4px;
+$arrow-transition: 2px;
+$arrow-bubble-size: 50px;
+$color-arrow: $white;
 
 
 /***********************************************************************************
 	SPACINGS
 ***********************************************************************************/
-$spacingDefault: 80px;
-$spacingTextDefault: $spacingDefault - $lineHeightDifferenceDefault - 2px;
-$spacingSmall: $spacingDefault / 2;
-$spacingTextSmall: $spacingSmall - ($lineHeightDifferenceDefault / 2);
+$spacing-default: 80px;
+$spacing-text-default: $spacing-default - $line-height-difference-default - 2px;
+$spacing-small: $spacing-default / 2;
+$spacing-text-small: $spacing-small - ($line-height-difference-default / 2);

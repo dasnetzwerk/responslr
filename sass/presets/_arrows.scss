@@ -6,13 +6,13 @@
 	display: block;
 	position: absolute;
 	z-index: 1;
-	width: $arrowBubbleSize;
-	height: $arrowBubbleSize;
+	width: $arrow-bubble-size;
+	height: $arrow-bubble-size;
 	overflow: hidden;
 
 	@include transition-default(background-color);
 
-	@include mediaQuery(tabletLandscape) {
+	@include media-query($breakpoint-class-prefix-medium) {
 		@include transition-default(none);
 	}
 
@@ -26,19 +26,19 @@
 
 		@include transition-default(border-color);
 
-		@include mediaQuery(tabletLandscape) {
+		@include media-query($breakpoint-class-prefix-medium) {
 			@include transition-default(none);
 		}
 	}
 
 	&:before {
 		z-index: 2;
-		border-width: $arrowSize / 2;
+		border-width: $arrow-size / 2;
 	}
 
 	&:after {
 		z-index: 1;
-		border-width: $arrowSize / 2;
+		border-width: $arrow-size / 2;
 	}
 
 	&.bubble {
@@ -53,13 +53,13 @@
 	@extend .arrow;
 	&:before,
 	&:after, {
-		left: ($arrowBubbleSize / 2) - ($arrowSize / 2);
+		left: ($arrow-bubble-size / 2) - ($arrow-size / 2);
 	}
 }
 
 .arrow-top {
 	footer & {
-		top: -$arrowBubbleSize / 2;
+		top: -$arrow-bubble-size / 2;
 	}
 
 	&:before,
@@ -68,22 +68,22 @@
 	}
 
 	&:before {
-		bottom: ($arrowBubbleSize / 2);
+		bottom: ($arrow-bubble-size / 2);
 
 	}
 
 	&:after {
-		bottom: ($arrowBubbleSize / 2) + $arrowWidth;
-		border-color: rgba(0,0,0,0) rgba(0,0,0,0) $colorArrow rgba(0,0,0,0);
+		bottom: ($arrow-bubble-size / 2) + $arrow-width;
+		border-color: rgba(0,0,0,0) rgba(0,0,0,0) $color-arrow rgba(0,0,0,0);
 	}
 
 	&:hover {
 		&:before {
-			bottom: ($arrowBubbleSize / 2) + $arrowTransition;
+			bottom: ($arrow-bubble-size / 2) + $arrow-transition;
 		}
 
 		&:after {
-			bottom: ($arrowBubbleSize / 2) + $arrowWidth + $arrowTransition;
+			bottom: ($arrow-bubble-size / 2) + $arrow-width + $arrow-transition;
 		}
 	}
 }
@@ -91,20 +91,20 @@
 
 .arrow-right {
 	&:before {
-		top: ($arrowBubbleSize / 2) - ($arrowSize / 2);
-		left: ($arrowBubbleSize / 2) - ($arrowSize / 4) - $arrowWidth;
+		top: ($arrow-bubble-size / 2) - ($arrow-size / 2);
+		left: ($arrow-bubble-size / 2) - ($arrow-size / 4) - $arrow-width;
 	}
 
 	&:after {
-		top: ($arrowBubbleSize / 2) - ($arrowSize / 2);
-		left: ($arrowBubbleSize / 2) - ($arrowSize / 4);
-		border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) $colorArrow;
+		top: ($arrow-bubble-size / 2) - ($arrow-size / 2);
+		left: ($arrow-bubble-size / 2) - ($arrow-size / 4);
+		border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) $color-arrow;
 	}
 }
 
 .arrow-bottom {
 	header & {
-		bottom: -$arrowBubbleSize / 2;
+		bottom: -$arrow-bubble-size / 2;
 	}
 
 	&:before,
@@ -113,21 +113,21 @@
 	}
 
 	&:before {
-		top: ($arrowBubbleSize / 2);
+		top: ($arrow-bubble-size / 2);
 	}
 
 	&:after {
-		top: ($arrowBubbleSize / 2) + $arrowWidth;
-		border-color: $colorArrow rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0);
+		top: ($arrow-bubble-size / 2) + $arrow-width;
+		border-color: $color-arrow rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0);
 	}
 
 	&:hover {
 		&:before {
-			top: ($arrowBubbleSize / 2) + $arrowTransition;
+			top: ($arrow-bubble-size / 2) + $arrow-transition;
 		}
 
 		&:after {
-			top: ($arrowBubbleSize / 2) + $arrowWidth + $arrowTransition;
+			top: ($arrow-bubble-size / 2) + $arrow-width + $arrow-transition;
 		}
 	}
 }
@@ -141,10 +141,10 @@
 }
 
 .anchor-links {
-	width: $arrowBubbleSize * 2;
-	height: $arrowBubbleSize;
-	margin-left: -$arrowBubbleSize;
-	top: -$arrowBubbleSize / 2;
+	width: $arrow-bubble-size * 2;
+	height: $arrow-bubble-size;
+	margin-left: -$arrow-bubble-size;
+	top: -$arrow-bubble-size / 2;
 
 	.anchor-link {
 		margin: 0;
@@ -154,7 +154,7 @@
 		}
 
 		&.arrow-bottom {
-			left: $arrowBubbleSize;
+			left: $arrow-bubble-size;
 		}
 	}
 }
