@@ -64,7 +64,7 @@ $colors:
 ***********************************************************************************/
 
 /*  Font Name				Is Custom */
-$fontFamilies:
+$font-families:
 	Arial					false	Arial								normal,
 	ArialBold				false	Arial								bold,
 	ArialItalic				false	Arial								italic,
@@ -72,7 +72,7 @@ $fontFamilies:
 	AlteHaasGroteskBold		true	'altehaasgroteskbold-webfont'		normal
 !default;
 
-$fontSizes:
+$font-sizes:
 	tiny		13px,
 	small		15px,
 	default		22px,
