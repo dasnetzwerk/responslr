@@ -39,12 +39,12 @@ $grid-gutter-half: $grid-gutter / 2 !default;
 $grid-gutter-double: $grid-gutter * 2 !default;
 
 // Grid Device Settings
-$gridStartAtLarge: $minWidthLarge !default;
-$gridEndAtLarge: $maxWidthLarge !default;
-$gridStartAtMedium: $minWidthMedium !default;
-$gridEndAtMedium: $max-width-medium !default;
-$gridStartAtSmall: $minWidthSmall !default;
-$gridEndAtSmall: $max-width-small !default;
+$grid-start-at-large: $$min-width-large !default;
+$grid-end-at-large: $max-width-large !default;
+$grid-start-at-medium: $min-width-medium !default;
+$grid-end-at-medium: $max-width-medium !default;
+$grid-start-at-small: $minWidthSmall !default;
+$grid-end-at-small: $max-width-small !default;
 
 
 /***********************************************************************************
