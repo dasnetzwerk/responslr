@@ -1,0 +1,22 @@
+
+/***********************************************************************************
+	BUTTONS
+***********************************************************************************/
+.button,
+a.button,
+.row .button {
+	display: inline-block;
+	padding: 0 $buttonPaddingX;
+	height: $buttonHeight;
+	font-size: $fontSizeDefault;
+	line-height: $buttonHeight;
+
+	@include border-radius($buttonBorderRadius);
+	@include transition-default(background-color);
+
+	@if($buttonBorderWidth != 0) {
+		border-width: $buttonBorderWidth;
+		border-style: $buttonBorderStyle;
+		@include transition-default(background-color,border-color);
+	}
+}

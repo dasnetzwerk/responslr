@@ -1,0 +1,148 @@
+/***********************************************************************************
+	PRESETS
+***********************************************************************************/
+html, body {
+	margin: 0;
+	padding: 0;
+	background-color: $colorBlack;
+	color: $colorWhite;
+	font-family: $fontRegular;
+	font-size: $fontSizeDefault;
+	line-height: $lineHeightDefault;
+}
+
+body * {
+	margin: 0;
+	padding: 0;
+	outline: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body *,
+*:before,
+*:after {
+	@include box-sizing(border-box);
+}
+
+h1, h2, h3, h4, h5, h6, strong {
+	font-family: $fontRegular;
+	font-weight: normal;
+	color: $colorWhite;
+	text-transform: uppercase;
+
+	span {
+		font-family: $fontRegular;
+	}
+}
+
+h1 {
+	display: block;
+	font-family: 'AlteHaasGrotesk';
+}
+
+h2,
+h3,
+h4 {
+	margin-bottom: $spacingSmall;
+	font-size: $fontSizeDefault;
+	line-height: $lineHeightDefault;
+	text-align: center;
+}
+
+a {
+	color: $colorWhite;
+
+	&:active {
+		background-color: transparent;
+	}
+}
+
+a {
+	font-size: $fontSizeDefault;
+	line-height: $lineHeightDefault;
+	outline: none;
+	text-decoration: none;
+	cursor: pointer;
+
+	@include transition-default(background-color, color);
+
+	@include mediaQuery(medium) {
+		@include transition(none);
+	}
+}
+
+p,
+table,
+label {
+	font-size: $fontSizeDefault;
+	line-height: $lineHeightDefault;
+	text-align: center;
+}
+
+ol,
+ul {
+	font-size: $fontSizeDefault;
+	line-height: $lineHeightDefault;
+	list-style: none;
+	margin: 0 0 $spacingSmall 0;
+
+	li {
+
+	}
+}
+
+img {
+	display: block;
+	width: 100%;
+}
+
+a img {
+	border: 0;
+}
+
+nav {
+	ul {
+		margin: 0;
+
+		li {
+			a {
+				display: block;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+
+header,
+footer {
+	@extend .no-select;
+}
+
+/***********************************************************************************
+	EXTENDS
+***********************************************************************************/
+.container {
+	position: relative;
+	margin: 0 auto;
+	max-width: $gridMaxWidth;
+
+	@include mediaQuery($gridMaxWidth) {
+		margin: 0;
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+.stripe {
+	position: relative;
+	z-index: 50;
+	padding: $spacingTextDefault 0 0 0;
+}
+
+.bg-transition {
+	@include transition-default(background-color);
+
+	@include mediaQuery(medium) {
+		@include transition(none);
+	}
+}

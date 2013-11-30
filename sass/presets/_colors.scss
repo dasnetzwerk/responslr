@@ -1,0 +1,242 @@
+﻿
+@each $i in $colorList {
+	body.#{nth($i,1)} {
+		header,
+		footer,
+		.button {
+			background-color: nth($i,2);
+		}
+
+		p a {
+			color: nth($i,2);
+
+			&:hover {
+				color: $colorWhite;
+			}
+		}
+
+		::selection	{
+			color: $colorWhite;
+			background-color: rgba(nth($i,2), .99);
+		}
+
+		::-moz-selection	{
+			color: $colorWhite;
+			background-color: rgba(nth($i,2), .99);
+		}
+
+		@if($buttonBorderWidth != 0) {
+			.button {
+				@if($buttonBorderColorType == 'lighten') {
+					border-color: lighten(nth($i,2), $buttonBorderColorPercent);
+				}
+				@else {
+					border-color: darken(nth($i,2), $buttonBorderColorPercent);
+				}
+			}
+		}
+
+		.button,
+		.bg-transition.color {
+			&:hover {
+				@if($buttonBackgroundHoverType == 'lighten') {
+					background-color: lighten(nth($i,2), $buttonBackgroundHoverPercent);
+
+					.arrow.bubble {
+						background-color: lighten(nth($i,2), $buttonBackgroundHoverPercent);
+					}
+
+					.arrow-right:before {
+						border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) lighten(nth($i,2), $buttonBackgroundHoverPercent);
+					}
+
+					.arrow-left:before {
+						border-color: rgba(0,0,0,0) lighten(nth($i,2), $buttonBackgroundHoverPercent) rgba(0,0,0,0) rgba(0,0,0,0);
+					}
+				}
+				@else {
+					background-color: darken(nth($i,2), $buttonBackgroundHoverPercent);
+
+					.arrow.bubble {
+						background-color: darken(nth($i,2), $buttonBackgroundHoverPercent);
+					}
+
+					.arrow-right:before {
+						border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) darken(nth($i,2), $buttonBackgroundHoverPercent);
+					}
+
+					.arrow-left:before {
+						border-color: rgba(0,0,0,0) darken(nth($i,2), $buttonBackgroundHoverPercent) rgba(0,0,0,0) rgba(0,0,0,0);
+					}
+				}
+
+				@if($buttonBorderWidth != 0) {
+					@if($buttonBorderHoverType == 'lighten') {
+						border-color: lighten(nth($i,2), $butotnBorderHoverPercent);
+					}
+					@else {
+						border-color: darken(nth($i,2), $butotnBorderHoverPercent);
+					}
+				}
+			}
+		}
+
+		header,
+		footer,
+		h1 {
+			.arrow.bubble {
+				background-color: nth($i,2);
+			}
+
+			.arrow-top:before {
+				border-color: rgba(0,0,0,0) rgba(0,0,0,0) nth($i,2) rgba(0,0,0,0);
+			}
+
+			.arrow-right:before {
+				border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) nth($i,2);
+			}
+
+			.arrow-bottom:before {
+				border-color: nth($i,2) rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0);
+			}
+
+			.arrow-left:before {
+				border-color: rgba(0,0,0,0) nth($i,2) rgba(0,0,0,0) rgba(0,0,0,0);
+			}
+		}
+
+		.color {
+			background-color: nth($i,2);
+		}
+
+		.color.green {
+			background-color: $colorGreen;
+		}
+
+		.color.blue {
+			background-color: $colorBlue;
+		}
+
+		.more {
+			.color {
+				background-color: nth($i,2);
+				&:hover {
+					@if($buttonBackgroundHoverType == 'lighten') {
+						background-color: lighten(nth($i,2), $buttonBackgroundHoverPercent);
+					}
+					@else {
+						background-color: darken(nth($i,2), $buttonBackgroundHoverPercent);
+					}
+				}
+			}
+		}
+	}
+}
+
+.dark {
+	background-color: $colorBlack;
+
+	.description .bubble-content {
+		background-color: $colorGrey;
+	}
+
+	.screenshot .bubble-content .info {
+		background-color: rgba($colorBlack, .9);
+	}
+
+	.anchor-links {
+		.arrow-top.bubble {
+			background-color: $colorBlack;
+		}
+
+		.arrow-top:before {
+			border-color: rgba(0,0,0,0) rgba(0,0,0,0) $colorBlack rgba(0,0,0,0);
+		}
+
+		.arrow-bottom:before {
+			border-color: $colorGrey rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0);
+		}
+
+		.arrow-bottom.bubble {
+			background-color: $colorGrey;
+		}
+	}
+
+	.skills {
+		.dark {
+			color: $colorWhite;
+			background-color: $colorGrey;
+		}
+
+		.pie-hide {
+			background-color: $colorBlack;
+		}
+	}
+
+	.line {
+		border-color: $colorGrey;
+	}
+}
+
+.bright {
+	background-color: $colorGrey;
+
+	.description .bubble-content {
+		background-color: $colorBlack;
+	}
+
+	.screenshot .bubble-content .info {
+		background-color: rgba($colorBlack, .9);
+	}
+
+	.anchor-links {
+		.arrow-top.bubble {
+			background-color: $colorGrey;
+		}
+
+		.arrow-top:before {
+			border-color: rgba(0,0,0,0) rgba(0,0,0,0) $colorGrey rgba(0,0,0,0);
+		}
+
+		.arrow-bottom.bubble {
+			background-color: $colorBlack;
+		}
+
+		.arrow-bottom:before {
+			border-color: $colorBlack rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0);
+		}
+	}
+
+	.skills {
+		.dark {
+			color: $colorWhite;
+			background-color: $colorBlack;
+		}
+
+		.pie-hide {
+			background-color: $colorGrey;
+		}
+	}
+
+	.line {
+		border-color: $colorBlack;
+	}
+}
+
+.skills {
+	.bright {
+		color: $colorBlack;
+		background-color: $colorWhite;
+	}
+}
+
+@include mediaQuery(small) {
+	.dark,
+	.bright {
+		.description {
+			.bubble-content {
+				background-color: transparent;
+			}
+		}
+	}
+}

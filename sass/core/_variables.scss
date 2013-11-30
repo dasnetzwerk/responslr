@@ -1,0 +1,164 @@
+/***********************************************************************************
+	COMPASS OVERIDES
+***********************************************************************************/
+$experimental-support-for-microsoft: true;
+
+
+/***********************************************************************************
+	RESPONSIVE
+***********************************************************************************/
+// Breakpoints
+$breakpoint-class-prefix-large: 'large' !default;
+$breakpoint-class-prefix-medium: 'medium' !default;
+$breakpoint-class-prefix-small: 'small' !default;
+
+// Maximum Widths
+$grid-max-width: 1140px !default;
+$max-width: 4096px !default;
+$max-width-large: 1024px !default;
+$max-width-medium: 960px !default;
+$max-width-small: 640px !default;
+
+// Minimum Widths
+$min-width-large: $max-width-medium + 1 !default;
+$min-width-medium: $max-width-small + 1 !default;
+$min-width-small: $max-width-small / 2 !default;
+
+// Grid Columns
+$grid-columns-large: 12 !default;
+$grid-columns-medium: 8 !default;
+$grid-columns-small: 4 !default;
+
+$grid-column-width-large: 100% / $grid-columns-large !default;
+$grid-column-width-medium: 100% / $grid-columns-medium !default;
+$grid-column-width-small: 100% / $grid-columns-small !default;
+
+// Grid Gutter
+$grid-gutter: 10px !default;
+$grid-gutter-half: $grid-gutter / 2 !default;
+$grid-gutter-double: $grid-gutter * 2 !default;
+
+// Grid Device Settings
+$gridStartAtLarge: $minWidthLarge !default;
+$gridEndAtLarge: $maxWidthLarge !default;
+$gridStartAtMedium: $minWidthMedium !default;
+$gridEndAtMedium: $max-width-medium !default;
+$gridStartAtSmall: $minWidthSmall !default;
+$gridEndAtSmall: $max-width-small !default;
+
+
+/***********************************************************************************
+	COLORS
+***********************************************************************************/
+$white: rgb(255,255,255) !default;
+$black: rgb(0,0,0) !default;
+
+$colorList:
+	'white'		$white,
+	'black'		$black
+ !default;
+
+
+/***********************************************************************************
+	FONTS
+***********************************************************************************/
+$fontRegular: 'Arial' !default;
+$fontBold: 'Arial' !default;
+
+/*  Font Name				Is Custom */
+$fontFamilyList:
+	Arial					false	Arial								normal,
+	ArialBold				false	Arial								bold,
+	ArialItalic				false	Arial								italic,
+	AlteHaasGrotesk			true	'altehaasgroteskregular-webfont'	normal,
+	AlteHaasGroteskBold		true	'altehaasgroteskbold-webfont'		normal
+!default;
+
+$fontSizeList:
+	tiny		13px,
+	small		15px,
+	default		22px,
+	medium		36px,
+	large		48px		62px,
+	xlarge		62px
+!default;
+
+$lineHeightDifference: 8px !default;
+
+$fontSizeLarge: 48px !default;
+$lineHeightLarge: 68px !default;
+
+
+
+/***********************************************************************************
+	BOX
+***********************************************************************************/
+$borderSize: 3px !default;
+$borderRadius: 2px !default;
+
+
+/***********************************************************************************
+	BUTTONS
+***********************************************************************************/
+$buttonPaddingX: 18px !default;
+$buttonPaddingY: 8px !default;
+$buttonHeight: 50px !default;
+
+$buttonBorderRadius: $borderRadius !default;
+
+$buttonBorderWidth: 0 !default;
+$buttonBorderStyle: solid !default;
+$buttonBorderColorType: 'lighten' !default;
+$buttonBorderColorPercent: 7% !default;
+$buttonBorderHoverType: 'darken' !default;
+$butotnBorderHoverPercent: 7% !default;
+
+$buttonBackgroundHoverType: 'lighten' !default;
+$buttonBackgroundHoverPercent: 7% !default;
+
+
+/***********************************************************************************
+	ARROWS
+***********************************************************************************/
+$arrowSize:	18px !default;
+$arrowWidth: 4px !default;
+$arrowTransition: 2px !default;
+$arrowBubbleSize: 50px !default;
+$colorArrow: $colorWhite !default;
+
+
+/***********************************************************************************
+	SPACINGS
+***********************************************************************************/
+$spacingDefault: 80px !default;
+$spacingTextDefault: $spacingDefault - $lineHeightDifference - 2px !default;
+$spacingSmall: $spacingDefault / 2 !default;
+$spacingTextSmall: $spacingSmall - ($lineHeightDifference / 2) !default;
+$spacingContainerFull: 0 !default;
+
+
+/***********************************************************************************
+	SPRITES
+***********************************************************************************/
+$defaultSpriteMap: sprite-map(
+	"sprite/*.png",
+
+	$spacing: 50px
+
+	/* $sprite-icon-facebook-position: 50% */
+) !default;
+
+$defaultSpriteMapRetina: sprite-map(
+	"retina-sprite/*.png",
+
+	$spacing: 50px
+
+	/* $retina-sprite-icon-facebook-position: 50%,  */
+) !default;
+
+
+/***********************************************************************************
+	TRANSITIONS
+***********************************************************************************/
+$transitionDurationDefault: .25s !default;
+$transitionTimingFunctionDefault: ease !default;

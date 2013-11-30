@@ -1,0 +1,29 @@
+﻿@each $i in $colorList {
+	.bg-#{nth($i,1)} {
+		background-color: nth($i,2);
+	}
+
+	.text-#{nth($i,1)} {
+		color: nth($i,2);
+	}
+
+	.border-#{nth($i,1)} {
+		border-color: nth($i,2);
+	}
+
+	.border-top-#{nth($i,1)} {
+		border-top-color: nth($i,2);
+	}
+
+	.border-right-#{nth($i,1)} {
+		border-right-color: nth($i,2);
+	}
+
+	.border-bottom-#{nth($i,1)} {
+		border-bottom-color: nth($i,2);
+	}
+
+	.border-left-#{nth($i,1)} {
+		border-left-color: nth($i,2);
+	}
+}

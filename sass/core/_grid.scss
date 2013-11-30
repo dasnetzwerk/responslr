@@ -1,0 +1,215 @@
+/***********************************************************************************
+	MIXIN: COLUMN WIDTH
+***********************************************************************************/
+@mixin columnWidth($columnPart, $size){
+	@if type-of($size) == string {
+		$columnTotal: $gridColumnWidthLarge;
+
+		@if $size == medium {
+			$columnTotal: $gridColumnsMedium;
+		}
+		@else if $size == small {
+			$columnTotal: $gridColumnsSmall;
+		}
+
+		width: (100% / $columnTotal * $columnPart);
+	}
+	@else {
+		width: (($columnPart / $size) * 100%);
+	}
+}
+
+/***********************************************************************************
+	GRID
+***********************************************************************************/
+tr.row {
+	display: table-row;
+}
+
+.row .row {
+	margin-left: -$gridGutter;
+	margin-right: -$gridGutter;
+}
+
+.column {
+	display: inline-block;
+	vertical-align: top;
+	padding-left: $gridGutter;
+	padding-right: $gridGutter;
+}
+
+td.column {
+	display: table-cell;
+}
+
+.row {
+	font-size: 0;
+	line-height: 0;
+
+	& > * {
+		font-size: $fontSizeDefault;
+		line-height: $lineHeightDefault;
+	}
+}
+
+$columnIndex: $gridColumnsLarge;
+
+.row {
+	/* Large */
+	@while $columnIndex > 0 {
+		.#{$breakpointClassPrefixLarge}-#{$columnIndex} {
+			width: $gridColumnWidthLarge * $columnIndex;
+
+			$subColumnIndex: $columnIndex;
+
+			@while $subColumnIndex > 0 {
+				.#{$breakpointClassPrefixLarge}-#{$subColumnIndex} {
+					width: (($gridColumnWidthLarge * $subColumnIndex) / ($gridColumnWidthLarge * $columnIndex)) * 100%;
+				}
+
+				$subColumnIndex: $subColumnIndex - 1;
+			}
+		}
+
+		.offset-#{$breakpointClassPrefixLarge}-#{$columnIndex} {
+			margin-left: $gridColumnWidthLarge * $columnIndex;
+		}
+
+		.inset-#{$breakpointClassPrefixLarge}-#{$columnIndex} {
+			margin-left: (-$gridColumnWidthLarge * $columnIndex) - 0.01%;
+		}
+
+		$columnIndex: $columnIndex - 1;
+	}
+
+	/* Medium */
+	$columnIndex: $gridColumnsMedium;
+
+	@media only screen and (max-width: $gridEndAtMedium), print {
+		@while $columnIndex > 0 {
+			.#{$breakpointClassPrefixMedium}-#{$columnIndex} {
+				width: $gridColumnWidthMedium * $columnIndex;
+
+				$subColumnIndex: $columnIndex;
+
+				@while $subColumnIndex > 0 {
+					.#{$breakpointClassPrefixMedium}-#{$subColumnIndex} {
+						width: (($gridColumnWidthMedium * $subColumnIndex) / ($gridColumnWidthMedium * $columnIndex)) * 100%;
+					}
+
+					$subColumnIndex: $subColumnIndex - 1;
+				}
+			}
+
+			.offset-#{$breakpointClassPrefixMedium}-#{$columnIndex} {
+				margin-left: $gridColumnWidthMedium * $columnIndex;
+			}
+
+			.inset-#{$breakpointClassPrefixMedium}-#{$columnIndex} {
+				margin-left: (-$gridColumnWidthMedium * $columnIndex) - 0.01%;
+			}
+
+			.reset-#{$breakpointClassPrefixMedium} {
+				margin-left: 0;
+			}
+
+			$columnIndex: $columnIndex - 1;
+		}
+	}
+
+	/* Small */
+	$columnIndex: $gridColumnsSmall;
+
+	@media only screen and (max-width: $gridEndAtSmall), print {
+		@while $columnIndex > 0 {
+			.#{$breakpointClassPrefixSmall}-#{$columnIndex} {
+				width: $gridColumnWidthSmall * $columnIndex;
+
+				$subColumnIndex: $columnIndex;
+
+				@while $subColumnIndex > 0 {
+					.#{$breakpointClassPrefixSmall}-#{$subColumnIndex} {
+						width: (($gridColumnWidthSmall * $subColumnIndex) / ($gridColumnWidthSmall * $columnIndex)) * 100%;
+					}
+
+					$subColumnIndex: $subColumnIndex - 1;
+				}
+			}
+
+			.offset-#{$breakpointClassPrefixSmall}-#{$columnIndex} {
+				margin-left: $gridColumnWidthSmall * $columnIndex;
+			}
+
+			.inset-#{$breakpointClassPrefixSmall}-#{$columnIndex} {
+				margin-left: (-$gridColumnWidthSmall * $columnIndex) - 0.01%;
+			}
+
+			.reset-#{$breakpointClassPrefixSmall} {
+				margin-left: 0;
+			}
+
+			$columnIndex: $columnIndex - 1;
+		}
+	}
+}
+
+/***********************************************************************************
+	GRID HELPER
+***********************************************************************************/
+#nextResponsiveHelperGridToggle {
+	position: fixed;
+	z-index: 100001;
+	bottom: 50px;
+	right: 10px;
+
+	&:checked + #nextResponsiveHelperGrid {
+		display: block;
+	}
+}
+
+#nextResponsiveHelperGrid {
+	display: none;
+	position: fixed;
+	z-index: 100000;
+	top: 0;
+	bottom: 0;
+	background-color: rgba(39,174,96,.25);
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+
+	left: 50%;
+	max-width: $gridMaxWidth;
+	width: 100%;
+	margin-left: -($gridMaxWidth / 2);
+
+	@include mediaQuery($gridMaxWidth) {
+		left: auto;
+		margin-left: 0;
+		max-width: 100%;
+	}
+
+	& > div {
+		display: inline-block;
+		height: 100%;
+
+		@include mediaQuery($breakpointClassPrefixMedium) {
+			&:nth-child(1n+#{$gridColumnsMedium + 1}) {
+				display: none;
+			}
+		}
+
+		@include mediaQuery($breakpointClassPrefixSmall) {
+			&:nth-child(1n+#{$gridColumnsSmall + 1}) {
+				display: none;
+			}
+		}
+
+		div {
+			width: 100%;
+			height: 100%;
+			background-color: rgba(36,156,213,.5);
+		}
+	}
+}

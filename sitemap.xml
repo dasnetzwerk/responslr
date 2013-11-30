@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+
+	<!-- HOME -->
+	<url>
+		<loc>http://alenkrummenacher.ch</loc>
+
+		<!-- Logo -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/logo-alen-krummenacher-einfach-einzigartig-modern.png</image:loc>
+			<image:title>Logo Alen Krummenacher Webdesign: Einfach. Einzigartig. Modern</image:title>
+		</image:image>
+
+		<!-- Intro: Konzept / Idee -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/visual-idee-konzept.png</image:loc>
+			<image:title>Visual: Idee / Konzept - Einfach</image:title>
+		</image:image>
+
+		<!-- Intro: Screendesign -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/visual-screendesign.png</image:loc>
+			<image:title>Visual: Screendesign - Einzigartig</image:title>
+		</image:image>
+
+		<!-- Intro: Entwicklung -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/visual-entwicklung.png</image:loc>
+			<image:title>Visual: Entwicklung - Modern</image:title>
+		</image:image>
+
+		<!-- Arbeit: Auf dem Sofa -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-logo-auf-dem-sofa.png</image:loc>
+			<image:title>Logo Auf dem Sofa</image:title>
+		</image:image>
+
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-screenshot-auf-dem-sofa.jpg</image:loc>
+			<image:title>Screenshot Auf dem Sofa</image:title>
+		</image:image>
+
+		<!-- Arbeit: Möbel Hubacher -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-logo-moebel-hubacher.png</image:loc>
+			<image:title>Logo Möbel Hubacher</image:title>
+		</image:image>
+
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-screenshot-moebel-hubacher.jpg</image:loc>
+			<image:title>Screenshot Möbel Hubacher</image:title>
+		</image:image>
+
+		<!-- Prozess: Kennen lernen -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/visual-prozess-kennen-lernen.png</image:loc>
+			<image:title>Prozess - Schritt 1: Kennen lernen</image:title>
+		</image:image>
+
+		<!-- Prozess: Brainstroming -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/visual-prozess-brainstorming.png</image:loc>
+			<image:title>Prozess - Schritt 2: Brainstorming</image:title>
+		</image:image>
+
+		<!-- Person: Alen Krummenacher -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/webentwickler-alen-krummenacher.jpg</image:loc>
+			<image:title>Alen Krummenacher - Web Entwickler, Responsive Webdesign</image:title>
+		</image:image>
+
+		<!-- Person: nextage -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-logo-internetagentur-nextage.jpg</image:loc>
+			<image:title>Arbeitgeber - Internetagentur nextage</image:title>
+		</image:image>
+
+		<!-- Person: Memphis & Baloo -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/kater-memphis-baloo.jpg</image:loc>
+			<image:title>Meine Kater - Memphis und Baloo</image:title>
+		</image:image>
+	</url>
+
+	<!-- ARBEIT -->
+	<url>
+		<loc>http://alenkrummenacher.ch/arbeit</loc>
+
+		<!-- Logo -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/logo-alen-krummenacher-einfach-einzigartig-modern.png</image:loc>
+			<image:title>Logo Alen Krummenacher Webdesign: Einfach. Einzigartig. Modern</image:title>
+		</image:image>
+
+		<!-- Auf dem Sofa -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-logo-auf-dem-sofa.png</image:loc>
+			<image:title>Logo Auf dem Sofa</image:title>
+		</image:image>
+
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-screenshot-auf-dem-sofa.jpg</image:loc>
+			<image:title>Screenshot Auf dem Sofa</image:title>
+		</image:image>
+
+		<!-- Möbel Hubacher -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-logo-moebel-hubacher.png</image:loc>
+			<image:title>Logo Möbel Hubacher</image:title>
+		</image:image>
+
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-screenshot-moebel-hubacher.jpg</image:loc>
+			<image:title>Screenshot Möbel Hubacher</image:title>
+		</image:image>
+
+		<!-- VBZ Apéro Game -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-logo-verkehrsbetriebe-zuerich-vbz-apero-game.png</image:loc>
+			<image:title>Logo Verkehrsbetriebe Zürich - VBZ Apéro Game</image:title>
+		</image:image>
+
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-screenshot-verkehrsbetriebe-zuerich-vbz-apero-game.jpg</image:loc>
+			<image:title>Screenshot Verkehrsbetriebe Zürich - VBZ Apéro Game</image:title>
+		</image:image>
+
+		<!-- Mobility: Wotsch en Chlapf? -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-logo-mobility-wotsch-en-chlapf.png</image:loc>
+			<image:title>Logo Mobility - Wotsch en Chlapf?</image:title>
+		</image:image>
+
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-screenshot-mobility-wotsch-en-chlapf.jpg</image:loc>
+			<image:title>Screenshot Mobility - Wotsch en Chlapf?</image:title>
+		</image:image>
+
+		<!-- JLS -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-logo-john-lay-solutions.png</image:loc>
+			<image:title>Logo John Lay Solutions</image:title>
+		</image:image>
+
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-screenshot-john-lay-solutions.jpg</image:loc>
+			<image:title>Screenshot John Lay Solutions</image:title>
+		</image:image>
+
+		<!-- e-Bodum Power Tools -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-logo-e-bodum-power-tools.png</image:loc>
+			<image:title>Logo e-Bodum - Power Tools</image:title>
+		</image:image>
+
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-screenshot-e-bodum-power-tools.jpg</image:loc>
+			<image:title>Screenshot e-Bodum - Power Tools</image:title>
+		</image:image>
+
+		<!-- nextage -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-logo-internetagentur-nextage.jpg</image:loc>
+			<image:title>Logo Internetagentur nextage</image:title>
+		</image:image>
+
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-screenshot-internetagentur-nextage.jpg</image:loc>
+			<image:title>Screenshot Internetagentur nextage</image:title>
+		</image:image>
+
+		<!-- SPZ -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-logo-schweizer-paraplegiker-zentrum.png</image:loc>
+			<image:title>Logo Schweizer Paraplegiker Zentrum</image:title>
+		</image:image>
+
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-screenshot-schweizer-paraplegiker-zentrum.jpg</image:loc>
+			<image:title>Screenshot Schweizer Paraplegiker Zentrum</image:title>
+		</image:image>
+	</url>
+
+	<!-- PROZESS -->
+	<url>
+		<loc>http://alenkrummenacher.ch/prozess</loc>
+
+		<!-- Logo -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/logo-alen-krummenacher-einfach-einzigartig-modern.png</image:loc>
+			<image:title>Logo Alen Krummenacher Webdesign: Einfach. Einzigartig. Modern</image:title>
+		</image:image>
+
+		<!-- Prozess: Kennen lernen -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/visual-prozess-kennen-lernen.png</image:loc>
+			<image:title>Prozess - Schritt 1: Kennen lernen</image:title>
+		</image:image>
+
+		<!-- Prozess: Brainstroming -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/visual-prozess-brainstorming.png</image:loc>
+			<image:title>Prozess - Schritt 2: Brainstorming</image:title>
+		</image:image>
+
+		<!-- Schritt 3: Die Idee! -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/visual-prozess-idee.png</image:loc>
+			<image:title>Prozess - Schritt 3: Die Idee</image:title>
+		</image:image>
+
+		<!-- Schritt 4: Skizzieren -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/visual-prozess-skizzieren.png</image:loc>
+			<image:title>Prozess - Schritt 4: Skizzieren</image:title>
+		</image:image>
+
+		<!-- Schritt 5: Screendesign -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/visual-prozess-screendesign.png</image:loc>
+			<image:title>Prozess - Schritt 5: Screendesign</image:title>
+		</image:image>
+
+		<!-- Schritt 6: Entwicklung -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/visual-prozess-entwicklung.png</image:loc>
+			<image:title>Prozess - Schritt 6: Entwicklung</image:title>
+		</image:image>
+
+		<!-- Schritt 7: Online -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/visual-prozess-online.png</image:loc>
+			<image:title>Prozess - Schritt 7: Online</image:title>
+		</image:image>
+	</url>
+
+	<!-- HANDWERK -->
+	<url>
+		<loc>http://alenkrummenacher.ch/handwerk</loc>
+
+		<!-- Logo -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/logo-alen-krummenacher-einfach-einzigartig-modern.png</image:loc>
+			<image:title>Logo Alen Krummenacher Webdesign: Einfach. Einzigartig. Modern</image:title>
+		</image:image>
+	</url>
+
+	<!-- PERSON -->
+	<url>
+		<loc>http://alenkrummenacher.ch/person</loc>
+
+		<!-- Logo -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/logo-alen-krummenacher-einfach-einzigartig-modern.png</image:loc>
+			<image:title>Logo Alen Krummenacher Webdesign: Einfach. Einzigartig. Modern</image:title>
+		</image:image>
+
+		<!-- Alen Krummenacher -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/webentwickler-alen-krummenacher.jpg</image:loc>
+			<image:title>Alen Krummenacher - Web Entwickler, Responsive Webdesign</image:title>
+		</image:image>
+
+		<!-- nextage -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-logo-internetagentur-nextage.jpg</image:loc>
+			<image:title>Arbeitgeber - Internetagentur nextage</image:title>
+		</image:image>
+
+		<!-- Memphis & Baloo -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/kater-memphis-baloo.jpg</image:loc>
+			<image:title>Meine Kater - Memphis und Baloo</image:title>
+		</image:image>
+
+		<!-- Browser: Chrome -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/logo-browser-chrome.png</image:loc>
+			<image:title>Logo - Browser Chrome</image:title>
+		</image:image>
+
+		<!-- Bier: Corona -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/bier-corona.jpg</image:loc>
+			<image:title>Bier - Corona</image:title>
+		</image:image>
+
+		<!-- TV-Serie: Breaking Bad -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/tv-serie-breaking-bad.jpg</image:loc>
+			<image:title>TV-Serie - Breaking Bad</image:title>
+		</image:image>
+
+		<!-- TV-Serie: Dexter -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/tv-serie-dexter.jpg</image:loc>
+			<image:title>TV-Serie - Dexter</image:title>
+		</image:image>
+
+		<!-- TV-Serie: Californication -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/tv-serie-californication.jpg</image:loc>
+			<image:title>TV-Serie - Californication</image:title>
+		</image:image>
+
+		<!-- TV-Network: Showtime -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/tv-network-showtime.jpg</image:loc>
+			<image:title>TV-Network - Showtime</image:title>
+		</image:image>
+
+		<!-- GTA V -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/videospiel-grand-theft-auto-v.jpg</image:loc>
+			<image:title>Videospiel - Grand Theft Auto V</image:title>
+		</image:image>
+	</url>
+
+	<!-- Das Netzwerk -->
+	<url>
+		<loc>http://alenkrummenacher.ch/das-netzwerk</loc>
+
+		<!-- Logo -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/logo-alen-krummenacher-einfach-einzigartig-modern.png</image:loc>
+			<image:title>Logo Alen Krummenacher Webdesign: Einfach. Einzigartig. Modern</image:title>
+		</image:image>
+
+		<!-- Claudia -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/texterin-schreiben-claudia-senn.jpg</image:loc>
+			<image:title>Claudia Senn - Texterin, Schreiben, Kreativ, Wunderschön</image:title>
+		</image:image>
+
+		<!-- Stephan -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/webentwickler-stephan-langenegger.jpg</image:loc>
+			<image:title>Stephan Langenegger - Webentwickler</image:title>
+		</image:image>
+
+		<!-- Lukas -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/webentwickler-lukas-hausammann.jpg</image:loc>
+			<image:title>Lukas Hausammann - Webentwickler</image:title>
+		</image:image>
+
+		<!-- Philipp -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/webentwickler-philipp-bruhin.jpg</image:loc>
+			<image:title>Philipp Bruhin - Webentwickler</image:title>
+		</image:image>
+
+		<!-- nextage -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/arbeit-logo-internetagentur-nextage.jpg</image:loc>
+			<image:title>nextage GmbH - Internetagentur</image:title>
+		</image:image>
+	</url>
+
+	<!-- Nützliches -->
+	<url>
+		<loc>http://alenkrummenacher.ch/nuetzliches</loc>
+
+		<!-- Logo -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/logo-alen-krummenacher-einfach-einzigartig-modern.png</image:loc>
+			<image:title>Logo Alen Krummenacher Webdesign: Einfach. Einzigartig. Modern</image:title>
+		</image:image>
+
+		<!-- The Noun Project - Visual: Responsive Webdesign -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/visual-responsive-webdesign.png</image:loc>
+			<image:title>The Noun Project - Visuele Sprache - Responsive Design by Alen Krummenacher</image:title>
+		</image:image>
+	</url>
+
+	<!-- Impressum -->
+	<url>
+		<loc>http://alenkrummenacher.ch/impressum</loc>
+		<!-- Logo -->
+		<image:image>
+			<image:loc>http://alenkrummenacher.ch/img/logo-alen-krummenacher-einfach-einzigartig-modern.png</image:loc>
+			<image:title>Logo Alen Krummenacher Webdesign: Einfach. Einzigartig. Modern</image:title>
+		</image:image>
+	</url>
+</urlset>
