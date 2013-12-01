@@ -82,10 +82,14 @@ $colors:
 /***********************************************************************************
 	FONTS
 ***********************************************************************************/
-/*  font name			is custom 	font file name		font-weight		font-style */
+/*  font name (unique)		is custom 	name on file system			font-weight porperty	font-style property */
 $font-families:
-	LatoLight			true		'lato-light'		normal			normal,
-	LatoRegular			true		'lato-regular'		normal			normal
+	LatoLight				true		lato-light					normal					normal,
+	LatoRegular				true		lato-regular				normal					normal,
+	Arial					false		Arial						normal					normal,
+	ArialBold				false		Arial						bold					normal,
+	ArialItalic				false		Arial						normal					italic,
+	ArialBoldItalic			false		Arial						bold					italic
 !default;
 
 /*	font-size name		font-size	line-height */
