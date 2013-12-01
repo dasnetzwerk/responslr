@@ -1238,8 +1238,6 @@ html, body {
   font-family: LatoLight;
   font-size: 24px;
   line-height: 34px;
-  font-weight: normal;
-  font-style: normal;
 }
 
 body * {
@@ -1261,8 +1259,6 @@ h1, h2, h3, h4, h5, h6, strong {
   font-family: LatoRegular;
   font-size: 24px;
   line-height: 34px;
-  font-weight: normal;
-  font-style: normal;
   text-transform: uppercase;
 }
 
@@ -1271,8 +1267,6 @@ h1 {
   font-family: LatoRegular;
   font-size: 48px;
   line-height: 62px;
-  font-weight: normal;
-  font-style: normal;
 }
 
 h2,
@@ -1292,8 +1286,6 @@ a {
   font-family: LatoLight;
   font-size: 24px;
   line-height: 34px;
-  font-weight: normal;
-  font-style: normal;
   outline: none;
   text-decoration: none;
   cursor: pointer;
@@ -1325,8 +1317,6 @@ label {
   font-family: LatoLight;
   font-size: 24px;
   line-height: 34px;
-  font-weight: normal;
-  font-style: normal;
 }
 
 ol,
@@ -1334,8 +1324,6 @@ ul {
   font-family: LatoLight;
   font-size: 24px;
   line-height: 34px;
-  font-weight: normal;
-  font-style: normal;
   list-style: none;
   margin: 0 0 40px 0;
 }
@@ -1359,8 +1347,6 @@ nav ul li a {
   font-family: LatoRegular;
   font-size: 24px;
   line-height: 34px;
-  font-weight: normal;
-  font-style: normal;
   display: block;
   text-transform: uppercase;
 }
@@ -1400,8 +1386,6 @@ a.button,
   font-family: LatoLight;
   font-size: 24px;
   line-height: 34px;
-  font-weight: normal;
-  font-style: normal;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
@@ -1689,6 +1673,15 @@ header {
   padding: 80px 0;
 }
 
+#main-navigation {
+  margin-top: 80px;
+}
+#main-navigation ul li a {
+  font-family: LatoRegular;
+  font-size: 30px;
+  line-height: 42px;
+}
+
 p {
   margin-bottom: 40px;
 }
@@ -1696,6 +1689,4 @@ p.intro {
   font-family: LatoLight;
   font-size: 30px;
   line-height: 42px;
-  font-weight: normal;
-  font-style: normal;
 }
