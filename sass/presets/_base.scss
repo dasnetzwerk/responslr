@@ -7,9 +7,6 @@ html, body {
 	background-color: $white;
 	color: $black;
 	@include typo();
-	/* font-family: $font-regular;
-	font-size: $font-size-default;
-	line-height: $line-height-default; */
 }
 
 body * {
@@ -26,12 +23,8 @@ body *,
 }
 
 h1, h2, h3, h4, h5, h6, strong {
-	@include typo();
+	@include typo($font: LatoRegular);
 	text-transform: uppercase;
-
-	span {
-		@include typo();
-	}
 }
 
 h1 {
@@ -42,8 +35,7 @@ h1 {
 h2,
 h3,
 h4 {
-	margin-bottom: $spacing-small;
-	@include typo();
+	margin-bottom: 0;
 }
 
 a {
@@ -71,7 +63,6 @@ p,
 table,
 label {
 	@include typo();
-	text-align: center;
 }
 
 ol,
@@ -137,12 +128,4 @@ nav {
 
 .container-full {
 	position: relative;
-}
-
-.bg-transition {
-	@include transition-default(background-color);
-
-	@include media-query($breakpoint-class-prefix-medium) {
-		@include transition(none);
-	}
 }

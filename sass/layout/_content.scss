@@ -1,3 +1,8 @@
-﻿#content {
+﻿
+p {
+	margin-bottom: $spacing-small;
 
+	&.intro {
+		@include typo($font-size: medium);
+	}
 }
