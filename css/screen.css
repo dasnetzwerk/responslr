@@ -2082,3 +2082,16 @@ header {
   font-size: 62px;
   line-height: 80px;
 }
+#content p .font-test-1 {
+  display: inline-block;
+  font-size: 27px;
+  line-height: 100px;
+}
+#content p .font-test-2 {
+  display: inline-block;
+  font-family: LatoLight;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 48px;
+  line-height: 200px;
+}
