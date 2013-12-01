@@ -3,7 +3,9 @@
 ***********************************************************************************/
 $white: rgb(255,255,255);
 $black: rgb(26,32,37);
-$grey: rgb(45,55,63);
+$grey: rgb(213,215,217);
+$greyLight: rgb(234,235,235);
+$greyDark: rgb(45,55,63);
 
 $green: rgb(39,174,96);
 $blue: rgb(36,156,213);
@@ -12,6 +14,11 @@ $red: rgb(192,57,43);
 $orange: rgb(242,98,50);
 
 $colors:
+	'white'		$white,
+	'black'		$black,
+	'grey'		$grey,
+	'greyLight'	$greyLight,
+	'greyDark'	$greyDark,
 	'green'		$green,
 	'blue'		$blue,
 	'purple'	$purple,

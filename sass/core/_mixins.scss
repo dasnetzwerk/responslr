@@ -55,5 +55,5 @@
 	}
 
 	@include transition-timing-function($transition-timing-function-default);
-	@include transition-duration($transition-durationDefault);
+	@include transition-duration($transition-duration-default);
 }
