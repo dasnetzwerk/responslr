@@ -38,7 +38,7 @@ $grid-column-width-medium: 100% / $grid-columns-medium !default;
 $grid-column-width-small: 100% / $grid-columns-small !default;
 
 // Grid Gutter
-$grid-gutter: 10px !default;
+$grid-gutter: 16px !default;
 $grid-gutter-half: $grid-gutter / 2 !default;
 $grid-gutter-double: $grid-gutter * 2 !default;
 
@@ -55,41 +55,48 @@ $grid-end-at-small: $max-width-small !default;
 	COLORS
 ***********************************************************************************/
 $white: rgb(255,255,255) !default;
-$black: rgb(0,0,0) !default;
+$black: rgb(26,32,37) !default;
+$grey: rgb(213,215,217) !default;
+$grey-light: rgb(234,235,235) !default;
+$grey-dark: rgb(45,55,63) !default;
+$green: rgb(39,174,96) !default;
+$blue: rgb(36,156,213) !default;
+$purple: rgb(142,68,173) !default;
+$red: rgb(192,57,43) !default;
+$orange: rgb(242,98,50) !default;
 
 $colors:
-	'white'		$white,
-	'black'		$black
+	'white'				$white,
+	'black'				$black,
+	'grey'				$grey,
+	'grey-light'		$grey-light,
+	'grey-dark'			$grey-dark,
+	'green'				$green,
+	'blue'				$blue,
+	'purple'			$purple,
+	'red'				$red,
+	'orange'			$orange
 !default;
 
 
 /***********************************************************************************
 	FONTS
 ***********************************************************************************/
-
-/*  Font Name				Is Custom */
+/*  font name			is custom 	font file name		font-weight		font-style */
 $font-families:
-	Arial					false	Arial								normal,
-	ArialBold				false	Arial								bold,
-	ArialItalic				false	Arial								italic,
-	AlteHaasGrotesk			true	'altehaasgroteskregular-webfont'	normal,
-	AlteHaasGroteskBold		true	'altehaasgroteskbold-webfont'		normal
+	LatoLight			true		'lato-light'		normal			normal,
+	LatoRegular			true		'lato-regular'		normal			normal
 !default;
 
+/*	font-size name		font-size	line-height */
 $font-sizes:
-	tiny		13px,
-	small		15px,
-	default		22px,
-	medium		36px,
-	large		48px		62px,
-	xlarge		62px
+	tiny				14px		22px,
+	small				18px		26px,
+	default				24px		34px,
+	medium				30px		42px,
+	large				48px		62px,
+	xlarge				62px		80px
 !default;
-
-$line-height-difference: 8px !default;
-
-$font-size-default: 48px !default;
-$line-height-default: 68px !default;
-
 
 
 /***********************************************************************************

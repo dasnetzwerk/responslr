@@ -4,11 +4,9 @@
 html, body {
 	margin: 0;
 	padding: 0;
-	background-color: $black;
-	color: $white;
-	font-family: $font-regular;
-	font-size: $font-size-default;
-	line-height: $line-height-default;
+	background-color: $white;
+	color: $black;
+	@include typo();
 }
 
 body * {
@@ -25,32 +23,23 @@ body *,
 }
 
 h1, h2, h3, h4, h5, h6, strong {
-	font-family: $font-regular;
-	font-weight: normal;
-	color: $white;
+	@include typo($font: LatoRegular);
 	text-transform: uppercase;
-
-	span {
-		font-family: $font-regular;
-	}
 }
 
 h1 {
 	display: block;
-	font-family: 'AlteHaasGrotesk';
+	@include typo($font: LatoRegular, $font-size: large);
 }
 
 h2,
 h3,
 h4 {
-	margin-bottom: $spacing-small;
-	font-size: $font-size-default;
-	line-height: $line-height-default;
-	text-align: center;
+	margin-bottom: 0;
 }
 
 a {
-	color: $white;
+	color: $black;
 
 	&:active {
 		background-color: transparent;
@@ -58,8 +47,7 @@ a {
 }
 
 a {
-	font-size: $font-size-default;
-	line-height: $line-height-default;
+	@include typo();
 	outline: none;
 	text-decoration: none;
 	cursor: pointer;
@@ -74,15 +62,12 @@ a {
 p,
 table,
 label {
-	font-size: $font-size-default;
-	line-height: $line-height-default;
-	text-align: center;
+	@include typo();
 }
 
 ol,
 ul {
-	font-size: $font-size-default;
-	line-height: $line-height-default;
+	@include typo();
 	list-style: none;
 	margin: 0 0 $spacing-small 0;
 
@@ -105,17 +90,25 @@ nav {
 		margin: 0;
 
 		li {
+
+			&.active {
+				a {
+					color: $blue;
+				}
+			}
+
 			a {
+				@include typo($font: LatoRegular);
 				display: block;
 				text-transform: uppercase;
+
+				.active &,
+				&:hover {
+					color: $blue;
+				}
 			}
 		}
 	}
-}
-
-header,
-footer {
-	@extend .no-select;
 }
 
 /***********************************************************************************
@@ -133,16 +126,6 @@ footer {
 	}
 }
 
-.stripe {
+.container-full {
 	position: relative;
-	z-index: 50;
-	padding: $spacing-text-default 0 0 0;
-}
-
-.bg-transition {
-	@include transition-default(background-color);
-
-	@include media-query($breakpoint-class-prefix-medium) {
-		@include transition(none);
-	}
 }

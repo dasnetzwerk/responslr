@@ -8,8 +8,7 @@ a.button,
 	display: inline-block;
 	padding: 0 $button-padding-x;
 	height: $button-height;
-	font-size: $font-size-default;
-	line-height: $button-height;
+	@include typo();
 
 	@include border-radius($button-border-radius);
 	@include transition-default(background-color);
