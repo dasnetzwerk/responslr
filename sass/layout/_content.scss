@@ -1,11 +1,8 @@
-﻿#content {
+﻿
+p {
+	margin-bottom: $spacing-small;
 
-	#concat-test {
-		width: 100%;
-
-		@include media-query($medium, $small) {
-			width: 70%;
-		}
+	&.intro {
+		@include typo($font-size: medium);
 	}
-
 }
