@@ -6,181 +6,186 @@
 
 	p {
 		margin-bottom: $spacing-small;
+	}
+	.intro {
+		@include typo($font-size: medium);
+	}
 
-		&.intro {
-			@include typo($font-size: medium);
+	.box {
+		padding: $grid-gutter;
+		@include typo($font: LatoRegular);
+	}
+
+	.border {
+		border-width: 1px;
+		border-style: solid;
+	}
+
+	// FONT TESTING
+	//
+	//
+	.font-tiny {
+		@include typo($font-size: tiny);
+	}
+
+	.font-small {
+		@include typo($font-size: small);
+	}
+
+	.font-default {
+		@include typo();
+		//@include typo($font-size: default);
+	}
+
+	.font-medium {
+		@include typo($font-size: medium);
+	}
+
+	.font-large {
+		@include typo($font-size: large);
+	}
+
+	.font-xlarge {
+		@include typo($font-size: xlarge);
+	}
+
+	.font-regular {
+		&.font-tiny {
+			@include typo($font: LatoRegular, $font-size: tiny);
 		}
 
-		&.box {
-			padding: $grid-gutter;
+		&.font-small {
+			@include typo($font: LatoRegular, $font-size: small);
 		}
 
-		// FONT TESTING
-		//
-		//
-		.font-tiny {
-			@include typo($font-size: tiny);
+		&.font-default {
+			@include typo($font: LatoRegular, $font-size: default);
 		}
 
-		.font-small {
-			@include typo($font-size: small);
+		&.font-medium {
+			@include typo($font: LatoRegular, $font-size: medium);
 		}
 
-		.font-default {
-			@include typo();
-			//@include typo($font-size: default);
+		&.font-large {
+			@include typo($font: LatoRegular, $font-size: large);
 		}
 
-		.font-medium {
-			@include typo($font-size: medium);
+		&.font-xlarge {
+			@include typo($font: LatoRegular, $font-size: xlarge);
+		}
+	}
+
+	.font-arial {
+		&.font-tiny {
+			@include typo($font: Arial, $font-size: tiny);
 		}
 
-		.font-large {
-			@include typo($font-size: large);
+		&.font-small {
+			@include typo($font: Arial, $font-size: small);
 		}
 
-		.font-xlarge {
-			@include typo($font-size: xlarge);
+		&.font-default {
+			@include typo($font: Arial, $font-size: default);
 		}
 
-		.font-regular {
-			&.font-tiny {
-				@include typo($font: LatoRegular, $font-size: tiny);
-			}
-
-			&.font-small {
-				@include typo($font: LatoRegular, $font-size: small);
-			}
-
-			&.font-default {
-				@include typo($font: LatoRegular, $font-size: default);
-			}
-
-			&.font-medium {
-				@include typo($font: LatoRegular, $font-size: medium);
-			}
-
-			&.font-large {
-				@include typo($font: LatoRegular, $font-size: large);
-			}
-
-			&.font-xlarge {
-				@include typo($font: LatoRegular, $font-size: xlarge);
-			}
+		&.font-medium {
+			@include typo($font: Arial, $font-size: medium);
 		}
 
-		.font-arial {
-			&.font-tiny {
-				@include typo($font: Arial, $font-size: tiny);
-			}
-
-			&.font-small {
-				@include typo($font: Arial, $font-size: small);
-			}
-
-			&.font-default {
-				@include typo($font: Arial, $font-size: default);
-			}
-
-			&.font-medium {
-				@include typo($font: Arial, $font-size: medium);
-			}
-
-			&.font-large {
-				@include typo($font: Arial, $font-size: large);
-			}
-
-			&.font-xlarge {
-				@include typo($font: Arial, $font-size: xlarge);
-			}
+		&.font-large {
+			@include typo($font: Arial, $font-size: large);
 		}
 
-		.font-arial-bold {
-			&.font-tiny {
-				@include typo($font: ArialBold, $font-size: tiny);
-			}
+		&.font-xlarge {
+			@include typo($font: Arial, $font-size: xlarge);
+		}
+	}
 
-			&.font-small {
-				@include typo($font: ArialBold, $font-size: small);
-			}
-
-			&.font-default {
-				@include typo($font: ArialBold, $font-size: default);
-			}
-
-			&.font-medium {
-				@include typo($font: ArialBold, $font-size: medium);
-			}
-
-			&.font-large {
-				@include typo($font: ArialBold, $font-size: large);
-			}
-
-			&.font-xlarge {
-				@include typo($font: ArialBold, $font-size: xlarge);
-			}
+	.font-arial-bold {
+		&.font-tiny {
+			@include typo($font: ArialBold, $font-size: tiny);
 		}
 
-		.font-arial-italic {
-			&.font-tiny {
-				@include typo($font: ArialItalic, $font-size: tiny);
-			}
-
-			&.font-small {
-				@include typo($font: ArialItalic, $font-size: small);
-			}
-
-			&.font-default {
-				@include typo($font: ArialItalic, $font-size: default);
-			}
-
-			&.font-medium {
-				@include typo($font: ArialItalic, $font-size: medium);
-			}
-
-			&.font-large {
-				@include typo($font: ArialItalic, $font-size: large);
-			}
-
-			&.font-xlarge {
-				@include typo($font: ArialItalic, $font-size: xlarge);
-			}
+		&.font-small {
+			@include typo($font: ArialBold, $font-size: small);
 		}
 
-		.font-arial-bold-italic {
-			&.font-tiny {
-				@include typo($font: ArialBoldItalic, $font-size: tiny);
-			}
-
-			&.font-small {
-				@include typo($font: ArialBoldItalic, $font-size: small);
-			}
-
-			&.font-default {
-				@include typo($font: ArialBoldItalic, $font-size: default);
-			}
-
-			&.font-medium {
-				@include typo($font: ArialBoldItalic, $font-size: medium);
-			}
-
-			&.font-large {
-				@include typo($font: ArialBoldItalic, $font-size: large);
-			}
-
-			&.font-xlarge {
-				@include typo($font: ArialBoldItalic, $font-size: xlarge);
-			}
+		&.font-default {
+			@include typo($font: ArialBold, $font-size: default);
 		}
 
-		.font-test-1 {
-			display: inline-block;
-			@include typo($font: LatoLigh, $font-size: 27px, $line-height: 100px);
+		&.font-medium {
+			@include typo($font: ArialBold, $font-size: medium);
 		}
 
-		.font-test-2 {
-			display: inline-block;
-			@include typo($font-size: large, $line-height: 200px)
+		&.font-large {
+			@include typo($font: ArialBold, $font-size: large);
 		}
+
+		&.font-xlarge {
+			@include typo($font: ArialBold, $font-size: xlarge);
+		}
+	}
+
+	.font-arial-italic {
+		&.font-tiny {
+			@include typo($font: ArialItalic, $font-size: tiny);
+		}
+
+		&.font-small {
+			@include typo($font: ArialItalic, $font-size: small);
+		}
+
+		&.font-default {
+			@include typo($font: ArialItalic, $font-size: default);
+		}
+
+		&.font-medium {
+			@include typo($font: ArialItalic, $font-size: medium);
+		}
+
+		&.font-large {
+			@include typo($font: ArialItalic, $font-size: large);
+		}
+
+		&.font-xlarge {
+			@include typo($font: ArialItalic, $font-size: xlarge);
+		}
+	}
+
+	.font-arial-bold-italic {
+		&.font-tiny {
+			@include typo($font: ArialBoldItalic, $font-size: tiny);
+		}
+
+		&.font-small {
+			@include typo($font: ArialBoldItalic, $font-size: small);
+		}
+
+		&.font-default {
+			@include typo($font: ArialBoldItalic, $font-size: default);
+		}
+
+		&.font-medium {
+			@include typo($font: ArialBoldItalic, $font-size: medium);
+		}
+
+		&.font-large {
+			@include typo($font: ArialBoldItalic, $font-size: large);
+		}
+
+		&.font-xlarge {
+			@include typo($font: ArialBoldItalic, $font-size: xlarge);
+		}
+	}
+
+	.font-test-1 {
+		display: inline-block;
+		@include typo($font: LatoLigh, $font-size: 27px, $line-height: 100px);
+	}
+
+	.font-test-2 {
+		display: inline-block;
+		@include typo($font-size: large, $line-height: 200px)
 	}
 }
