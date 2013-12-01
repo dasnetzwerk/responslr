@@ -34,7 +34,7 @@ $grid-column-width-medium: 100% / $grid-columns-medium !default;
 $grid-column-width-small: 100% / $grid-columns-small !default;
 
 // Grid Gutter
-$grid-gutter: 10px !default;
+$grid-gutter: 16px !default;
 $grid-gutter-half: $grid-gutter / 2 !default;
 $grid-gutter-double: $grid-gutter * 2 !default;
 
@@ -62,30 +62,21 @@ $colors:
 /***********************************************************************************
 	FONTS
 ***********************************************************************************/
-
-/*  Font Name				Is Custom */
+/*  font name			is custom 	font file name		font-weight		font-style */
 $font-families:
-	Arial					false	Arial								normal,
-	ArialBold				false	Arial								bold,
-	ArialItalic				false	Arial								italic,
-	AlteHaasGrotesk			true	'altehaasgroteskregular-webfont'	normal,
-	AlteHaasGroteskBold		true	'altehaasgroteskbold-webfont'		normal
+	LatoLight			true		'lato-light'		normal			normal,
+	LatoRegular			true		'lato-regular'		normal			normal
 !default;
 
+/*	font-size name		font-size	line-height */
 $font-sizes:
-	tiny		13px,
-	small		15px,
-	default		22px,
-	medium		36px,
-	large		48px		62px,
-	xlarge		62px
+	tiny				14px		22px,
+	small				18px		26px,
+	default				24px		34px,
+	medium				36px		48px,
+	large				48px		62px,
+	xlarge				62px		80px
 !default;
-
-$line-height-difference: 8px !default;
-
-$font-size-default: 48px !default;
-$line-height-default: 68px !default;
-
 
 
 /***********************************************************************************

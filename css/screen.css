@@ -35,6 +35,32 @@ $defaultSpriteMapRetina: sprite-map(
 /***********************************************************************************
 	FONTS
 ***********************************************************************************/
+/*
+$font-regular: 'AlteHaasGroteskRegular';
+$font-bold: 'AlteHaasGroteskBold';
+
+
+$font-sizes:
+	'tiny'		13px,
+	'small'		15px,
+	'default'	22px,
+	'medium'	36px,
+	'large'		48px	20px,
+	'xlarge'	150px
+;
+
+$font-size-large: 48px;
+$line-height-large: 68px;
+
+$font-size-medium: 36px;
+$line-height-medium: $font-size-medium + $line-height-difference-default;
+
+$font-size-default: 22px;
+$line-height-default: $font-size-default + $line-height-difference-default;
+
+$font-size-small: 15px;
+$line-height-small: $font-size-small + $line-height-difference-default;
+*/
 /***********************************************************************************
 	BOX
 ***********************************************************************************/
@@ -62,7 +88,8 @@ $defaultSpriteMapRetina: sprite-map(
 /***********************************************************************************
 	FONTS
 ***********************************************************************************/
-/*  Font Name				Is Custom */
+/*  font name			is custom 	font file name		font-weight		font-style */
+/*	font-size name		font-size	line-height */
 /***********************************************************************************
 	BOX
 ***********************************************************************************/
@@ -88,6 +115,26 @@ $defaultSpriteMapRetina: sprite-map(
 	DEFAULT TRANSITION
 ***********************************************************************************/
 /***********************************************************************************
+	MIXIN: TYPO
+***********************************************************************************/
+/***********************************************************************************
+	CUSTOM FONTS GENERATOR
+***********************************************************************************/
+@font-face {
+  font-family: LatoLight;
+  src: url("fonts/lato-light.eot?#iefix") format("embedded-opentype"), url("fonts/lato-light.woff") format("woff"), url("fonts/lato-light.ttf") format("truetype"), url("fonts/lato-light.svg#LatoLight") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: LatoRegular;
+  src: url("fonts/lato-regular.eot?#iefix") format("embedded-opentype"), url("fonts/lato-regular.woff") format("woff"), url("fonts/lato-regular.ttf") format("truetype"), url("fonts/lato-regular.svg#LatoRegular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/***********************************************************************************
 	RETINA SPRITE
 ***********************************************************************************/
 /***********************************************************************************
@@ -104,15 +151,15 @@ tr.row {
 }
 
 .row .row {
-  margin-left: -10px;
-  margin-right: -10px;
+  margin-left: -16px;
+  margin-right: -16px;
 }
 
 .column {
   display: inline-block;
   vertical-align: top;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 td.column {
@@ -124,8 +171,9 @@ td.column {
   line-height: 0;
 }
 .row > * {
-  font-size: 22px;
-  line-height: 30px;
+  font-family: LatoLight;
+  font-size: 24px;
+  line-height: 34px;
 }
 
 .row {
@@ -893,7 +941,7 @@ td.column {
 
 .position-right {
   position: absolute;
-  right: 5px;
+  right: 8px;
 }
 .position-right.column {
   right: 0;
@@ -906,7 +954,7 @@ td.column {
 
 .position-left {
   position: absolute;
-  left: 5px;
+  left: 8px;
 }
 .position-left.column {
   left: 0;
@@ -916,8 +964,7 @@ td.column {
   margin-bottom: 0;
 }
 
-.no-select, header,
-footer {
+.no-select {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
@@ -1204,23 +1251,6 @@ footer {
 }
 
 /***********************************************************************************
-	FONTS
-***********************************************************************************/
-@font-face {
-  font-family: AlteHaasGrotesk;
-  src: url("fonts/altehaasgroteskregular-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/altehaasgroteskregular-webfont.woff") format("woff"), url("fonts/altehaasgroteskregular-webfont.ttf") format("truetype"), url("fonts/altehaasgroteskregular-webfont.svg#AlteHaasGrotesk") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: AlteHaasGroteskBold;
-  src: url("fonts/altehaasgroteskbold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/altehaasgroteskbold-webfont.woff") format("woff"), url("fonts/altehaasgroteskbold-webfont.ttf") format("truetype"), url("fonts/altehaasgroteskbold-webfont.svg#AlteHaasGroteskBold") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
-/***********************************************************************************
 	PRESETS
 ***********************************************************************************/
 /***********************************************************************************
@@ -1229,11 +1259,16 @@ footer {
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #1a2025;
-  color: white;
-  font-family: "AlteHaasGroteskRegular";
-  font-size: 22px;
-  line-height: 30px;
+  background-color: white;
+  color: #1a2025;
+  font-family: LatoLight;
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: normal;
+  font-style: normal;
+  /* font-family: $font-regular;
+  font-size: $font-size-default;
+  line-height: $line-height-default; */
 }
 
 body * {
@@ -1252,39 +1287,54 @@ body *,
 }
 
 h1, h2, h3, h4, h5, h6, strong {
-  font-family: "AlteHaasGroteskRegular";
+  font-family: LatoLight;
+  font-size: 24px;
+  line-height: 34px;
   font-weight: normal;
-  color: white;
+  font-style: normal;
   text-transform: uppercase;
 }
 h1 span, h2 span, h3 span, h4 span, h5 span, h6 span, strong span {
-  font-family: "AlteHaasGroteskRegular";
+  font-family: LatoLight;
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: normal;
+  font-style: normal;
 }
 
 h1 {
   display: block;
-  font-family: 'AlteHaasGrotesk';
+  font-family: LatoRegular;
+  font-size: 48px;
+  line-height: 62px;
+  font-weight: normal;
+  font-style: normal;
 }
 
 h2,
 h3,
 h4 {
   margin-bottom: 40px;
-  font-size: 22px;
-  line-height: 30px;
-  text-align: center;
+  font-family: LatoLight;
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: normal;
+  font-style: normal;
 }
 
 a {
-  color: white;
+  color: #1a2025;
 }
 a:active {
   background-color: transparent;
 }
 
 a {
-  font-size: 22px;
-  line-height: 30px;
+  font-family: LatoLight;
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: normal;
+  font-style: normal;
   outline: none;
   text-decoration: none;
   cursor: pointer;
@@ -1313,15 +1363,21 @@ a {
 p,
 table,
 label {
-  font-size: 22px;
-  line-height: 30px;
+  font-family: LatoLight;
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: normal;
+  font-style: normal;
   text-align: center;
 }
 
 ol,
 ul {
-  font-size: 22px;
-  line-height: 30px;
+  font-family: LatoLight;
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: normal;
+  font-style: normal;
   list-style: none;
   margin: 0 0 40px 0;
 }
@@ -1338,9 +1394,20 @@ a img {
 nav ul {
   margin: 0;
 }
+nav ul li.active a {
+  color: #249cd5;
+}
 nav ul li a {
+  font-family: LatoRegular;
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: normal;
+  font-style: normal;
   display: block;
   text-transform: uppercase;
+}
+.active nav ul li a, nav ul li a:hover {
+  color: #249cd5;
 }
 
 /***********************************************************************************
@@ -1395,8 +1462,11 @@ a.button,
   display: inline-block;
   padding: 0 18px;
   height: 50px;
-  font-size: 22px;
-  line-height: 50px;
+  font-family: LatoLight;
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: normal;
+  font-style: normal;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
@@ -1440,8 +1510,8 @@ a.button,
 }
 
 .bubble.column .bubble-content {
-  left: 10px;
-  right: 10px;
+  left: 16px;
+  right: 16px;
 }
 
 .bubble.visual {
@@ -1679,3 +1749,8 @@ header .arrow-bottom {
 /***********************************************************************************
 	LAYOUT
 ***********************************************************************************/
+header {
+  margin-bottom: 80px;
+  padding: 80px 0;
+  background-color: #eaebeb;
+}

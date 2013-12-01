@@ -2,21 +2,19 @@
 	GLOBALS
 ***********************************************************************************/
 var oGlobals											= {
-	bDebug:							(document.location.hostname.indexOf('dev.alenkrummenacher.ch') > -1),
+	bDebug:							(document.location.hostname.indexOf('dev.') > -1),
 	sLanguage:						$('html').attr('lang').split('-')[0],
 	cacheJQueryObjects:				function() {
 		oWindow.$										= $(window);
 		oBody.$											= $('body');
 		oHeader.$										= $('header');
 		oFooter.$										= $('footer');
-		oAnchorLinks.$									= $('.anchor-link');
-		oAnchorLinks.oScroller.$						= $('html,body');
 	},
 	init:							function() {
 		oBody.$.responsivehelper({
-			showWindowSize: oGlobals.bDebug,
+			showWindowSize: false,
 			showHeight: true,
-			showGrid: oGlobals.bDebug,
+			showGrid: true,
 			breakpoints: {
 				hd	 : {
 					name: 'High Definition',
@@ -99,51 +97,6 @@ var oHeader												= {
 var oFooter												= {
 	$:				null
 };
-
-/***********************************************************************************
-	ANCHOR LINKS
-***********************************************************************************/
-var oAnchorLinks										= {
-	$:				null,
-	iDuration:		350,
-	oScroller: 		{
-		$:		null
-	},
-	init:			function() {
-		if(document.location.hash) {
-			oAnchorLinks.oScroller.$.scrollTop(0);
-			oAnchorLinks.scrollTo($('' + document.location.hash));
-		}
-
-		oAnchorLinks.bind();
-	},
-	bind:			function() {
-		oAnchorLinks.$.bind('click', function(e){
-			e.preventDefault();
-			oAnchorLinks.scrollTo($('#' + $(this).attr('href').replace('#','')));
-		});
-	},
-
-	scrollTo:			function($scrollTarget) {
-		if($scrollTarget.length) {
-			var iScrollTo									= parseInt($scrollTarget.offset().top);
-
-			if(iScrollTo > oHeader.$.height()) {
-				iScrollTo									-= 25;
-			}
-
-			oAnchorLinks.oScroller.$.stop().animate({
-					scrollTop: iScrollTo
-				},
-				{
-
-					duration: oAnchorLinks.iDuration,
-					easing: 'swing'
-				}
-			);
-		}
-	}
-}
 
 /***********************************************************************************
 	DOCUMENT READY

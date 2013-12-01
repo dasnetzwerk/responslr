@@ -4,11 +4,12 @@
 html, body {
 	margin: 0;
 	padding: 0;
-	background-color: $black;
-	color: $white;
-	font-family: $font-regular;
+	background-color: $white;
+	color: $black;
+	@include typo();
+	/* font-family: $font-regular;
 	font-size: $font-size-default;
-	line-height: $line-height-default;
+	line-height: $line-height-default; */
 }
 
 body * {
@@ -25,32 +26,28 @@ body *,
 }
 
 h1, h2, h3, h4, h5, h6, strong {
-	font-family: $font-regular;
-	font-weight: normal;
-	color: $white;
+	@include typo();
 	text-transform: uppercase;
 
 	span {
-		font-family: $font-regular;
+		@include typo();
 	}
 }
 
 h1 {
 	display: block;
-	font-family: 'AlteHaasGrotesk';
+	@include typo($font: LatoRegular, $font-size: large);
 }
 
 h2,
 h3,
 h4 {
 	margin-bottom: $spacing-small;
-	font-size: $font-size-default;
-	line-height: $line-height-default;
-	text-align: center;
+	@include typo();
 }
 
 a {
-	color: $white;
+	color: $black;
 
 	&:active {
 		background-color: transparent;
@@ -58,8 +55,7 @@ a {
 }
 
 a {
-	font-size: $font-size-default;
-	line-height: $line-height-default;
+	@include typo();
 	outline: none;
 	text-decoration: none;
 	cursor: pointer;
@@ -74,15 +70,13 @@ a {
 p,
 table,
 label {
-	font-size: $font-size-default;
-	line-height: $line-height-default;
+	@include typo();
 	text-align: center;
 }
 
 ol,
 ul {
-	font-size: $font-size-default;
-	line-height: $line-height-default;
+	@include typo();
 	list-style: none;
 	margin: 0 0 $spacing-small 0;
 
@@ -105,17 +99,25 @@ nav {
 		margin: 0;
 
 		li {
+
+			&.active {
+				a {
+					color: $blue;
+				}
+			}
+
 			a {
+				@include typo($font: LatoRegular);
 				display: block;
 				text-transform: uppercase;
+
+				.active &,
+				&:hover {
+					color: $blue;
+				}
 			}
 		}
 	}
-}
-
-header,
-footer {
-	@extend .no-select;
 }
 
 /***********************************************************************************

@@ -1,7 +1,52 @@
 ﻿/***********************************************************************************
-	FONTS
+	MIXIN: TYPO
 ***********************************************************************************/
 
+@mixin typo($font: nth(nth($font-families, 1), 1), $font-size: 'default', $line-height: '', $font-weight: normal, $font-style: normal) {
+	@each $i in $font-families {
+		@if nth($i, 1) == $font {
+			font-family: nth($i, 1);
+		}
+	}
+
+	@if type-of($font-size) == number {
+		font-size: $font-size;
+	} @else {
+		@each $i in $font-sizes {
+			@if $font-size == nth($i, 1) {
+				font-size: nth($i, 2);
+				@if $line-height == '' {
+					line-height: nth($i, 3);
+				}
+			}
+		}
+	}
+
+	@if $line-height != '' {
+		@if type-of($line-height) == number {
+
+		} @else {
+			@each $i in $font-sizes {
+				@if $line-height == nth($i, 1) {
+					line-height: nth($i, 3);
+				}
+			}
+		}
+	}
+
+	@if $font-weight != '' {
+		font-weight: $font-weight;
+	}
+
+	@if $font-style != '' {
+		font-style: $font-style;
+	}
+}
+
+
+/***********************************************************************************
+	CUSTOM FONTS GENERATOR
+***********************************************************************************/
 @each $i in $font-families {
 	@if nth($i, 2) {
 		@font-face {

@@ -30,10 +30,12 @@ $colors:
 /***********************************************************************************
 	FONTS
 ***********************************************************************************/
+
+$line-height-difference-default: 8px;
+/*
 $font-regular: 'AlteHaasGroteskRegular';
 $font-bold: 'AlteHaasGroteskBold';
 
-$line-height-difference-default: 8px;
 
 $font-sizes:
 	'tiny'		13px,
@@ -55,7 +57,7 @@ $line-height-default: $font-size-default + $line-height-difference-default;
 
 $font-size-small: 15px;
 $line-height-small: $font-size-small + $line-height-difference-default;
-
+*/
 
 /***********************************************************************************
 	BOX
