@@ -1,7 +1,7 @@
 ﻿/***********************************************************************************
 	MIXIN: TYPO
 ***********************************************************************************/
-@mixin typo($font: nth(nth($font-families, 1), 1), $font-size: 'default', $line-height: '', $font-weight: '', $font-style: '') {
+@mixin typo($font: nth(nth($font-families, 1), 1), $font-size: nth(nth($font-sizes, 1), 1), $line-height: '', $font-weight: '', $font-style: '') {
 	// font-family
 	@each $font-list in $font-families {
 		@if nth($font-list,1) == $font {
