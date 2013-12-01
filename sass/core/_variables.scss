@@ -8,9 +8,13 @@ $experimental-support-for-microsoft: true;
 	RESPONSIVE
 ***********************************************************************************/
 // Breakpoints
-$breakpoint-class-prefix-large: 'large' !default;
-$breakpoint-class-prefix-medium: 'medium' !default;
-$breakpoint-class-prefix-small: 'small' !default;
+$large: 'large' !default;
+$medium: 'medium' !default;
+$small: 'small' !default;
+
+$breakpoint-class-prefix-large: $large !default;
+$breakpoint-class-prefix-medium: $medium !default;
+$breakpoint-class-prefix-small: $small !default;
 
 // Maximum Widths
 $grid-max-width: 1140px !default;

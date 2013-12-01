@@ -1,7 +1,7 @@
 /***********************************************************************************
 	MIXIN: COLUMN WIDTH
 ***********************************************************************************/
-@mixin columnWidth($column-part, $size){
+@mixin column-width($column-part, $size){
 	@if type-of($size) == string {
 		$column-total: $grid-column-width-large;
 
@@ -52,7 +52,7 @@ td.column {
 	}
 }
 
-$column-index: $gridcolumns-large;
+$column-index: $grid-columns-large;
 
 .row {
 	/* Large */

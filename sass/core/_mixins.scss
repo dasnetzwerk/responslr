@@ -2,40 +2,42 @@
 	MIXIN: MEDIA QUERY
 ***********************************************************************************/
 @mixin media-query($media-end: "", $media-start: "", $media-orientation: "") {
-	$breakpoint-min-width:	$min-width-small;
-	$breakpoint-max-width:	$max-width;
+	$breakpoint-max: "";
+	$breakpoint-min: "";
+	$breakpoint-orientation: "";
 
 	@if type-of($media-end) == string and $media-end != "" {
 		@if $media-end == $breakpoint-class-prefix-large {
-			$breakpoint-max-width: $max-width-large;
+			$breakpoint-max: " and (max-width: #{$max-width-large})";
 		} @else if $media-end == $breakpoint-class-prefix-medium {
-			$breakpoint-max-width: $max-width-medium;
+			$breakpoint-max: " and (max-width: #{$max-width-medium})";
 		} @else if $media-end == $breakpoint-class-prefix-small {
-			$breakpoint-max-width: $max-width-small;
+			$breakpoint-max: " and (max-width: #{$max-width-small})";
 		}
 	} @else if type-of($media-end) == number {
-		$breakpoint-max-width: $media-end;
+		$breakpoint-max: " and (max-width: #{$media-end})";
 	}
 
 	@if type-of($media-start) == string and $media-start != "" {
 		@if $media-start == $breakpoint-class-prefix-large {
-			$breakpoint-min-width: $min-width-large;
+			$breakpoint-min: " and (min-width: #{$min-width-large})"
 		}
 		@if $media-start ==  $breakpoint-class-prefix-medium {
-			$breakpoint-min-width: $min-width-medium;
+			$breakpoint-min: " and (min-width: #{$min-width-medium})"
 		}
 		@if $media-start == $breakpoint-class-prefix-small {
-			$breakpoint-min-width: $min-width-small;
+			$breakpoint-min: " and (min-width: #{$min-width-small})"
 		}
 	} @else if type-of($media-start) == number {
-		$breakpoint-min-width: $media-start;
+		$breakpoint-min: " and (min-width: #{$media-start})"
 	}
 
 	@if $media-orientation != "" and ($media-orientation == 'portrait' or $media-orientation == 'landscape') {
-		@media only screen and (min-width: $breakpoint-min-width) and (max-width: $breakpoint-max-width) and (orientation: $media-orientation), print { @content; }
-	} @else {
-		@media only screen and (min-width: $breakpoint-min-width) and (max-width: $breakpoint-max-width), print { @content; }
+		$breakpoint-orientation: " and (orientation: #{$media-orientation})";
 	}
+
+	$media: "only screen" + $breakpoint-min + $breakpoint-max + $breakpoint-orientation + ", print";
+	@media #{$media} { @content; };
 }
 
 /***********************************************************************************
@@ -55,5 +57,5 @@
 	}
 
 	@include transition-timing-function($transition-timing-function-default);
-	@include transition-duration($transition-durationDefault);
+	@include transition-duration($transition-duration-default);
 }

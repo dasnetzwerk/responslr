@@ -1,3 +1,11 @@
 ﻿#content {
 
+	#concat-test {
+		width: 100%;
+
+		@include media-query($medium, $small) {
+			width: 70%;
+		}
+	}
+
 }
