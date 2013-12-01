@@ -888,24 +888,132 @@ td.column {
   vertical-align: top;
 }
 
+@media only screen and (max-width: 640px), print {
+  .v-top-small {
+    vertical-align: top;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 960px), print {
+  .v-top-medium {
+    vertical-align: top;
+  }
+}
+
+@media only screen and (min-width: 961px) and (max-width: 4096px), print {
+  .v-top-large {
+    vertical-align: top;
+  }
+}
+
 .v-center {
   vertical-align: middle;
+}
+
+@media only screen and (max-width: 640px), print {
+  .v-center-small {
+    vertical-align: middle;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 960px), print {
+  .v-center-medium {
+    vertical-align: middle;
+  }
+}
+
+@media only screen and (min-width: 961px) and (max-width: 4096px), print {
+  .v-center-large {
+    vertical-align: middle;
+  }
 }
 
 .v-bottom {
   vertical-align: bottom;
 }
 
+@media only screen and (max-width: 640px), print {
+  .v-bottom-small {
+    vertical-align: bottom;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 960px), print {
+  .v-bottom-medium {
+    vertical-align: bottom;
+  }
+}
+
+@media only screen and (min-width: 961px) and (max-width: 4096px), print {
+  .v-bottom-large {
+    vertical-align: bottom;
+  }
+}
+
 .h-left {
   text-align: left;
+}
+
+@media only screen and (max-width: 640px), print {
+  .h-left-small {
+    text-align: left;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 960px), print {
+  .h-left-medium {
+    text-align: left;
+  }
+}
+
+@media only screen and (min-width: 961px) and (max-width: 4096px), print {
+  .h-left-large {
+    text-align: left;
+  }
 }
 
 .h-center {
   text-align: center;
 }
 
+@media only screen and (max-width: 640px), print {
+  .h-center-small {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 960px), print {
+  .h-center-medium {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 961px) and (max-width: 4096px), print {
+  .h-center-large {
+    text-align: center;
+  }
+}
+
 .h-right {
   text-align: right;
+}
+
+@media only screen and (max-width: 640px), print {
+  .h-right-small {
+    text-align: right;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 960px), print {
+  .h-right-medium {
+    text-align: right;
+  }
+}
+
+@media only screen and (min-width: 961px) and (max-width: 4096px), print {
+  .h-right-large {
+    text-align: right;
+  }
 }
 
 .position-top {
@@ -1255,10 +1363,11 @@ body *,
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6, strong {
+h1, h2, h3, h4, h5, h6 {
   font-family: LatoRegular;
   font-size: 24px;
   line-height: 34px;
+  font-weight: normal;
   text-transform: uppercase;
 }
 
@@ -1328,6 +1437,13 @@ ul {
   margin: 0 0 40px 0;
 }
 
+strong {
+  font-family: LatoRegular;
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: normal;
+}
+
 img {
   display: block;
   width: 100%;
@@ -1347,6 +1463,7 @@ nav ul li a {
   font-family: LatoRegular;
   font-size: 24px;
   line-height: 34px;
+  font-weight: normal;
   display: block;
   text-transform: uppercase;
 }
@@ -1689,4 +1806,7 @@ p.intro {
   font-family: LatoLight;
   font-size: 30px;
   line-height: 42px;
+}
+p.box {
+  padding: 16px;
 }

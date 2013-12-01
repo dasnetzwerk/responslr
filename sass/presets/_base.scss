@@ -22,8 +22,8 @@ body *,
 	@include box-sizing(border-box);
 }
 
-h1, h2, h3, h4, h5, h6, strong {
-	@include typo($font: LatoRegular);
+h1, h2, h3, h4, h5, h6 {
+	@include typo($font: LatoRegular, $font-weight: normal);
 	text-transform: uppercase;
 }
 
@@ -76,6 +76,10 @@ ul {
 	}
 }
 
+strong {
+	@include typo($font: LatoRegular, $font-weight: normal);
+}
+
 img {
 	display: block;
 	width: 100%;
@@ -98,7 +102,7 @@ nav {
 			}
 
 			a {
-				@include typo($font: LatoRegular);
+				@include typo($font: LatoRegular, $font-weight: normal);
 				display: block;
 				text-transform: uppercase;
 

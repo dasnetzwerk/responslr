@@ -16,23 +16,30 @@
 		<!-- HEADER -->
 		<header id="page-top" class="bg-grey-light">
 
-			<!-- NAVIGATION -->
-			<nav id="main-navigation" class="container">
-				<ul class="row h-right">
-					<li class="column">
-						<a href="index.html">Home</a>
-					</li>
-					<li class="column active">
-						<a href="grid.html">Grid</a>
-					</li>
-					<li class="column">
-						<a href="helpers.html">Helpers</a>
-					</li>
-					<li class="column">
-						<a href="user-interface.html">User Interface</a>
-					</li>
-				</ul>
-			</nav>
+			<div class="container row h-center h-left-large">
+				<!-- LOGO -->
+				<a id="logo" class="column large-3 medium-3 small-3" href="index.html">
+					<img src="img/logo-responslr.png" alt="Responslr Logo" />
+				</a>
+
+				<!-- NAVIGATION -->
+				<nav id="main-navigation" class="column large-9 medium-8 small-4">
+					<ul class="row h-right-large h-center">
+						<li class="column">
+							<a href="index.html">Home</a>
+						</li>
+						<li class="column active">
+							<a href="grid.html">Grid</a>
+						</li>
+						<li class="column">
+							<a href="helpers.html">Helpers</a>
+						</li>
+						<li class="column">
+							<a href="user-interface.html">User Interface</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
 
 		</header>
 
@@ -53,28 +60,28 @@
 
 					<div class="row">
 						<div class="column large-3 medium-4 small-4">
-							<p class="bg-grey-light h-center">
+							<p class="box bg-grey-light h-center">
 								Large 3 - (25 %)<br />
 								Medium 4 - (50%)<br />
 								Small 4 - (100%)
 							</p>
 						</div>
 						<div class="column large-3 medium-4 small-4">
-							<p class="bg-grey-light h-center">
+							<p class="box bg-grey-light h-center">
 								Large 3 - (25 %)<br />
 								Medium 4 - (50%)<br />
 								Small 4 - (100%)
 							</p>
 						</div>
 						<div class="column large-3 medium-4 small-4">
-							<p class="bg-grey-light h-center">
+							<p class="box bg-grey-light h-center">
 								Large 3 - (25 %)<br />
 								Medium 4 - (50%)<br />
 								Small 4 - (100%)
 							</p>
 						</div>
 						<div class="column large-3 medium-4 small-4">
-							<p class="bg-grey-light h-center">
+							<p class="box bg-grey-light h-center">
 								Large 3 - (25 %)<br />
 								Medium 4 - (50%)<br />
 								Small 4 - (100%)
@@ -83,29 +90,62 @@
 					</div>
 
 					<!-- Columns Alignment -->
-					<h2>Column Alignment.</h2>
-					<p>The Alignments are: left (default), center, right</p>
+					<h2>Column alignment - horizontal.</h2>
+					<p>The alignments are: left (default), center, right</p>
 
 					<div class="row h-left">
-						<div class="column large-4 medium-2 small-2">
-							<p class="bg-grey-light">
+						<div class="column large-4 medium-4 small-2">
+							<p class="box bg-grey-light">
 								left
 							</p>
 						</div>
 					</div>
 
 					<div class="row h-center">
-						<div class="column large-4 medium-2 small-2">
-							<p class="bg-grey-light">
+						<div class="column large-4 medium-4 small-2">
+							<p class="box bg-grey-light">
 								center
 							</p>
 						</div>
 					</div>
 
 					<div class="row h-right">
-						<div class="column large-4 medium-2 small-2">
-							<p class="bg-grey-light">
+						<div class="column large-4 medium-4 small-2">
+							<p class="box bg-grey-light">
 								right
+							</p>
+						</div>
+					</div>
+
+					<h2>Column alignment - vertical.</h2>
+					<p>The alignments are: top (default), center (gaht ned), bottom</p>
+
+					<div class="row">
+						<div class="column v-top large-6 medium-4 small-4">
+							<p class="box bg-grey-light">
+								top (default)<br />
+								<br/>
+								text.
+							</p>
+						</div>
+
+						<div class="column v-bottom large-6 medium-4 small-4">
+							<p class="box bg-grey-light">
+								bottom
+							</p>
+						</div>
+					</div>
+
+					<h2>Column Alignment on breakpoint.</h2>
+					<p>The alignments are: the same as above.</p>
+
+					<div class="row h-left-large h-center-medium h-right-small">
+						<div class="column large-6 medium-4 small-2">
+							<p class="box bg-grey-light">
+								<strong>This element aligns by breakpoint:</strong><br />
+								<span class="hide-medium-down">left on large</span>
+								<span class="hide-large-up hide-small">center on medium</span>
+								<span class="hide-medium-up">right on small</span>
 							</p>
 						</div>
 					</div>

@@ -5,4 +5,8 @@ p {
 	&.intro {
 		@include typo($font-size: medium);
 	}
+
+	&.box {
+		padding: $grid-gutter;
+	}
 }
