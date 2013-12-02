@@ -214,7 +214,7 @@
 	}
 }
 
-// aspect-ratio
+// Aspect-Ratio
 @each $aspect-ratio-list in $aspect-ratios {
 	.aspect-ratio-#{nth($aspect-ratio-list,1)}-#{nth($aspect-ratio-list,2)} {
 		position: relative;
