@@ -62,7 +62,6 @@ $defaultSpriteMapRetina: sprite-map(
 /***********************************************************************************
 	FONTS
 ***********************************************************************************/
-/*	font-size name		font-size	line-height */
 /***********************************************************************************
 	BOX
 ***********************************************************************************/
@@ -94,9 +93,6 @@ $defaultSpriteMapRetina: sprite-map(
 	LOAD SPRITE
 ***********************************************************************************/
 /***********************************************************************************
-	MIXIN: TYPO
-***********************************************************************************/
-/***********************************************************************************
 	CUSTOM FONTS: FONT-FAMILY GENERATOR
 ***********************************************************************************/
 @font-face {
@@ -107,6 +103,78 @@ $defaultSpriteMapRetina: sprite-map(
 @font-face {
   font-family: LatoRegular;
   src: url("fonts/lato-regular.eot?#iefix") format("embedded-opentype"), url("fonts/lato-regular.woff") format("woff"), url("fonts/lato-regular.ttf") format("truetype"), url("fonts/lato-regular.svg#LatoRegular") format("svg");
+}
+
+/***********************************************************************************
+	MIXIN: TYPO
+***********************************************************************************/
+/***********************************************************************************
+	FONT CLASSES
+***********************************************************************************/
+.font-size-default {
+  font-size: 24px;
+  line-height: 34px;
+}
+
+.font-size-tiny {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.font-size-small {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.font-size-medium {
+  font-size: 30px;
+  line-height: 42px;
+}
+
+.font-size-large {
+  font-size: 48px;
+  line-height: 62px;
+}
+
+.font-size-xlarge {
+  font-size: 62px;
+  line-height: 80px;
+}
+
+.font-family-LatoLight {
+  font-family: LatoLight;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.font-family-LatoRegular {
+  font-family: LatoRegular;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-family-Arial {
+  font-family: Arial;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-family-ArialBold {
+  font-family: Arial;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.font-family-ArialItalic {
+  font-family: Arial;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.font-family-ArialBoldItalic {
+  font-family: Arial;
+  font-weight: 700;
+  font-style: italic;
 }
 
 /***********************************************************************************
@@ -1837,258 +1905,6 @@ header {
 #content .border {
   border-width: 1px;
   border-style: solid;
-}
-#content .font-tiny {
-  font-family: LatoLight;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 14px;
-  line-height: 22px;
-}
-#content .font-small {
-  font-family: LatoLight;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 18px;
-  line-height: 26px;
-}
-#content .font-default {
-  font-family: LatoLight;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 34px;
-}
-#content .font-medium {
-  font-family: LatoLight;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 30px;
-  line-height: 42px;
-}
-#content .font-large {
-  font-family: LatoLight;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 48px;
-  line-height: 62px;
-}
-#content .font-xlarge {
-  font-family: LatoLight;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 62px;
-  line-height: 80px;
-}
-#content .font-regular.font-tiny {
-  font-family: LatoRegular;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 14px;
-  line-height: 22px;
-}
-#content .font-regular.font-small {
-  font-family: LatoRegular;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 18px;
-  line-height: 26px;
-}
-#content .font-regular.font-default {
-  font-family: LatoRegular;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 34px;
-}
-#content .font-regular.font-medium {
-  font-family: LatoRegular;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 30px;
-  line-height: 42px;
-}
-#content .font-regular.font-large {
-  font-family: LatoRegular;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 48px;
-  line-height: 62px;
-}
-#content .font-regular.font-xlarge {
-  font-family: LatoRegular;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 62px;
-  line-height: 80px;
-}
-#content .font-arial.font-tiny {
-  font-family: Arial;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 14px;
-  line-height: 22px;
-}
-#content .font-arial.font-small {
-  font-family: Arial;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 18px;
-  line-height: 26px;
-}
-#content .font-arial.font-default {
-  font-family: Arial;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 34px;
-}
-#content .font-arial.font-medium {
-  font-family: Arial;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 30px;
-  line-height: 42px;
-}
-#content .font-arial.font-large {
-  font-family: Arial;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 48px;
-  line-height: 62px;
-}
-#content .font-arial.font-xlarge {
-  font-family: Arial;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 62px;
-  line-height: 80px;
-}
-#content .font-arial-bold.font-tiny {
-  font-family: Arial;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 14px;
-  line-height: 22px;
-}
-#content .font-arial-bold.font-small {
-  font-family: Arial;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 18px;
-  line-height: 26px;
-}
-#content .font-arial-bold.font-default {
-  font-family: Arial;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 34px;
-}
-#content .font-arial-bold.font-medium {
-  font-family: Arial;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 30px;
-  line-height: 42px;
-}
-#content .font-arial-bold.font-large {
-  font-family: Arial;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 48px;
-  line-height: 62px;
-}
-#content .font-arial-bold.font-xlarge {
-  font-family: Arial;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 62px;
-  line-height: 80px;
-}
-#content .font-arial-italic.font-tiny {
-  font-family: Arial;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 14px;
-  line-height: 22px;
-}
-#content .font-arial-italic.font-small {
-  font-family: Arial;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 18px;
-  line-height: 26px;
-}
-#content .font-arial-italic.font-default {
-  font-family: Arial;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 24px;
-  line-height: 34px;
-}
-#content .font-arial-italic.font-medium {
-  font-family: Arial;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 30px;
-  line-height: 42px;
-}
-#content .font-arial-italic.font-large {
-  font-family: Arial;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 48px;
-  line-height: 62px;
-}
-#content .font-arial-italic.font-xlarge {
-  font-family: Arial;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 62px;
-  line-height: 80px;
-}
-#content .font-arial-bold-italic.font-tiny {
-  font-family: Arial;
-  font-weight: 700;
-  font-style: italic;
-  font-size: 14px;
-  line-height: 22px;
-}
-#content .font-arial-bold-italic.font-small {
-  font-family: Arial;
-  font-weight: 700;
-  font-style: italic;
-  font-size: 18px;
-  line-height: 26px;
-}
-#content .font-arial-bold-italic.font-default {
-  font-family: Arial;
-  font-weight: 700;
-  font-style: italic;
-  font-size: 24px;
-  line-height: 34px;
-}
-#content .font-arial-bold-italic.font-medium {
-  font-family: Arial;
-  font-weight: 700;
-  font-style: italic;
-  font-size: 30px;
-  line-height: 42px;
-}
-#content .font-arial-bold-italic.font-large {
-  font-family: Arial;
-  font-weight: 700;
-  font-style: italic;
-  font-size: 48px;
-  line-height: 62px;
-}
-#content .font-arial-bold-italic.font-xlarge {
-  font-family: Arial;
-  font-weight: 700;
-  font-style: italic;
-  font-size: 62px;
-  line-height: 80px;
 }
 #content .font-test-1 {
   display: inline-block;

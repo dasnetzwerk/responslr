@@ -47,7 +47,7 @@ td.column {
 	line-height: 0;
 
 	& > * {
-		@include typo($font-size: default, $font-weight: '', $font-style: '');
+		@include typo();
 	}
 }
 

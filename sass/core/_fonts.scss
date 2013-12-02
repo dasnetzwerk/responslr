@@ -1,4 +1,19 @@
 ﻿/***********************************************************************************
+	CUSTOM FONTS: FONT-FAMILY GENERATOR
+***********************************************************************************/
+@each $i in $font-families {
+	@if nth($i, 2) {
+		@font-face {
+			font-family: nth($i, 1);
+			src: url('fonts/#{nth($i, 3)}.eot?#iefix') format('embedded-opentype'),
+				 url('fonts/#{nth($i, 3)}.woff') format('woff'),
+				 url('fonts/#{nth($i, 3)}.ttf') format('truetype'),
+				 url('fonts/#{nth($i, 3)}.svg##{nth($i, 1)}') format('svg');
+		}
+	}
+}
+
+/***********************************************************************************
 	MIXIN: TYPO
 ***********************************************************************************/
 @mixin typo($font: nth(nth($font-families,1),1), $font-size: nth(nth($font-sizes,1),1), $line-height: '', $font-weight: '', $font-style: '') {
@@ -68,16 +83,16 @@
 
 
 /***********************************************************************************
-	CUSTOM FONTS: FONT-FAMILY GENERATOR
+	FONT CLASSES
 ***********************************************************************************/
-@each $i in $font-families {
-	@if nth($i, 2) {
-		@font-face {
-			font-family: nth($i, 1);
-			src: url('fonts/#{nth($i, 3)}.eot?#iefix') format('embedded-opentype'),
-				 url('fonts/#{nth($i, 3)}.woff') format('woff'),
-				 url('fonts/#{nth($i, 3)}.ttf') format('truetype'),
-				 url('fonts/#{nth($i, 3)}.svg##{nth($i, 1)}') format('svg');
-		}
+@each $font-size-list in $font-sizes {
+	.font-size-#{nth($font-size-list,1)} {
+		@include typo($font: '', $font-size: nth($font-size-list,1));
+	}
+}
+
+@each $font-family-list in $font-families {
+	.font-family-#{nth($font-family-list,1)} {
+		@include typo($font: nth($font-family-list,1), $font-size: '');
 	}
 }
