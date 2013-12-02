@@ -16,8 +16,13 @@ input.button {
 	line-height: $button-height;
 	cursor: pointer;
 
-	// TODO: Margin-bottom gutter sinnvoll?
-	margin-bottom: $grid-gutter;
+	@if($button-spacing-top != 0) {
+		margin-top: $button-spacing-top;
+	}
+
+	@if($button-spacing-bottom != 0) {
+		margin-bottom: $button-spacing-bottom;
+	}
 
 	@include border-radius($button-border-radius);
 	@include transition-default(background-color);
@@ -29,7 +34,7 @@ input.button {
 	}
 }
 
-// TODO: Eigene Klasse mit extend oder zweite Klasse (.button.inactive) die Standards überschreibt?
+// Inactive
 .button-inactive {
 	@extend .button;
 
