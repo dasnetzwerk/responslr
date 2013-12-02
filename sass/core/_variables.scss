@@ -83,7 +83,7 @@ $colors:
 	FONTS
 ***********************************************************************************/
 //  font name (unique)		is custom 	name on file system			font-weight porperty		font-style property
-//																	400 = regular, 700 = bold
+//	(first is default)												400 = regular, 700 = bold
 $font-families:
 	LatoLight				true		lato-light					300							normal,
 	LatoRegular				true		lato-regular				400							normal,
@@ -93,7 +93,8 @@ $font-families:
 	ArialBoldItalic			false		Arial						700							italic
 !default;
 
-/*	font-size name		font-size	line-height */
+//	font-size name		font-size	line-height
+//	(first is default)
 $font-sizes:
 	default				24px		34px,
 	tiny				14px		22px,

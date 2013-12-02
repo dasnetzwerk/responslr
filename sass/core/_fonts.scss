@@ -1,16 +1,16 @@
 ﻿/***********************************************************************************
 	MIXIN: TYPO
 ***********************************************************************************/
-@mixin typo($font: nth(nth($font-families, 1), 1), $font-size: nth(nth($font-sizes, 1), 1), $line-height: '', $font-weight: '', $font-style: '') {
+@mixin typo($font: nth(nth($font-families,1),1), $font-size: nth(nth($font-sizes,1),1), $line-height: '', $font-weight: '', $font-style: '') {
 	// font-family
 	@each $font-list in $font-families {
 		@if nth($font-list,1) == $font {
 			// is custom font
-			@if nth($font-list, 2) {
-				font-family: nth($font-list, 1);
+			@if nth($font-list,2) {
+				font-family: nth($font-list,1);
 			// is system font
 			} @else {
-				font-family: nth($font-list, 3);
+				font-family: nth($font-list,3);
 			}
 
 			// font-weight by font-size, if not explicitly set
