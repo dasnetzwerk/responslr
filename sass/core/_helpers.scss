@@ -214,6 +214,34 @@
 	}
 }
 
+// aspect-ratio
+@each $aspect-ratio-list in $aspect-ratios {
+	.aspect-ratio-#{nth($aspect-ratio-list,1)}-#{nth($aspect-ratio-list,2)} {
+		position: relative;
+
+		&:before{
+			content: "";
+			display: block;
+			padding-top: (nth($aspect-ratio-list,2) / nth($aspect-ratio-list,1)) * 100%;
+		}
+	}
+}
+
+.aspect-ratio-content {
+	display: block;
+	position: absolute;
+	margin: 0 !important;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	.column > & {
+		left: $grid-gutter;
+		right: $grid-gutter;
+	}
+}
+
 
 // Spacings
 .no-spacing {
