@@ -38,8 +38,6 @@ var oGlobals											= {
 				}
 			}
 		});
-
-		oAnchorLinks.init();
 	},
 	oResponsiveHelper:				null,
 	onBreakpointChange:				function() {
