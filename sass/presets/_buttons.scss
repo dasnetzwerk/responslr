@@ -2,13 +2,22 @@
 /***********************************************************************************
 	BUTTONS
 ***********************************************************************************/
-.button,
-a.button,
-.row .button {
+
+input.button {
+	border: 0;
+}
+
+.button {
+	@include typo();
+
 	display: inline-block;
 	padding: 0 $button-padding-x;
 	height: $button-height;
-	@include typo();
+	line-height: $button-height;
+	cursor: pointer;
+
+	// TODO: Margin-bottom gutter sinnvoll?
+	margin-bottom: $grid-gutter;
 
 	@include border-radius($button-border-radius);
 	@include transition-default(background-color);
@@ -18,4 +27,13 @@ a.button,
 		border-style: $button-border-style;
 		@include transition-default(background-color,border-color);
 	}
+}
+
+// TODO: Eigene Klasse mit extend oder zweite Klasse (.button.inactive) die Standards überschreibt?
+.button-inactive {
+	@extend .button;
+
+	background-color: $button-inactive-background-color;
+	border-color: $button-inactive-text-color;
+	cursor: default;
 }

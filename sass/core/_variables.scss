@@ -131,7 +131,7 @@ $border-radius: 2px !default;
 	BUTTONS
 ***********************************************************************************/
 $button-padding-x: 18px !default;
-$button-padding-y: 8px !default;
+//$button-padding-y: 8px !default;
 $button-height: 50px !default;
 
 $button-border-radius: $border-radius !default;
@@ -145,6 +145,10 @@ $butotn-border-hover-percent: 7% !default;
 
 $button-background-hover-type: 'lighten' !default;
 $button-background-hover-percent: 7% !default;
+
+// New experimental
+$button-inactive-background-color: $grey-light;
+$button-inactive-text-color: $grey-dark;
 
 
 /***********************************************************************************
