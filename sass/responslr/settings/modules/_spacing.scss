@@ -1,6 +1,7 @@
 /***********************************************************************************
 	SPACING
 ***********************************************************************************/
+$line-height-difference: 8px !default;
 $spacing-default: 80px !default;
 $spacing-text-default: $spacing-default - $line-height-difference - 2px !default;
 $spacing-small: $spacing-default / 2 !default;
