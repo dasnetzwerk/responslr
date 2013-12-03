@@ -1,0 +1,45 @@
+/***********************************************************************************
+	GRID SETTINGS
+***********************************************************************************/
+// Breakpoints
+$large: 'large' !default;
+$medium: 'medium' !default;
+$small: 'small' !default;
+
+$breakpoint-class-prefix-large: $large !default;
+$breakpoint-class-prefix-medium: $medium !default;
+$breakpoint-class-prefix-small: $small !default;
+
+// Maximum Widths
+$grid-max-width: 1140px !default;
+$max-width: 4096px !default;
+$max-width-large: 1024px !default;
+$max-width-medium: 960px !default;
+$max-width-small: 640px !default;
+
+// Minimum Widths
+$min-width-large: $max-width-medium + 1 !default;
+$min-width-medium: $max-width-small + 1 !default;
+$min-width-small: $max-width-small / 2 !default;
+
+// Grid Columns
+$grid-columns-large: 12 !default;
+$grid-columns-medium: 8 !default;
+$grid-columns-small: 4 !default;
+
+$grid-column-width-large: 100% / $grid-columns-large !default;
+$grid-column-width-medium: 100% / $grid-columns-medium !default;
+$grid-column-width-small: 100% / $grid-columns-small !default;
+
+// Grid Gutter
+$grid-gutter: 16px !default;
+$grid-gutter-half: $grid-gutter / 2 !default;
+$grid-gutter-double: $grid-gutter * 2 !default;
+
+// Grid Device Settings
+$grid-start-at-large: $min-width-large !default;
+$grid-end-at-large: $max-width-large !default;
+$grid-start-at-medium: $min-width-medium !default;
+$grid-end-at-medium: $max-width-medium !default;
+$grid-start-at-small: $min-width-small !default;
+$grid-end-at-small: $max-width-small !default;

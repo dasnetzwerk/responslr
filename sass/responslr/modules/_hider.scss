@@ -1,0 +1,45 @@
+/***********************************************************************************
+	HELPER: HIDER
+***********************************************************************************/
+// Hiders
+.hide-#{$breakpoint-class-prefix-small} {
+	@include media-query($breakpoint-class-prefix-small) {
+		display: none;
+	}
+}
+
+.hide-#{$breakpoint-class-prefix-medium} {
+	@include media-query($breakpoint-class-prefix-medium, $breakpoint-class-prefix-medium) {
+		display: none;
+	}
+}
+
+.hide-#{$breakpoint-class-prefix-medium}-up {
+	@include media-query($max-width, $breakpoint-class-prefix-medium) {
+		display: none;
+	}
+}
+
+.hide-#{$breakpoint-class-prefix-medium}-down {
+	@include media-query($breakpoint-class-prefix-medium) {
+		display: none;
+	}
+}
+
+.hide-#{$breakpoint-class-prefix-large} {
+	@include media-query($breakpoint-class-prefix-large, $breakpoint-class-prefix-large) {
+		display: none;
+	}
+}
+
+.hide-#{$breakpoint-class-prefix-large}-up {
+	@include media-query($max-width, $breakpoint-class-prefix-large) {
+		display: none;
+	}
+}
+
+.hide-#{$breakpoint-class-prefix-large}-down {
+	@include media-query($breakpoint-class-prefix-large) {
+		display: none;
+	}
+}

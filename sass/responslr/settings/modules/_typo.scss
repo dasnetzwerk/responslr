@@ -1,0 +1,24 @@
+/***********************************************************************************
+	TYPOGRAPHY
+***********************************************************************************/
+//  font name (unique)		is custom 	name on file system			font-weight porperty		font-style property
+//	(first is default)												400 = regular, 700 = bold
+$font-families:
+	LatoLight				true		lato-light					300							normal,
+	LatoRegular				true		lato-regular				400							normal,
+	Arial					false		Arial						400							normal,
+	ArialBold				false		Arial						700							normal,
+	ArialItalic				false		Arial						400							italic,
+	ArialBoldItalic			false		Arial						700							italic
+!default;
+
+//	font-size name		font-size	line-height
+//	(first is default)
+$font-sizes:
+	default				24px		34px,
+	tiny				14px		22px,
+	small				18px		26px,
+	medium				30px		42px,
+	large				48px		62px,
+	xlarge				62px		80px
+!default;

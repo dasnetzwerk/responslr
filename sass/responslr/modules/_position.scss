@@ -1,0 +1,30 @@
+/***********************************************************************************
+	HELPER: POSITIONS
+***********************************************************************************/
+.position-top {
+	position: absolute;
+	top: 0;
+}
+
+.position-right {
+	position: absolute;
+	right: $grid-gutter-half;
+
+	&.column {
+		right: 0;
+	}
+}
+
+.position-bottom {
+	position: absolute;
+	bottom: 0;
+}
+
+.position-left {
+	position: absolute;
+	left: $grid-gutter-half;
+
+	&.column {
+		left: 0;
+	}
+}

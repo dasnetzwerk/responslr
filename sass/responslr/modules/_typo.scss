@@ -1,0 +1,103 @@
+/***********************************************************************************
+	CUSTOM FONTS: FONT-FAMILY GENERATOR
+***********************************************************************************/
+@each $i in $font-families {
+	@if nth($i, 2) {
+		@font-face {
+			font-family: nth($i, 1);
+			src: url('fonts/#{nth($i, 3)}.eot?#iefix') format('embedded-opentype'),
+				 url('fonts/#{nth($i, 3)}.woff') format('woff'),
+				 url('fonts/#{nth($i, 3)}.ttf') format('truetype'),
+				 url('fonts/#{nth($i, 3)}.svg##{nth($i, 1)}') format('svg');
+		}
+	}
+}
+
+/***********************************************************************************
+	MIXIN: TYPO
+***********************************************************************************/
+@mixin typo($font: nth(nth($font-families,1),1), $font-size: nth(nth($font-sizes,1),1), $line-height: '', $font-weight: '', $font-style: '') {
+	// font-family
+	@each $font-list in $font-families {
+		@if nth($font-list,1) == $font {
+			// is custom font
+			@if nth($font-list,2) {
+				font-family: nth($font-list,1);
+			// is system font
+			} @else {
+				font-family: nth($font-list,3);
+			}
+
+			// font-weight by font-size, if not explicitly set
+			@if $font-weight == '' {
+				font-weight: nth($font-list,4);
+			}
+
+			// font-weight by font-size, if not explicitly set
+			@if $font-style == '' {
+				font-style: nth($font-list,5);
+			}
+		}
+	}
+
+	// font-size
+	@if type-of($font-size) == number {
+		font-size: $font-size;
+	} @else {
+		@each $font-size-list in $font-sizes {
+			// font-size by font-sizes list
+			@if $font-size == nth($font-size-list,1) {
+				font-size: nth($font-size-list,2);
+
+				// line-height by font-size, if not explicitly set
+				@if $line-height == '' {
+					line-height: nth($font-size-list,3);
+				}
+			}
+		}
+	}
+
+	// line-height
+	@if $line-height != '' {
+		@if type-of($line-height) == number {
+			line-height: $line-height;
+		} @else {
+			@each $i in $font-sizes {
+				@if $line-height == nth($i,1) {
+					line-height: nth($i,3);
+				}
+			}
+		}
+	}
+
+	// font-weight
+	@if $font-weight != '' {
+		font-weight: $font-weight;
+	}
+
+	// font-style
+	@if $font-style != '' {
+		font-style: $font-style;
+	}
+}
+
+
+/***********************************************************************************
+	FONT CLASSES
+***********************************************************************************/
+@each $font-size-list in $font-sizes {
+	.font-size-#{nth($font-size-list,1)} {
+		@include typo($font: '', $font-size: nth($font-size-list,1));
+	}
+}
+
+@each $font-family-list in $font-families {
+	.font-family-#{nth($font-family-list,1)} {
+		@include typo($font: nth($font-family-list,1), $font-size: '');
+	}
+}
+
+// Text No-Select
+.no-select {
+	@include user-select(none);
+}

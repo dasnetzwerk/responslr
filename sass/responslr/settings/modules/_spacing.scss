@@ -1,0 +1,8 @@
+/***********************************************************************************
+	SPACING
+***********************************************************************************/
+$spacing-default: 80px !default;
+$spacing-text-default: $spacing-default - $line-height-difference - 2px !default;
+$spacing-small: $spacing-default / 2 !default;
+$spacing-text-small: $spacing-small - ($line-height-difference / 2) !default;
+$spacing-container-full: 0 !default;
