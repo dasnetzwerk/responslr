@@ -2,32 +2,18 @@
 	BUTTONS
 ***********************************************************************************/
 .button {
-	@include typo();
-
 	display: inline-block;
-	padding: 0 $button-padding-x;
-	height: $button-height;
-	line-height: $button-height;
 	cursor: pointer;
+	border: 0;
 
-	@if($button-spacing-top != 0) {
-		margin-top: $button-spacing-top;
-	}
+	@include transition-default($button-transitions);
 
-	@if($button-spacing-bottom != 0) {
-		margin-bottom: $button-spacing-bottom;
-	}
-
-	@include border-radius($button-border-radius);
-	@include transition-default(background-color);
-
-	@if($button-border-width != 0) {
-		border-width: $button-border-width;
-		border-style: $button-border-style;
-		@include transition-default(background-color,border-color);
-	} @else {
-		border: 0;
-	}
+	/*@if($button-press-animation != 0) {
+		&:active {
+			position: relative;
+			top: $button-press-animation;
+		}
+	}*/
 }
 
 // Inactive
@@ -36,5 +22,45 @@
 
 	background-color: $button-inactive-background-color;
 	border-color: $button-inactive-text-color;
+	color: $button-inactive-text-color;
 	cursor: default;
+
+	/*@if($button-press-animation != 0) {
+		&:active {
+			position: static;
+		}
+	}*/
 }
+
+@each $i in $button-styles {
+	.button-#{nth($i,1)} {
+		@extend .button;
+
+		@include typo($font-size: nth($i,5));
+
+		// Padding or height
+		@if(nth($i,2) == 0) {
+			padding: nth($i,4) nth($i,3);
+			white-space: pre-wrap; // TODO: Problem ohne diese Zeile in input-buttons = keine mehrzeiligkeit (keine Ahnung ob gute lösung)
+		} @else {
+			height: nth($i,2);
+			padding: 0 nth($i,3);
+			line-height: nth($i,2);
+			white-space: nowrap;
+		}
+
+		@if(nth($i,6) != 0) {
+			@include border-radius(nth($i,6));
+		}
+	}
+
+	.button-#{nth($i,1)}-inactive,
+	.button-#{nth($i,1)}[disabled] {
+		@extend .button-#{nth($i,1)};
+		@extend .button-inactive;
+	}
+}
+
+// TODO: Mixin auch noch oder reichen extends (media-query problem)?
+
+// TODO: Klassenaufbau eher .button-normal / .button-normal-inactive oder .button.normal / .button.normal.inactive

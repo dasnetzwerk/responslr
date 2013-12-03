@@ -7,24 +7,19 @@ $border-radius: 2px !default;
 //	button name			height		padding-x	padding-y		font-size name		border-radius
 //	(first is default)											(by font-sizes)
 $button-styles:
-	default				24px		10px		0				default				2px,
-	small				18px		12px		0				small				3px,
-	medium				30px		14px		0				medium				4px
+	normal				40px		30px		0				default				2px,
+	tiny				28px		20px		0				tiny				0,
+	large				60px		20px		0				medium				4px,
+	padding				0			20px		20px			medium				10px
 !default;
 
-$button-padding-x: 18px !default;
-$button-padding-y: 8px !default;
-$button-height: 50px !default;
-
-$button-border-radius: $border-radius !default;
-
-$button-border-width: 0 !default;
-$button-border-style: solid !default;
-
-
-// New experimental
+// Inactive state
 $button-inactive-background-color: $grey-light;
+$button-inactive-border-color: $grey-light;
 $button-inactive-text-color: $grey-dark;
 
-$button-spacing-top: 0;
-$button-spacing-bottom: $grid-gutter;
+// Default transitions
+$button-transitions: background-color,border-color,color;
+
+// Press animation (geht nicht, was wenn der button absolute positioniert ist?)
+$button-press-animation: 1px;
