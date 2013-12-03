@@ -1,12 +1,6 @@
-
 /***********************************************************************************
 	BUTTONS
 ***********************************************************************************/
-
-input.button {
-	border: 0;
-}
-
 .button {
 	@include typo();
 
@@ -31,6 +25,8 @@ input.button {
 		border-width: $button-border-width;
 		border-style: $button-border-style;
 		@include transition-default(background-color,border-color);
+	} @else {
+		border: 0;
 	}
 }
 
