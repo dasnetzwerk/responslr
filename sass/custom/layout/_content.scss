@@ -1,0 +1,36 @@
+#content {
+	article {
+		margin-bottom: $spacing-default;
+	}
+
+	p {
+		margin-bottom: $spacing-small;
+	}
+
+	.intro {
+		@include typo($font-size: medium);
+	}
+
+	.box {
+		padding: $grid-gutter;
+		@include typo($font: LatoRegular);
+	}
+
+	.border {
+		border-width: 1px;
+		border-style: solid;
+	}
+
+	// FONT TESTING
+	//
+	//
+	.font-test-1 {
+		display: inline-block;
+		@include typo($font: LatoLigh, $font-size: 27px, $line-height: 100px);
+	}
+
+	.font-test-2 {
+		display: inline-block;
+		@include typo($font-size: large, $line-height: 200px)
+	}
+}

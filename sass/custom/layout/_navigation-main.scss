@@ -1,0 +1,11 @@
+#main-navigation {
+	margin-top: $spacing-default;
+
+	ul {
+		li {
+			a {
+				@include typo($font: LatoRegular, $font-size: medium);
+			}
+		}
+	}
+}

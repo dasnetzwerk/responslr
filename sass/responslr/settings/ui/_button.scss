@@ -1,0 +1,27 @@
+/***********************************************************************************
+	BUTTONS
+***********************************************************************************/
+//	button name			height		padding-x	padding-y		font-size name		border-radius
+//	(first is default)											(by font-sizes)
+$button-styles:
+	default				24px		10px		0				default				2px,
+	small				18px		12px		0				small				3px,
+	medium				30px		14px		0				medium				4px
+!default;
+
+$button-padding-x: 18px !default;
+$button-padding-y: 8px !default;
+$button-height: 50px !default;
+
+$button-border-radius: $border-radius !default;
+
+$button-border-width: 0 !default;
+$button-border-style: solid !default;
+
+
+// New experimental
+$button-inactive-background-color: $grey-light;
+$button-inactive-text-color: $grey-dark;
+
+$button-spacing-top: 0;
+$button-spacing-bottom: $grid-gutter;

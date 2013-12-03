@@ -1,0 +1,40 @@
+/***********************************************************************************
+	BUTTONS
+***********************************************************************************/
+.button {
+	@include typo();
+
+	display: inline-block;
+	padding: 0 $button-padding-x;
+	height: $button-height;
+	line-height: $button-height;
+	cursor: pointer;
+
+	@if($button-spacing-top != 0) {
+		margin-top: $button-spacing-top;
+	}
+
+	@if($button-spacing-bottom != 0) {
+		margin-bottom: $button-spacing-bottom;
+	}
+
+	@include border-radius($button-border-radius);
+	@include transition-default(background-color);
+
+	@if($button-border-width != 0) {
+		border-width: $button-border-width;
+		border-style: $button-border-style;
+		@include transition-default(background-color,border-color);
+	} @else {
+		border: 0;
+	}
+}
+
+// Inactive
+.button-inactive {
+	@extend .button;
+
+	background-color: $button-inactive-background-color;
+	border-color: $button-inactive-text-color;
+	cursor: default;
+}
