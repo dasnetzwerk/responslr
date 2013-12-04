@@ -1,140 +1,123 @@
 /***********************************************************************************
-	HELPER: ALIGNMENTS
+	MODULE: ALIGNMENTS
 ***********************************************************************************/
-// v-top
-.v-top {
-	vertical-align: top;
+
+
+/***********************************************************************************
+	MIXIN: ALIGNMENT
+***********************************************************************************/
+@mixin alignment() {
+	// TODO: @mixin alignment()
 }
 
-.v-top-#{$breakpoint-class-prefix-small} {
-	@include media-query($breakpoint-class-prefix-small) {
-		vertical-align: top;
-	}
-}
 
-.v-top-#{$breakpoint-class-prefix-medium} {
-	@include media-query($breakpoint-class-prefix-medium, $breakpoint-class-prefix-medium) {
-		vertical-align: top;
-	}
-}
-
-.v-top-#{$breakpoint-class-prefix-large} {
-	@include media-query($max-width, $breakpoint-class-prefix-large) {
-		vertical-align: top;
-	}
-}
-
-// v-center
-.v-center {
-	vertical-align: middle;
-}
-
-.v-center-#{$breakpoint-class-prefix-small} {
-	@include media-query($breakpoint-class-prefix-small) {
-		vertical-align: middle;
-	}
-}
-
-.v-center-#{$breakpoint-class-prefix-medium} {
-	@include media-query($breakpoint-class-prefix-medium, $breakpoint-class-prefix-medium) {
-		vertical-align: middle;
-	}
-}
-
-.v-center-#{$breakpoint-class-prefix-large} {
-	@include media-query($max-width, $breakpoint-class-prefix-large) {
-		vertical-align: middle;
-	}
-}
-
-// v-bottom
-.v-bottom {
-	vertical-align: bottom;
-}
-
-.v-bottom-#{$breakpoint-class-prefix-small} {
-	@include media-query($breakpoint-class-prefix-small) {
-		vertical-align: bottom;
-	}
-}
-
-.v-bottom-#{$breakpoint-class-prefix-medium} {
-	@include media-query($breakpoint-class-prefix-medium, $breakpoint-class-prefix-medium) {
-		vertical-align: bottom;
-	}
-}
-
-.v-bottom-#{$breakpoint-class-prefix-large} {
-	@include media-query($max-width, $breakpoint-class-prefix-large) {
-		vertical-align: bottom;
-	}
-}
-
-// h-left
-.h-left {
-	text-align: left;
-}
-
-.h-left-#{$breakpoint-class-prefix-small} {
-	@include media-query($breakpoint-class-prefix-small) {
+/***********************************************************************************
+	CLASS GENERATOR: ALIGNMENT
+***********************************************************************************/
+@if $enable-module-classes-alignment {
+	// Default Alignments
+	.h-left {
 		text-align: left;
 	}
-}
 
-.h-left-#{$breakpoint-class-prefix-medium} {
-	@include media-query($breakpoint-class-prefix-medium, $breakpoint-class-prefix-medium) {
-		text-align: left;
+	.h-center {
+		text-align: center;
 	}
-}
 
-.h-left-#{$breakpoint-class-prefix-large} {
-	@include media-query($max-width, $breakpoint-class-prefix-large) {
-		text-align: left;
+	.h-right {
+		text-align: right;
 	}
-}
 
-// h-center
-.h-center {
-	text-align: center;
-}
+	.v-top {
+		vertical-align: top;
+	}
 
-.h-center-#{$breakpoint-class-prefix-small} {
+	.v-center {
+		vertical-align: middle;
+	}
+
+	.v-bottom {
+		vertical-align: bottom;
+	}
+
+	// Alignment on Small
 	@include media-query($breakpoint-class-prefix-small) {
-		text-align: center;
-	}
-}
+		.h-left-#{$breakpoint-class-prefix-small} {
+			text-align: left;
+		}
 
-.h-center-#{$breakpoint-class-prefix-medium} {
+		.h-center-#{$breakpoint-class-prefix-small} {
+			text-align: center;
+		}
+
+		.h-right-#{$breakpoint-class-prefix-small} {
+			text-align: right;
+		}
+
+		.v-top-#{$breakpoint-class-prefix-small} {
+			vertical-align: top;
+		}
+
+		.v-center-#{$breakpoint-class-prefix-small} {
+			vertical-align: middle;
+		}
+
+		.v-bottom-#{$breakpoint-class-prefix-small} {
+			vertical-align: bottom;
+		}
+	}
+
+	// Alignment on Medium
 	@include media-query($breakpoint-class-prefix-medium, $breakpoint-class-prefix-medium) {
-		text-align: center;
-	}
-}
+		.h-left-#{$breakpoint-class-prefix-medium} {
+			text-align: left;
+		}
 
-.h-center-#{$breakpoint-class-prefix-large} {
+		.h-center-#{$breakpoint-class-prefix-medium} {
+			text-align: center;
+		}
+
+		.h-right-#{$breakpoint-class-prefix-medium} {
+			text-align: right;
+		}
+
+		.v-top-#{$breakpoint-class-prefix-medium} {
+			vertical-align: top;
+		}
+
+		.v-center-#{$breakpoint-class-prefix-medium} {
+			vertical-align: middle;
+		}
+
+		.v-bottom-#{$breakpoint-class-prefix-medium} {
+			vertical-align: bottom;
+		}
+	}
+
+	// Alignment on Large
 	@include media-query($max-width, $breakpoint-class-prefix-large) {
-		text-align: center;
-	}
-}
+		.h-left-#{$breakpoint-class-prefix-large} {
+			text-align: left;
+		}
 
-// h-right
-.h-right {
-	text-align: right;
-}
+		.h-center-#{$breakpoint-class-prefix-large} {
+			text-align: center;
+		}
 
-.h-right-#{$breakpoint-class-prefix-small} {
-	@include media-query($breakpoint-class-prefix-small) {
-		text-align: right;
-	}
-}
+		.h-right-#{$breakpoint-class-prefix-large} {
+			text-align: right;
+		}
 
-.h-right-#{$breakpoint-class-prefix-medium} {
-	@include media-query($breakpoint-class-prefix-medium, $breakpoint-class-prefix-medium) {
-		text-align: right;
-	}
-}
+		.v-top-#{$breakpoint-class-prefix-large} {
+			vertical-align: top;
+		}
 
-.h-right-#{$breakpoint-class-prefix-large} {
-	@include media-query($max-width, $breakpoint-class-prefix-large) {
-		text-align: right;
+		.v-center-#{$breakpoint-class-prefix-large} {
+			vertical-align: middle;
+		}
+
+		.v-bottom-#{$breakpoint-class-prefix-large} {
+			vertical-align: bottom;
+		}
 	}
 }

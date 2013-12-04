@@ -1,4 +1,9 @@
 /***********************************************************************************
+	MODULE: ASPECT-RATIO
+***********************************************************************************/
+
+
+/***********************************************************************************
 	MIXIN: ASPECT-RATIO
 ***********************************************************************************/
 @mixin aspect-ratio($aspect-ratio-x: '', $aspect-ratio-y: '') {
@@ -13,26 +18,29 @@
 	}
 }
 
+
 /***********************************************************************************
 	CLASS GENERATOR: ASPECT-RATIO
 ***********************************************************************************/
-@each $aspect-ratio-list in $aspect-ratios {
-	.aspect-ratio-#{nth($aspect-ratio-list,1)}-#{nth($aspect-ratio-list,2)} {
-		@include aspect-ratio($aspect-ratio-x: nth($aspect-ratio-list,1), $aspect-ratio-y: nth($aspect-ratio-list,2));
+@if $enable-module-classes-aspect-ratio {
+	@each $aspect-ratio-list in $aspect-ratios {
+		.aspect-ratio-#{nth($aspect-ratio-list,1)}-#{nth($aspect-ratio-list,2)} {
+			@include aspect-ratio($aspect-ratio-x: nth($aspect-ratio-list,1), $aspect-ratio-y: nth($aspect-ratio-list,2));
+		}
 	}
-}
 
-.aspect-ratio-content {
-	display: block;
-	position: absolute;
-	margin: 0 !important;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
+	.aspect-ratio-content {
+		display: block;
+		position: absolute;
+		margin: 0 !important;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
 
-	.column > & {
-		left: $grid-gutter;
-		right: $grid-gutter;
+		.column > & {
+			left: $grid-gutter;
+			right: $grid-gutter;
+		}
 	}
 }

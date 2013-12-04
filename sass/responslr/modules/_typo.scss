@@ -1,5 +1,10 @@
 /***********************************************************************************
-	CUSTOM FONTS: FONT-FAMILY GENERATOR
+	MODULE: TYPO
+***********************************************************************************/
+
+
+/***********************************************************************************
+	TYPO: CUSTOM FONTS - FONT-FAMILY GENERATOR
 ***********************************************************************************/
 @each $i in $font-families {
 	@if nth($i, 2) {
@@ -83,21 +88,25 @@
 
 
 /***********************************************************************************
-	FONT CLASSES
+	CLASS GENERATOR: TYPO
 ***********************************************************************************/
-@each $font-size-list in $font-sizes {
-	.font-size-#{nth($font-size-list,1)} {
-		@include typo($font: '', $font-size: nth($font-size-list,1));
+@if $enable-module-classes-typo {
+	// font-families
+	@each $font-family-list in $font-families {
+		.font-family-#{nth($font-family-list,1)} {
+			@include typo($font: nth($font-family-list,1), $font-size: '');
+		}
 	}
-}
 
-@each $font-family-list in $font-families {
-	.font-family-#{nth($font-family-list,1)} {
-		@include typo($font: nth($font-family-list,1), $font-size: '');
+	// font-sizes
+	@each $font-size-list in $font-sizes {
+		.font-size-#{nth($font-size-list,1)} {
+			@include typo($font: '', $font-size: nth($font-size-list,1));
+		}
 	}
-}
 
-// Text No-Select
-.no-select {
-	@include user-select(none);
+	// Text No-Select
+	.no-select {
+		@include user-select(none);
+	}
 }

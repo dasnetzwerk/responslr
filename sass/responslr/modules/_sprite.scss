@@ -1,5 +1,10 @@
 /***********************************************************************************
-	MIXIN SPRITE
+	MODULE: SPRITE
+***********************************************************************************/
+
+
+/***********************************************************************************
+	MIXIN: SPRITE
 ***********************************************************************************/
 @mixin load-sprite($sprite-map: $default-sprite-map, $sprite-map-retina: $default-sprite-map-retina) {
 	%#{sprite-map-name($sprite-map)} {
@@ -33,7 +38,14 @@
 	}
 }
 
+@if $enable-module-sprite {
+	@include load-sprite();
+}
+
+
 /***********************************************************************************
-	LOAD SPRITE
+	CLASS GENERATOR: SPRITE
 ***********************************************************************************/
-@include load-sprite();
+@if $enable-module-classes-sprite {
+	// TODO: Class Generator Sprite
+}

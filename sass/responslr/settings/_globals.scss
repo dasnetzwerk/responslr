@@ -1,0 +1,57 @@
+/***********************************************************************************
+	GLOBAL VARIABLES
+***********************************************************************************/
+
+// Typo
+$enable-module-typo: true;
+$enable-module-classes-typo: true;
+
+
+// Media
+$enable-module-media: true;
+$enable-module-classes-media: true;
+
+
+// Grid
+$enable-module-grid: $enable-module-media;
+$enable-module-classes-grid: $enable-module-grid;
+
+
+// Hider
+$enable-module-hider: true;
+$enable-module-classes-hider: true;
+
+
+// Transition
+$enable-module-transition: true;
+$enable-module-classes-transition: true;
+
+
+// Alignment
+$enable-module-alignment: true;
+$enable-module-classes-alignment: true;
+
+
+// Position
+$enable-module-position: true;
+$enable-module-classes-position: true;
+
+
+// Spacing
+$enable-module-spacing: true;
+$enable-module-classes-spacing: true;
+
+
+// Aspect Ratio
+$enable-module-aspect-ratio: true;
+$enable-module-classes-aspect-ratio: true;
+
+
+// Sprite
+$enable-module-sprite: true;
+$enable-module-classes-sprite: true;
+
+
+// Color
+$enable-module-color: true;
+$enable-module-classes-color: true;

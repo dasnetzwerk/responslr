@@ -1,37 +1,35 @@
 /***********************************************************************************
 	RESPONSLR - SETTINGS - MODULES
 ***********************************************************************************/
-// @if
-@import "modules/media";
-
-// @if
-@import "modules/grid";
-
-// @if
-@import "modules/hider";
-
-// @if
-@import "modules/transition";
-
-// @if
-@import "modules/alignment";
-
-// @if
-@import "modules/position";
-
-// @if
-@import "modules/spacing";
-
-// @if
-@import "modules/aspect-ratio";
-
-// @if
-@import "modules/sprite";
-
-// @if
-@import "modules/color";
-
-// @if
+// Typo
 @import "modules/typo";
 
+// Media
+@import "modules/media";
 
+// Grid
+@import "modules/grid";
+
+// Hider
+@import "modules/hider";
+
+// Transition
+@import "modules/transition";
+
+// Alignment
+@import "modules/alignment";
+
+// Position
+@import "modules/position";
+
+// Spacing
+@import "modules/spacing";
+
+// Aspect Ratio
+@import "modules/aspect-ratio";
+
+// Sprite
+@import "modules/sprite";
+
+// Color
+@import "modules/color";

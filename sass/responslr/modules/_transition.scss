@@ -1,5 +1,10 @@
 /***********************************************************************************
-	MIXIN: DEFAULT TRANSITION
+	MODULE: TRANSITION
+***********************************************************************************/
+
+
+/***********************************************************************************
+	MIXIN: TRANSITION
 ***********************************************************************************/
 @mixin transition-default($transition-property-1:all, $transition-property-2:false, $transition-property-3:false, $transition-property-4:false, $transition-property-5:false) {
 	@if $transition-property-5 {
@@ -16,4 +21,12 @@
 
 	@include transition-timing-function($transition-timing-function-default);
 	@include transition-duration($transition-duration-default);
+}
+
+
+/***********************************************************************************
+	CLASS GENERATOR: TRANSITION
+***********************************************************************************/
+@if $enable-module-classes-transition {
+	// TODO: Class Generator Transition
 }

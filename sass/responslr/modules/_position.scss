@@ -1,30 +1,44 @@
 /***********************************************************************************
-	HELPER: POSITIONS
+	MODULE: POSITION
 ***********************************************************************************/
-.position-top {
-	position: absolute;
-	top: 0;
-}
 
-.position-right {
-	position: absolute;
-	right: $grid-gutter-half;
 
-	&.column {
-		right: 0;
+/***********************************************************************************
+	MIXIN: POSITION
+***********************************************************************************/
+@mixin position($position: 'absolute', $where: '', $value: $grid-gutter-half) {
+	position: $position;
+	#{$where}: $value;
+
+	@if $where == 'left' or $where == 'right' {
+		&.column {
+			@if $value == $grid-gutter-half {
+				#{$where}: 0;
+			} @else {
+				#{$where}: $value;
+			}
+		}
 	}
 }
 
-.position-bottom {
-	position: absolute;
-	bottom: 0;
-}
 
-.position-left {
-	position: absolute;
-	left: $grid-gutter-half;
+/***********************************************************************************
+	CLASS GENERATOR: POSITION
+***********************************************************************************/
+@if $enable-module-classes-position {
+	.position-top {
+		@include position($where: top, $value: 0);
+	}
 
-	&.column {
-		left: 0;
+	.position-right {
+		@include position($where: right);
+	}
+
+	.position-bottom {
+		@include position($where: bottom, $value: 0);
+	}
+
+	.position-left {
+		@include position($where: left);
 	}
 }
