@@ -1,14 +1,14 @@
 /***********************************************************************************
 	MIXIN: ASPECT-RATIO
 ***********************************************************************************/
-@mixin aspect-ratio($ratio-x: '', $ratio-y: '') {
+@mixin aspect-ratio($aspect-ratio-x: '', $aspect-ratio-y: '') {
 	@if type-of($aspect-ratio-x) == number and type-of($aspect-ratio-y) == number {
 		position: relative;
 
 		&:before{
 			content: "";
 			display: block;
-			padding-top: ($ratio-y / $ratio-x) * 100%;
+			padding-top: ($aspect-ratio-y / $aspect-ratio-x) * 100%;
 		}
 	}
 }
@@ -18,7 +18,7 @@
 ***********************************************************************************/
 @each $aspect-ratio-list in $aspect-ratios {
 	.aspect-ratio-#{nth($aspect-ratio-list,1)}-#{nth($aspect-ratio-list,2)} {
-		@include aspect-ratio(nth($aspect-ratio-list,1), $ratio-y: nth($aspect-ratio-list,2));
+		@include aspect-ratio($aspect-ratio-x: nth($aspect-ratio-list,1), $aspect-ratio-y: nth($aspect-ratio-list,2));
 	}
 }
 
