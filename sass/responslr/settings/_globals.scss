@@ -1,57 +1,182 @@
 /***********************************************************************************
 	GLOBAL VARIABLES
 ***********************************************************************************/
+// Import Lists
+$global-module-imports: '' !default;
+$global-ui-imports: '' !default;
+$global-module-names: '';
+$global-ui-names: '';
+
 
 // Typo
-$enable-module-typo: true;
-$enable-module-classes-typo: true;
+$global-module-names: append($global-module-names,'typo');
+$enable-module-typo: true !default;
+$enable-module-classes-typo: true !default;
+
+@if $enable-module-typo {
+	$global-module-imports: append($global-module-imports, 'modules/typo', comma);
+}
 
 
 // Media
-$enable-module-media: true;
-$enable-module-classes-media: true;
+$global-module-names: append($global-module-names,'media');
+$enable-module-media: true !default;
+$enable-module-classes-media: true !default;
+
+@if $enable-module-media {
+	$global-module-imports: append($global-module-imports, 'modules/media', comma);
+}
 
 
 // Grid
-$enable-module-grid: $enable-module-media;
-$enable-module-classes-grid: $enable-module-grid;
+$global-module-names: append($global-module-names,'grid');
+$enable-module-grid: $enable-module-media !default;
+$enable-module-classes-grid: $enable-module-grid !default;
+
+@if $enable-module-grid {
+	$global-module-imports: append($global-module-imports, 'modules/grid', comma);
+}
 
 
 // Hider
-$enable-module-hider: true;
-$enable-module-classes-hider: true;
+$global-module-names: append($global-module-names,'hider');
+$enable-module-hider: true !default;
+$enable-module-classes-hider: true !default;
+
+@if $enable-module-hider {
+	$global-module-imports: append($global-module-imports, 'modules/hider', comma);
+}
 
 
 // Transition
-$enable-module-transition: true;
-$enable-module-classes-transition: true;
+$global-module-names: append($global-module-names,'transition');
+$enable-module-transition: true !default;
+$enable-module-classes-transition: true !default;
+
+@if $enable-module-transition {
+	$global-module-imports: append($global-module-imports, 'modules/transition', comma);
+}
 
 
 // Alignment
-$enable-module-alignment: true;
-$enable-module-classes-alignment: true;
+$global-module-names: append($global-module-names,'alignment');
+$enable-module-alignment: true !default;
+$enable-module-classes-alignment: true !default;
+
+@if $enable-module-alignment {
+	$global-module-imports: append($global-module-imports, 'modules/alignment', comma);
+}
 
 
 // Position
-$enable-module-position: true;
-$enable-module-classes-position: true;
+$global-module-names: append($global-module-names,'position');
+$enable-module-position: true !default;
+$enable-module-classes-position: true !default;
+
+@if $enable-module-position {
+	$global-module-imports: append($global-module-imports, 'modules/position', comma);
+}
 
 
 // Spacing
-$enable-module-spacing: true;
-$enable-module-classes-spacing: true;
+$global-module-names: append($global-module-names,'spacing');
+$enable-module-spacing: true !default;
+$enable-module-classes-spacing: true !default;
+
+@if $enable-module-spacing {
+	$global-module-imports: append($global-module-imports, 'modules/spacing', comma);
+}
 
 
 // Aspect Ratio
-$enable-module-aspect-ratio: true;
-$enable-module-classes-aspect-ratio: true;
+$global-module-names: append($global-module-names,'aspect-ratio');
+$enable-module-aspect-ratio: true !default;
+$enable-module-classes-aspect-ratio: true !default;
+
+@if $enable-module-aspect-ratio {
+	$global-module-imports: append($global-module-imports, 'modules/aspect-ratio', comma);
+}
 
 
 // Sprite
-$enable-module-sprite: true;
-$enable-module-classes-sprite: true;
+$global-module-names: append($global-module-names,'sprite');
+$enable-module-sprite: true !default;
+$enable-module-classes-sprite: true !default;
+
+@if $enable-module-sprite {
+	$global-module-imports: append($global-module-imports, 'modules/sprite', comma);
+}
 
 
 // Color
-$enable-module-color: true;
-$enable-module-classes-color: true;
+$global-module-names: append($global-module-names,'color');
+$enable-module-color: true !default;
+$enable-module-classes-color: true !default;
+
+@if $enable-module-color {
+	$global-module-imports: append($global-module-imports, 'modules/color', comma);
+}
+
+
+// UIs
+// Reset
+$global-ui-names: append($global-ui-names,'reset');
+$enable-ui-reset: true !default;
+$enable-ui-classes-reset: true !default;
+
+@if $enable-ui-reset {
+	$global-ui-imports: append($global-ui-imports, 'ui/reset', comma);
+}
+
+
+// Shape
+$global-ui-names: append($global-ui-names,'shape');
+$enable-ui-shape: true !default;
+$enable-ui-classes-shape: true !default;
+
+@if $enable-ui-shape {
+	$global-ui-imports: append($global-ui-imports, 'ui/shape', comma);
+}
+
+
+// Button
+$global-ui-names: append($global-ui-names,'button');
+$enable-ui-button: true !default;
+$enable-ui-classes-button: true !default;
+
+@if $enable-ui-button {
+	$global-ui-imports: append($global-ui-imports, 'ui/button', comma);
+}
+
+
+// Form
+$global-ui-names: append($global-ui-names,'form');
+$enable-ui-form: true !default;
+$enable-ui-classes-form: true !default;
+
+@if $enable-ui-form {
+	$global-ui-imports: append($global-ui-imports, 'ui/form', comma);
+}
+
+
+// Table
+$global-ui-names: append($global-ui-names,'table');
+$enable-ui-table: true !default;
+$enable-ui-classes-table: true !default;
+
+@if $enable-ui-table {
+	$global-ui-imports: append($global-ui-imports, 'ui/table', comma);
+}
+
+
+// Create Import Lists by Global Settings
+// Modules
+/*
+@each $global-module-name in $global-module-names {
+	$current-module-name: ;
+	@if $enable-module-typo {
+		$global-module-imports: append($global-module-imports, 'modules/' + $global-module-name, comma);
+	}
+}
+
+*/
