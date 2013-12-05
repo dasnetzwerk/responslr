@@ -1,66 +1,98 @@
 /***********************************************************************************
-	BUTTONS
+	MODULE: BUTTON
 ***********************************************************************************/
-.button {
+
+
+/***********************************************************************************
+	MIXIN: BUTTON
+***********************************************************************************/
+@mixin button-default() {
 	display: inline-block;
 	cursor: pointer;
 	border: 0;
 
 	@include transition-default($button-transitions);
-
-	/*@if($button-press-animation != 0) {
-		&:active {
-			position: relative;
-			top: $button-press-animation;
-		}
-	}*/
 }
 
-// Inactive
-.button-inactive {
-	@extend .button;
+@mixin button($type: nth(nth($button-styles, 1),1)) {
+	$button-style: nth($button-styles, 1);
 
+	@each $i in $button-styles {
+		@if nth($i,1) == $type {
+			$button-style: $i;
+		}
+	}
+
+	@include button-default();
+	@include typo($font-size: nth($button-style,5));
+
+	@if(nth($button-style,2) == 0) {
+		padding: nth($button-style,4) nth($button-style,3);
+		// TODO: Problem ohne diese Zeile in input-buttons = keine mehrzeiligkeit (keine Ahnung ob gute lösung)
+		white-space: pre-wrap;
+	} @else {
+		height: nth($button-style,2);
+		padding: 0 nth($button-style,3);
+		line-height: nth($button-style,2);
+		white-space: nowrap;
+	}
+
+	@if(nth($button-style,6) != 0) {
+		@include border-radius(nth($button-style,6));
+	}
+}
+
+@mixin button-inactive() {
 	background-color: $button-inactive-background-color;
 	border-color: $button-inactive-text-color;
 	color: $button-inactive-text-color;
 	cursor: default;
-
-	/*@if($button-press-animation != 0) {
-		&:active {
-			position: static;
-		}
-	}*/
 }
 
-@each $i in $button-styles {
-	.button-#{nth($i,1)} {
-		@extend .button;
 
-		@include typo($font-size: nth($i,5));
-
-		// Padding or height
-		@if(nth($i,2) == 0) {
-			padding: nth($i,4) nth($i,3);
-			white-space: pre-wrap; // TODO: Problem ohne diese Zeile in input-buttons = keine mehrzeiligkeit (keine Ahnung ob gute lösung)
-		} @else {
-			height: nth($i,2);
-			padding: 0 nth($i,3);
-			line-height: nth($i,2);
-			white-space: nowrap;
-		}
-
-		@if(nth($i,6) != 0) {
-			@include border-radius(nth($i,6));
-		}
+/***********************************************************************************
+	EXTENDS
+***********************************************************************************/
+@if $enable-ui-classes-button {
+	.button {
+		@include button-default();
 	}
 
-	.button-#{nth($i,1)}-inactive,
-	.button-#{nth($i,1)}[disabled] {
-		@extend .button-#{nth($i,1)};
-		@extend .button-inactive;
+	.button-inactive {
+		@include button-inactive();
 	}
 }
 
-// TODO: Mixin auch noch oder reichen extends (media-query problem)?
+
+/***********************************************************************************
+	CLASS GENERATOR: COLOR
+***********************************************************************************/
+@if $enable-ui-classes-button {
+	@each $i in $button-styles {
+		.button-#{nth($i,1)} {
+			@extend .button;
+
+			@include button(nth($i,1));
+		}
+
+		.button-#{nth($i,1)}-inactive,
+		.button-#{nth($i,1)}[disabled] {
+			@extend .button-#{nth($i,1)};
+			@extend .button-inactive;
+		}
+	}
+}
 
 // TODO: Klassenaufbau eher .button-normal / .button-normal-inactive oder .button.normal / .button.normal.inactive
+
+// TODO: Hover/focus wie?
+
+@include media-query(small) {
+	.testbutton {
+		@include button(tiny);
+	}
+
+	.testbutton.inactive {
+		@include button-inactive();
+	}
+}
