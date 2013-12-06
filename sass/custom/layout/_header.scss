@@ -1,4 +1,4 @@
 header {
-	margin-bottom: $spacing-default;
-	padding: $spacing-default 0;
+	margin-bottom: spacer-size();
+	padding: spacer-size() 0;
 }

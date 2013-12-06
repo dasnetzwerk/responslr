@@ -1,10 +1,12 @@
-#content {
+//#content {
 	article {
-		margin-bottom: $spacing-default;
+		@include spacer-bottom();
+		//margin-bottom: spacer-size();
+		//margin-bottom: $spacing-default;
 	}
 
 	p {
-		margin-bottom: $spacing-small;
+		margin-bottom: spacer-size(small);
 	}
 
 	.intro {
@@ -38,4 +40,13 @@
 	[class^=button-] {
 		margin-bottom: $grid-gutter;
 	}
-}
+
+	// SPACING TESTING
+	.spacer-top-test {
+		@include spacer-bottom(none);
+	}
+	
+	.spacer-bottom-test {
+		@include spacer-top(none);
+	}
+//}

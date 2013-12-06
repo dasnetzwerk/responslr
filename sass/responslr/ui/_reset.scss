@@ -65,11 +65,15 @@ label {
 	@include typo();
 }
 
+
+// TODO list-mixin with $list-spacer-bottom definition
+$list-spacer-bottom: 40px;
+
 ol,
 ul {
 	@include typo();
 	list-style: none;
-	margin: 0 0 $spacing-small 0;
+	margin: 0 0 $list-spacer-bottom 0;
 
 	li {
 
