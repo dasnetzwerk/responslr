@@ -1,19 +1,27 @@
 /***********************************************************************************
-	MODULE: ASPECT-RATIO
+	FUNCTION: ASPECT-RATIO
 ***********************************************************************************/
+@function aspect-ratio($width: 1, $height: 1) {
+	$aspect-ratio: 100%;
 
+	@if type-of($width) == number and type-of($height) == number {
+		$aspect-ratio: ($height / $width) * 100%;
+	}
+
+	@return $aspect-ratio;
+}
 
 /***********************************************************************************
 	MIXIN: ASPECT-RATIO
 ***********************************************************************************/
-@mixin aspect-ratio($aspect-ratio-x: '', $aspect-ratio-y: '') {
-	@if type-of($aspect-ratio-x) == number and type-of($aspect-ratio-y) == number {
+@mixin aspect-ratio($width: '', $height: '') {
+	@if type-of($width) == number and type-of($height) == number {
 		position: relative;
 
-		&:before{
+		&:before {
 			content: "";
 			display: block;
-			padding-top: ($aspect-ratio-y / $aspect-ratio-x) * 100%;
+			padding-top: aspect-ratio($width: $width, $height: $height);
 		}
 	}
 }
@@ -25,7 +33,7 @@
 @mixin generate-aspect-ratio() {
 	@each $aspect-ratio-list in $aspect-ratios {
 		.aspect-ratio-#{nth($aspect-ratio-list,1)}-#{nth($aspect-ratio-list,2)} {
-			@include aspect-ratio($aspect-ratio-x: nth($aspect-ratio-list,1), $aspect-ratio-y: nth($aspect-ratio-list,2));
+			@include aspect-ratio($width: nth($aspect-ratio-list,1), $height: nth($aspect-ratio-list,2));
 		}
 	}
 
