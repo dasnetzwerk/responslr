@@ -13,12 +13,6 @@
 /***********************************************************************************
 	MIXIN: SPACING
 ***********************************************************************************/
-// TODO: @mixin spacing()
-@mixin spacing($where: 'bottom', $value: 0) {
-	margin-#{$where}: 0;
-	// TODO bottom, top, both
-}
-
 @mixin spacer(
 	$spacer-size-top: null,
 	$spacer-size-right: null,
@@ -58,9 +52,9 @@
 
 /***********************************************************************************
 	CLASS GENERATOR: SPACING
-	generates .spacer-top-[spacer-name] and .spacer-bottom-[spacer-name] with defined spacer-size
+	generates .spacer-top-[spacer-name] and .spacer-bottom-[spacer-name] with defined spacer-sizes
 ***********************************************************************************/
-@if $enable-module-classes-spacing {
+@mixin generate-spacer() {
 	@each $spacer-size-list in $spacer-sizes {
 		.spacer-top-#{nth($spacer-size-list,1)} {
 			@include spacer-top(nth($spacer-size-list,2));
@@ -70,4 +64,8 @@
 			@include spacer-bottom(nth($spacer-size-list,2));
 		}
 	}
+}
+
+@if $enable-module-spacing {
+	@include generate-spacer();
 }
