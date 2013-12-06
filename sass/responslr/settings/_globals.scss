@@ -2,6 +2,10 @@
 	GLOBAL VARIABLES
 ***********************************************************************************/
 // MODULES
+
+// Reset
+$enable-module-reset: true !default;
+
 // Typo
 $enable-module-typo: true !default;
 
@@ -36,9 +40,7 @@ $enable-module-sprite: true !default;
 $enable-module-color: true !default;
 
 
-// UIS
-// Reset
-$enable-ui-reset: true !default;
+// UI
 
 // Shape
 $enable-ui-shape: true !default;

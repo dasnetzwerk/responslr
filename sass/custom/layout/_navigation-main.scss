@@ -1,3 +1,31 @@
+nav {
+	ul {
+		margin: 0;
+
+		li {
+
+			&.active {
+				a,
+				a:visited {
+					color: $blue;
+				}
+			}
+
+			a,
+			a:visited {
+				@include typo($font: LatoRegular);
+				display: block;
+				text-transform: uppercase;
+				color: $black;
+
+				&:hover {
+					color: $blue;
+				}
+			}
+		}
+	}
+}
+
 #main-navigation {
 	margin-top: spacer-size();
 
@@ -8,4 +36,6 @@
 			}
 		}
 	}
+
+
 }

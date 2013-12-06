@@ -29,6 +29,22 @@
 	CLASS GENERATOR: GRID
 ***********************************************************************************/
 @mixin generate-grid() {
+	.container {
+		position: relative;
+		margin: 0 auto;
+		max-width: $grid-max-width;
+
+		@include media-query($grid-max-width) {
+			margin: 0;
+			width: 100%;
+			max-width: 100%;
+		}
+	}
+
+	.container-full {
+		position: relative;
+	}
+
 	tr.row {
 		display: table-row;
 	}

@@ -1,0 +1,17 @@
+/***********************************************************************************
+	MODULES - RESET
+***********************************************************************************/
+html, body {
+	background-color: $white;
+	color: $black;
+	@include typo();
+}
+
+h1, h2, h3, h4, h5, h6 {
+	@include typo($font: LatoRegular);
+	text-transform: uppercase;
+}
+
+h1 {
+	@include typo($font: LatoRegular, $font-size: large);
+}
