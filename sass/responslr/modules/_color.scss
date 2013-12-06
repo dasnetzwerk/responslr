@@ -14,7 +14,7 @@
 /***********************************************************************************
 	CLASS GENERATOR: COLOR
 ***********************************************************************************/
-@if $enable-module-classes-color {
+@mixin generate-color() {
 	@each $i in $colors {
 		.bg-#{nth($i,1)} {
 			background-color: nth($i,2);
@@ -44,4 +44,8 @@
 			border-left-color: nth($i,2);
 		}
 	}
+}
+
+@if $enable-module-color {
+	@include generate-color();
 }

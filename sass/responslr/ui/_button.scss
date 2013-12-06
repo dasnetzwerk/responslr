@@ -51,9 +51,9 @@
 
 
 /***********************************************************************************
-	EXTENDS
+	CLASS GENERATOR: COLOR
 ***********************************************************************************/
-@if $enable-ui-classes-button {
+@mixin generate-button() {
 	.button {
 		@include button-default();
 	}
@@ -61,13 +61,7 @@
 	.button-inactive {
 		@include button-inactive();
 	}
-}
 
-
-/***********************************************************************************
-	CLASS GENERATOR: COLOR
-***********************************************************************************/
-@if $enable-ui-classes-button {
 	@each $i in $button-styles {
 		.button-#{nth($i,1)} {
 			@extend .button;
@@ -81,6 +75,10 @@
 			@extend .button-inactive;
 		}
 	}
+}
+
+@if $enable-ui-button {
+	@include generate-button();
 }
 
 // TODO: Klassenaufbau eher .button-normal / .button-normal-inactive oder .button.normal / .button.normal.inactive

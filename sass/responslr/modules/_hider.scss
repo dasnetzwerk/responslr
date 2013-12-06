@@ -14,7 +14,7 @@
 /***********************************************************************************
 	CLASS GENERATOR: HIDER
 ***********************************************************************************/
-@if $enable-module-classes-hider {
+@mixin generate-hider() {
 	@include media-query($breakpoint-class-prefix-small) {
 		.hide-#{$breakpoint-class-prefix-small} {
 			display: none;
@@ -56,4 +56,8 @@
 			display: none;
 		}
 	}
+}
+
+@if $enable-module-hider {
+	@include generate-hider();
 }

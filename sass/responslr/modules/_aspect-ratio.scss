@@ -22,7 +22,7 @@
 /***********************************************************************************
 	CLASS GENERATOR: ASPECT-RATIO
 ***********************************************************************************/
-@if $enable-module-classes-aspect-ratio {
+@mixin generate-aspect-ratio() {
 	@each $aspect-ratio-list in $aspect-ratios {
 		.aspect-ratio-#{nth($aspect-ratio-list,1)}-#{nth($aspect-ratio-list,2)} {
 			@include aspect-ratio($aspect-ratio-x: nth($aspect-ratio-list,1), $aspect-ratio-y: nth($aspect-ratio-list,2));
@@ -43,4 +43,8 @@
 			right: $grid-gutter;
 		}
 	}
+}
+
+@if $enable-module-aspect-ratio {
+	@include generate-aspect-ratio();
 }

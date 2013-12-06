@@ -25,7 +25,7 @@
 /***********************************************************************************
 	CLASS GENERATOR: POSITION
 ***********************************************************************************/
-@if $enable-module-classes-position {
+@mixin generate-position() {
 	.position-top {
 		@include position($where: top, $value: 0);
 	}
@@ -41,4 +41,8 @@
 	.position-left {
 		@include position($where: left);
 	}
+}
+
+@if $enable-module-position {
+	@include generate-position();
 }

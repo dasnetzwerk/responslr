@@ -90,7 +90,7 @@
 /***********************************************************************************
 	CLASS GENERATOR: TYPO
 ***********************************************************************************/
-@if $enable-module-classes-typo {
+@mixin generate-typo() {
 	// font-families
 	@each $font-family-list in $font-families {
 		.font-family-#{nth($font-family-list,1)} {
@@ -109,4 +109,7 @@
 	.no-select {
 		@include user-select(none);
 	}
+}
+@if $enable-module-typo {
+	@include generate-typo();
 }

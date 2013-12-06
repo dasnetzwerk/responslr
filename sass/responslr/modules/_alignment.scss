@@ -14,7 +14,7 @@
 /***********************************************************************************
 	CLASS GENERATOR: ALIGNMENT
 ***********************************************************************************/
-@if $enable-module-classes-alignment {
+@mixin generate-alignment() {
 	// Default Alignments
 	.h-left {
 		text-align: left;
@@ -120,4 +120,8 @@
 			vertical-align: bottom;
 		}
 	}
+}
+
+@if $enable-module-alignment {
+	@include generate-alignment();
 }
