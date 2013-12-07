@@ -4,11 +4,47 @@
 
 
 /***********************************************************************************
-	BUBBLES
+	FUNCTION: SHAPE
 ***********************************************************************************/
-.bubble {
+
+
+/***********************************************************************************
+	MIXIN: SHAPE
+***********************************************************************************/
+@mixin circle($radius: 50%, $display: inline-block) {
+	display: $display;
 	@include border-radius(50%);
-	overflow: hidden;
+}
+
+@mixin shape($type: '') {
+	@if $type == circle {
+		@include circle();
+	}
+}
+
+/***********************************************************************************
+	CLASS GENERATOR: SHAPE
+***********************************************************************************/
+@mixin generate-shape() {
+	// Circle
+	.circle {
+		overflow: hidden;
+		@include shape(circle);
+	}
+
+	// Triangle
+	.triangle {
+
+	}
+
+	// Tag
+	.tag {
+
+	}
+}
+
+@if $enable-ui-button {
+	@include generate-shape();
 }
 
 
