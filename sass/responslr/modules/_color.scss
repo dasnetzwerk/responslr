@@ -39,32 +39,20 @@
 }
 
 @mixin color($color: black, $type: text-color) {
+	// Text Color
 	@if $type == text-color {
 		@include text-color($color);
 	}
 
+	// Background Color
 	@if $type == bg-color {
 		@include bg-color($color);
 	}
 
-	@if $type == border {
-		@include border-color($color, border);
-	}
-
-	@if $type == border-top {
-		@include border-color($color, border-top);
-	}
-
-	@if $type == border-right {
-		@include border-color($color, border-right);
-	}
-
-	@if $type == border-bottom {
-		@include border-color($color, border-bottom);
-	}
-
-	@if $type == border-left {
-		@include border-color($color, border-top);
+	// Border Color
+	$border-types: border,border-top,border-right,border-bottom,border-left;
+	@if index($border-types, $type) {
+		@include border-color($color, $type);
 	}
 }
 
