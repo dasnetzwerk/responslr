@@ -1,48 +1,91 @@
 /***********************************************************************************
-	MODULE: COLOR
+	FUNCTION: COLOR
 ***********************************************************************************/
+@function color($color: black) {
+	$return-color: black;
 
+	@each $current-color in $colors {
+		@if nth($current-color,1) == $color {
+			$return-color: nth($current-color,2);
+		}
+	}
+
+	@if type-of($return-color) != color {
+		$return-color: black;
+	}
+
+	@return $return-color;
+}
 
 /***********************************************************************************
-	MIXIN: COLOR
+	MIXINS: COLOR
 ***********************************************************************************/
- @mixin color() {
- 	// TODO: @mixin color()
- }
+@mixin bg-color($color: black) {
+	.bg-#{$color} {
+		background-color: color($color);
+	}
+}
 
+@mixin text-color($color: black) {
+	.text-#{$color} {
+		color: color($color);
+	}
+}
+
+@mixin border-color($color: black, $property: border) {
+	.#{$property}-#{$color} {
+		#{$property}-color: color($color);
+	}
+}
+
+@mixin color($color: black, $type: text-color) {
+	@if $type == text-color {
+		@include text-color($color);
+	}
+
+	@if $type == bg-color {
+		@include bg-color($color);
+	}
+
+	@if $type == border {
+		@include border-color($color, border);
+	}
+
+	@if $type == border-top {
+		@include border-color($color, border-top);
+	}
+
+	@if $type == border-right {
+		@include border-color($color, border-right);
+	}
+
+	@if $type == border-bottom {
+		@include border-color($color, border-bottom);
+	}
+
+	@if $type == border-left {
+		@include border-color($color, border-top);
+	}
+}
 
 /***********************************************************************************
 	CLASS GENERATOR: COLOR
 ***********************************************************************************/
 @mixin generate-color() {
-	@each $i in $colors {
-		.bg-#{nth($i,1)} {
-			background-color: nth($i,2);
-		}
+	@each $color in $colors {
+		@include color(nth($color,1), bg-color);
 
-		.text-#{nth($i,1)} {
-			color: nth($i,2);
-		}
+		@include color(nth($color,1), text-color);
 
-		.border-#{nth($i,1)} {
-			border-color: nth($i,2);
-		}
+		@include color(nth($color,1), border);
 
-		.border-top-#{nth($i,1)} {
-			border-top-color: nth($i,2);
-		}
+		@include color(nth($color,1), border-top);
 
-		.border-right-#{nth($i,1)} {
-			border-right-color: nth($i,2);
-		}
+		@include color(nth($color,1), border-right);
 
-		.border-bottom-#{nth($i,1)} {
-			border-bottom-color: nth($i,2);
-		}
+		@include color(nth($color,1), border-bottom);
 
-		.border-left-#{nth($i,1)} {
-			border-left-color: nth($i,2);
-		}
+		@include color(nth($color,1), border-left);
 	}
 }
 
