@@ -6,23 +6,11 @@
 /***********************************************************************************
 	MIXIN: TRANSITION
 ***********************************************************************************/
-@mixin transition-default($transition-property-1:all, $transition-property-2:false, $transition-property-3:false, $transition-property-4:false, $transition-property-5:false) {
-	@if $transition-property-5 {
-		@include transition-property($transition-property-1, $transition-property-2, $transition-property-3, $transition-property-4, $transition-property-5);
-	} @else if $transition-property-4 {
-		@include transition-property($transition-property-1, $transition-property-2, $transition-property-3, $transition-property-4);
-	} @else if $transition-property-3 {
-		@include transition-property($transition-property-1, $transition-property-2, $transition-property-3);
-	} @else if $transition-property-2 {
-		@include transition-property($transition-property-1, $transition-property-2);
-	} @else {
-		@include transition-property($transition-property-1);
-	}
-
+@mixin transition-default($transition-properties...) {
+	@include transition-property($transition-properties);
 	@include transition-timing-function($transition-timing-function-default);
 	@include transition-duration($transition-duration-default);
 }
-
 
 /***********************************************************************************
 	CLASS GENERATOR: TRANSITION
