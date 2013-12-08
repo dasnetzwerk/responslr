@@ -11,14 +11,25 @@
 /***********************************************************************************
 	MIXIN: SHAPE
 ***********************************************************************************/
-@mixin circle($radius: 50%, $display: inline-block) {
+@mixin square($radius: 0, $display: inline-block) {
 	display: $display;
-	@include border-radius(50%);
+	@include border-radius($radius);
 }
 
-@mixin shape($type: '') {
+@mixin circle($radius: 50%, $display: inline-block) {
+	display: $display;
+	@include border-radius($radius);
+}
+
+@mixin shape($type: '', $display: inline-block) {
+	overflow: hidden;
+
+	@if $type == square {
+		@include square($display: $display);
+	}
+
 	@if $type == circle {
-		@include circle();
+		@include circle($display: $display);
 	}
 }
 
@@ -26,9 +37,13 @@
 	CLASS GENERATOR: SHAPE
 ***********************************************************************************/
 @mixin generate-shape() {
+	// Square
+	.square {
+		@include shape(square);
+	}
+
 	// Circle
 	.circle {
-		overflow: hidden;
 		@include shape(circle);
 	}
 
