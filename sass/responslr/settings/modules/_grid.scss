@@ -1,6 +1,15 @@
 /***********************************************************************************
 	GRID - SETTINGS
 ***********************************************************************************/
+//	name			columns		max-width	grid-gutter
+$grid-breakpoints:
+	'xlarge'		12			4096px		16px,
+	'large'			12			1024px		16px,
+	'medium'		6			960px		16px,
+	'small'			4			640px		16px
+!default;
+
+
 // Breakpoints
 $large: 'large' !default;
 $medium: 'medium' !default;
