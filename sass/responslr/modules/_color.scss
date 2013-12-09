@@ -21,21 +21,72 @@
 	MIXINS: COLOR
 ***********************************************************************************/
 @mixin bg-color($color: black) {
-	.bg-#{$color} {
+	%bg-#{$color} {
 		background-color: color($color);
 	}
+
+	.bg-#{$color} {
+		@extend %bg-#{$color};
+	}
+/* 
+	@if $enable-module-color-hover {
+		.bg-hover-#{$color}:hover,
+		.bg-hover-#{$color}:active {
+			@extend %bg-#{$color};
+		}
+	}
+
+	@if $enable-module-color-focus {
+		.bg-focus-#{$color}:focus {
+			@extend %bg-#{$color};
+		}
+	} */
 }
 
 @mixin text-color($color: black) {
-	.text-#{$color} {
+	%text-#{$color} {
 		color: color($color);
 	}
+
+	.text-#{$color} {
+		@extend %text-#{$color};
+	}
+/* 
+	@if $enable-module-color-hover {
+		.text-hover-#{$color}:hover,
+		.text-hover-#{$color}:active {
+			@extend %text-#{$color};
+		}
+	}
+
+	@if $enable-module-color-focus {
+		.text-focus-#{$color}:focus {
+			@extend %text-#{$color};
+		}
+	} */
 }
 
 @mixin border-color($color: black, $property: border) {
-	.#{$property}-#{$color} {
+	%#{$property}-#{$color} {
 		#{$property}-color: color($color);
 	}
+
+	.#{$property}-#{$color} {
+		@extend %#{$property}-#{$color};
+	}
+/* 
+	@if $enable-module-color-hover {
+		.#{$property}-hover-#{$color}:hover,
+		.#{$property}-hover-#{$color}:active {
+			@extend %#{$property}-#{$color};
+		}
+	}
+
+	@if $enable-module-color-focus {
+		.#{$property}-focus-#{$color}:focus {
+			@extend %#{$property}-#{$color};
+		}
+	} */
 }
 
 @mixin color($color: black, $type: text-color) {
