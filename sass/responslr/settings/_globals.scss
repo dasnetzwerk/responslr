@@ -2,54 +2,82 @@
 	GLOBAL VARIABLES
 ***********************************************************************************/
 // MODULES
-
 // Reset
 $enable-module-reset: true !default;
 
+
 // Typo
 $enable-module-typo: true !default;
+
 
 // Grid
 $enable-module-grid: true !default;
 $enable-module-grid-helper: true !default;
 
+
 // Hider
 $enable-module-hider: true !default;
+
 
 // Transition
 $enable-module-transition: true !default;
 
+
 // Alignment
 $enable-module-alignment: true !default;
+
 
 // Position
 $enable-module-position: true !default;
 
+
 // Spacing
 $enable-module-spacing: true !default;
+
 
 // Aspect Ratio
 $enable-module-aspect-ratio: true !default;
 
+
 // Sprite
 $enable-module-sprite: true !default;
 
+
 // Color
 $enable-module-color: true !default;
-$enable-module-color-hover: true !default;
-$enable-module-color-focus: false !default;
+
+$enable-module-color-bg: $enable-module-color !default;
+$enable-module-color-bg-hover: $enable-module-color-bg !default;
+$enable-module-color-bg-focus: false !default;
+
+$enable-module-color-text: $enable-module-color !default;
+$enable-module-color-text-hover: $enable-module-color-text !default;
+$enable-module-color-text-focus: false !default;
+
+$enable-module-color-border: $enable-module-color !default;
+$enable-module-color-border-hover: $enable-module-color-border !default;
+$enable-module-color-border-focus: false !default;
+
+$enable-module-color-border-directions: false !default;
+$enable-module-color-border-directions-hover: $enable-module-color-border-directions !default;
+$enable-module-color-border-directions-focus: false !default;
 
 
 // UI
-
 // Shape
 $enable-ui-shape: true !default;
+$enable-ui-shape-circle: true !default;
+$enable-ui-shape-square: true !default;
+$enable-ui-shape-triangle: true !default;
+
 
 // Button
 $enable-ui-button: true !default;
 
+
 // Form
 $enable-ui-form: true !default;
+
 
 // Table
 $enable-ui-table: true !default;
