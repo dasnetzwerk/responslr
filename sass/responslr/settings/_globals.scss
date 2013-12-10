@@ -9,11 +9,9 @@ $enable-module-reset: true !default;
 // Typo
 $enable-module-typo: true !default;
 
-// Media
-$enable-module-media: true !default;
-
 // Grid
-$enable-module-grid: $enable-module-media !default;
+$enable-module-grid: true !default;
+$enable-module-grid-helper: true !default;
 
 // Hider
 $enable-module-hider: true !default;
