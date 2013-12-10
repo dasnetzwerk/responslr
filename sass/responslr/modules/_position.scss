@@ -6,13 +6,13 @@
 /***********************************************************************************
 	MIXIN: POSITION
 ***********************************************************************************/
-@mixin position($position: 'absolute', $where: '', $value: $grid-gutter-half) {
+@mixin position($position: 'absolute', $where: '', $value: grid-gutter-half()) {
 	position: $position;
 	#{$where}: $value;
 
 	@if $where == 'left' or $where == 'right' {
 		&.column {
-			@if $value == $grid-gutter-half {
+			@if $value == grid-gutter-half() {
 				#{$where}: 0;
 			} @else {
 				#{$where}: $value;

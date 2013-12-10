@@ -30,7 +30,7 @@
 	}
 
 	.box {
-		padding: $grid-gutter;
+		padding: grid-gutter-half();
 		@include typo($font: LatoRegular);
 	}
 
@@ -54,7 +54,7 @@
 
 	// BUTTON TESTING
 	[class^=button-] {
-		margin-bottom: $grid-gutter;
+		margin-bottom: grid-gutter(large);
 	}
 
 	// SPACING TESTING

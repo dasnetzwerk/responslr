@@ -15,45 +15,25 @@
 	CLASS GENERATOR: HIDER
 ***********************************************************************************/
 @mixin generate-hider() {
-	@include media-query($breakpoint-class-prefix-small) {
-		.hide-#{$breakpoint-class-prefix-small} {
-			display: none;
-		}
-	}
+	@each $current-breakpoint-list in $grid-breakpoints {
+		$current-breakpoint-name: nth($current-breakpoint-list,1);
 
-	@include media-query($breakpoint-class-prefix-medium, $breakpoint-class-prefix-medium) {
-		.hide-#{$breakpoint-class-prefix-medium} {
-			display: none;
+		@include media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
+			.hide-#{$current-breakpoint-name} {
+				display: none;
+			}
 		}
-	}
 
-	@include media-query($max-width, $breakpoint-class-prefix-medium) {
-		.hide-#{$breakpoint-class-prefix-medium}-up {
-			display: none;
+		@include media-query($media-end: grid-breakpoint(), $media-start: $current-breakpoint-name) {
+			.hide-#{$current-breakpoint-name}-up {
+				display: none;
+			}
 		}
-	}
 
-	@include media-query($breakpoint-class-prefix-medium) {
-		.hide-#{$breakpoint-class-prefix-medium}-down {
-			display: none;
-		}
-	}
-
-	@include media-query($breakpoint-class-prefix-large, $breakpoint-class-prefix-large) {
-		.hide-#{$breakpoint-class-prefix-large} {
-			display: none;
-		}
-	}
-
-	@include media-query($max-width, $breakpoint-class-prefix-large) {
-		.hide-#{$breakpoint-class-prefix-large}-up {
-			display: none;
-		}
-	}
-
-	@include media-query($breakpoint-class-prefix-large) {
-		.hide-#{$breakpoint-class-prefix-large}-down {
-			display: none;
+		@include media-query($media-end: $current-breakpoint-name) {
+			.hide-#{$current-breakpoint-name}-down {
+				display: none;
+			}
 		}
 	}
 }

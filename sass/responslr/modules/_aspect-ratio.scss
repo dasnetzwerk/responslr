@@ -47,8 +47,14 @@
 		left: 0;
 
 		.column > & {
-			left: $grid-gutter;
-			right: $grid-gutter;
+			@each $current-breakpoint-list in $grid-breakpoints {
+				$current-breakpoint-name: nth($current-breakpoint-list,1);
+
+				@include media-query($media-end: $current-breakpoint-name) {
+					left: grid-gutter($current-breakpoint-name);
+					right: grid-gutter($current-breakpoint-name);
+				}
+			}
 		}
 	}
 }

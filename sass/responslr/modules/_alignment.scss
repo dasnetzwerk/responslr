@@ -41,83 +41,33 @@
 	}
 
 	// Alignment on Small
-	@include media-query($breakpoint-class-prefix-small) {
-		.h-left-#{$breakpoint-class-prefix-small} {
-			text-align: left;
-		}
+	@each $current-breakpoint-list in $grid-breakpoints {
+		$current-breakpoint-name: nth($current-breakpoint-list,1);
 
-		.h-center-#{$breakpoint-class-prefix-small} {
-			text-align: center;
-		}
+		@include media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
+			.h-left-#{$current-breakpoint-name} {
+				text-align: left;
+			}
 
-		.h-right-#{$breakpoint-class-prefix-small} {
-			text-align: right;
-		}
+			.h-center-#{$current-breakpoint-name} {
+				text-align: center;
+			}
 
-		.v-top-#{$breakpoint-class-prefix-small} {
-			vertical-align: top;
-		}
+			.h-right-#{$current-breakpoint-name} {
+				text-align: right;
+			}
 
-		.v-center-#{$breakpoint-class-prefix-small} {
-			vertical-align: middle;
-		}
+			.v-top-#{$current-breakpoint-name} {
+				vertical-align: top;
+			}
 
-		.v-bottom-#{$breakpoint-class-prefix-small} {
-			vertical-align: bottom;
-		}
-	}
+			.v-center-#{$current-breakpoint-name} {
+				vertical-align: middle;
+			}
 
-	// Alignment on Medium
-	@include media-query($breakpoint-class-prefix-medium, $breakpoint-class-prefix-medium) {
-		.h-left-#{$breakpoint-class-prefix-medium} {
-			text-align: left;
-		}
-
-		.h-center-#{$breakpoint-class-prefix-medium} {
-			text-align: center;
-		}
-
-		.h-right-#{$breakpoint-class-prefix-medium} {
-			text-align: right;
-		}
-
-		.v-top-#{$breakpoint-class-prefix-medium} {
-			vertical-align: top;
-		}
-
-		.v-center-#{$breakpoint-class-prefix-medium} {
-			vertical-align: middle;
-		}
-
-		.v-bottom-#{$breakpoint-class-prefix-medium} {
-			vertical-align: bottom;
-		}
-	}
-
-	// Alignment on Large
-	@include media-query($max-width, $breakpoint-class-prefix-large) {
-		.h-left-#{$breakpoint-class-prefix-large} {
-			text-align: left;
-		}
-
-		.h-center-#{$breakpoint-class-prefix-large} {
-			text-align: center;
-		}
-
-		.h-right-#{$breakpoint-class-prefix-large} {
-			text-align: right;
-		}
-
-		.v-top-#{$breakpoint-class-prefix-large} {
-			vertical-align: top;
-		}
-
-		.v-center-#{$breakpoint-class-prefix-large} {
-			vertical-align: middle;
-		}
-
-		.v-bottom-#{$breakpoint-class-prefix-large} {
-			vertical-align: bottom;
+			.v-bottom-#{$current-breakpoint-name} {
+				vertical-align: bottom;
+			}
 		}
 	}
 }
