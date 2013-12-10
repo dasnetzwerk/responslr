@@ -28,7 +28,7 @@
 	.bg-#{$color} {
 		@extend %bg-#{$color};
 	}
-/* 
+
 	@if $enable-module-color-hover {
 		.bg-hover-#{$color}:hover,
 		.bg-hover-#{$color}:active {
@@ -40,7 +40,7 @@
 		.bg-focus-#{$color}:focus {
 			@extend %bg-#{$color};
 		}
-	} */
+	}
 }
 
 @mixin text-color($color: black) {
@@ -51,7 +51,7 @@
 	.text-#{$color} {
 		@extend %text-#{$color};
 	}
-/* 
+
 	@if $enable-module-color-hover {
 		.text-hover-#{$color}:hover,
 		.text-hover-#{$color}:active {
@@ -63,7 +63,7 @@
 		.text-focus-#{$color}:focus {
 			@extend %text-#{$color};
 		}
-	} */
+	}
 }
 
 @mixin border-color($color: black, $property: border) {
@@ -74,7 +74,7 @@
 	.#{$property}-#{$color} {
 		@extend %#{$property}-#{$color};
 	}
-/* 
+
 	@if $enable-module-color-hover {
 		.#{$property}-hover-#{$color}:hover,
 		.#{$property}-hover-#{$color}:active {
@@ -86,7 +86,7 @@
 		.#{$property}-focus-#{$color}:focus {
 			@extend %#{$property}-#{$color};
 		}
-	} */
+	}
 }
 
 @mixin color($color: black, $type: text-color) {
