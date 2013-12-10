@@ -1,13 +1,20 @@
 /***********************************************************************************
 	GRID - SETTINGS
 ***********************************************************************************/
-//	name			columns		max-width	grid-gutter
+$container-max-width: 1140px !default;
+$container-align: center !default;
+
+//	name				max-width	columns		gutter
 $grid-breakpoints:
-	'xlarge'		12			4096px		16px,
-	'large'			12			1024px		16px,
-	'medium'		6			960px		16px,
-	'small'			4			640px		16px
+	('xlarge'			4096px		12			16px),
+	('large'			1024px		12			16px),
+	('medium'			960px		6			12px),
+	('small'			640px		4			10px)
 !default;
+
+$grid-breakpoint-default: nth(nth($grid-breakpoints,1),1);
+
+
 
 
 // Breakpoints
@@ -20,7 +27,7 @@ $breakpoint-class-prefix-medium: $medium !default;
 $breakpoint-class-prefix-small: $small !default;
 
 // Maximum Widths
-$grid-max-width: 1140px !default;
+
 $max-width: 4096px !default;
 $max-width-large: 1024px !default;
 $max-width-medium: 960px !default;

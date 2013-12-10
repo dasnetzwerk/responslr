@@ -9,6 +9,22 @@
 		margin-bottom: spacer-size(small);
 	}
 
+	.test-min-width:before {
+		content: "min-width: " + grid-min-width(large);
+	}
+	.test-max-width:before {
+		content: "max-width: " + grid-max-width(large);
+	}
+	.test-columns:before {
+		content: "columns: " + grid-columns(large);
+	}
+	.test-gutter:before {
+		content: "gutter: " + grid-gutter(large);
+	}
+	.text-name:before {
+		content: "breakpoint name: " + grid-breakpoint-name(2);
+	}
+
 	.intro {
 		@include typo($font-size: medium);
 	}

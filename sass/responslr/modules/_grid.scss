@@ -1,6 +1,57 @@
 /***********************************************************************************
-	MODULE: GRID
+	FUNCTIONS: GRID
 ***********************************************************************************/
+@function grid-breakpoint-name($index: 1) {
+	$return-breakpoint-name: nth(grid-breakpoint(),1);
+
+	@if type-of($index) == number and $index > 0 and $index <= length($grid-breakpoints) {
+		$return-breakpoint-name: nth(nth($grid-breakpoints,$index),1);
+	}
+
+	@return $return-breakpoint-name;
+}
+
+@function grid-breakpoint($breakpoint: $grid-breakpoint-default) {
+	$return-breakpoint: nth($grid-breakpoints,1);
+
+	@each $current-breakpoint-list in $grid-breakpoints {
+		@if nth($current-breakpoint-list,1) == $breakpoint {
+			$return-breakpoint: $current-breakpoint-list;
+		}
+	}
+
+	@return $return-breakpoint;
+}
+
+@function grid-columns($breakpoint: $grid-breakpoint-default) {
+	$return-columns: nth(grid-breakpoint($breakpoint),3);
+
+	@return $return-columns;
+}
+
+@function grid-gutter($breakpoint: $grid-breakpoint-default) {
+	$return-gutter: nth(grid-breakpoint($breakpoint),4);
+
+	@return $return-gutter;
+}
+
+@function grid-max-width($breakpoint: $grid-breakpoint-default) {
+	$return-max-width: nth(grid-breakpoint($breakpoint),2);
+
+	@return $return-max-width;
+}
+
+@function grid-min-width($breakpoint: $grid-breakpoint-default) {
+	$return-min-width: 0;
+	$breakpoint-index: index($grid-breakpoints,grid-breakpoint($breakpoint)) + 1;
+
+	@if $breakpoint-index > 0 and $breakpoint-index <= length($grid-breakpoints) {
+		$return-min-width: grid-max-width(grid-breakpoint-name($breakpoint-index)) + 1;
+	}
+
+	@return $return-min-width;
+}
+
 
 /***********************************************************************************
 	MIXINS: GRID
@@ -31,27 +82,13 @@
 	$breakpoint-orientation: "";
 
 	@if type-of($media-end) == string and $media-end != "" {
-		@if $media-end == $breakpoint-class-prefix-large {
-			$breakpoint-max: " and (max-width: #{$max-width-large})";
-		} @else if $media-end == $breakpoint-class-prefix-medium {
-			$breakpoint-max: " and (max-width: #{$max-width-medium})";
-		} @else if $media-end == $breakpoint-class-prefix-small {
-			$breakpoint-max: " and (max-width: #{$max-width-small})";
-		}
+		$breakpoint-max: " and (max-width:" + grid-max-width($media-end) + ")";
 	} @else if type-of($media-end) == number {
 		$breakpoint-max: " and (max-width: #{$media-end})";
 	}
 
 	@if type-of($media-start) == string and $media-start != "" {
-		@if $media-start == $breakpoint-class-prefix-large {
-			$breakpoint-min: " and (min-width: #{$min-width-large})"
-		}
-		@if $media-start ==  $breakpoint-class-prefix-medium {
-			$breakpoint-min: " and (min-width: #{$min-width-medium})"
-		}
-		@if $media-start == $breakpoint-class-prefix-small {
-			$breakpoint-min: " and (min-width: #{$min-width-small})"
-		}
+		$breakpoint-min: " and (min-width:" + grid-min-width($media-start) + ")";
 	} @else if type-of($media-start) == number {
 		$breakpoint-min: " and (min-width: #{$media-start})"
 	}
@@ -71,10 +108,13 @@
 @mixin generate-grid() {
 	.container {
 		position: relative;
-		margin: 0 auto;
-		max-width: $grid-max-width;
+		max-width: $container-max-width;
 
-		@include media-query($grid-max-width) {
+		@if $container-align == center {
+			margin: 0 auto;
+		}
+
+		@include media-query($container-max-width) {
 			margin: 0;
 			width: 100%;
 			max-width: 100%;
@@ -92,6 +132,12 @@
 	.row .row {
 		margin-left: -$grid-gutter;
 		margin-right: -$grid-gutter;
+
+		@each $current-breakpoint in $grid-breakpoints {
+			/* @include media-query($media-start: grid-min-width($current-breakpoint)) {
+
+			} */
+		}
 	}
 
 	.column {
@@ -241,11 +287,11 @@
 
 
 			left: 50%;
-			max-width: $grid-max-width;
+			max-width: $container-max-width;
 			width: 100%;
-			margin-left: -($grid-max-width / 2);
+			margin-left: -($container-max-width / 2);
 
-			@include media-query($grid-max-width) {
+			@include media-query($container-max-width) {
 				left: auto;
 				margin-left: 0;
 				max-width: 100%;
