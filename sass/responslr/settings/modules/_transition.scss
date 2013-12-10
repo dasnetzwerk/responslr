@@ -1,5 +1,11 @@
 /***********************************************************************************
 	TRANSITION - SETTINGS
 ***********************************************************************************/
+//  transition name (unique)	properties								duration 		timing-function 	delay
+//	(first is default)
+$transitions:
+	(default					'color,background-color,border-color'		.25s			ease				0)
+!default;
+
 $transition-duration-default: .25s !default;
 $transition-timing-function-default: ease !default;
