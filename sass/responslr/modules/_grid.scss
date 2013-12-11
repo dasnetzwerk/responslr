@@ -121,6 +121,50 @@
 /***********************************************************************************
 	CLASS GENERATOR: GRID
 ***********************************************************************************/
+@mixin generate-grid-breakpoint($current-breakpoint-name: '', $column-index: 0, $current-column-width: 100%) {
+	@while $column-index > 0 {
+		$sub-column-index: $column-index;
+
+		.#{$current-breakpoint-name}-#{$column-index} {
+			width: $current-column-width * $column-index;
+
+			@while $sub-column-index > 0 {
+				.#{$current-breakpoint-name}-#{$sub-column-index} {
+					width: (($current-column-width * $sub-column-index) / ($current-column-width * $column-index)) * 100%;
+				}
+
+				$sub-column-index: $sub-column-index - 1;
+			}
+		}
+
+		.offset-#{$current-breakpoint-name}-#{$column-index} {
+			margin-left: $current-column-width * $column-index;
+		}
+
+		.inset-#{$current-breakpoint-name}-#{$column-index} {
+			margin-left: (-$current-column-width * $column-index) - 0.02%;
+		}
+
+		.reset-#{$current-breakpoint-name} {
+			margin-left: 0;
+		}
+
+		$column-index: $column-index - 1;
+	}
+}
+
+@mixin generate-grid-gutter($current-breakpoint-name: '') {
+	.row .row {
+		margin-left: -(grid-gutter($current-breakpoint-name));
+		margin-right: -(grid-gutter($current-breakpoint-name));;
+	}
+
+	.column {
+		padding-left: grid-gutter($current-breakpoint-name);
+		padding-right: grid-gutter($current-breakpoint-name);
+	}
+}
+
 @mixin generate-grid() {
 	// container
 	.container,
@@ -165,62 +209,33 @@
 		display: table-cell;
 	}
 
+	// gird gutter sizes by breakpoint
 	@each $current-breakpoint-list in $grid-breakpoints {
 		$current-breakpoint-name: nth($current-breakpoint-list,1);
 
-		@include media-query($media-end: $current-breakpoint-name) {
-			.row .row {
-				margin-left: -(grid-gutter($current-breakpoint-name));
-				margin-right: -(grid-gutter($current-breakpoint-name));;
+		@if(index($grid-breakpoints, $current-breakpoint-list) > 1) {
+			@include media-query($media-end: $current-breakpoint-name) {
+				@include generate-grid-gutter($current-breakpoint-name);
 			}
-
-			.column {
-				padding-left: grid-gutter($current-breakpoint-name);
-				padding-right: grid-gutter($current-breakpoint-name);
-			}
+		} @else {
+			@include generate-grid-gutter($current-breakpoint-name);
 		}
 	}
 
-	//$column-index: $grid-columns-large;
+	// grid column sizes by breakpoint
 	.row {
 		@each $current-breakpoint-list in $grid-breakpoints {
 			$current-breakpoint-name: nth($current-breakpoint-list,1);
 			$column-index: grid-columns($current-breakpoint-name);
 			$current-column-width: 100% / $column-index;
 
-			@include media-query($media-end: $current-breakpoint-name) {
-				@while $column-index > 0 {
-					$sub-column-index: $column-index;
-
-					.#{$current-breakpoint-name}-#{$column-index} {
-						width: $current-column-width * $column-index;
-
-						@while $sub-column-index > 0 {
-							.#{$current-breakpoint-name}-#{$sub-column-index} {
-								width: (($current-column-width * $sub-column-index) / ($current-column-width * $column-index)) * 100%;
-							}
-
-							$sub-column-index: $sub-column-index - 1;
-						}
-					}
-
-					.offset-#{$current-breakpoint-name}-#{$column-index} {
-						margin-left: $current-column-width * $column-index;
-					}
-
-					.inset-#{$current-breakpoint-name}-#{$column-index} {
-						margin-left: (-$current-column-width * $column-index) - 0.02%;
-					}
-
-					.reset-#{$current-breakpoint-name} {
-						margin-left: 0;
-					}
-
-					$column-index: $column-index - 1;
+			@if(index($grid-breakpoints, $current-breakpoint-list) > 1) {
+				@include media-query($media-end: $current-breakpoint-name) {
+					@include generate-grid-breakpoint($current-breakpoint-name, $column-index, $current-column-width);
 				}
+			} @else {
+				@include generate-grid-breakpoint($current-breakpoint-name, $column-index, $current-column-width);
 			}
-
-
 		}
 	}
 
@@ -286,6 +301,4 @@
 
 @if $enable-module-grid {
 	@include generate-grid();
-
-	// TODO: Class Generator Media
 }

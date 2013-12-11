@@ -26,6 +26,11 @@
 	}
 }
 
+@mixin aspect-ratio-content($current-breakpoint-name: '') {
+	left: grid-gutter($current-breakpoint-name);
+	right: grid-gutter($current-breakpoint-name);
+}
+
 
 /***********************************************************************************
 	CLASS GENERATOR: ASPECT-RATIO
@@ -50,9 +55,12 @@
 			@each $current-breakpoint-list in $grid-breakpoints {
 				$current-breakpoint-name: nth($current-breakpoint-list,1);
 
-				@include media-query($media-end: $current-breakpoint-name) {
-					left: grid-gutter($current-breakpoint-name);
-					right: grid-gutter($current-breakpoint-name);
+				@if(index($grid-breakpoints, $current-breakpoint-list) > 1) {
+					@include media-query($media-end: $current-breakpoint-name) {
+						@include aspect-ratio-content($current-breakpoint-name);
+					}
+				} @else {
+					@include aspect-ratio-content($current-breakpoint-name);
 				}
 			}
 		}

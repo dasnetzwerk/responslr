@@ -7,7 +7,6 @@ $container-horizontal-margin: 0 !default;
 
 //	name				max-width	columns		gutter
 $grid-breakpoints:
-	('xlarge'			4096px		12			16px),
 	('large'			1024px		12			16px),
 	('medium'			960px		6			12px),
 	('small'			640px		4			10px)
