@@ -1,0 +1,90 @@
+/***********************************************************************************
+	MODULE: HIDER
+***********************************************************************************/
+
+
+/***********************************************************************************
+	MIXIN: VISIBILITY
+***********************************************************************************/
+@mixin hide() {
+	display: none;
+}
+
+@mixin show($display-value: inline-block) {
+	display: $display-value;
+}
+
+@mixin visibility() {
+
+}
+
+/***********************************************************************************
+	CLASS GENERATOR: VISIBILITY
+***********************************************************************************/
+@mixin generate-hider() {
+	@each $current-breakpoint-list in $grid-breakpoints {
+		$current-breakpoint-name: nth($current-breakpoint-list,1);
+
+		@include media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
+			.hide-#{$current-breakpoint-name} {
+				@include hide();
+			}
+		}
+
+		@include media-query($media-start: $current-breakpoint-name) {
+			.hide-#{$current-breakpoint-name}-up {
+				@include hide();
+			}
+		}
+
+		@include media-query($media-end: $current-breakpoint-name) {
+			.hide-#{$current-breakpoint-name}-down {
+				@include hide();
+			}
+		}
+	}
+}
+
+@mixin generate-shower() {
+	.hide-all {
+		@include hide();
+	}
+
+	@each $current-breakpoint-list in $grid-breakpoints {
+		$current-breakpoint-name: nth($current-breakpoint-list,1);
+
+		.show-#{$current-breakpoint-name} {
+			@extend .hide-all;
+
+			@include media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
+				@include show();
+			}
+		}
+
+		.show-#{$current-breakpoint-name}-up {
+			@extend .hide-all;
+
+			@include media-query($media-start: $current-breakpoint-name) {
+				@include show();
+			}
+		}
+
+		.show-#{$current-breakpoint-name}-down {
+			@extend .hide-all;
+			@include media-query($media-end: $current-breakpoint-name) {
+				@include show();
+			}
+		}
+	}
+}
+
+
+@if $enable-module-visiblity {
+	@if $enable-module-hider {
+		@include generate-hider();
+	}
+
+	@if $enable-module-shower {
+		@include generate-shower();
+	}
+}

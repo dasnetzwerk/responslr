@@ -15,8 +15,10 @@ $enable-module-grid: true !default;
 $enable-module-grid-helper: true !default;
 
 
-// Hider
-$enable-module-hider: true !default;
+// Visiblity
+$enable-module-visiblity: true !default;
+$enable-module-shower: $enable-module-visiblity !default;
+$enable-module-hider: $enable-module-visiblity !default;
 
 
 // Transition
