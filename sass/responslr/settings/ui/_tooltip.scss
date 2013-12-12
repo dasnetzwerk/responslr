@@ -1,3 +1,8 @@
 /***********************************************************************************
 	TOOLTIP - SETTINGS
 ***********************************************************************************/
+// 	id 			offset 	max-width 	font-size	font-color 	bg-color	border-color 	border-width 	border-style 	border-radius
+$tooltips:
+	default 	0.5em 	320px		small 		black 		grey-light 	grey-dark 		1px 			solid 			2px,
+	info 		0.5em 	320px		small 		black 		blue 		blue 			1px 			solid 			2px
+!default;

@@ -12,6 +12,139 @@
 	- tip-border-color: 
 */
 
+/*
+1 	name
+2 	offset 
+3	max-width
+4 	font-size
+5	font-color
+6 	bg-color
+7	border-color
+8 	border-width
+9 	border-style 
+10	border-radius
+*/
+
+/***********************************************************************************
+	FUNCTION: TOOLTIP
+***********************************************************************************/
+@function responslr-tooltip($name: default) {
+	@each $tooltip in $tooltips {
+		@if nth($tooltip,1) == $name {
+			@return $tooltip;
+		}
+	}
+	@return null;
+}
+
+@function responslr-tooltip-offset($tooltip: responslr-tooltip()) {
+	@if $tooltip {
+		@return nth($tooltip,2);
+	}
+	@return 0;
+}
+
+@function responslr-tooltip-max-width($tooltip: responslr-tooltip()) {
+	@if $tooltip {
+		@return nth($tooltip,3);
+	}
+	@return 100%;
+}
+
+@function responslr-tooltip-font-size($tooltip: responslr-tooltip()) {
+	@if $tooltip {
+		@return nth($tooltip,4);
+	}
+	@return default;
+}
+
+@function responslr-tooltip-font-color($tooltip: responslr-tooltip()) {
+	@if $tooltip {
+		@return nth($tooltip,5);
+	}
+	@return black;
+}
+
+@function responslr-tooltip-bg-color($tooltip: responslr-tooltip()) {
+	@if $tooltip {
+		@return nth($tooltip,6);
+	}
+	@return white;
+}
+
+@function responslr-tooltip-border-color($tooltip: responslr-tooltip()) {
+	@if $tooltip {
+		@return nth($tooltip,7);
+	}
+	@return grey;
+}
+
+@function responslr-tooltip-border-width($tooltip: responslr-tooltip()) {
+	@if $tooltip {
+		@return nth($tooltip,8);
+	}
+	@return 1px;
+}
+
+@function responslr-tooltip-border-style($tooltip: responslr-tooltip()) {
+	@if $tooltip {
+		@return nth($tooltip,9);
+	}
+	@return solid;
+}
+
+@function responslr-tooltip-border-radius($tooltip: responslr-tooltip()) {
+	@if $tooltip {
+		@return nth($tooltip,10);
+	}
+	@return 2px;
+}
+
+/***********************************************************************************
+	MIXIN: TOOLTIP
+***********************************************************************************/
+@mixin responslr-tooltip(
+	$direction: top,
+	$name: default
+) {
+	$definition: responslr-tooltip($name);
+	@if $direction == top {
+		$triangle-prop-pos: top;
+	}
+
+	position: relative;
+
+	&:before {
+		content: "";
+		position: absolute;
+		display: none;
+		bottom: -0.5em;
+
+		@include triangle();
+	}
+
+	&:after {
+		position: absolute;
+		display: none;
+		bottom: -2.25em;
+		left: 0;
+		content: attr(data-tooltip);
+		background-color: #fff;
+		border: 1px solid #000;
+	}
+
+	&:hover {
+		&:before,
+		&:after {
+			display: block;
+		}
+	}
+
+}
+
+/***********************************************************************************
+	CLASS GENERATOR: TOOLTIP
+***********************************************************************************/
 .tooltip-top {
 	position: relative;
 	
@@ -104,7 +237,7 @@
 			position: absolute;
 			display: block;
 			content: "";
-			@include triangle();
+			@include triangle(top);
 		}
 	}
 
