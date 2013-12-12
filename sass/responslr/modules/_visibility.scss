@@ -10,7 +10,7 @@
 	display: none;
 }
 
-@mixin show($display-value: inline-block) {
+@mixin show($display-value: inherit) {
 	display: $display-value;
 }
 
@@ -53,31 +53,55 @@
 	@each $current-breakpoint-list in $grid-breakpoints {
 		$current-breakpoint-name: nth($current-breakpoint-list,1);
 
-		.show-#{$current-breakpoint-name} {
-			@extend .hide-all;
-
-			@include media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
-				@include show();
-			}
-		}
-
-		.show-#{$current-breakpoint-name}-up {
-			@extend .hide-all;
-
-			@include media-query($media-start: $current-breakpoint-name) {
-				@include show();
-			}
-		}
-
+		.show-#{$current-breakpoint-name},
+		.show-#{$current-breakpoint-name}-up,
 		.show-#{$current-breakpoint-name}-down {
 			@extend .hide-all;
-			@include media-query($media-end: $current-breakpoint-name) {
+		}
+
+		@include media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
+			.show-#{$current-breakpoint-name} {
+				@include show(block);
+
+				&.column {
+					@include show(inline-block);
+				}
+			}
+
+			span.show-#{$current-breakpoint-name} {
+				@include show(inline);
+			}
+		}
+
+		@include media-query($media-start: $current-breakpoint-name) {
+			.show-#{$current-breakpoint-name}-up {
+				@include show(block);
+
+				&.column {
+					@include show(inline-block);
+				}
+			}
+
+			span.show-#{$current-breakpoint-name}-up {
+				@include show(inline);
+			}
+		}
+
+		@include media-query($media-end: $current-breakpoint-name) {
+			.show-#{$current-breakpoint-name}-down {
 				@include show();
+
+				&.column {
+					@include show(inline-block);
+				}
+			}
+
+			span.show-#{$current-breakpoint-name}-down {
+				@include show(inline);
 			}
 		}
 	}
 }
-
 
 @if $enable-module-visiblity {
 	@if $enable-module-hider {

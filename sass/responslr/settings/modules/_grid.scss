@@ -12,4 +12,4 @@ $grid-breakpoints:
 	('small'			640px		4			10px)
 !default;
 
-$grid-breakpoint-default: nth(nth($grid-breakpoints,1),1);
+$grid-breakpoint-default: nth(nth($grid-breakpoints,1),1) !default;

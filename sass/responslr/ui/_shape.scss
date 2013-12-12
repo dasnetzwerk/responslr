@@ -32,7 +32,7 @@
 // $width: width of the base of the triangle
 // $height: height of the median of the triangle. Can be `half` (look nice), `auto` (same as width), or a numeric value. Note: for now `half` == `auto` when positions are combined)
 // $color: color of the shape (using border-color);
-@mixin triangle($direction: top, $width: 1em, $height: half, $color: #000) {
+@mixin triangle($direction: top, $width: 1em, $height: half, $color: black) {
 	@if ($direction == top or $direction == right or $direction == bottom or $direction == left) {
 		@if ($height == half) {
 			$height: $width/2;
