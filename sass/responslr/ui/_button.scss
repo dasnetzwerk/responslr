@@ -52,9 +52,9 @@
 	display: inline-block;
 	cursor: pointer;
 
-	@if($button-transitions != '') {
-		@include transition-default($button-transitions);
-	}
+	/*@if($button-transition-property != '') {
+		@include transition($button-transition-property, $button-transition-delay, $button-transition-timing-function, $button-transition-delay);
+	}*/
 }
 
 @mixin responslr-button-inactive() {
