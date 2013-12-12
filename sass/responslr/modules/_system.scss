@@ -1,0 +1,18 @@
+/***********************************************************************************
+	SYSTEM: LIST GET
+***********************************************************************************/
+@function list-get($list, $index) {
+	@if(length(nth($list,1)) == 1) {
+		@if($index > 1) {
+			@return null;
+		} @else {
+			@return $list;
+		}
+	} @else {
+		@if(length($list) >= $index) {
+			@return nth($list,$index);
+		} @else {
+			@return null;
+		}
+	}
+}
