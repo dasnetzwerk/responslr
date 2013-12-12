@@ -13,10 +13,12 @@ $button-styles:
 	padding				0			20px		20px			medium				10px
 !default;
 
+$button-styles-default: nth(nth($button-styles,1),1) !default;
+
 // Inactive state
-$button-inactive-background-color: $grey-light;
-$button-inactive-border-color: $grey-light;
-$button-inactive-text-color: $grey-dark;
+$button-inactive-background-color: $grey-light !default;
+$button-inactive-border-color: $grey-light !default;
+$button-inactive-text-color: $grey-dark !default;
 
 // Default transitions
-$button-transitions: background-color,border-color,color;
+$button-transitions: background-color,border-color,color !default;

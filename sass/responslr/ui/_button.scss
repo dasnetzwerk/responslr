@@ -2,94 +2,121 @@
 	UI - BUTTON
 ***********************************************************************************/
 
+/***********************************************************************************
+	FUNCTION: BUTTON
+***********************************************************************************/
+@function responslr-button($name: $button-styles-default) {
+	@each $button in $button-styles {
+		@if nth($button,1) == $name {
+			@return $button;
+		}
+	}
+	@return null;
+}
+
+@function responslr-button-height($name: $button-styles-default) {
+	$return-height: nth(responslr-button($name),2);
+
+	@return $return-height;
+}
+
+@function responslr-button-padding-x($name: $button-styles-default) {
+	$return-padding-x: nth(responslr-button($name),3);
+
+	@return $return-padding-x;
+}
+
+@function responslr-button-padding-y($name: $button-styles-default) {
+	$return-padding-y: nth(responslr-button($name),4);
+
+	@return $return-padding-y;
+}
+
+@function responslr-button-font-size($name: $button-styles-default) {
+	$return-font-size: nth(responslr-button($name),5);
+
+	@return $return-font-size;
+}
+
+@function responslr-button-border-radius($name: $button-styles-default) {
+	$return-border-radius: nth(responslr-button($name),6);
+
+	@return $return-border-radius;
+}
+
 
 /***********************************************************************************
 	MIXIN: BUTTON
 ***********************************************************************************/
-@mixin button-default() {
+@mixin responslr-button-default() {
 	display: inline-block;
 	cursor: pointer;
 
-	@include transition-default($button-transitions);
-}
-
-@mixin button($type: nth(nth($button-styles, 1),1)) {
-	$button-style: nth($button-styles, 1);
-
-	@each $i in $button-styles {
-		@if nth($i,1) == $type {
-			$button-style: $i;
-		}
-	}
-
-	@include button-default();
-	@include typo($font-size: nth($button-style,5));
-
-	@if(nth($button-style,2) == 0) {
-		padding: nth($button-style,4) nth($button-style,3);
-		// TODO: Problem ohne diese Zeile in input-buttons = keine mehrzeiligkeit (keine Ahnung ob gute lösung)
-		white-space: pre-wrap;
-	} @else {
-		height: nth($button-style,2);
-		padding: 0 nth($button-style,3);
-		line-height: nth($button-style,2);
-		white-space: nowrap;
-	}
-
-	@if(nth($button-style,6) != 0) {
-		@include border-radius(nth($button-style,6));
+	@if($button-transitions != '') {
+		@include transition-default($button-transitions);
 	}
 }
 
-@mixin button-inactive() {
+@mixin responslr-button-inactive() {
 	background-color: $button-inactive-background-color;
 	border-color: $button-inactive-text-color;
 	color: $button-inactive-text-color;
 	cursor: default;
 }
 
+@mixin responslr-button($name: $button-styles-default, $insert-default-styles:true) {
+	@if $insert-default-styles {
+		@include responslr-button-default();
+	}
+
+	@if(responslr-button-height($name) == 0) {
+		padding: responslr-button-padding-y($name) responslr-button-padding-x($name);
+		white-space: pre-wrap;
+
+		@include typo($font-size: responslr-button-font-size($name), $line-height: responslr-button-font-size($name));
+	} @else {
+		height: responslr-button-height($name);
+		padding: 0 responslr-button-padding-x($name);
+		line-height: responslr-button-height($name);
+		white-space: nowrap;
+
+		@include typo($font-size: responslr-button-font-size($name), $line-height: responslr-button-height($name));
+	}
+
+	@if(responslr-button-border-radius($name) != 0) {
+		@include border-radius(responslr-button-border-radius($name));
+	}
+}
+
 
 /***********************************************************************************
 	CLASS GENERATOR: BUTTON
 ***********************************************************************************/
-@mixin generate-button() {
-	.button {
-		@include button-default();
+@mixin responslr-generate-button() {
+	%button {
+		@include responslr-button-default();
 	}
 
-	.button-inactive {
-		@include button-inactive();
+	@each $button in $button-styles {
+		$button-name: nth($button,1);
+
+		.button-#{$button-name} {
+			@extend %button;
+
+			@include responslr-button($name: $button-name, $insert-default-styles: false);
+		}
+
+		.button-#{$button-name}-inactive {
+			@extend .button-#{$button-name};
+			@extend %button-inactive;
+		}
 	}
 
-	@each $i in $button-styles {
-		.button-#{nth($i,1)} {
-			@extend .button;
-
-			@include button(nth($i,1));
-		}
-
-		.button-#{nth($i,1)}-inactive,
-		.button-#{nth($i,1)}[disabled] {
-			@extend .button-#{nth($i,1)};
-			@extend .button-inactive;
-		}
+	%button-inactive {
+		@include responslr-button-inactive();
 	}
 }
 
 @if $enable-ui-button {
-	@include generate-button();
-}
-
-// TODO: Klassenaufbau eher .button-normal / .button-normal-inactive oder .button.normal / .button.normal.inactive
-
-// TODO: Hover/focus wie?
-
-@include media-query(small) {
-	.testbutton {
-		@include button(tiny);
-	}
-
-	.testbutton.inactive {
-		@include button-inactive();
-	}
+	@include responslr-generate-button();
 }
