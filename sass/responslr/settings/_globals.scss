@@ -1,6 +1,27 @@
 /***********************************************************************************
-	GLOBAL VARIABLES
+	GLOBALS
 ***********************************************************************************/
+// MIXINS
+
+
+// FUNCTIONS
+@function responslr-get-row($list, $index) {
+	@if(length(nth($list,1)) == 1) {
+		@if($index > 1) {
+			@return null;
+		} @else {
+			@return $list;
+		}
+	} @else {
+		@if(length($list) >= $index) {
+			@return nth($list,$index);
+		} @else {
+			@return null;
+		}
+	}
+}
+
+
 // MODULES
 // Reset
 $enable-module-reset: true !default;
