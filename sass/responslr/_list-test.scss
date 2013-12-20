@@ -1,0 +1,102 @@
+/*
+	v1
+
+	Alles läuft über eine config-Funktion und jede ehemalige Settings-Variable ist ein eigener Parameter.
+	Listen werden über Funktionen hinzugefügt, welche wiederdum Argumente beinhalten, welche die ehemaligen Spalten der alten Listen darstellen.
+*/
+@include responslr-typo-config(
+	$config-variable1: blablabla,
+	$config-variable2: 123px,
+
+	$font-families:
+		add-font-family(
+			$name: LatoLight,
+			$custom: true,
+			$file: lato-light,
+			$weight: 300,
+			$style: normal
+		),
+		add-font-family(
+			$name: LatoRegular,
+			$custom: true,
+			$file: lato-regular,
+			$weight: 400,
+			$style: normal
+		),
+
+	$font-sizes:
+		add-font-size(
+			$name: default,
+			$size: 24px,
+			$line-height: 34px
+		),
+		add-font-size(
+			$name: tiny,
+			$size: 14px,
+			$line-height: 22px
+		),
+		add-font-size(
+			$name: small,
+			$size: 18px,
+			$line-height: 26px
+		)
+);
+
+/*
+	v2
+
+	Die Settings-Variablen bleiben weiterhin Settings-Variablen.
+	Listen werden über Funktionen hinzugefügt, welche wiederdum Argumente beinhalten, welche die ehemaligen Spalten der alten Listen darstellen.
+	Jeder Funktionsaufruf fügt eine neue Zeile in eine interne Liste hinzu, welcher der User nie angeben muss. Das passiert alles im Hintergrund.
+
+	Das Problem bei dieser Variante besteht darin, dass man nicht mehr Standard-Einträgen arbeiten kann, da ein weiterer Aufruf von "add-xxx" nur eine
+	neue Row an die vorhandenen Standards anhängen würde. Entweder man cleared die Liste irgendwie vorher oder man verzichtet komplett auf Standards.
+
+*/
+
+$config-variable1: blablabla;
+$config-variable2: 123px;
+
+@include add-font-family(
+	$name: LatoLight,
+	$custom: true,
+	$file: lato-light,
+	$weight: 300,
+	$style: normal
+);
+
+@include add-font-family(
+	$name: LatoRegular,
+	$custom: true,
+	$file: lato-regular,
+	$weight: 400,
+	$style: normal
+);
+
+@include add-font-size(
+	$name: default,
+	$size: 24px,
+	$line-height: 34px
+);
+
+@include add-font-size(
+	$name: tiny,
+	$size: 14px,
+	$line-height: 22px
+);
+
+@include add-font-size(
+	$name: small,
+	$size: 18px,
+	$line-height: 26px
+);
+
+/*
+	v3
+
+	Wir warten den Release vin SASS 3.3 ab, da werden Maps eingeführt. Vielleicht kann man dann damit was tolles machen.
+	So würden die Maps aussehen:
+
+	$map: (key1: value1, key2: value2, key3: value3);
+
+*/
