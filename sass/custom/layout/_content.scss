@@ -42,11 +42,9 @@
 	}
 
 	// FONT TESTING
-	//
-	//
 	.font-test-1 {
 		display: inline-block;
-		@include typo($font: LatoLigh, $font-size: 27px, $line-height: 100px);
+		@include typo($font: LatoLight, $font-size: 27px, $line-height: 100px);
 	}
 
 	.font-test-2 {
