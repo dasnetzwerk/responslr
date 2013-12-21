@@ -4,24 +4,24 @@
 /*
 	TODO:
 	- tip-position: top, right, bottom, left
-	- tip-color: 
-	- tip-bg-color: 
-	- tip-border-radius: 
-	- tip-border-width: 
-	- tip-border-style: 
-	- tip-border-color: 
+	- tip-color:
+	- tip-bg-color:
+	- tip-border-radius:
+	- tip-border-width:
+	- tip-border-style:
+	- tip-border-color:
 */
 
 /*
 1 	name
-2 	offset 
+2 	offset
 3	max-width
 4 	font-size
 5	font-color
 6 	bg-color
 7	border-color
 8 	border-width
-9 	border-style 
+9 	border-style
 10	border-radius
 */
 
@@ -60,21 +60,21 @@
 
 @function responslr-tooltip-font-color($tooltip: responslr-tooltip()) {
 	@if $tooltip {
-		@return nth($tooltip,5);
+		@return color(nth($tooltip,5));
 	}
 	@return black;
 }
 
 @function responslr-tooltip-bg-color($tooltip: responslr-tooltip()) {
 	@if $tooltip {
-		@return nth($tooltip,6);
+		@return color(nth($tooltip,6));
 	}
 	@return white;
 }
 
 @function responslr-tooltip-border-color($tooltip: responslr-tooltip()) {
 	@if $tooltip {
-		@return nth($tooltip,7);
+		@return color(nth($tooltip,7));
 	}
 	@return grey;
 }
@@ -103,40 +103,160 @@
 /***********************************************************************************
 	MIXIN: TOOLTIP
 ***********************************************************************************/
-@mixin responslr-tooltip(
-	$direction: top,
-	$name: default
-) {
+@mixin responslr-tooltip($name: default) {
 	$definition: responslr-tooltip($name);
-	@if $direction == top {
-		$triangle-prop-pos: top;
-	}
 
-	position: relative;
+	%tooltip {
+		position: relative;
+		display: inline-block;
 
-	&:before {
-		content: "";
-		position: absolute;
-		display: none;
-		bottom: -0.5em;
-
-		@include triangle();
-	}
-
-	&:after {
-		position: absolute;
-		display: none;
-		bottom: -2.25em;
-		left: 0;
-		content: attr(data-tooltip);
-		background-color: #fff;
-		border: 1px solid #000;
-	}
-
-	&:hover {
 		&:before,
-		&:after {
-			display: block;
+		&[data-tooltip]:after {
+			content: "";
+			position: absolute;
+			display: none;
+		}
+
+		&[data-tooltip]:after,
+		> .tooltip-content {
+			z-index: 50;
+			position: absolute;
+			display: none;
+			width: responslr-tooltip-max-width($definition);
+			@include typo($font-size: responslr-tooltip-font-size($definition));
+			color: responslr-tooltip-font-color($definition);
+			background-color: responslr-tooltip-bg-color($definition);
+			border: responslr-tooltip-border-width($definition) responslr-tooltip-border-style($definition) responslr-tooltip-border-color($definition);
+		}
+
+		&[data-tooltip]:after {
+			content: attr(data-tooltip);
+			white-space: pre-wrap;
+		}
+
+		&:hover,
+		&:active {
+			&:before,
+			&[data-tooltip]:after,
+			> .tooltip-content {
+				display: block;
+			}
+		}
+	}
+
+	.tooltip-top {
+		@extend %tooltip;
+
+		&:before {
+			bottom: responslr-tooltip-offset($definition);
+			@include triangle($direction: bottom, $color: responslr-tooltip-border-color($definition));
+		}
+
+		&[data-tooltip]:after,
+		> .tooltip-content {
+			bottom: (responslr-tooltip-offset($definition)+10px);
+			left: 0;
+		}
+	}
+
+	.tooltip-top-right {
+		@extend .tooltip-top;
+
+		&:before {
+			right: 0;
+		}
+
+		&[data-tooltip]:after,
+		> .tooltip-content {
+			left: auto;
+			right: 0;
+		}
+	}
+
+	.tooltip-right {
+		@extend %tooltip;
+
+		&:before {
+			right: -12px;
+			@include triangle($direction: left, $color: responslr-tooltip-border-color($definition));
+		}
+
+		&[data-tooltip]:after,
+		> .tooltip-content {
+			right: -(responslr-tooltip-max-width($definition)+12px);
+			top: 0;
+		}
+	}
+
+	.tooltip-right-bottom {
+		@extend .tooltip-right;
+
+		&:before {
+			bottom: 0;
+		}
+
+		&[data-tooltip]:after,
+		> .tooltip-content {
+			top: auto;
+			bottom: 0;
+		}
+	}
+
+	.tooltip-bottom {
+		@extend %tooltip;
+
+		&:before {
+			top: responslr-tooltip-offset($definition);
+			@include triangle($direction: top, $color: responslr-tooltip-border-color($definition));
+		}
+
+		&[data-tooltip]:after,
+		> .tooltip-content {
+			top: (responslr-tooltip-offset($definition)+10px);
+			left: 0;
+		}
+	}
+
+	.tooltip-bottom-right {
+		@extend .tooltip-bottom;
+
+		&:before {
+			right: 0;
+		}
+
+		&[data-tooltip]:after,
+		> .tooltip-content {
+			left: auto;
+			right: 0;
+		}
+	}
+
+	.tooltip-left {
+		@extend %tooltip;
+
+		&:before {
+			left: -12px;
+			@include triangle($direction: right, $color: responslr-tooltip-border-color($definition));
+		}
+
+		&[data-tooltip]:after,
+		> .tooltip-content {
+			left: -(responslr-tooltip-max-width($definition)+12px);
+			top: 0;
+		}
+	}
+
+	.tooltip-left-bottom {
+		@extend .tooltip-left;
+
+		&:before {
+			bottom: 0;
+		}
+
+		&[data-tooltip]:after,
+		> .tooltip-content {
+			top: auto;
+			bottom: 0;
 		}
 	}
 
@@ -145,129 +265,130 @@
 /***********************************************************************************
 	CLASS GENERATOR: TOOLTIP
 ***********************************************************************************/
-.tooltip-top {
-	position: relative;
-	
-	&:before {
-		content: "";
-		position: absolute;
-		display: none;
-		top: -0.5em;
+@include responslr-tooltip(default);
+// .tooltip-top {
+// 	position: relative;
 
-		@include triangle(bottom);
-	}
+// 	&:before {
+// 		content: "";
+// 		position: absolute;
+// 		display: none;
+// 		top: -0.5em;
 
-	&:after {
-		content: attr(data-tooltip);
-		position: absolute;
-		display: none;
-		top: -2.25em;
-		left: 0;
-		//width: auto;
-		//max-width: 300px;
-		background-color: #fff;
-		border: 1px solid #000;
-		//white-space: pre-wrap;
-	}
+// 		@include triangle(bottom);
+// 	}
 
-	&:hover {
-		&:before,
-		&:after {
-			display: block;
-		}
-	}
-}
+// 	&:after {
+// 		content: attr(data-tooltip);
+// 		position: absolute;
+// 		display: none;
+// 		top: -2.25em;
+// 		left: 0;
+// 		//width: auto;
+// 		//max-width: 300px;
+// 		background-color: #fff;
+// 		border: 1px solid #000;
+// 		//white-space: pre-wrap;
+// 	}
 
-.tooltip-bottom {
-	position: relative;
-	
-	&:before {
-		content: "";
-		position: absolute;
-		display: none;
-		bottom: -0.5em;
+// 	&:hover {
+// 		&:before,
+// 		&:after {
+// 			display: block;
+// 		}
+// 	}
+// }
 
-		@include triangle();
-	}
+// .tooltip-bottom {
+// 	position: relative;
 
-	&:after {
-		position: absolute;
-		display: none;
-		bottom: -2.25em;
-		left: 0;
-		content: attr(data-tooltip);
-		background-color: #fff;
-		border: 1px solid #000;
-	}
+// 	&:before {
+// 		content: "";
+// 		position: absolute;
+// 		display: none;
+// 		bottom: -0.5em;
 
-	&:hover {
-		&:before,
-		&:after {
-			display: block;
-		}
-	}
-}
+// 		@include triangle();
+// 	}
 
-.tooltip {
-	position: relative;
-	display: inline-block;
+// 	&:after {
+// 		position: absolute;
+// 		display: none;
+// 		bottom: -2.25em;
+// 		left: 0;
+// 		content: attr(data-tooltip);
+// 		background-color: #fff;
+// 		border: 1px solid #000;
+// 	}
 
-	.tooltip-icon {
-		position: relative;
-		display: inline-block;
-		cursor: help;
-	}
+// 	&:hover {
+// 		&:before,
+// 		&:after {
+// 			display: block;
+// 		}
+// 	}
+// }
 
-	.tooltip-icon + .tooltip-content {
-		position: absolute;
-		display: none;
-	}
+// .tooltip {
+// 	position: relative;
+// 	display: inline-block;
 
-	.tooltip-icon:hover,
-	.tooltip-icon:active {
-		
-		& + .tooltip-content {
-			display: block;
-			top: 1.9em;
-			left: 0;
-			width: 300px;
-		}
+// 	.tooltip-icon {
+// 		position: relative;
+// 		display: inline-block;
+// 		cursor: help;
+// 	}
 
-		&:after {
-			position: absolute;
-			display: block;
-			content: "";
-			@include triangle(top);
-		}
-	}
+// 	.tooltip-icon + .tooltip-content {
+// 		position: absolute;
+// 		display: none;
+// 	}
 
-}
+// 	.tooltip-icon:hover,
+// 	.tooltip-icon:active {
 
-.tooltip-text {
-	position: relative;
-	display: inline-block;
-	cursor: help;
-}
+// 		& + .tooltip-content {
+// 			display: block;
+// 			top: 1.9em;
+// 			left: 0;
+// 			width: 300px;
+// 		}
 
-.tooltip-text > .tooltip-content {
-	position: absolute;
-	display: none;
-}
+// 		&:after {
+// 			position: absolute;
+// 			display: block;
+// 			content: "";
+// 			@include triangle(top);
+// 		}
+// 	}
 
-.tooltip-text:hover,
-.tooltip-text:active {
-	
-	& > .tooltip-content {
-		display: block;
-		top: 1.9em;
-		left: 0;
-		width: 300px;
-	}
+// }
 
-	&:after {
-		position: absolute;
-		display: block;
-		content: "";
-		@include triangle();
-	}
-}
+// .tooltip-text {
+// 	position: relative;
+// 	display: inline-block;
+// 	cursor: help;
+// }
+
+// .tooltip-text > .tooltip-content {
+// 	position: absolute;
+// 	display: none;
+// }
+
+// .tooltip-text:hover,
+// .tooltip-text:active {
+
+// 	& > .tooltip-content {
+// 		display: block;
+// 		top: 1.9em;
+// 		left: 0;
+// 		width: 300px;
+// 	}
+
+// 	&:after {
+// 		position: absolute;
+// 		display: block;
+// 		content: "";
+// 		@include triangle();
+// 	}
+// }
