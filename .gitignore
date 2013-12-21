@@ -2,5 +2,6 @@
 
 *.scssc
 *.css
+css/*.css
 
 WEB-INF/*
