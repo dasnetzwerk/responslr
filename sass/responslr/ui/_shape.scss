@@ -251,7 +251,6 @@
 		$write-pseudo-element: $responslr-arrow-write-pseudo-element
 	) {
 
-
 	position: $position;
 
 	@include write-pseudo-element($write: $write-pseudo-element) {
