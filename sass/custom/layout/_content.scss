@@ -1,12 +1,14 @@
 //#content {
 	article {
-		@include spacer-bottom();
-		//margin-bottom: spacer-size();
-		//margin-bottom: $spacing-default;
+		@include spacing-bottom();
+	}
+
+	h3 {
+		@include spacing-bottom(small);
 	}
 
 	p {
-		margin-bottom: spacer-size(small);
+		margin-bottom: spacing-size(small);
 	}
 
 	.test-min-width:before {
@@ -31,7 +33,7 @@
 
 	.box {
 		padding: grid-gutter-half();
-		@include typo($font: LatoRegular);
+		// @include typo($font: LatoRegular);
 	}
 
 	.border {
@@ -58,11 +60,11 @@
 	}
 
 	// SPACING TESTING
-	.spacer-top-test {
-		@include spacer-bottom(none);
+	.spacing-top-test {
+		@include spacing-bottom(none);
 	}
-	
-	.spacer-bottom-test {
-		@include spacer-top(none);
+
+	.spacing-bottom-test {
+		@include spacing-top(none);
 	}
 //}

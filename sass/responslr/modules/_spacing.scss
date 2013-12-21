@@ -1,10 +1,10 @@
 /***********************************************************************************
 	FUNCTION: SPACING
 ***********************************************************************************/
-@function spacer-size($spacer-name: default) {
-	@each $spacer-size-list in $spacer-sizes {
-		@if nth($spacer-size-list,1) == $spacer-name {
-			@return nth($spacer-size-list,2);
+@function spacing-size($spacing-name: default) {
+	@each $spacing-size-list in $spacing-sizes {
+		@if nth($spacing-size-list,1) == $spacing-name {
+			@return nth($spacing-size-list,2);
 		}
 	}
 	@return 0;
@@ -13,59 +13,59 @@
 /***********************************************************************************
 	MIXIN: SPACING
 ***********************************************************************************/
-@mixin spacer(
-	$spacer-size-top: null,
-	$spacer-size-right: null,
-	$spacer-size-bottom: null,
-	$spacer-size-left: null,
+@mixin spacing(
+	$spacing-size-top: null,
+	$spacing-size-right: null,
+	$spacing-size-bottom: null,
+	$spacing-size-left: null,
 	$property: margin
 ) {
-	@if($spacer-size-top) {
-		#{$property}-top: $spacer-size-top;
+	@if($spacing-size-top) {
+		#{$property}-top: $spacing-size-top;
 	}
-	@if($spacer-size-right) {
-		#{$property}-right: $spacer-size-right;
+	@if($spacing-size-right) {
+		#{$property}-right: $spacing-size-right;
 	}
-	@if($spacer-size-bottom) {
-		#{$property}-bottom: $spacer-size-bottom;
+	@if($spacing-size-bottom) {
+		#{$property}-bottom: $spacing-size-bottom;
 	}
-	@if($spacer-size-left) {
-		#{$property}-left: $spacer-size-left;
+	@if($spacing-size-left) {
+		#{$property}-left: $spacing-size-left;
 	}
 }
 
 // Apply leading whitespace as margin.
-@mixin spacer-top($spacer-size: default) {
-	@if type-of($spacer-size) == string {
-		$spacer-size: spacer-size($spacer-size);
+@mixin spacing-top($spacing-size: default) {
+	@if type-of($spacing-size) == string {
+		$spacing-size: spacing-size($spacing-size);
 	}
-	@include spacer($spacer-size-top: $spacer-size);
+	@include spacing($spacing-size-top: $spacing-size);
 }
 
 // Apply trailing whitespace as margin.
-@mixin spacer-bottom($spacer-size: default) {
-	@if type-of($spacer-size) == string {
-		$spacer-size: spacer-size($spacer-size);
+@mixin spacing-bottom($spacing-size: default) {
+	@if type-of($spacing-size) == string {
+		$spacing-size: spacing-size($spacing-size);
 	}
-	@include spacer($spacer-size-bottom: $spacer-size);
+	@include spacing($spacing-size-bottom: $spacing-size);
 }
 
 /***********************************************************************************
 	CLASS GENERATOR: SPACING
-	generates .spacer-top-[spacer-name] and .spacer-bottom-[spacer-name] with defined spacer-sizes
+	generates .spacing-top-[spacing-name] and .spacing-bottom-[spacing-name] with defined spacing-sizes
 ***********************************************************************************/
-@mixin generate-spacer() {
-	@each $spacer-size-list in $spacer-sizes {
-		.spacer-top-#{nth($spacer-size-list,1)} {
-			@include spacer-top(nth($spacer-size-list,2));
+@mixin generate-spacing() {
+	@each $spacing-size-list in $spacing-sizes {
+		.spacing-top-#{nth($spacing-size-list,1)} {
+			@include spacing-top(nth($spacing-size-list,2));
 		}
 
-		.spacer-bottom-#{nth($spacer-size-list,1)} {
-			@include spacer-bottom(nth($spacer-size-list,2));
+		.spacing-bottom-#{nth($spacing-size-list,1)} {
+			@include spacing-bottom(nth($spacing-size-list,2));
 		}
 	}
 }
 
 @if $enable-module-spacing {
-	@include generate-spacer();
+	@include generate-spacing();
 }
