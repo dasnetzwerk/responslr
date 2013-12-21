@@ -5,7 +5,8 @@
 //	(first is default)
 $transition-types:
 	default					'color,background-color,border-color'		.25s			ease				0,
-	box						'height,width'								.5s				linear
+	box						'height,width'								.5s				linear				,
+	arrow-default			'border-color'								.25s			ease
 !default;
 
 $transition-types-default: nth(nth($transition-types,1),1) !default;
