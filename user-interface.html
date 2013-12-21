@@ -47,14 +47,17 @@
 		<section id="content">
 			<div class="container row">
 
-				<div class="column large-12 medium-6 small-4">
+				<article class="column large-12 medium-6 small-4">
 					<h1>The UI</h1>
 
 					<p class="intro">
 						Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear.
 					</p>
 
-					<!-- Colors -->
+				</article>
+
+				<!-- Colors -->
+				<article class="column large-12 medium-6 small-4">
 					<h2>Colors</h2>
 					<p>Alle Farben die du in der Liste "colors" definierst stehen automatisch als Helfer zur verfügung.</p>
 
@@ -196,8 +199,10 @@
 							<p class="box border border-top-green border-right-blue border-bottom-orange border-left-red">top green, right grey-blue, bottom orange, left-red</p>
 						</div>
 					</div>
+				</article>
 
-					<!-- Buttons -->
+				<!-- Buttons -->
+				<article class="column large-12 medium-6 small-4">
 					<h2>Buttons</h2>
 					<p>Diverse Buttons</p>
 
@@ -271,8 +276,10 @@
 							<input type="button" class="button-padding" disabled="disabled" value="Button padding inactive" />
 						</div>
 					</div>
+				</article>
 
-					<!-- Tooltips -->
+				<!-- Tooltips -->
+				<article class="column large-12 medium-6 small-4">
 					<h2>Tooltips</h2>
 					<p>Diverse Tooltips</p>
 
@@ -326,8 +333,123 @@
 							<input type="button" class="button-normal bg-green text-black" value="Button normal" />
 						</div>
 					</div>
+				</article>
 
-				</div>
+				<!-- Circles -->
+				<article class="column large-12 medium-6 small-4">
+					<h2>Circles</h2>
+					<p>Diverse Circles</p>
+
+					<div class="row h-center">
+						<div class="column large-4 medium-4 small-4 spacing-bottom-default">
+							<h3>Circle Default</h3>
+
+							<div class="circle-default bg-green text-white">
+								50
+							</div>
+						</div>
+
+						<div class="column large-4 medium-4 small-4 spacing-bottom-default">
+							<h3>Circle Small</h3>
+
+							<div class="circle-small bg-red font-size-tiny text-white">
+								30
+							</div>
+						</div>
+
+						<div class="column large-4 medium-4 small-4 spacing-bottom-default">
+							<h3>Circle Large</h3>
+
+							<div class="circle-large bg-blue text-white font-family-LatoRegular font-size-medium">
+								100
+							</div>
+						</div>
+
+						<div class="column large-4 medium-4 small-4 spacing-bottom-default">
+							<h3>Circle Oval</h3>
+
+							<div class="circle-oval bg-orange text-white">
+								100x80
+							</div>
+						</div>
+					</div>
+
+					<h2>Circles mit Aspect-Ratio Modul</h2>
+					<p>Diverse Circles</p>
+
+					<div class="row h-center">
+						<div class="column large-4 medium-4 small-4 aspect-ratio-1-1">
+							<div class="aspect-ratio-content circle bg-purple text-white"></div>
+						</div>
+					</div>
+				</article>
+
+				<article class="column large-12 medium-6 small-4">
+					<h2>Arrows</h2>
+					<p>Diverse Pfeile (defaults)</p>
+
+					<div class="row">
+						<div class="column large-3 medium-3 small-4">
+							<p class="arrow-up bg-grey-light font-size-tiny box text-grey-dark">.arrow-up</p>
+						</div>
+
+						<div class="column large-3 medium-3 small-4">
+							<p class="arrow-right bg-grey-light font-size-tiny box text-grey-dark">.arrow-right</p>
+						</div>
+
+						<div class="column large-3 medium-3 small-4">
+							<p class="arrow-down bg-grey-light font-size-tiny box text-grey-dark">.arrow-down</p>
+						</div>
+
+						<div class="column large-3 medium-3 small-4">
+							<p class="arrow-left bg-grey-light font-size-tiny box text-grey-dark">.arrow-left</p>
+						</div>
+					</div>
+
+					<h2>Arrows Custom</h2>
+					<p>Pfeile welche über eine Globale Variable definiert werden können.</p>
+
+					<div class="row">
+						<div class="column large-3 medium-3 small-4">
+							<p class="arrow-right-small bg-grey-light font-size-tiny box text-grey-dark">.arrow-right-small</p>
+						</div>
+
+						<div class="column large-3 medium-3 small-4">
+							<p class="arrow-right-default bg-grey-light font-size-tiny box text-grey-dark">.arrow-right-default</p>
+						</div>
+
+						<div class="column large-3 medium-3 small-4">
+							<p class="arrow-right-medium bg-grey-light font-size-tiny box text-grey-dark">.arrow-right-medium</p>
+						</div>
+
+						<div class="column large-3 medium-3 small-4">
+							<p class="arrow-right-large bg-grey-light font-size-tiny box text-grey-dark">.arrow-right-large</p>
+						</div>
+					</div>
+
+					<h2>Arrows mit anderen UI-Elemente verbinden</h2>
+					<p>Geht gut!</p>
+
+					<div class="row">
+						<!-- arrow circle -->
+						<div class="column large-3 medium-3 small-4 h-center">
+							<h3>Mit Circle</h3>
+							<div class="arrow-right circle-default bg-blue"></div>
+						</div>
+
+						<div class="column large-3 medium-3 small-4">
+							<a class="arrow-right-default button">In einem Button</a>
+						</div>
+
+						<div class="column large-3 medium-3 small-4">
+							<p class="arrow-right-medium bg-grey-light font-size-tiny text-grey-dark">.arrow-right-medium</p>
+						</div>
+
+						<div class="column large-3 medium-3 small-4">
+							<p class="arrow-right-large bg-grey-light font-size-tiny text-grey-dark">.arrow-right-large</p>
+						</div>
+					</div>
+				</article>
 			</div>
 		</section>
 
