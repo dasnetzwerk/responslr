@@ -16,6 +16,44 @@
 
 
 // Arrow
+@function arrow-settings($name: $responslr-arrow-name, $index: 0) {
+	$return-arrow-list: $responslr-arrow-settings;
+
+	@if type-of($index) == number and $index > 0 and $index <= length($shape-arrows) {
+		$return-arrow-list: nth($shape-arrows, $index);
+	} @else {
+		@each $arrow-list in $shape-arrows {
+			@if nth($arrow-list, 1) == $name {
+				$return-arrow-list: $arrow-list;
+			}
+		}
+	}
+
+	@return $return-arrow-list;
+}
+
+// Arrow Name [1]
+@function arrow-name($arrow-settings: arrow-settings()) {
+	$return-arrow-name: $responslr-arrow-name;
+
+	@if type-of(nth($arrow-settings, 1)) == string {
+		$return-arrow-name: nth($arrow-settings, 1);
+	}
+
+	@return $return-arrow-name;
+}
+
+// Arrow Direction [2]
+@function arrow-direction($name: $responslr-arrow-name) {
+	$return-arrow-direction: $responslr-arrow-direction;
+
+	@if type-of(nth($arrow-settings, 2)) == string {
+		$return-arrow-direction: nth($arrow-settings, 2);
+	}
+
+	@return $return-arrow-direction;
+}
+
 @function arrow-center-margin($size: $responslr-arrow-size, $position-is-alignment: true) {
 	$return-margin: $size;
 
@@ -180,9 +218,16 @@
 @mixin arrow-transition($transition-properties: $responslr-arrow-transition-properties,	$transition-values: $responslr-arrow-transition-values, $pseudo-element: $responslr-arrow-pseudo-element) {
 	$transition-properties: unquote($transition-properties);
 	$transition-values: unquote($transition-values);
+	@debug $transition-properties;
+	@debug $transition-values;
 
 	@if $transition-properties != none and length($transition-properties) > 0 and length($transition-values) > 0 and length($transition-properties) == length($transition-values) {
-		&:hover:#{pseudo-element} {
+		&:#{$pseudo-element} {
+			@include responslr-transition();
+			@include transition-property($transition-properties);
+		}
+
+		&:hover:#{$pseudo-element} {
 			@each $transition-property in $transition-properties {
 				#{$transition-property}: nth($transition-values, index($transition-properties, $transition-property));
 			}
@@ -291,7 +336,6 @@
 	$transition-values: unquote($transition-values);
 
 	@if $transition-properties != none and length($transition-properties) > 0 and length($transition-values) > 0 and length($transition-properties) == length($transition-values) {
-		@include responslr-transition($transition-properties);
 		@include arrow-transition($transition-properties: $transition-properties, $transition-values: $transition-values, $pseudo-element: $pseudo-element);
 	}
 }
@@ -405,7 +449,7 @@
 		}
 
 		@each $arrow-list in $shape-arrows {
-			$current-arrow-name: nth($arrow-list, 1);
+			$current-arrow-name: arrow-name($arrow-list);
 
 			.arrow-#{$current-arrow-name} {
 				@include arrow($name: $current-arrow-name);
