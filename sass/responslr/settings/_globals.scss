@@ -2,7 +2,15 @@
 	GLOBALS
 ***********************************************************************************/
 // MIXINS
-
+@mixin write-pseudo-element($write: true, $pseudo-element: before) {
+	@if $write {
+		&:#{$pseudo-element} {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
 
 // FUNCTIONS
 @function responslr-get-row($list, $index) {
@@ -89,9 +97,10 @@ $enable-module-color-border-directions-focus: false !default;
 // UI
 // Shape
 $enable-ui-shape: true !default;
-$enable-ui-shape-circle: true !default;
-$enable-ui-shape-square: true !default;
-$enable-ui-shape-triangle: true !default;
+$enable-ui-shape-square: $enable-ui-shape !default;
+$enable-ui-shape-circle: $enable-ui-shape !default;
+$enable-ui-shape-triangle: $enable-ui-shape !default;
+$enable-ui-shape-arrow: $enable-ui-shape !default;
 
 
 // Tooltip
