@@ -6,42 +6,72 @@
 /***********************************************************************************
 	FUNCTION: SHAPE
 ***********************************************************************************/
+// Square
 
+
+// Circle
+
+
+// Triangle
+
+
+// Arrow
+@function arrow-center-margin($size: $responslr-arrow-size, $position-is-alignment: true) {
+	$return-margin: $size;
+
+	@if $position-is-alignment {
+		$return-margin: -($size / 2);
+	} @else {
+		$return-margin: -($size / 3);
+	}
+
+	@return $return-margin;
+}
 
 /***********************************************************************************
 	MIXIN: SHAPE
 ***********************************************************************************/
+// Square
 @mixin square($radius: 0, $display: inline-block) {
 	display: $display;
-	@include border-radius($radius);
+	@if $radius > 0 {
+		@include border-radius($radius);
+	}
 }
 
-@mixin circle($radius: 50%, $display: inline-block) {
+// Circle
+@mixin circle($radius: 50%, $width: auto, $height: auto, $display: inline-block, $overflow: hidden, $h-align: center, $v-align: center) {
 	display: $display;
+	overflow: $overflow;
+
+	@if type-of($width) == number {
+		width: $width;
+	}
+
+	@if type-of($height) == number {
+		height: $height;
+
+		@if $v-align == center {
+			line-height: $height;
+		}
+	}
+
+	text-align: $h-align;
+
 	@include border-radius($radius);
 }
 
-/***********************************************************************************
-	TRIANGLES
-	from compass-recipes
-	Shape/Polygon/Triangle
-	@author Maxime Thirouin m@moox.fr @MoOx
-***********************************************************************************/
-
-// $direction: string that can be `top`, `right`, `bottom`, `left` or combination of `top`/`bottom`-`right`/`left`
-// $width: width of the base of the triangle
-// $height: height of the median of the triangle. Can be `half` (look nice), `auto` (same as width), or a numeric value. Note: for now `half` == `auto` when positions are combined)
-// $color: color of the shape (using border-color);
+// Triangle
 @mixin triangle($direction: top, $width: 1em, $height: half, $color: black) {
 	@if ($direction == top or $direction == right or $direction == bottom or $direction == left) {
 		@if ($height == half) {
-			$height: $width/2;
+			$height: $width / 2;
 		} @else if ($height == auto) {
 			$height: $width;
 		}
 	} @else { // if ($direction == top-left or $direction == top-right or $direction == bottom-left or $direction == bottom-right)
 		@if ($height == half or $height == auto) {
-			$height: $width/2;
+			$height: $width / 2;
 		}
 
 		// do we need to make a 16px triangle for the median ?
@@ -100,6 +130,196 @@
 	}
 }
 
+// Arrow
+@mixin arrow-direction($direction: $arrow-default-direction, $write-pseudo-element: $responslr-arrow-write-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
+	@if $direction == up {
+		@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+			@include transform(rotate(45deg));
+		}
+	}
+
+	@if $direction == right {
+		@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+			@include transform(rotate(135deg));
+		}
+	}
+
+	@if $direction == down {
+		@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+			@include transform(rotate(225deg));
+		}
+	}
+
+	@if $direction == left {
+		@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+			@include transform(rotate(-45deg));
+		}
+	}
+}
+
+@mixin arrow-size($size: $responslr-arrow-size, $write-pseudo-element: $write-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
+	@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+		width: $size;
+		height: $size;
+	}
+}
+
+@mixin arrow-width($width: $responslr-arrow-width, $write-pseudo-element: $responslr-arrow-write-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
+	@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+		border-top-width: $width;
+		border-left-width: $width;
+	}
+}
+
+@mixin arrow-color($color: $responslr-arrow-color, $write-pseudo-element: $responslr-arrow-write-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
+	@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+		border-color: $color;
+	}
+}
+
+@mixin arrow-transition($transition-properties: $responslr-arrow-transition-properties,	$transition-values: $responslr-arrow-transition-values, $pseudo-element: $responslr-arrow-pseudo-element) {
+	$transition-properties: unquote($transition-properties);
+	$transition-values: unquote($transition-values);
+
+	@if $transition-properties != none and length($transition-properties) > 0 and length($transition-values) > 0 and length($transition-properties) == length($transition-values) {
+		&:hover:#{pseudo-element} {
+			@each $transition-property in $transition-properties {
+				#{$transition-property}: nth($transition-values, index($transition-properties, $transition-property));
+			}
+		}
+	}
+}
+
+@mixin arrow-custom(
+		$direction: $responslr-arrow-direction,
+		$size: $responslr-arrow-size,
+		$width: $responslr-arrow-width,
+		$color: $responslr-arrow-color,
+		$position: $responslr-arrow-position,
+		$position-x: $responslr-arrow-position-x,
+		$position-y: $responslr-arrow-position-y,
+		$offset-x: $responslr-arrow-offset-x,
+		$offset-y: $responslr-arrow-offset-y,
+		$transition-properties: $responslr-arrow-transition-properties,
+		$transition-values: $responslr-arrow-transition-values,
+		$pseudo-element: $responslr-arrow-pseudo-element,
+		$write-pseudo-element: $responslr-arrow-write-pseudo-element
+	) {
+
+
+	position: $position;
+
+	@include write-pseudo-element($write: $write-pseudo-element) {
+		@extend .arrow;
+
+		@include arrow-width($width: $width, $write-pseudo-element: false);
+		@include arrow-size($size: $size, $write-pseudo-element: false);
+		@include arrow-color($color: $color, $write-pseudo-element: false);
+		@include arrow-direction($direction: $direction, $write-pseudo-element: false);
+
+		@if $position-x == center {
+			left: 50%;
+			right: auto;
+		}
+
+		@if $position-x == left {
+			left: $offset-x + $width;
+		}
+
+		@if $position-x == right {
+			right: $offset-x + $width;
+		}
+
+		@if $position-y == top {
+			top: $offset-y + $width;
+		} @else if $position-y == bottom {
+			bottom: $offset-y + $width;
+		} @else {
+			top: 50%;
+		}
+
+		// direction up
+		@if $direction == up {
+			@if $position-x == center {
+				margin-left: arrow-center-margin($size);
+			}
+
+			@if $position-y == center {
+				margin-top: arrow-center-margin($size, false);
+			}
+		}
+
+		// direction right
+		@if $direction == right {
+			@if $position-x == center {
+				right: 50%;
+				margin-right: arrow-center-margin($size, false);
+				left: auto;
+			}
+
+			@if $position-y == center {
+				margin-top: arrow-center-margin($size);
+			}
+		}
+
+		// direction down
+		@if $direction == down {
+			@if $position-x == center {
+				margin-left: arrow-center-margin($size);
+			}
+
+			@if $position-y == center {
+				bottom: 50%;
+				margin-bottom: arrow-center-margin($size, false);
+				top: auto;
+			}
+		}
+
+		// direction left
+		@if $direction == left {
+			@if $position-x == center {
+				margin-left: arrow-center-margin($size, false);
+			}
+
+			@if $position-y == center {
+				margin-top: arrow-center-margin($size);
+			}
+		}
+	}
+
+	$transition-properties: unquote($transition-properties);
+	$transition-values: unquote($transition-values);
+
+	@if $transition-properties != none and length($transition-properties) > 0 and length($transition-values) > 0 and length($transition-properties) == length($transition-values) {
+		@include responslr-transition($transition-properties);
+		@include arrow-transition($transition-properties: $transition-properties, $transition-values: $transition-values, $pseudo-element: $pseudo-element);
+	}
+}
+
+@mixin arrow($name: default) {
+	@each $arrow-list in $shape-arrows {
+		$current-arrow-name: nth($arrow-list, 1);
+
+		@if $current-arrow-name == $name {
+			@include arrow-custom(
+				$direction: nth($arrow-list, 2),
+				$size: nth($arrow-list, 3),
+				$width: nth($arrow-list, 4),
+				$color: nth($arrow-list, 5),
+				$position: nth($arrow-list, 6),
+				$position-x: nth($arrow-list, 7),
+				$position-y: nth($arrow-list, 8),
+				$offset-x: nth($arrow-list, 9),
+				$offset-y: nth($arrow-list, 10),
+				$transition-properties: nth($arrow-list, 11),
+				$transition-values: nth($arrow-list, 12),
+				$pseudo-element: nth($arrow-list, 13)
+			);
+		}
+	}
+}
+
+// Shape
 @mixin shape($type: '', $display: inline-block) {
 	overflow: hidden;
 
@@ -117,173 +337,83 @@
 ***********************************************************************************/
 @mixin generate-shape() {
 	// Square
-	.square {
-		@include shape(square);
+	@if $enable-ui-shape-square {
+		.square {
+			@include shape(square);
+		}
 	}
 
 	// Circle
-	.circle {
-		@include shape(circle);
+	@if $enable-ui-shape-circle {
+		.circle {
+			@include shape(circle);
+		}
+
+		@each $circle in $shape-circles {
+			$current-circle-name: nth($circle, 1);
+			.circle-#{$current-circle-name} {
+				@include circle($width: nth($circle, 2), $height: nth($circle, 3));
+			}
+		}
 	}
 
 	// Triangle
-	.triangle-top {
-		@include triangle(top);
+	@if $enable-ui-shape-triangle {
+		.triangle-top {
+			@include triangle(top);
+		}
+
+		.triangle-right {
+			@include triangle(right);
+		}
+
+		.triangle-bottom {
+			@include triangle(bottom);
+		}
+
+		.triangle-left {
+			@include triangle(left);
+		}
 	}
 
-	.triangle-right {
-		@include triangle(right);
-	}
+	// Arrow
+	@if $enable-ui-shape-arrow {
+		.arrow {
+			content: "";
+			display: block;
+			position: absolute;
+			border-width: 0;
+			border-style: solid;
+			border-right-style: none;
+			border-bottom-style: none;
+		}
 
-	.triangle-bottom {
-		@include triangle(bottom);
-	}
+		.arrow-up {
+			@include arrow-custom($direction: up);
+		}
 
-	.triangle-left {
-		@include triangle(left);
-	}
+		.arrow-right {
+			@include arrow-custom($direction: right);
+		}
 
-	// Tag
-	.tag {
+		.arrow-down {
+			@include arrow-custom($direction: down);
+		}
 
+		.arrow-left {
+			@include arrow-custom($direction: left);
+		}
+
+		@each $arrow-list in $shape-arrows {
+			$current-arrow-name: nth($arrow-list, 1);
+
+			.arrow-#{$current-arrow-name} {
+				@include arrow($name: $current-arrow-name);
+			}
+		}
 	}
 }
 
-@if $enable-ui-button {
+@if $enable-ui-shape {
 	@include generate-shape();
 }
-
-
-/***********************************************************************************
-	ARROWS
-***********************************************************************************/
-/* .arrow {
-	display: block;
-	position: absolute;
-	z-index: 1;
-	width: $arrow-bubble-size;
-	height: $arrow-bubble-size;
-	overflow: hidden;
-
-	@include transition-default(background-color);
-
-	@include media-query($breakpoint-class-prefix-medium) {
-		@include transition-default(none);
-	}
-
-	&:before,
-	&:after {
-		content: "";
-		position: absolute;
-		height: 0;
-		width: 0;
-		border-style: solid;
-
-		@include transition-default(border-color);
-
-		@include media-query($breakpoint-class-prefix-medium) {
-			@include transition-default(none);
-		}
-	}
-
-	&:before {
-		z-index: 2;
-		border-width: $arrow-size / 2;
-	}
-
-	&:after {
-		z-index: 1;
-		border-width: $arrow-size / 2;
-	}
-
-	&.bubble {
-		@include border-radius(50%);
-	}
-}
-
-.arrow-top,
-.arrow-right,
-.arrow-bottom,
-.arrow-left {
-	@extend .arrow;
-	&:before,
-	&:after, {
-		left: ($arrow-bubble-size / 2) - ($arrow-size / 2);
-	}
-}
-
-.arrow-top {
-	footer & {
-		top: -$arrow-bubble-size / 2;
-	}
-
-	&:before,
-	&:after {
-		@include transition-default(bottom);
-	}
-
-	&:before {
-		bottom: ($arrow-bubble-size / 2);
-
-	}
-
-	&:after {
-		bottom: ($arrow-bubble-size / 2) + $arrow-width;
-		border-color: rgba(0,0,0,0) rgba(0,0,0,0) $color-arrow rgba(0,0,0,0);
-	}
-
-	&:hover {
-		&:before {
-			bottom: ($arrow-bubble-size / 2) + $arrow-transition;
-		}
-
-		&:after {
-			bottom: ($arrow-bubble-size / 2) + $arrow-width + $arrow-transition;
-		}
-	}
-}
-
-
-.arrow-right {
-	&:before {
-		top: ($arrow-bubble-size / 2) - ($arrow-size / 2);
-		left: ($arrow-bubble-size / 2) - ($arrow-size / 4) - $arrow-width;
-	}
-
-	&:after {
-		top: ($arrow-bubble-size / 2) - ($arrow-size / 2);
-		left: ($arrow-bubble-size / 2) - ($arrow-size / 4);
-		border-color: rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0) $color-arrow;
-	}
-}
-
-.arrow-bottom {
-	header & {
-		bottom: -$arrow-bubble-size / 2;
-	}
-
-	&:before,
-	&:after {
-		@include transition-default(top);
-	}
-
-	&:before {
-		top: ($arrow-bubble-size / 2);
-	}
-
-	&:after {
-		top: ($arrow-bubble-size / 2) + $arrow-width;
-		border-color: $color-arrow rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0);
-	}
-
-	&:hover {
-		&:before {
-			top: ($arrow-bubble-size / 2) + $arrow-transition;
-		}
-
-		&:after {
-			top: ($arrow-bubble-size / 2) + $arrow-width + $arrow-transition;
-		}
-	}
-}
- */
