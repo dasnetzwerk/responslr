@@ -10,14 +10,14 @@
 
 	$font-families:
 		add-font-family(
-			$name: LatoLight,
+			$name: lato-light,
 			$custom: true,
 			$file: lato-light,
 			$weight: 300,
 			$style: normal
 		),
 		add-font-family(
-			$name: LatoRegular,
+			$name: lato-regular,
 			$custom: true,
 			$file: lato-regular,
 			$weight: 400,
@@ -58,7 +58,7 @@ $config-variable1: blablabla;
 $config-variable2: 123px;
 
 @include add-font-family(
-	$name: LatoLight,
+	$name: lato-light,
 	$custom: true,
 	$file: lato-light,
 	$weight: 300,
@@ -66,7 +66,7 @@ $config-variable2: 123px;
 );
 
 @include add-font-family(
-	$name: LatoRegular,
+	$name: lato-regular,
 	$custom: true,
 	$file: lato-regular,
 	$weight: 400,

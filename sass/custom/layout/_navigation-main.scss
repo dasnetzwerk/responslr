@@ -13,7 +13,7 @@ nav {
 
 			a,
 			a:visited {
-				@include typo($font: LatoRegular);
+				@include typo($font: lato-regular);
 				display: block;
 				text-transform: uppercase;
 				color: $black;
@@ -32,7 +32,7 @@ nav {
 	ul {
 		li {
 			a {
-				@include typo($font: LatoRegular, $font-size: medium);
+				@include typo($font: lato-regular, $font-size: medium);
 			}
 		}
 	}

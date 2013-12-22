@@ -8,10 +8,10 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	@include typo($font: LatoRegular);
+	@include typo($font: lato-regular);
 	text-transform: uppercase;
 }
 
 h1 {
-	@include typo($font: LatoRegular, $font-size: large);
+	@include typo($font: lato-regular, $font-size: large);
 }

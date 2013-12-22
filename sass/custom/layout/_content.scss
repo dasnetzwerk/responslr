@@ -33,7 +33,7 @@
 
 	.box {
 		padding: grid-gutter-half();
-		// @include typo($font: LatoRegular);
+		// @include typo($font: lato-regular);
 	}
 
 	.border {
@@ -44,7 +44,7 @@
 	// FONT TESTING
 	.font-test-1 {
 		display: inline-block;
-		@include typo($font: LatoLight, $font-size: 27px, $line-height: 100px);
+		@include typo($font: lato-light, $font-size: 27px, $line-height: 100px);
 	}
 
 	.font-test-2 {

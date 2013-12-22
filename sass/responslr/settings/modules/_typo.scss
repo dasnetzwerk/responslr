@@ -4,8 +4,8 @@
 //  font name (unique)		is custom 	name on file system			font-weight porperty		font-style property
 //	(first is default)												400 = regular, 700 = bold
 $font-families:
-	LatoLight				true		lato-light					300							normal,
-	LatoRegular				true		lato-regular				400							normal
+	lato-light				true		lato-light					300							normal,
+	lato-regular			true		lato-regular				400							normal
 !default;
 
 //	font-size name		font-size	line-height
