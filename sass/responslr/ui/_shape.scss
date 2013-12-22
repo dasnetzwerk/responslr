@@ -78,12 +78,48 @@
 	MIXIN: SHAPE
 ***********************************************************************************/
 // Square
-@mixin square($radius: 0, $display: inline-block) {
+@mixin square-custom(
+	$width: $responslr-square-width,
+	$height: $responslr-square-height,
+	$border-radius: $responslr-square-border-radius,
+	$padding-x: $responslr-square-padding-x,
+	$padding-y:  $responslr-square-padding-y,
+	$display: $responslr-square-display
+) {
+
 	display: $display;
-	@if $radius > 0 {
-		@include border-radius($radius);
+
+	@if type-of($width) == number and $width > 0 {
+		width: $width;
+	}
+
+	@if type-of($height) == number and $height > 0 {
+		height: $height;
+	}
+
+	padding: $padding-y $padding-x;
+
+	@if $border-radius > 0 {
+		@include border-radius($border-radius);
 	}
 }
+
+@mixin square($name: $responslr-square-name) {
+	@each $square-list in $shape-squares {
+		$current-square-name: nth($square-list, 1);
+
+		@if $current-square-name == $name {
+			@include square-custom(
+				$width: nth($square-list, 2),
+				$height: nth($square-list, 3),
+				$border-radius: nth($square-list, 4),
+				$padding-x: nth($square-list, 5),
+				$padding-y: nth($square-list, 6)
+			);
+		}
+	}
+}
+
 
 // Circle
 @mixin circle($radius: 50%, $width: auto, $height: auto, $display: inline-block, $overflow: hidden, $h-align: center, $v-align: center) {
@@ -107,6 +143,7 @@
 	@include border-radius($radius);
 }
 
+
 // Triangle
 @mixin triangle($direction: top, $width: 1em, $height: half, $color: black) {
 	@if ($direction == top or $direction == right or $direction == bottom or $direction == left) {
@@ -125,7 +162,7 @@
 		// $height: $height/sqrt(2);
 	}
 	// width is divided by 2 because it's used twice !
-	$width: $width/2;
+	$width: $width / 2;
 
 	width: 0;
 	height: 0;
@@ -175,6 +212,7 @@
 		@warn "#{error("The direction used does not exist")}";
 	}
 }
+
 
 // Arrow
 @mixin arrow-direction($direction: $arrow-default-direction, $insert-pseudo-element: $responslr-arrow-insert-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
@@ -242,20 +280,20 @@
 }
 
 @mixin arrow-custom(
-		$direction: $responslr-arrow-direction,
-		$size: $responslr-arrow-size,
-		$width: $responslr-arrow-width,
-		$color: $responslr-arrow-color,
-		$position: $responslr-arrow-position,
-		$position-x: $responslr-arrow-position-x,
-		$position-y: $responslr-arrow-position-y,
-		$offset-x: $responslr-arrow-offset-x,
-		$offset-y: $responslr-arrow-offset-y,
-		$transition-properties: $responslr-arrow-transition-properties,
-		$transition-values: $responslr-arrow-transition-values,
-		$pseudo-element: $responslr-arrow-pseudo-element,
-		$insert-pseudo-element: $responslr-arrow-insert-pseudo-element
-	) {
+	$direction: $responslr-arrow-direction,
+	$size: $responslr-arrow-size,
+	$width: $responslr-arrow-width,
+	$color: $responslr-arrow-color,
+	$position: $responslr-arrow-position,
+	$position-x: $responslr-arrow-position-x,
+	$position-y: $responslr-arrow-position-y,
+	$offset-x: $responslr-arrow-offset-x,
+	$offset-y: $responslr-arrow-offset-y,
+	$transition-properties: $responslr-arrow-transition-properties,
+	$transition-values: $responslr-arrow-transition-values,
+	$pseudo-element: $responslr-arrow-pseudo-element,
+	$insert-pseudo-element: $responslr-arrow-insert-pseudo-element
+) {
 
 	$position: unquote($position);
 
@@ -373,7 +411,7 @@
 	}
 }
 
-@mixin arrow($name: default) {
+@mixin arrow($name: $responslr-arrow-name) {
 	@each $arrow-list in $shape-arrows {
 		$current-arrow-name: nth($arrow-list, 1);
 
@@ -396,18 +434,6 @@
 	}
 }
 
-// Shape
-@mixin shape($type: '', $display: inline-block) {
-	overflow: hidden;
-
-	@if $type == square {
-		@include square($display: $display);
-	}
-
-	@if $type == circle {
-		@include circle($display: $display);
-	}
-}
 
 /***********************************************************************************
 	CLASS GENERATOR: SHAPE
@@ -416,18 +442,27 @@
 	// Square
 	@if $enable-ui-shape-square {
 		.square {
-			@include shape(square);
+			@include square();
+		}
+
+		@each $square in $shape-squares {
+			$current-square-name: nth($square, 1);
+
+			.square-#{$current-square-name} {
+				@include square($name: $current-square-name);
+			}
 		}
 	}
 
 	// Circle
 	@if $enable-ui-shape-circle {
 		.circle {
-			@include shape(circle);
+			@include circle();
 		}
 
 		@each $circle in $shape-circles {
 			$current-circle-name: nth($circle, 1);
+
 			.circle-#{$current-circle-name} {
 				@include circle($width: nth($circle, 2), $height: nth($circle, 3));
 			}
