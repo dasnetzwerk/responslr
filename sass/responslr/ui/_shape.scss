@@ -177,48 +177,48 @@
 }
 
 // Arrow
-@mixin arrow-direction($direction: $arrow-default-direction, $write-pseudo-element: $responslr-arrow-write-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
+@mixin arrow-direction($direction: $arrow-default-direction, $insert-pseudo-element: $responslr-arrow-insert-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
 	@if $direction == up {
-		@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+		@include insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 			@include transform(rotate(45deg));
 		}
 	}
 
 	@if $direction == right {
-		@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+		@include insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 			@include transform(rotate(135deg));
 		}
 	}
 
 	@if $direction == down {
-		@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+		@include insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 			@include transform(rotate(225deg));
 		}
 	}
 
 	@if $direction == left {
-		@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+		@include insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 			@include transform(rotate(-45deg));
 		}
 	}
 }
 
-@mixin arrow-size($size: $responslr-arrow-size, $write-pseudo-element: $write-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
-	@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+@mixin arrow-size($size: $responslr-arrow-size, $insert-pseudo-element: $insert-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
+	@include insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 		width: $size;
 		height: $size;
 	}
 }
 
-@mixin arrow-width($width: $responslr-arrow-width, $write-pseudo-element: $responslr-arrow-write-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
-	@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+@mixin arrow-width($width: $responslr-arrow-width, $insert-pseudo-element: $responslr-arrow-insert-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
+	@include insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 		border-top-width: $width;
 		border-left-width: $width;
 	}
 }
 
-@mixin arrow-color($color: $responslr-arrow-color, $write-pseudo-element: $responslr-arrow-write-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
-	@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+@mixin arrow-color($color: $responslr-arrow-color, $insert-pseudo-element: $responslr-arrow-insert-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
+	@include insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 		border-color: $color;
 	}
 }
@@ -254,7 +254,7 @@
 		$transition-properties: $responslr-arrow-transition-properties,
 		$transition-values: $responslr-arrow-transition-values,
 		$pseudo-element: $responslr-arrow-pseudo-element,
-		$write-pseudo-element: $responslr-arrow-write-pseudo-element
+		$insert-pseudo-element: $responslr-arrow-insert-pseudo-element
 	) {
 
 	$position: unquote($position);
@@ -269,13 +269,13 @@
 		}
 	}
 
-	@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
+	@include insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 		@extend .arrow;
 
-		@include arrow-width($width: $width, $write-pseudo-element: false);
-		@include arrow-size($size: $size, $write-pseudo-element: false);
-		@include arrow-color($color: $color, $write-pseudo-element: false);
-		@include arrow-direction($direction: $direction, $write-pseudo-element: false);
+		@include arrow-width($width: $width, $insert-pseudo-element: false);
+		@include arrow-size($size: $size, $insert-pseudo-element: false);
+		@include arrow-color($color: $color, $insert-pseudo-element: false);
+		@include arrow-direction($direction: $direction, $insert-pseudo-element: false);
 
 		@if $position-x == center {
 			left: 50%;

@@ -2,7 +2,7 @@
 	GLOBALS
 ***********************************************************************************/
 // MIXINS
-@mixin write-pseudo-element($write: true, $pseudo-element: before) {
+@mixin insert-pseudo-element($write: true, $pseudo-element: before) {
 	@if $write {
 		&:#{$pseudo-element} {
 			@content;
@@ -31,43 +31,45 @@
 
 
 // MODULES
+$enable-module-class-generator: true !default;
+
 // Reset
-$enable-module-reset: true !default;
+$enable-module-reset: $enable-module-class-generator !default;
 
 
 // Typo
-$enable-module-typo: true !default;
+$enable-module-typo: $enable-module-class-generator !default;
 
 
 // Grid
-$enable-module-grid: true !default;
-$enable-module-grid-helper: true !default;
+$enable-module-grid: $enable-module-class-generator !default;
+$enable-module-grid-helper: $enable-module-class-generator !default;
 
 
 // Visiblity
-$enable-module-visiblity: true !default;
+$enable-module-visiblity: $enable-module-class-generator !default;
 $enable-module-shower: $enable-module-visiblity !default;
 $enable-module-hider: $enable-module-visiblity !default;
 
 
 // Transition
-$enable-module-transition: true !default;
+$enable-module-transition: $enable-module-class-generator !default;
 
 
 // Alignment
-$enable-module-alignment: true !default;
+$enable-module-alignment: $enable-module-class-generator !default;
 
 
 // Position
-$enable-module-position: true !default;
+$enable-module-position: $enable-module-class-generator !default;
 
 
 // Spacing
-$enable-module-spacing: true !default;
+$enable-module-spacing: $enable-module-class-generator !default;
 
 
 // Aspect Ratio
-$enable-module-aspect-ratio: true !default;
+$enable-module-aspect-ratio: $enable-module-class-generator !default;
 
 
 // Sprite
@@ -75,7 +77,7 @@ $enable-module-sprite: false !default;
 
 
 // Color
-$enable-module-color: true !default;
+$enable-module-color: $enable-module-class-generator !default;
 
 $enable-module-color-bg: $enable-module-color !default;
 $enable-module-color-bg-hover: $enable-module-color-bg !default;
@@ -95,8 +97,10 @@ $enable-module-color-border-directions-focus: false !default;
 
 
 // UI
+$enable-ui-class-generator: true !default;
+
 // Shape
-$enable-ui-shape: true !default;
+$enable-ui-shape: $enable-ui-class-generator !default;
 $enable-ui-shape-square: $enable-ui-shape !default;
 $enable-ui-shape-circle: $enable-ui-shape !default;
 $enable-ui-shape-triangle: $enable-ui-shape !default;
@@ -104,15 +108,16 @@ $enable-ui-shape-arrow: $enable-ui-shape !default;
 
 
 // Tooltip
-$enable-ui-tooltip: true !default;
+$enable-ui-tooltip: $enable-ui-class-generator !default;
+
 
 // Button
-$enable-ui-button: true !default;
+$enable-ui-button: $enable-ui-class-generator !default;
 
 
 // Form
-$enable-ui-form: true !default;
+$enable-ui-form: $enable-ui-class-generator !default;
 
 
 // Table
-$enable-ui-table: true !default;
+$enable-ui-table: $enable-ui-class-generator !default;
