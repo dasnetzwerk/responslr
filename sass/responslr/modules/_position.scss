@@ -6,11 +6,11 @@
 /***********************************************************************************
 	MIXIN: POSITION
 ***********************************************************************************/
-@mixin position($position: 'absolute', $where: '', $value: grid-gutter-half()) {
-	position: $position;
-	#{$where}: $value;
+@mixin position($position: absolute, $where: null, $value: grid-gutter-half()) {
+	position: unquote($position);
+	#{unquote($where)}: $value;
 
-	@if $where == 'left' or $where == 'right' {
+	@if $where == left or $where == right {
 		&.column {
 			@if $value == grid-gutter-half() {
 				#{$where}: 0;
