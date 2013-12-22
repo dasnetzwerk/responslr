@@ -66,6 +66,14 @@
 	@return $return-margin;
 }
 
+@function arrow-offset-correct($offset: 0, $width: $responslr-arrow-width) {
+	$return-offset: 0;
+
+	$return-offset: $offset + $width;
+
+	@return $return-offset;
+}
+
 /***********************************************************************************
 	MIXIN: SHAPE
 ***********************************************************************************/
@@ -218,10 +226,8 @@
 @mixin arrow-transition($transition-properties: $responslr-arrow-transition-properties,	$transition-values: $responslr-arrow-transition-values, $pseudo-element: $responslr-arrow-pseudo-element) {
 	$transition-properties: unquote($transition-properties);
 	$transition-values: unquote($transition-values);
-	@debug $transition-properties;
-	@debug $transition-values;
 
-	@if $transition-properties != none and length($transition-properties) > 0 and length($transition-values) > 0 and length($transition-properties) == length($transition-values) {
+	@if length($transition-properties) == length($transition-values) {
 		&:#{$pseudo-element} {
 			@include responslr-transition();
 			@include transition-property($transition-properties);
@@ -251,9 +257,19 @@
 		$write-pseudo-element: $responslr-arrow-write-pseudo-element
 	) {
 
-	position: $position;
+	$position: unquote($position);
 
-	@include write-pseudo-element($write: $write-pseudo-element) {
+	@if length($position) > 0 {
+		position: $position;
+
+		@if $position != absolute {
+			&.aspect-ratio-content {
+				position: absolute;
+			}
+		}
+	}
+
+	@include write-pseudo-element($write: $write-pseudo-element, $pseudo-element: $pseudo-element) {
 		@extend .arrow;
 
 		@include arrow-width($width: $width, $write-pseudo-element: false);
@@ -267,17 +283,17 @@
 		}
 
 		@if $position-x == left {
-			left: $offset-x + $width;
+			left: arrow-offset-correct($offset-x, $width);
 		}
 
 		@if $position-x == right {
-			right: $offset-x + $width;
+			right: arrow-offset-correct($offset-x, $width);
 		}
 
 		@if $position-y == top {
-			top: $offset-y + $width;
+			top: arrow-offset-correct($offset-y, $width);
 		} @else if $position-y == bottom {
-			bottom: $offset-y + $width;
+			bottom: arrow-offset-correct($offset-y, $width);
 		} @else {
 			top: 50%;
 		}
@@ -333,8 +349,26 @@
 
 	$transition-properties: unquote($transition-properties);
 	$transition-values: unquote($transition-values);
+	$transition-new-values: null;
 
 	@if $transition-properties != none and length($transition-properties) > 0 and length($transition-values) > 0 and length($transition-properties) == length($transition-values) {
+		@each $transition-property in $transition-properties {
+			$current-index: index($transition-properties, $transition-property);
+			$current-value: nth($transition-values, $current-index);
+
+			@if index((top,right,bottom,left), $transition-property) {
+				$current-value: arrow-offset-correct($current-value, $width);
+			}
+
+			@if $transition-new-values == null {
+				$transition-new-values: unquote($current-value);
+			} @else {
+				$transition-new-values: append($transition-new-values, unquote($current-value), comma);
+			}
+		}
+
+		$transition-values: $transition-new-values;
+
 		@include arrow-transition($transition-properties: $transition-properties, $transition-values: $transition-values, $pseudo-element: $pseudo-element);
 	}
 }

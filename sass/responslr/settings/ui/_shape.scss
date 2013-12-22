@@ -27,14 +27,12 @@ $shape-triangles:
 /***********************************************************************************
 	ARROW
 ***********************************************************************************/
-// 1 name [unique]		2 direction		3 size	4 width	5 color		6 position	7 pos-x		8 pos-y		9 offset-x	10 offset-y		11 transitions		12 t-values		13 pseudo-element
-//																																	responslr-trans
+// 1 name [unique]		2 direction		3 size	4 width	5 color		6 position	7 pos-x		8 pos-y		9 offset-x	10 offset-y	11 transition			12 transisition		13 pseudo-element
+//																																properties				values
 $shape-arrows:
-	default				right			12px	3px		$black		relative	center		center		0			0				border-color		$white			before,
-	right-small			right			8px		2px		$black		relative	right		center		10px		0				none				''				before,
-	right-default		right			12px	3px		$black		relative	right		center		10px		0				none				''				before,
-	right-medium		right			20px	4px		$white		relative	right		center		10px		0				none				''				before,
-	right-large			right			30px	6px		$black		relative	right		center		10px		0				none				''				before
+	default				right			12px	3px		$black		relative	center		center		0			0			border-color			$white				before,
+	button				right			8px		2px		$white		relative	right		center		8px			0			(right,border-color)	(6px,$black)		before,
+	circle-large		right			50px	10px	$white		relative	center		center		10px		0			none					''					before
 !default;
 
 $responslr-arrow-settings: nth($shape-arrows, 1);
