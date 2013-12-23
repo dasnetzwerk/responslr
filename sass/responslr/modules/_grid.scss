@@ -191,32 +191,32 @@
 	// 		http://yui.yahooapis.com/3.8.0/build/cssgrids/grids.css
 	// 		https://github.com/csswizardry/inuit.css
 	// instead of:
-	// 		.row {
-	// 			font-size: 0;
-	// 			line-height: 0;
-	//
-	// 			& > * {
-	// 				@include typo();
-	// 			}
-	// 		}
-	// do:
-	.row {
-		font-family: Times;
-		font-size: 1rem;
-		letter-spacing: -0.31em; // Webkit: collapse white-space between units
-		text-rendering: optimizespeed; // Webkit: fixes text-rendering: optimizeLegibility
+			.row {
+				font-size: 0;
+				line-height: 0;
 
-		& > * {
-			@include typo();
-			letter-spacing: normal;
-			word-spacing: normal;
-			text-rendering: auto;
-		}
-	}
-	// Opera fix
-	x:-o-prefocus, .row {
-		word-spacing: -0.43em;
-	}
+				& > * {
+					@include typo();
+				}
+			}
+	// do:
+	// .row {
+	// 	font-family: Times;
+	// 	font-size: 1rem;
+	// 	letter-spacing: -0.31em;
+	// 	text-rendering: optimizespeed;
+
+	// 	& > * {
+	// 		@include typo();
+	// 		letter-spacing: normal;
+	// 		word-spacing: normal;
+	// 		text-rendering: auto;
+	// 	}
+	// }
+
+	// x:-o-prefocus, .row {
+	// 	word-spacing: -0.43em;
+	// }
 
 	tr.row {
 		display: table-row;
