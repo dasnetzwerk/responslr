@@ -1,8 +1,14 @@
 /***********************************************************************************
 	TOOLTIP - SETTINGS
 ***********************************************************************************/
-// 	id 			offset 	max-width 	font-size	font-color 	bg-color	border-color 	border-width 	border-style 	border-radius
+$tooltips-directions: north,south,east,west !default;
+$enable-ui-tooltip: true !default;
+
+// 	id 			cursor 	offset		padding		max-width 	font-size	font-color 	bg-color	border-color 	border-width 	border-style 	border-radius 	triangle 	offset 	generate 	directions
 $tooltips:
-	default 	40px 	320px		small 		black 		grey-light 	grey-dark 		1px 			solid 			2px,
-	info 		40px 	320px		small 		black 		blue 		blue 			1px 			solid 			2px
+	default 	help 	0.75rem 	5px			320px		'tiny'  	'white' 	'black' 	'black' 		2px 			solid 			3px 			true 		true 	true 		($tooltips-directions),
+	inset 		help 	0.75rem 	5px			320px		'tiny'  	'white' 	'black' 	'white' 		0 				solid 			3px 			true 		false 	false 		($tooltips-directions),
+	info 		help 	0.75rem 	5px			320px		'tiny'  	'white' 	'blue' 		'blue' 			2px 			solid 			3px 			true 		true 	false 		($tooltips-directions),
+	error 		help 	0.75rem 	5px			320px		'tiny'  	'white' 	'red' 		'red' 			2px 			solid 			3px 			true 		true 	false 		($tooltips-directions),
+	success 	help 	0.75rem 	5px			320px		'tiny'  	'white' 	'green' 	'green' 		2px 			solid 			3px 			true 		true 	false 		($tooltips-directions)
 !default;
