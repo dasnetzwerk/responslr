@@ -37,96 +37,155 @@
 	@return null;
 }
 
-@function responslr-tooltip-offset($tooltip: responslr-tooltip()) {
+@function responslr-tooltip-name($tooltip) {
 	@if $tooltip {
+		@return nth($tooltip,1);
+	}
+	@return '';
+}
+
+@function responslr-tooltip-cursor($tooltip: responslr-tooltip()) {
+	@if $tooltip and length($tooltip) >= 2 {
 		@return nth($tooltip,2);
 	}
-	@return 0;
+	@return help;
+}
+
+@function responslr-tooltip-offset($tooltip: responslr-tooltip()) {
+	@if $tooltip and length($tooltip) >= 3 {
+		@return nth($tooltip,3);
+	}
+	@return 0.75rem;
+}
+
+@function responslr-tooltip-padding($tooltip: responslr-tooltip()) {
+	@if $tooltip and length($tooltip) >= 4 {
+		@return nth($tooltip,4);
+	}
+	@return 10px;
 }
 
 @function responslr-tooltip-max-width($tooltip: responslr-tooltip()) {
-	@if $tooltip {
-		@return nth($tooltip,3);
+	@if $tooltip and length($tooltip) >= 5 {
+		@return nth($tooltip,5);
 	}
 	@return 100%;
 }
 
 @function responslr-tooltip-font-size($tooltip: responslr-tooltip()) {
-	@if $tooltip {
-		@return nth($tooltip,4);
+	@if $tooltip and length($tooltip) >= 6 {
+		@return nth($tooltip,6);
 	}
-	@return default;
+	@return small;
 }
 
 @function responslr-tooltip-font-color($tooltip: responslr-tooltip()) {
-	@if $tooltip {
-		@return color(nth($tooltip,5));
+	@if $tooltip and length($tooltip) >= 7 {
+		@return color(nth($tooltip,7));
 	}
-	@return black;
+	@return $white;
 }
 
 @function responslr-tooltip-bg-color($tooltip: responslr-tooltip()) {
-	@if $tooltip {
-		@return color(nth($tooltip,6));
+	@if $tooltip and length($tooltip) >= 8 {
+		@return color(nth($tooltip,8));
 	}
-	@return white;
+	@return $black;
 }
 
 @function responslr-tooltip-border-color($tooltip: responslr-tooltip()) {
-	@if $tooltip {
-		@return color(nth($tooltip,7));
+	@if $tooltip and length($tooltip) >= 9 {
+		@return color(nth($tooltip,9));
 	}
-	@return grey;
+	@return $black;
 }
 
 @function responslr-tooltip-border-width($tooltip: responslr-tooltip()) {
-	@if $tooltip {
-		@return nth($tooltip,8);
+	@if $tooltip and length($tooltip) >= 10 {
+		@return nth($tooltip,10);
 	}
-	@return 1px;
+	@return 0;
 }
 
 @function responslr-tooltip-border-style($tooltip: responslr-tooltip()) {
-	@if $tooltip {
-		@return nth($tooltip,9);
+	@if $tooltip and length($tooltip) >= 11 {
+		@return nth($tooltip,11);
 	}
-	@return solid;
+	@return none;
 }
 
 @function responslr-tooltip-border-radius($tooltip: responslr-tooltip()) {
-	@if $tooltip {
-		@return nth($tooltip,10);
+	@if $tooltip and length($tooltip) >= 12 {
+		@return nth($tooltip,12);
 	}
-	@return 2px;
+	@return 0;
+}
+
+@function responslr-tooltip-triangle-enabled($tooltip: responslr-tooltip()) {
+	@if $tooltip and length($tooltip) >= 13 {
+		@return nth($tooltip,13);
+	}
+	@return false;
+}
+
+@function responslr-tooltip-triangle-is-offset($tooltip: responslr-tooltip()) {
+	@if $tooltip and length($tooltip) >= 14 {
+		@return nth($tooltip,14);
+	}
+	@return true;
+}
+
+@function responslr-tooltip-generate-class($tooltip: responslr-tooltip()) {
+	@if $tooltip and length($tooltip) >= 15 {
+		@return nth($tooltip,15);
+	}
+	@return true;
+}
+
+@function responslr-tooltip-directions($tooltip: responslr-tooltip()) {
+	@if $tooltip and length($tooltip) >= 16 {
+		@return nth($tooltip,16);
+	}
+	@return $tooltips-directions;
 }
 
 /***********************************************************************************
 	MIXIN: TOOLTIP
 ***********************************************************************************/
-@mixin responslr-tooltip($name: default) {
-	$definition: responslr-tooltip($name);
+@mixin responslr-tooltip-base() {
+	.tooltip-content {
+		display: none;
+		visibility: hidden;
+		opacity: 0;
+	}
 
 	%tooltip {
 		position: relative;
 		display: inline-block;
 
+		&:before {
+			z-index: 51;
+		}
+
 		&:before,
 		&[data-tooltip]:after {
 			content: "";
 			position: absolute;
-			display: none;
+			display: block;
+			visibility: hidden;
+			opacity: 0;
 		}
 
 		&[data-tooltip]:after,
-		> .tooltip-content {
-			z-index: 50;
+		.tooltip-content {
 			position: absolute;
-			display: none;
-			width: responslr-tooltip-max-width($definition);
-			@include typo($font-size: responslr-tooltip-font-size($definition));
-			color: responslr-tooltip-font-color($definition);
-			background-color: responslr-tooltip-bg-color($definition);
-			border: responslr-tooltip-border-width($definition) responslr-tooltip-border-style($definition) responslr-tooltip-border-color($definition);
+			display: block;
+			visibility: hidden;
+			opacity: 0;
+			z-index: 50;
+
+			//@include responslr-transition(default);
+			@include transition(opacity .4s ease-out)
 		}
 
 		&[data-tooltip]:after {
@@ -134,261 +193,164 @@
 			white-space: pre-wrap;
 		}
 
-		&:hover,
-		&:active {
+		&:hover {
 			&:before,
 			&[data-tooltip]:after,
-			> .tooltip-content {
-				display: block;
+			.tooltip-content {
+				visibility: visible;
+				opacity: 1;
 			}
 		}
 	}
+}
 
-	.tooltip-top {
-		@extend %tooltip;
-
-		&:before {
-			bottom: responslr-tooltip-offset($definition);
-			@include triangle($direction: bottom, $color: responslr-tooltip-border-color($definition));
-		}
+@mixin responslr-tooltip-generate-class($settings) {
+	%tooltip-#{responslr-tooltip-name($settings)} {
+		cursor: responslr-tooltip-cursor($settings);
 
 		&[data-tooltip]:after,
-		> .tooltip-content {
-			bottom: (responslr-tooltip-offset($definition)+10px);
-			left: 0;
+		.tooltip-content {
+			width: responslr-tooltip-max-width($settings);
+			padding: responslr-tooltip-padding($settings);
+			@include typo($font-size: responslr-tooltip-font-size($settings));
+			color: responslr-tooltip-font-color($settings);
+			background-color: responslr-tooltip-bg-color($settings);
+
+			@if(responslr-tooltip-border-width($settings) != 0) {
+				border: responslr-tooltip-border-width($settings) responslr-tooltip-border-style($settings) responslr-tooltip-border-color($settings);
+			}
+
+			@if(responslr-tooltip-border-radius($settings) != 0) {
+				@include border-radius(responslr-tooltip-border-radius($settings));
+			}
+		}
+
+		@if index(responslr-tooltip-directions($settings),north) {
+			&.north {
+				@extend %tooltip;
+
+				@if responslr-tooltip-triangle-enabled($settings) {
+					&:before {
+						left: 1rem;
+						@if responslr-tooltip-triangle-is-offset($settings) {
+							bottom: responslr-tooltip-offset($settings)+0.75rem;
+							@include triangle($direction: bottom, $color: responslr-tooltip-border-color($settings));
+						} @else {
+							bottom: responslr-tooltip-offset($settings)+1.25rem;
+							@include triangle($direction: top, $color: responslr-tooltip-border-color($settings));
+						}
+					}
+				}
+				&[data-tooltip]:after,
+				.tooltip-content {
+					bottom: responslr-tooltip-offset($settings)+1.25rem;
+					left: -0.25rem;
+				}
+			}
+		}
+
+		@if index(responslr-tooltip-directions($settings),east) {
+			&.east {
+				@extend %tooltip;
+
+				@if responslr-tooltip-triangle-enabled($settings) {
+					&:before {
+						top: 0.2rem;
+						@if responslr-tooltip-triangle-is-offset($settings) {
+							right: -(responslr-tooltip-offset($settings));
+							@include triangle($direction: left, $color: responslr-tooltip-border-color($settings));
+						} @else {
+							right: -(responslr-tooltip-offset($settings)+0.5rem);
+							@include triangle($direction: right, $color: responslr-tooltip-border-color($settings));
+						}
+					}
+				}
+				&[data-tooltip]:after,
+				.tooltip-content {
+					left: 100%;
+					top: -0.1rem;
+					margin-left: responslr-tooltip-offset($settings);
+				}
+			}
+		}
+
+		@if index(responslr-tooltip-directions($settings),south) {
+			&.south {
+				@extend %tooltip;
+
+				@if responslr-tooltip-triangle-enabled($settings) {
+					&:before {
+						left: 1rem;
+						@if responslr-tooltip-triangle-is-offset($settings) {
+							top: responslr-tooltip-offset($settings)+0.75rem;
+							@include triangle($direction: top, $color: responslr-tooltip-border-color($settings));
+						} @else {
+							top: responslr-tooltip-offset($settings)+1.25rem;
+							@include triangle($direction: bottom, $color: responslr-tooltip-border-color($settings));
+						}
+					}
+				}
+
+				&[data-tooltip]:after,
+				.tooltip-content {
+					top: responslr-tooltip-offset($settings)+1.25rem;
+					left: -0.25rem;
+				}
+			}
+		}
+
+		@if index(responslr-tooltip-directions($settings),west) {
+			&.west {
+				@extend %tooltip;
+
+				@if responslr-tooltip-triangle-enabled($settings) {
+					&:before {
+						top: 0.2rem;
+						@if responslr-tooltip-triangle-is-offset($settings) {
+							left: -(responslr-tooltip-offset($settings));
+							@include triangle($direction: right, $color: responslr-tooltip-border-color($settings));
+						} @else {
+							left: -(responslr-tooltip-offset($settings)+0.5rem);
+							@include triangle($direction: left, $color: responslr-tooltip-border-color($settings));
+						}
+					}
+				}
+
+				&[data-tooltip]:after,
+				.tooltip-content {
+					right: 100%;
+					top: -0.1rem;
+					margin-right: responslr-tooltip-offset($settings);
+				}
+			}
 		}
 	}
-
-	.tooltip-top-right {
-		@extend .tooltip-top;
-
-		&:before {
-			right: 0;
-		}
-
-		&[data-tooltip]:after,
-		> .tooltip-content {
-			left: auto;
-			right: 0;
-		}
-	}
-
-	.tooltip-right {
-		@extend %tooltip;
-
-		&:before {
-			right: -12px;
-			@include triangle($direction: left, $color: responslr-tooltip-border-color($definition));
-		}
-
-		&[data-tooltip]:after,
-		> .tooltip-content {
-			right: -(responslr-tooltip-max-width($definition)+12px);
-			top: 0;
-		}
-	}
-
-	.tooltip-right-bottom {
-		@extend .tooltip-right;
-
-		&:before {
-			bottom: 0;
-		}
-
-		&[data-tooltip]:after,
-		> .tooltip-content {
-			top: auto;
-			bottom: 0;
-		}
-	}
-
-	.tooltip-bottom {
-		@extend %tooltip;
-
-		&:before {
-			top: responslr-tooltip-offset($definition);
-			@include triangle($direction: top, $color: responslr-tooltip-border-color($definition));
-		}
-
-		&[data-tooltip]:after,
-		> .tooltip-content {
-			top: (responslr-tooltip-offset($definition)+10px);
-			left: 0;
-		}
-	}
-
-	.tooltip-bottom-right {
-		@extend .tooltip-bottom;
-
-		&:before {
-			right: 0;
-		}
-
-		&[data-tooltip]:after,
-		> .tooltip-content {
-			left: auto;
-			right: 0;
-		}
-	}
-
-	.tooltip-left {
-		@extend %tooltip;
-
-		&:before {
-			left: -12px;
-			@include triangle($direction: right, $color: responslr-tooltip-border-color($definition));
-		}
-
-		&[data-tooltip]:after,
-		> .tooltip-content {
-			left: -(responslr-tooltip-max-width($definition)+12px);
-			top: 0;
-		}
-	}
-
-	.tooltip-left-bottom {
-		@extend .tooltip-left;
-
-		&:before {
-			bottom: 0;
-		}
-
-		&[data-tooltip]:after,
-		> .tooltip-content {
-			top: auto;
-			bottom: 0;
-		}
-	}
-
 }
 
 /***********************************************************************************
 	CLASS GENERATOR: TOOLTIP
 ***********************************************************************************/
-@include responslr-tooltip(default);
-// .tooltip-top {
-// 	position: relative;
 
-// 	&:before {
-// 		content: "";
-// 		position: absolute;
-// 		display: none;
-// 		top: -0.5em;
+@if $enable-ui-tooltip {
+	@include responslr-tooltip-base();
+	@each $tooltip in $tooltips {
+		@if responslr-tooltip-generate-class($tooltip) {
+			@include responslr-tooltip-generate-class($tooltip)
+		}
+	}
+}
 
-// 		@include triangle(bottom);
-// 	}
+/***********************************************************************************
+	EXAMPLE: TOOLTIP usage if enable-ui-tooltip is false
 
-// 	&:after {
-// 		content: attr(data-tooltip);
-// 		position: absolute;
-// 		display: none;
-// 		top: -2.25em;
-// 		left: 0;
-// 		//width: auto;
-// 		//max-width: 300px;
-// 		background-color: #fff;
-// 		border: 1px solid #000;
-// 		//white-space: pre-wrap;
-// 	}
+	@include responslr-tooltip-base();
+	@include responslr-tooltip-generate-class(responslr-tooltip(info));
+	.tooltip-info {
+		@extend %tooltip-info;
+	}
 
-// 	&:hover {
-// 		&:before,
-// 		&:after {
-// 			display: block;
-// 		}
-// 	}
-// }
-
-// .tooltip-bottom {
-// 	position: relative;
-
-// 	&:before {
-// 		content: "";
-// 		position: absolute;
-// 		display: none;
-// 		bottom: -0.5em;
-
-// 		@include triangle();
-// 	}
-
-// 	&:after {
-// 		position: absolute;
-// 		display: none;
-// 		bottom: -2.25em;
-// 		left: 0;
-// 		content: attr(data-tooltip);
-// 		background-color: #fff;
-// 		border: 1px solid #000;
-// 	}
-
-// 	&:hover {
-// 		&:before,
-// 		&:after {
-// 			display: block;
-// 		}
-// 	}
-// }
-
-// .tooltip {
-// 	position: relative;
-// 	display: inline-block;
-
-// 	.tooltip-icon {
-// 		position: relative;
-// 		display: inline-block;
-// 		cursor: help;
-// 	}
-
-// 	.tooltip-icon + .tooltip-content {
-// 		position: absolute;
-// 		display: none;
-// 	}
-
-// 	.tooltip-icon:hover,
-// 	.tooltip-icon:active {
-
-// 		& + .tooltip-content {
-// 			display: block;
-// 			top: 1.9em;
-// 			left: 0;
-// 			width: 300px;
-// 		}
-
-// 		&:after {
-// 			position: absolute;
-// 			display: block;
-// 			content: "";
-// 			@include triangle(top);
-// 		}
-// 	}
-
-// }
-
-// .tooltip-text {
-// 	position: relative;
-// 	display: inline-block;
-// 	cursor: help;
-// }
-
-// .tooltip-text > .tooltip-content {
-// 	position: absolute;
-// 	display: none;
-// }
-
-// .tooltip-text:hover,
-// .tooltip-text:active {
-
-// 	& > .tooltip-content {
-// 		display: block;
-// 		top: 1.9em;
-// 		left: 0;
-// 		width: 300px;
-// 	}
-
-// 	&:after {
-// 		position: absolute;
-// 		display: block;
-// 		content: "";
-// 		@include triangle();
-// 	}
-// }
+	@include responslr-tooltip-generate-class(responslr-tooltip(error));
+	.tooltip-error {
+		@extend %tooltip-error;
+	}
+***********************************************************************************/

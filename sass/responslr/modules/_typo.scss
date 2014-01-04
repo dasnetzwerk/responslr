@@ -22,6 +22,7 @@
 	MIXIN: TYPO
 ***********************************************************************************/
 @mixin typo($font: nth(nth($font-families,1),1), $font-size: nth(nth($font-sizes,1),1), $line-height: '', $font-weight: '', $font-style: '') {
+	-webkit-font-smoothing: antialiased; /* webkit text rendering fix */
 	// font-family
 	@each $font-list in $font-families {
 		@if nth($font-list,1) == $font {

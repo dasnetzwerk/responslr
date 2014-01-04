@@ -53,3 +53,16 @@
 
 // // Table
 // $enable-ui-table: false;
+
+// // Tooltip
+// $enable-ui-tooltip: false;
+// $tooltips-directions: north,south,east,west;
+
+// 	id 			cursor 	offset		padding		max-width 	font-size	font-color 	bg-color	border-color 	border-width 	border-style 	border-radius 	triangle 	offset 	generate 	directions
+$tooltips:
+	default 	help 	0.75rem 	5px			320px		'tiny'  	'white' 	'black' 	'black' 		2px 			solid 			3px 			true 		true 	true 		(north,south,east,west),
+	inset 		help 	0.75rem 	5px			320px		'tiny'  	'white' 	'black' 	'white' 		0 				solid 			3px 			true 		false 	false 		(north),
+	info 		help 	0.75rem 	5px			320px		'tiny'  	'white' 	'blue' 		'blue' 			0 				solid 			0 				false 		true 	false 		(south),
+	error 		help 	0.75rem 	5px			320px		'tiny'  	'white' 	'red' 		'red' 			0 				solid 			0 				false 		true 	false 		(east),
+	success 	help 	0.75rem 	5px			320px		'tiny'  	'white' 	'green' 	'green' 		0 				solid 			0 				false 		true 	false 		(west)
+;

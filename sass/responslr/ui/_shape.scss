@@ -145,7 +145,7 @@
 
 
 // Triangle
-@mixin triangle($direction: top, $width: 1em, $height: half, $color: black) {
+@mixin triangle($direction: top, $width: 1em, $height: half, $color: $black) {
 	@if ($direction == top or $direction == right or $direction == bottom or $direction == left) {
 		@if ($height == half) {
 			$height: $width / 2;

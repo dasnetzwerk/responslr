@@ -65,4 +65,29 @@
 	.spacing-bottom-test {
 		@include spacing-top(none);
 	}
+
+	// TOOLTIP TESTING
+	.tooltip-default {
+		@extend %tooltip-default;
+	}
+
+	@include responslr-tooltip-generate-class(responslr-tooltip(inset));
+	.tooltip-inset {
+		@extend %tooltip-inset;
+	}
+
+	@include responslr-tooltip-generate-class(responslr-tooltip(info));
+	.tooltip-info {
+		@extend %tooltip-info;
+	}
+
+	@include responslr-tooltip-generate-class(responslr-tooltip(error));
+	.tooltip-error {
+		@extend %tooltip-error;
+	}
+
+	@include responslr-tooltip-generate-class(responslr-tooltip(success));
+	.tooltip-success {
+		@extend %tooltip-success;
+	}
 //}
