@@ -1,11 +1,11 @@
 footer {
-	padding: spacing-size() 0;
+	padding: responslr-spacing-size() 0;
 
 	.portrait {
-		margin: spacing-size(small) 0;
+		margin: responslr-spacing-size(small) 0;
 	}
 
 	h3 {
-		@include typo($font: lato-light);
+		@include responslr-typo($font: lato-light);
 	}
 }

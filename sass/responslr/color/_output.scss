@@ -1,7 +1,7 @@
 /***********************************************************************************
 	FUNCTION: COLOR
 ***********************************************************************************/
-@function color($color: black) {
+@function responslr-color($color: black) {
 	$return-color: black;
 
 	@each $current-color in $colors {
@@ -17,13 +17,13 @@
 	@return $return-color;
 }
 
-@function color-name($color: black) {
+@function responslr-color-name($color: black) {
 	$return-color: nth($color,1);
 
 	@return $return-color;
 }
 
-@function color-value($color: black) {
+@function responslr-color-value($color: black) {
 	$return-color: nth($color,2);
 
 	@if type-of($return-color) != color {
@@ -37,48 +37,48 @@
 /***********************************************************************************
 	MIXINS: COLOR
 ***********************************************************************************/
-@mixin bg-color($color: white) {
-	background-color: color($color);
+@mixin responslr-bg-color($color: white) {
+	background-color: responslr-color($color);
 }
 
-@mixin text-color($color: black) {
-	color: color($color);
+@mixin responslr-text-color($color: black) {
+	color: responslr-color($color);
 }
 
-@mixin border-color($color: black, $property: border) {
-	#{$property}-color: color($color);
+@mixin responslr-border-color($color: black, $property: border) {
+	#{$property}-color: responslr-color($color);
 }
 
-@mixin color($color: black, $type: text-color) {
+@mixin responslr-color($color: black, $type: text-color) {
 	// Text Color
 	@if $type == text-color {
-		@include text-color($color);
+		@include responslr-text-color($color);
 	}
 
 	// Background Color
 	@if $type == bg-color {
-		@include bg-color($color);
+		@include responslr-bg-color($color);
 	}
 
 	// Border Color
 	$border-types: border,border-top,border-right,border-bottom,border-left;
 	@if index($border-types, $type) {
-		@include border-color($color, $type);
+		@include responslr-border-color($color, $type);
 	}
 }
 
 /***********************************************************************************
 	CLASS GENERATOR: COLOR
 ***********************************************************************************/
-@mixin generate-color() {
+@mixin responslr-generate-color() {
 	@each $color in $colors {
-		$generate-color-name: color-name($color);
-		$generate-color-value: color-value($color);
+		$generate-color-name: responslr-color-name($color);
+		$generate-color-value: responslr-color-value($color);
 
 		// background-color
 		@if $enable-module-color-bg {
 			.bg-#{$generate-color-name} {
-				@include bg-color($generate-color-name);
+				@include responslr-bg-color($generate-color-name);
 			}
 
 			@if $enable-module-color-bg-hover {
@@ -97,7 +97,7 @@
 		// text-color
 		@if $enable-module-color-text {
 			.text-#{$generate-color-name} {
-				@include text-color($generate-color-name);
+				@include responslr-text-color($generate-color-name);
 			}
 
 			@if $enable-module-color-text-hover {
@@ -116,7 +116,7 @@
 		// border-color
 		@if $enable-module-color-border {
 			.border-#{$generate-color-name} {
-				@include border-color($generate-color-name);
+				@include responslr-border-color($generate-color-name);
 			}
 
 			@if $enable-module-color-border-hover {
@@ -135,19 +135,19 @@
 		// border-color-directions
 		@if $enable-module-color-border-directions {
 			.border-top-#{$generate-color-name} {
-				@include border-color($color: $generate-color-name,$property: border-top);
+				@include responslr-border-color($color: $generate-color-name,$property: border-top);
 			}
 
 			.border-right-#{$generate-color-name} {
-				@include border-color($color: $generate-color-name,$property: border-right);
+				@include responslr-border-color($color: $generate-color-name,$property: border-right);
 			}
 
 			.border-bottom-#{$generate-color-name} {
-				@include border-color($color: $generate-color-name,$property: border-bottom);
+				@include responslr-border-color($color: $generate-color-name,$property: border-bottom);
 			}
 
 			.border-left-#{$generate-color-name} {
-				@include border-color($color: $generate-color-name,$property: border-left);
+				@include responslr-border-color($color: $generate-color-name,$property: border-left);
 			}
 
 			@if $enable-module-color-border-directions-hover {
@@ -190,5 +190,5 @@
 }
 
 @if $enable-module-color {
-	@include generate-color();
+	@include responslr-generate-color();
 }

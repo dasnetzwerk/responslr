@@ -1,6 +1,50 @@
 /***********************************************************************************
 	RESPONSLR - SETTINGS
 ***********************************************************************************/
-@import "settings/globals";
-@import "settings/modules";
-@import "settings/ui";
+// Reset
+@import "reset/settings";
+
+// Typo
+@import "typo/settings";
+
+// Grid
+@import "grid/settings";
+
+// Hider
+@import "visibility/settings";
+
+// Transition
+@import "transition/settings";
+
+// Alignment
+@import "alignment/settings";
+
+// Position
+@import "position/settings";
+
+// Spacing
+@import "spacing/settings";
+
+// Aspect Ratio
+@import "ratio/settings";
+
+// Sprite
+@import "sprite/settings";
+
+// Color
+@import "color/settings";
+
+// Shape
+@import "shape/settings";
+
+// Button
+@import "button/settings";
+
+// Tooltip
+@import "tooltip/settings";
+
+// Form
+@import "form/settings";
+
+// Table
+@import "table/settings";

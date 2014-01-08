@@ -1,39 +1,39 @@
 //#content {
 	article {
-		@include spacing-bottom();
+		@include responslr-spacing-bottom();
 	}
 
 	h3 {
-		@include spacing-bottom(small);
+		@include responslr-spacing-bottom(small);
 	}
 
 	p {
-		margin-bottom: spacing-size(small);
+		margin-bottom: responslr-spacing-size(small);
 	}
 
 	.test-min-width:before {
-		content: "min-width: " + grid-min-width(large);
+		content: "min-width: " + responslr-grid-min-width(large);
 	}
 	.test-max-width:before {
-		content: "max-width: " + grid-max-width(large);
+		content: "max-width: " + responslr-grid-max-width(large);
 	}
 	.test-columns:before {
-		content: "columns: " + grid-columns(large);
+		content: "columns: " + responslr-grid-columns(large);
 	}
 	.test-gutter:before {
-		content: "gutter: " + grid-gutter(large);
+		content: "gutter: " + responslr-grid-gutter(large);
 	}
 	.text-name:before {
-		content: "breakpoint name: " + grid-breakpoint-name(2);
+		content: "breakpoint name: " + responslr-grid-breakpoint-name(2);
 	}
 
 	.intro {
-		@include typo($font-size: medium);
+		@include responslr-typo($font-size: medium);
 	}
 
 	.box {
-		padding: grid-gutter-half();
-		// @include typo($font: lato-regular);
+		padding: responslr-grid-gutter-half();
+		// @include responslr-typo($font: lato-regular);
 	}
 
 	.border {
@@ -44,26 +44,26 @@
 	// FONT TESTING
 	.font-test-1 {
 		display: inline-block;
-		@include typo($font: lato-light, $font-size: 27px, $line-height: 100px);
+		@include responslr-typo($font: lato-light, $font-size: 27px, $line-height: 100px);
 	}
 
 	.font-test-2 {
 		display: inline-block;
-		@include typo($font-size: large, $line-height: 200px)
+		@include responslr-typo($font-size: large, $line-height: 200px)
 	}
 
 	// BUTTON TESTING
 	[class^=button-] {
-		margin-bottom: grid-gutter(large);
+		margin-bottom: responslr-grid-gutter(large);
 	}
 
 	// SPACING TESTING
 	.spacing-top-test {
-		@include spacing-bottom(none);
+		@include responslr-spacing-bottom(none);
 	}
 
 	.spacing-bottom-test {
-		@include spacing-top(none);
+		@include responslr-spacing-top(none);
 	}
 
 	// TOOLTIP TESTING

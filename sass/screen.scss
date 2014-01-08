@@ -13,7 +13,7 @@ $experimental-support-for-microsoft: true;
 	RESPONSLR
 ***********************************************************************************/
 @import "custom/settings";
+@import "responslr/globals";
 @import "responslr/settings";
-@import "responslr/modules";
-@import "responslr/ui";
+@import "responslr/outputs";
 @import "custom/layout";

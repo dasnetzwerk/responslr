@@ -6,15 +6,15 @@
 /***********************************************************************************
 	MIXIN: ALIGNMENT
 ***********************************************************************************/
-@mixin alignment() {
-	// TODO: @mixin alignment()
+@mixin responslr-alignment() {
+	// TODO: @mixin responslr-alignment()
 }
 
 
 /***********************************************************************************
 	CLASS GENERATOR: ALIGNMENT
 ***********************************************************************************/
-@mixin generate-alignment() {
+@mixin responslr-generate-alignment() {
 	// Default Alignments
 	.h-left {
 		text-align: left;
@@ -44,7 +44,7 @@
 	@each $current-breakpoint-list in $grid-breakpoints {
 		$current-breakpoint-name: nth($current-breakpoint-list,1);
 
-		@include media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
+		@include responslr-media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
 			.h-left-#{$current-breakpoint-name} {
 				text-align: left;
 			}
@@ -73,5 +73,5 @@
 }
 
 @if $enable-module-alignment {
-	@include generate-alignment();
+	@include responslr-generate-alignment();
 }

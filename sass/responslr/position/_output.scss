@@ -6,13 +6,13 @@
 /***********************************************************************************
 	MIXIN: POSITION
 ***********************************************************************************/
-@mixin position($position: absolute, $where: null, $value: grid-gutter-half()) {
+@mixin responslr-position($position: absolute, $where: null, $value: responslr-grid-gutter-half()) {
 	position: unquote($position);
 	#{unquote($where)}: $value;
 
 	@if $where == left or $where == right {
 		&.column {
-			@if $value == grid-gutter-half() {
+			@if $value == responslr-grid-gutter-half() {
 				#{$where}: 0;
 			} @else {
 				#{$where}: $value;
@@ -25,24 +25,24 @@
 /***********************************************************************************
 	CLASS GENERATOR: POSITION
 ***********************************************************************************/
-@mixin generate-position() {
+@mixin responslr-generate-position() {
 	.position-top {
-		@include position($where: top, $value: 0);
+		@include responslr-position($where: top, $value: 0);
 	}
 
 	.position-right {
-		@include position($where: right);
+		@include responslr-position($where: right);
 	}
 
 	.position-bottom {
-		@include position($where: bottom, $value: 0);
+		@include responslr-position($where: bottom, $value: 0);
 	}
 
 	.position-left {
-		@include position($where: left);
+		@include responslr-position($where: left);
 	}
 }
 
 @if $enable-module-position {
-	@include generate-position();
+	@include responslr-generate-position();
 }

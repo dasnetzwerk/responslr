@@ -13,7 +13,7 @@ nav {
 
 			a,
 			a:visited {
-				@include typo($font: lato-regular);
+				@include responslr-typo($font: lato-regular);
 				display: block;
 				text-transform: uppercase;
 				color: $black;
@@ -27,12 +27,12 @@ nav {
 }
 
 #main-navigation {
-	margin-top: spacing-size();
+	margin-top: responslr-spacing-size();
 
 	ul {
 		li {
 			a {
-				@include typo($font: lato-regular, $font-size: medium);
+				@include responslr-typo($font: lato-regular, $font-size: medium);
 			}
 		}
 	}

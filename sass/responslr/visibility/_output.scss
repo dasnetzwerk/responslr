@@ -6,48 +6,48 @@
 /***********************************************************************************
 	MIXIN: VISIBILITY
 ***********************************************************************************/
-@mixin hide() {
+@mixin responslr-hide() {
 	display: none;
 }
 
-@mixin show($display-value: inherit) {
+@mixin responslr-show($display-value: inherit) {
 	display: $display-value;
 }
 
-@mixin visibility() {
+@mixin responslr-visibility() {
 
 }
 
 /***********************************************************************************
 	CLASS GENERATOR: VISIBILITY
 ***********************************************************************************/
-@mixin generate-hider() {
+@mixin responslr-generate-hider() {
 	@each $current-breakpoint-list in $grid-breakpoints {
 		$current-breakpoint-name: nth($current-breakpoint-list,1);
 
-		@include media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
+		@include responslr-media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
 			.hide-#{$current-breakpoint-name} {
-				@include hide();
+				@include responslr-hide();
 			}
 		}
 
-		@include media-query($media-start: $current-breakpoint-name) {
+		@include responslr-media-query($media-start: $current-breakpoint-name) {
 			.hide-#{$current-breakpoint-name}-up {
-				@include hide();
+				@include responslr-hide();
 			}
 		}
 
-		@include media-query($media-end: $current-breakpoint-name) {
+		@include responslr-media-query($media-end: $current-breakpoint-name) {
 			.hide-#{$current-breakpoint-name}-down {
-				@include hide();
+				@include responslr-hide();
 			}
 		}
 	}
 }
 
-@mixin generate-shower() {
+@mixin responslr-generate-shower() {
 	.hide-all {
-		@include hide();
+		@include responslr-hide();
 	}
 
 	@each $current-breakpoint-list in $grid-breakpoints {
@@ -59,45 +59,45 @@
 			@extend .hide-all;
 		}
 
-		@include media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
+		@include responslr-media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
 			.show-#{$current-breakpoint-name} {
-				@include show(block);
+				@include responslr-show(block);
 
 				&.column {
-					@include show(inline-block);
+					@include responslr-show(inline-block);
 				}
 			}
 
 			span.show-#{$current-breakpoint-name} {
-				@include show(inline);
+				@include responslr-show(inline);
 			}
 		}
 
-		@include media-query($media-start: $current-breakpoint-name) {
+		@include responslr-media-query($media-start: $current-breakpoint-name) {
 			.show-#{$current-breakpoint-name}-up {
-				@include show(block);
+				@include responslr-show(block);
 
 				&.column {
-					@include show(inline-block);
+					@include responslr-show(inline-block);
 				}
 			}
 
 			span.show-#{$current-breakpoint-name}-up {
-				@include show(inline);
+				@include responslr-show(inline);
 			}
 		}
 
-		@include media-query($media-end: $current-breakpoint-name) {
+		@include responslr-media-query($media-end: $current-breakpoint-name) {
 			.show-#{$current-breakpoint-name}-down {
-				@include show();
+				@include responslr-show();
 
 				&.column {
-					@include show(inline-block);
+					@include responslr-show(inline-block);
 				}
 			}
 
 			span.show-#{$current-breakpoint-name}-down {
-				@include show(inline);
+				@include responslr-show(inline);
 			}
 		}
 	}
@@ -105,10 +105,10 @@
 
 @if $enable-module-visiblity {
 	@if $enable-module-hider {
-		@include generate-hider();
+		@include responslr-generate-hider();
 	}
 
 	@if $enable-module-shower {
-		@include generate-shower();
+		@include responslr-generate-shower();
 	}
 }

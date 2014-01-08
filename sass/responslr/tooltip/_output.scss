@@ -1,29 +1,17 @@
 /***********************************************************************************
 	UI - TOOLTIP
 ***********************************************************************************/
-/*
-	TODO:
-	- tip-position: top, right, bottom, left
-	- tip-color:
-	- tip-bg-color:
-	- tip-border-radius:
-	- tip-border-width:
-	- tip-border-style:
-	- tip-border-color:
-*/
 
-/*
-1 	name
-2 	offset
-3	max-width
-4 	font-size
-5	font-color
-6 	bg-color
-7	border-color
-8 	border-width
-9 	border-style
-10	border-radius
-*/
+// 1 	name
+// 2 	offset
+// 3	max-width
+// 4 	font-size
+// 5	font-color
+// 6 	bg-color
+// 7	border-color
+// 8 	border-width
+// 9 	border-style
+// 10	border-radius
 
 /***********************************************************************************
 	FUNCTION: TOOLTIP
@@ -81,21 +69,21 @@
 
 @function responslr-tooltip-font-color($tooltip: responslr-tooltip()) {
 	@if $tooltip and length($tooltip) >= 7 {
-		@return color(nth($tooltip,7));
+		@return responslr-color(nth($tooltip,7));
 	}
 	@return $white;
 }
 
 @function responslr-tooltip-bg-color($tooltip: responslr-tooltip()) {
 	@if $tooltip and length($tooltip) >= 8 {
-		@return color(nth($tooltip,8));
+		@return responslr-color(nth($tooltip,8));
 	}
 	@return $black;
 }
 
 @function responslr-tooltip-border-color($tooltip: responslr-tooltip()) {
 	@if $tooltip and length($tooltip) >= 9 {
-		@return color(nth($tooltip,9));
+		@return responslr-color(nth($tooltip,9));
 	}
 	@return $black;
 }
@@ -212,7 +200,7 @@
 		.tooltip-content {
 			width: responslr-tooltip-max-width($settings);
 			padding: responslr-tooltip-padding($settings);
-			@include typo($font-size: responslr-tooltip-font-size($settings));
+			@include responslr-typo($font-size: responslr-tooltip-font-size($settings));
 			color: responslr-tooltip-font-color($settings);
 			background-color: responslr-tooltip-bg-color($settings);
 

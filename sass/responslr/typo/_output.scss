@@ -21,7 +21,7 @@
 /***********************************************************************************
 	MIXIN: TYPO
 ***********************************************************************************/
-@mixin typo($font: nth(nth($font-families,1),1), $font-size: nth(nth($font-sizes,1),1), $line-height: '', $font-weight: '', $font-style: '') {
+@mixin responslr-typo($font: nth(nth($font-families,1),1), $font-size: nth(nth($font-sizes,1),1), $line-height: '', $font-weight: '', $font-style: '') {
 	-webkit-font-smoothing: antialiased; /* webkit text rendering fix */
 	// font-family
 	@each $font-list in $font-families {
@@ -91,18 +91,18 @@
 /***********************************************************************************
 	CLASS GENERATOR: TYPO
 ***********************************************************************************/
-@mixin generate-typo() {
+@mixin responslr-generate-typo() {
 	// font-families
 	@each $font-family-list in $font-families {
 		.font-family-#{nth($font-family-list,1)} {
-			@include typo($font: nth($font-family-list,1), $font-size: '');
+			@include responslr-typo($font: nth($font-family-list,1), $font-size: '');
 		}
 	}
 
 	// font-sizes
 	@each $font-size-list in $font-sizes {
 		.font-size-#{nth($font-size-list,1)} {
-			@include typo($font: '', $font-size: nth($font-size-list,1));
+			@include responslr-typo($font: '', $font-size: nth($font-size-list,1));
 		}
 	}
 
@@ -112,5 +112,5 @@
 	}
 }
 @if $enable-module-typo {
-	@include generate-typo();
+	@include responslr-generate-typo();
 }

@@ -74,14 +74,14 @@
 		padding: responslr-button-padding-y($name) responslr-button-padding-x($name);
 		white-space: pre-wrap;
 
-		@include typo($font-size: responslr-button-font-size($name), $line-height: responslr-button-font-size($name));
+		@include responslr-typo($font-size: responslr-button-font-size($name), $line-height: responslr-button-font-size($name));
 	} @else {
 		height: responslr-button-height($name);
 		padding: 0 responslr-button-padding-x($name);
 		line-height: responslr-button-height($name);
 		white-space: nowrap;
 
-		@include typo($font-size: responslr-button-font-size($name), $line-height: responslr-button-height($name));
+		@include responslr-typo($font-size: responslr-button-font-size($name), $line-height: responslr-button-height($name));
 	}
 
 	@if(responslr-button-border-radius($name) != 0) {

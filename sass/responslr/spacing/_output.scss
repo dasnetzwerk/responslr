@@ -1,7 +1,7 @@
 /***********************************************************************************
 	FUNCTION: SPACING
 ***********************************************************************************/
-@function spacing-size($spacing-name: default) {
+@function responslr-spacing-size($spacing-name: default) {
 	@each $spacing-size-list in $spacing-sizes {
 		@if nth($spacing-size-list,1) == $spacing-name {
 			@return nth($spacing-size-list,2);
@@ -13,7 +13,7 @@
 /***********************************************************************************
 	MIXIN: SPACING
 ***********************************************************************************/
-@mixin spacing(
+@mixin responslr-spacing(
 	$spacing-size-top: null,
 	$spacing-size-right: null,
 	$spacing-size-bottom: null,
@@ -35,37 +35,37 @@
 }
 
 // Apply leading whitespace as margin.
-@mixin spacing-top($spacing-size: default) {
+@mixin responslr-spacing-top($spacing-size: default) {
 	@if type-of($spacing-size) == string {
-		$spacing-size: spacing-size($spacing-size);
+		$spacing-size: responslr-spacing-size($spacing-size);
 	}
-	@include spacing($spacing-size-top: $spacing-size);
+	@include responslr-spacing($spacing-size-top: $spacing-size);
 }
 
 // Apply trailing whitespace as margin.
-@mixin spacing-bottom($spacing-size: default) {
+@mixin responslr-spacing-bottom($spacing-size: default) {
 	@if type-of($spacing-size) == string {
-		$spacing-size: spacing-size($spacing-size);
+		$spacing-size: responslr-spacing-size($spacing-size);
 	}
-	@include spacing($spacing-size-bottom: $spacing-size);
+	@include responslr-spacing($spacing-size-bottom: $spacing-size);
 }
 
 /***********************************************************************************
 	CLASS GENERATOR: SPACING
 	generates .spacing-top-[spacing-name] and .spacing-bottom-[spacing-name] with defined spacing-sizes
 ***********************************************************************************/
-@mixin generate-spacing() {
+@mixin responslr-generate-spacing() {
 	@each $spacing-size-list in $spacing-sizes {
 		.spacing-top-#{nth($spacing-size-list,1)} {
-			@include spacing-top(nth($spacing-size-list,2));
+			@include responslr-spacing-top(nth($spacing-size-list,2));
 		}
 
 		.spacing-bottom-#{nth($spacing-size-list,1)} {
-			@include spacing-bottom(nth($spacing-size-list,2));
+			@include responslr-spacing-bottom(nth($spacing-size-list,2));
 		}
 	}
 }
 
 @if $enable-module-spacing {
-	@include generate-spacing();
+	@include responslr-generate-spacing();
 }
