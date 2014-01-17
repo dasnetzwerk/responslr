@@ -1,0 +1,85 @@
+//  font name (unique)		is custom 	name on file system			font-weight porperty		font-style property
+//	(first is default)												400 = regular, 700 = bold
+$test-font-families:
+	lato-light				true		lato-light					300							normal,
+	lato-regular			true		lato-regular				400							normal
+!default;
+
+//$test-font-families: null;
+
+@function get-font-index($name) {
+	$list-index: 0;
+	@each $family in $test-font-families {
+		$list-index: $list-index + 1;
+		@if nth($family,1) == $name {
+			@return $list-index;
+		}
+	}
+	@return null;
+}
+
+@function add-font-family(
+	$name,
+	$custom,
+	$file,
+	$weight: 300,
+	$style: normal
+) {
+	$return: null;
+	$setting: $name 	$custom 	$file 	$weight 	$style;
+	$index: get-font-index($name);
+	@if $index {
+		$list-index: 0;
+		@each $family in $test-font-families {
+			$list-index: $list-index + 1;
+			@if $index == $list-index {
+				$return: append($return,$setting,comma);
+			} @else {
+				$return: append($return,$family,comma);
+			}
+		}
+	} @else {
+		$return: append($test-font-families,$setting,comma);
+	}
+	@return $return;
+}
+
+@mixin add-font-family(
+	$name,
+	$custom,
+	$file,
+	$weight: 300,
+	$style: normal
+) {
+	$test-font-families: add-font-family(
+		$name: $name,
+		$custom: $custom,
+		$file: $file,
+		$weight: $weight,
+		$style: $style
+	);
+	@debug $test-font-families;
+}
+
+@include add-font-family(
+	$name: lato-light,
+	$custom: true,
+	$file: lato-light,
+	$weight: 600
+);
+
+@include add-font-family(
+	$name: lato-regular,
+	$custom: true,
+	$file: lato-regular,
+	$weight: 400,
+	$style: normal
+);
+
+@include add-font-family(
+	$name: arial,
+	$custom: false,
+	$file: arial,
+	$weight: 400,
+	$style: normal
+);
