@@ -1,12 +1,14 @@
 /***********************************************************************************
-	MODULE: TRANSITION
+	OUTPUT - TRANSITION
 ***********************************************************************************/
 
+
 /***********************************************************************************
-	FUNCTION: TRANSITION
+	FUNCTIONS
 ***********************************************************************************/
-@function responslr-transition($name: $transition-types-default) {
-	@each $transition in $transition-types {
+
+@function responslr-transition($name: $responslr-transitions-default) {
+	@each $transition in $responslr-transitions {
 		@if nth($transition,1) == $name {
 			@return $transition;
 		}
@@ -15,7 +17,7 @@
 	@return null;
 }
 
-@function responslr-transition-property($name: $transition-types-default) {
+@function responslr-transition-property($name: $responslr-transitions-default) {
 	$return-property: all;
 
 	@if(length(responslr-transition($name)) >= 2) {
@@ -25,7 +27,7 @@
 	@return $return-property;
 }
 
-@function responslr-transition-duration($name: $transition-types-default) {
+@function responslr-transition-duration($name: $responslr-transitions-default) {
 	$return-duration: 0;
 
 	@if(length(responslr-transition($name)) >= 3) {
@@ -35,7 +37,7 @@
 	@return $return-duration;
 }
 
-@function responslr-transition-timing-function($name: $transition-types-default) {
+@function responslr-transition-timing-function($name: $responslr-transitions-default) {
 	$return-timing-function: 0;
 
 	@if(length(responslr-transition($name)) >= 4) {
@@ -45,7 +47,7 @@
 	@return $return-timing-function;
 }
 
-@function responslr-transition-delay($name: $transition-types-default) {
+@function responslr-transition-delay($name: $responslr-transitions-default) {
 	$return-delay: 0;
 
 	@if(length(responslr-transition($name)) >= 5) {
@@ -55,16 +57,18 @@
 	@return $return-delay;
 }
 
+
 /***********************************************************************************
-	MIXIN: TRANSITION
+	MIXINS
 ***********************************************************************************/
+
 /*@mixin transition-default($transition-properties...) {
 	@include transition-property($transition-properties);
 	@include transition-timing-function($transition-timing-function-default);
 	@include transition-duration($transition-duration-default);
 }*/
 
-@mixin responslr-transition($name: $transition-types-default) {
+@mixin responslr-transition($name: $responslr-transitions-default) {
 	$property: responslr-transition-property($name);
 	$duration: responslr-transition-duration($name);
 	$timing-function: responslr-transition-timing-function($name);
@@ -74,11 +78,13 @@
 	@include transition-property($property);
 }
 
+
 /***********************************************************************************
-	CLASS GENERATOR: TRANSITION
+	CLASS GENERATOR
 ***********************************************************************************/
-@mixin responslr-generate-transition() {
-	@each $transition in $transition-types {
+
+@mixin responslr-generate-transitions() {
+	@each $transition in $responslr-transitions {
 		$transition-name: nth($transition,1);
 
 		.transition-#{$transition-name} {
@@ -87,6 +93,6 @@
 	}
 }
 
-@if $enable-module-transition {
-	@include responslr-generate-transition();
+@if $responslr-generate-transitions {
+	@include responslr-generate-transitions();
 }

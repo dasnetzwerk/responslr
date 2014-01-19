@@ -1,12 +1,38 @@
 /***********************************************************************************
-	MODULE: SPRITE
+	OUTPUT - SPRITE
 ***********************************************************************************/
 
 
 /***********************************************************************************
-	MIXIN: SPRITE
+	MIXINS
 ***********************************************************************************/
-@mixin load-sprite($sprite-map: $default-sprite-map, $sprite-map-retina: $default-sprite-map-retina) {
+
+@mixin responslr-get-sprite($sprite-image, $offset-x: 0px, $offset-y: 0px, $sprite-map: $responslr-sprite-map, $sprite-map-retina: $responslr-sprite-map-retina) {
+	@extend %#{sprite-map-name($sprite-map)};
+	@include responslr-get-sprite-position($sprite-image, $offset-x, $offset-y, $sprite-map, $sprite-map-retina);
+
+	.lt-ie10 & {
+		background-image: url('../img/#{sprite-map-name($sprite-map)}/#{$sprite-image}.png');
+		background-position: $offset-x $offset-y;
+		background-repeat: no-repeat;
+	}
+}
+
+@mixin responslr-get-sprite-position($sprite-image, $offset-x: 0px, $offset-y: 0px, $sprite-map: $responslr-sprite-map, $sprite-map-retina: $responslr-sprite-map-retina) {
+	background-position: sprite-position($sprite-map, $sprite-image, $offset-x, $offset-y);
+
+	@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+		$sprite-image-position: sprite-position($sprite-map-retina, $sprite-image, $offset-x * 2, $offset-y * 2);
+		background-position: nth($sprite-image-position, 1) / 2 nth($sprite-image-position, 2) / 2;
+	}
+}
+
+
+/***********************************************************************************
+	CLASS GENERATOR
+***********************************************************************************/
+
+@mixin responslr-generate-sprites($sprite-map: $responslr-sprite-map, $sprite-map-retina: $responslr-sprite-map-retina) {
 	%#{sprite-map-name($sprite-map)} {
 		background-image: sprite-url($sprite-map);
 		background-repeat: no-repeat;
@@ -18,34 +44,6 @@
 	}
 }
 
-@mixin get-sprite($sprite-image, $offset-x: 0px, $offset-y: 0px, $sprite-map: $default-sprite-map, $sprite-map-retina: $default-sprite-map-retina) {
-	@extend %#{sprite-map-name($sprite-map)};
-	@include get-sprite-position($sprite-image, $offset-x, $offset-y, $sprite-map, $sprite-map-retina);
-
-	.lt-ie10 & {
-		background-image: url('../img/#{sprite-map-name($sprite-map)}/#{$sprite-image}.png');
-		background-position: $offset-x $offset-y;
-		background-repeat: no-repeat;
-	}
-}
-
-@mixin get-sprite-position($sprite-image, $offset-x: 0px, $offset-y: 0px, $sprite-map: $default-sprite-map, $sprite-map-retina: $default-sprite-map-retina) {
-	background-position: sprite-position($sprite-map, $sprite-image, $offset-x, $offset-y);
-
-	@media print, (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-		$sprite-image-position: sprite-position($sprite-map-retina, $sprite-image, $offset-x * 2, $offset-y * 2);
-		background-position: nth($sprite-image-position, 1) / 2 nth($sprite-image-position, 2) / 2;
-	}
-}
-
-@if $enable-module-sprite {
-	@include load-sprite();
-}
-
-
-/***********************************************************************************
-	CLASS GENERATOR: SPRITE
-***********************************************************************************/
-@if $enable-module-sprite {
-	// TODO: Class Generator Sprite
+@if $responslr-generate-sprites {
+	@include responslr-generate-sprites();
 }

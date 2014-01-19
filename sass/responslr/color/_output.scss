@@ -1,10 +1,16 @@
 /***********************************************************************************
-	FUNCTION: COLOR
+	OUTPUT - COLOR
 ***********************************************************************************/
+
+
+/***********************************************************************************
+	FUNCTIONS
+***********************************************************************************/
+
 @function responslr-color($color: black) {
 	$return-color: black;
 
-	@each $current-color in $colors {
+	@each $current-color in $responslr-colors {
 		@if nth($current-color,1) == $color {
 			$return-color: nth($current-color,2);
 		}
@@ -35,8 +41,9 @@
 
 
 /***********************************************************************************
-	MIXINS: COLOR
+	MIXINS
 ***********************************************************************************/
+
 @mixin responslr-bg-color($color: white) {
 	background-color: responslr-color($color);
 }
@@ -67,27 +74,29 @@
 	}
 }
 
+
 /***********************************************************************************
-	CLASS GENERATOR: COLOR
+	CLASS GENERATOR
 ***********************************************************************************/
-@mixin responslr-generate-color() {
-	@each $color in $colors {
+
+@mixin responslr-generate-colors() {
+	@each $color in $responslr-colors {
 		$generate-color-name: responslr-color-name($color);
 		$generate-color-value: responslr-color-value($color);
 
 		// background-color
-		@if $enable-module-color-bg {
+		@if $responslr-generate-colors-bg {
 			.bg-#{$generate-color-name} {
 				@include responslr-bg-color($generate-color-name);
 			}
 
-			@if $enable-module-color-bg-hover {
+			@if $responslr-generate-colors-bg-hover {
 				.bg-hover-#{$generate-color-name}:hover {
 					@extend .bg-#{$generate-color-name};
 				}
 			}
 
-			@if $enable-module-color-bg-focus {
+			@if $responslr-generate-colors-bg-focus {
 				.bg-focus-#{$generate-color-name}:focus {
 					@extend .bg-#{$generate-color-name};
 				}
@@ -95,18 +104,18 @@
 		}
 
 		// text-color
-		@if $enable-module-color-text {
+		@if $responslr-generate-colors-text {
 			.text-#{$generate-color-name} {
 				@include responslr-text-color($generate-color-name);
 			}
 
-			@if $enable-module-color-text-hover {
+			@if $responslr-generate-colors-text-hover {
 				.text-hover-#{$generate-color-name}:hover {
 					@extend .text-#{$generate-color-name};
 				}
 			}
 
-			@if $enable-module-color-text-focus {
+			@if $responslr-generate-colors-text-focus {
 				.text-focus-#{$generate-color-name}:focus {
 					@extend .text-#{$generate-color-name};
 				}
@@ -114,18 +123,18 @@
 		}
 
 		// border-color
-		@if $enable-module-color-border {
+		@if $responslr-generate-colors-border {
 			.border-#{$generate-color-name} {
 				@include responslr-border-color($generate-color-name);
 			}
 
-			@if $enable-module-color-border-hover {
+			@if $responslr-generate-colors-border-hover {
 				.border-hover-#{$generate-color-name}:hover {
 					@extend .border-#{$generate-color-name};
 				}
 			}
 
-			@if $enable-module-color-border-focus {
+			@if $responslr-generate-colors-border-focus {
 				.border-focus-#{$generate-color-name}:focus {
 					@extend .border-#{$generate-color-name};
 				}
@@ -133,7 +142,7 @@
 		}
 
 		// border-color-directions
-		@if $enable-module-color-border-directions {
+		@if $responslr-generate-colors-border-directions {
 			.border-top-#{$generate-color-name} {
 				@include responslr-border-color($color: $generate-color-name,$property: border-top);
 			}
@@ -150,7 +159,7 @@
 				@include responslr-border-color($color: $generate-color-name,$property: border-left);
 			}
 
-			@if $enable-module-color-border-directions-hover {
+			@if $responslr-generate-colors-border-directions-hover {
 				.border-top-hover-#{$generate-color-name}:hover {
 					@extend .border-top-#{$generate-color-name};
 				}
@@ -168,7 +177,7 @@
 				}
 			}
 
-			@if $enable-module-color-border-directions-focus {
+			@if $responslr-generate-colors-border-directions-focus {
 				.border-top-focus-#{$generate-color-name}:focus {
 					@extend .border-top-#{$generate-color-name};
 				}
@@ -189,6 +198,6 @@
 	}
 }
 
-@if $enable-module-color {
-	@include responslr-generate-color();
+@if $responslr-generate-colors {
+	@include responslr-generate-colors();
 }

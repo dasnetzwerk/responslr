@@ -1,10 +1,10 @@
 /***********************************************************************************
-	MODULE: HIDER
+	OUTPUT - VISIBILITY
 ***********************************************************************************/
 
 
 /***********************************************************************************
-	MIXIN: VISIBILITY
+	MIXINS
 ***********************************************************************************/
 @mixin responslr-hide() {
 	display: none;
@@ -14,15 +14,17 @@
 	display: $display-value;
 }
 
-@mixin responslr-visibility() {
+/*@mixin responslr-visibility() {
 
-}
+}*/
+
 
 /***********************************************************************************
-	CLASS GENERATOR: VISIBILITY
+	CLASS GENERATOR
 ***********************************************************************************/
-@mixin responslr-generate-hider() {
-	@each $current-breakpoint-list in $grid-breakpoints {
+
+@mixin responslr-generate-hiders() {
+	@each $current-breakpoint-list in $responslr-grid-breakpoints {
 		$current-breakpoint-name: nth($current-breakpoint-list,1);
 
 		@include responslr-media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
@@ -45,12 +47,12 @@
 	}
 }
 
-@mixin responslr-generate-shower() {
+@mixin responslr-generate-showers() {
 	.hide-all {
 		@include responslr-hide();
 	}
 
-	@each $current-breakpoint-list in $grid-breakpoints {
+	@each $current-breakpoint-list in $responslr-grid-breakpoints {
 		$current-breakpoint-name: nth($current-breakpoint-list,1);
 
 		.show-#{$current-breakpoint-name},
@@ -103,12 +105,12 @@
 	}
 }
 
-@if $enable-module-visiblity {
-	@if $enable-module-hider {
-		@include responslr-generate-hider();
+@if $responslr-generate-visiblities {
+	@if $responslr-generate-visiblities-hiders {
+		@include responslr-generate-hiders();
 	}
 
-	@if $enable-module-shower {
-		@include responslr-generate-shower();
+	@if $responslr-generate-visiblities-showers {
+		@include responslr-generate-showers();
 	}
 }

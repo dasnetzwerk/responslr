@@ -1,77 +1,82 @@
 /***********************************************************************************
-	MODULE: ALIGNMENTS
+	OUTPUT - ALIGNMENT
 ***********************************************************************************/
 
 
 /***********************************************************************************
-	MIXIN: ALIGNMENT
+	MIXINS
 ***********************************************************************************/
-@mixin responslr-alignment() {
-	// TODO: @mixin responslr-alignment()
+
+@mixin responslr-alignment($alignment) {
+	@if index(left right center, $alignment) {
+		text-align: $alignment;
+	} @else {
+		vertical-align: $alignment;
+	}
 }
 
-
 /***********************************************************************************
-	CLASS GENERATOR: ALIGNMENT
+	CLASS GENERATOR
 ***********************************************************************************/
-@mixin responslr-generate-alignment() {
+
+@mixin responslr-generate-alignments() {
 	// Default Alignments
 	.h-left {
-		text-align: left;
+		@include responslr-alignment(left);
 	}
 
 	.h-center {
-		text-align: center;
+		@include responslr-alignment(center);
 	}
 
 	.h-right {
-		text-align: right;
+		@include responslr-alignment(right);
 	}
 
 	.v-top {
-		vertical-align: top;
+		@include responslr-alignment(top);
 	}
 
-	.v-center {
-		vertical-align: middle;
+	.v-middle {
+		@include responslr-alignment(middle);
 	}
 
 	.v-bottom {
-		vertical-align: bottom;
+		@include responslr-alignment(bottom);
 	}
 
-	// Alignment on Small
-	@each $current-breakpoint-list in $grid-breakpoints {
+	// Alignments for each breakpoint
+	@each $current-breakpoint-list in $responslr-grid-breakpoints {
 		$current-breakpoint-name: nth($current-breakpoint-list,1);
 
 		@include responslr-media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
 			.h-left-#{$current-breakpoint-name} {
-				text-align: left;
+				@include responslr-alignment(left);
 			}
 
 			.h-center-#{$current-breakpoint-name} {
-				text-align: center;
+				@include responslr-alignment(center);
 			}
 
 			.h-right-#{$current-breakpoint-name} {
-				text-align: right;
+				@include responslr-alignment(right);
 			}
 
 			.v-top-#{$current-breakpoint-name} {
-				vertical-align: top;
+				@include responslr-alignment(top);
 			}
 
-			.v-center-#{$current-breakpoint-name} {
-				vertical-align: middle;
+			.v-middle-#{$current-breakpoint-name} {
+				@include responslr-alignment(middle);
 			}
 
 			.v-bottom-#{$current-breakpoint-name} {
-				vertical-align: bottom;
+				@include responslr-alignment(bottom);
 			}
 		}
 	}
 }
 
-@if $enable-module-alignment {
-	@include responslr-generate-alignment();
+@if $responslr-generate-alignments {
+	@include responslr-generate-alignments();
 }

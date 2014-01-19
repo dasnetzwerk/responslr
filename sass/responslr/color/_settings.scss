@@ -1,6 +1,7 @@
 /***********************************************************************************
-	COLOR - SETTINGS
+	SETTINGS - COLOR
 ***********************************************************************************/
+
 $white: rgb(255,255,255) !default;
 $black: rgb(26,32,37) !default;
 $grey: rgb(213,215,217) !default;
@@ -12,7 +13,7 @@ $purple: rgb(142,68,173) !default;
 $red: rgb(192,57,43) !default;
 $orange: rgb(242,98,50) !default;
 
-$colors:
+$responslr-colors:
 	'white'				$white,
 	'black'				$black,
 	'grey'				$grey,

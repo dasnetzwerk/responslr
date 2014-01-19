@@ -1,11 +1,12 @@
 /***********************************************************************************
-	UI - SHAPE
+	OUTPUT - SHAPE
 ***********************************************************************************/
 
 
 /***********************************************************************************
 	FUNCTION: SHAPE
 ***********************************************************************************/
+
 // Square
 
 
@@ -19,10 +20,10 @@
 @function arrow-settings($name: $responslr-arrow-name, $index: 0) {
 	$return-arrow-list: $responslr-arrow-settings;
 
-	@if type-of($index) == number and $index > 0 and $index <= length($shape-arrows) {
-		$return-arrow-list: nth($shape-arrows, $index);
+	@if type-of($index) == number and $index > 0 and $index <= length($responslr-shape-arrows) {
+		$return-arrow-list: nth($responslr-shape-arrows, $index);
 	} @else {
-		@each $arrow-list in $shape-arrows {
+		@each $arrow-list in $responslr-shape-arrows {
 			@if nth($arrow-list, 1) == $name {
 				$return-arrow-list: $arrow-list;
 			}
@@ -105,7 +106,7 @@
 }
 
 @mixin square($name: $responslr-square-name) {
-	@each $square-list in $shape-squares {
+	@each $square-list in $responslr-shape-squares {
 		$current-square-name: nth($square-list, 1);
 
 		@if $current-square-name == $name {
@@ -412,7 +413,7 @@
 }
 
 @mixin arrow($name: $responslr-arrow-name) {
-	@each $arrow-list in $shape-arrows {
+	@each $arrow-list in $responslr-shape-arrows {
 		$current-arrow-name: nth($arrow-list, 1);
 
 		@if $current-arrow-name == $name {
@@ -440,12 +441,12 @@
 ***********************************************************************************/
 @mixin generate-shape() {
 	// Square
-	@if $enable-ui-shape-square {
+	@if $responslr-generate-shapes-squares {
 		.square {
 			@include square();
 		}
 
-		@each $square in $shape-squares {
+		@each $square in $responslr-shape-squares {
 			$current-square-name: nth($square, 1);
 
 			.square-#{$current-square-name} {
@@ -455,12 +456,12 @@
 	}
 
 	// Circle
-	@if $enable-ui-shape-circle {
+	@if $responslr-generate-shapes-circles {
 		.circle {
 			@include circle();
 		}
 
-		@each $circle in $shape-circles {
+		@each $circle in $responslr-shape-circles {
 			$current-circle-name: nth($circle, 1);
 
 			.circle-#{$current-circle-name} {
@@ -470,7 +471,7 @@
 	}
 
 	// Triangle
-	@if $enable-ui-shape-triangle {
+	@if $responslr-generate-shapes-triangles {
 		.triangle-top {
 			@include triangle(top);
 		}
@@ -489,7 +490,7 @@
 	}
 
 	// Arrow
-	@if $enable-ui-shape-arrow {
+	@if $responslr-generate-shapes-arrows {
 		.arrow {
 			content: "";
 			display: block;
@@ -516,7 +517,7 @@
 			@include arrow-custom($direction: left);
 		}
 
-		@each $arrow-list in $shape-arrows {
+		@each $arrow-list in $responslr-shape-arrows {
 			$current-arrow-name: arrow-name($arrow-list);
 
 			.arrow-#{$current-arrow-name} {
@@ -526,6 +527,6 @@
 	}
 }
 
-@if $enable-ui-shape {
+@if $responslr-generate-shapes {
 	@include generate-shape();
 }

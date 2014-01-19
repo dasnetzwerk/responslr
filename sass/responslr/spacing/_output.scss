@@ -1,8 +1,14 @@
 /***********************************************************************************
-	FUNCTION: SPACING
+	OUTPUT - SPACING
 ***********************************************************************************/
+
+
+/***********************************************************************************
+	FUNCTIONS
+***********************************************************************************/
+
 @function responslr-spacing-size($spacing-name: default) {
-	@each $spacing-size-list in $spacing-sizes {
+	@each $spacing-size-list in $responslr-spacings {
 		@if nth($spacing-size-list,1) == $spacing-name {
 			@return nth($spacing-size-list,2);
 		}
@@ -10,9 +16,11 @@
 	@return 0;
 }
 
+
 /***********************************************************************************
-	MIXIN: SPACING
+	MIXINS
 ***********************************************************************************/
+
 @mixin responslr-spacing(
 	$spacing-size-top: null,
 	$spacing-size-right: null,
@@ -50,12 +58,13 @@
 	@include responslr-spacing($spacing-size-bottom: $spacing-size);
 }
 
+
 /***********************************************************************************
-	CLASS GENERATOR: SPACING
-	generates .spacing-top-[spacing-name] and .spacing-bottom-[spacing-name] with defined spacing-sizes
+	CLASS GENERATOR
 ***********************************************************************************/
-@mixin responslr-generate-spacing() {
-	@each $spacing-size-list in $spacing-sizes {
+
+@mixin responslr-generate-spacings() {
+	@each $spacing-size-list in $responslr-spacings {
 		.spacing-top-#{nth($spacing-size-list,1)} {
 			@include responslr-spacing-top(nth($spacing-size-list,2));
 		}
@@ -66,6 +75,6 @@
 	}
 }
 
-@if $enable-module-spacing {
-	@include responslr-generate-spacing();
+@if $responslr-generate-spacings {
+	@include responslr-generate-spacings();
 }

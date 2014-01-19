@@ -1,11 +1,12 @@
 /***********************************************************************************
-	TRANSITION - SETTINGS
+	SETTINGS - TRANSITION
 ***********************************************************************************/
+
 //  transition name (unique)	properties								duration 		timing-function 	delay
 //	(first is default)
-$transition-types:
+$responslr-transitions:
 	default					'color,background-color,border-color'		.25s			ease				0,
 	box						'height,width'								.5s				linear
 !default;
 
-$transition-types-default: nth(nth($transition-types,1),1) !default;
+$responslr-transitions-default: nth(nth($responslr-transitions,1),1) !default;

@@ -1,47 +1,100 @@
 /***********************************************************************************
-	MODULE: TYPO
+	OUTPUT - TYPO
 ***********************************************************************************/
 
 
 /***********************************************************************************
-	TYPO: CUSTOM FONTS - FONT-FAMILY GENERATOR
+	FUNCTIONS
 ***********************************************************************************/
-@each $i in $font-families {
-	@if nth($i, 2) {
-		@font-face {
-			font-family: nth($i, 1);
-			src: url('fonts/#{nth($i, 3)}.eot?#iefix') format('embedded-opentype'),
-				 url('fonts/#{nth($i, 3)}.woff') format('woff'),
-				 url('fonts/#{nth($i, 3)}.ttf') format('truetype'),
-				 url('fonts/#{nth($i, 3)}.svg##{nth($i, 1)}') format('svg');
+
+// font-families
+@function responslr-typo-family($name: $responslr-typo-families-default) {
+	@each $font-family in $responslr-typo-families {
+		@if nth($font-family,1) == $name {
+			@return $font-family;
 		}
 	}
+	@return null;
+}
+
+@function responslr-typo-family-iscustom($name: $responslr-typo-families-default) {
+	$return-iscustom: nth(responslr-typo-family($name),2);
+
+	@return $return-iscustom;
+}
+
+@function responslr-typo-family-filename($name: $responslr-typo-families-default) {
+	$return-filename: nth(responslr-typo-family($name),3);
+
+	@return $return-filename;
+}
+
+@function responslr-typo-family-font-weight($name: $responslr-typo-families-default) {
+	$return-font-weight: nth(responslr-typo-family($name),4);
+
+	@return $return-font-weight;
+}
+
+@function responslr-typo-family-font-style($name: $responslr-typo-families-default) {
+	$return-font-style: nth(responslr-typo-family($name),5);
+
+	@return $return-font-style;
+}
+
+// font-sizes
+@function responslr-typo-size($name: $responslr-typo-sizes-default) {
+	@each $font-size in $responslr-typo-sizes {
+		@if nth($font-size,1) == $name {
+			@return $font-size;
+		}
+	}
+	@return null;
+}
+
+@function responslr-typo-size-value($name: $responslr-typo-sizes-default) {
+	$return-size: nth(responslr-typo-size($name),2);
+
+	@return $return-size;
+}
+
+@function responslr-typo-size-line-height($name: $responslr-typo-sizes-default) {
+	$return-line-height: $responslr-typo-line-height-default;
+
+	@if length(responslr-typo-size($name)) >= 2 {
+		$return-line-height: nth(responslr-typo-size($name),3);
+	}
+
+	@return $return-line-height;
 }
 
 /***********************************************************************************
-	MIXIN: TYPO
+	MIXINS
 ***********************************************************************************/
-@mixin responslr-typo($font: nth(nth($font-families,1),1), $font-size: nth(nth($font-sizes,1),1), $line-height: '', $font-weight: '', $font-style: '') {
+
+@mixin responslr-typo($font: $responslr-typo-families-default, $font-size: $responslr-typo-sizes-default, $line-height: '', $font-weight: '', $font-style: '') {
 	-webkit-font-smoothing: antialiased; /* webkit text rendering fix */
+
 	// font-family
-	@each $font-list in $font-families {
-		@if nth($font-list,1) == $font {
+	@each $font-familiy-row in $responslr-typo-families {
+		$font-family-name: nth($font-familiy-row,1);
+
+		@if $font-family-name == $font {
 			// is custom font
-			@if nth($font-list,2) {
-				font-family: nth($font-list,1);
+			@if responslr-typo-family-iscustom($font-family-name) {
+				font-family: $font-family-name;
 			// is system font
 			} @else {
-				font-family: nth($font-list,3);
+				font-family: responslr-typo-family-filename($font-family-name);
 			}
 
 			// font-weight by font-size, if not explicitly set
 			@if $font-weight == '' {
-				font-weight: nth($font-list,4);
+				font-weight: responslr-typo-family-font-weight($font-family-name);
 			}
 
 			// font-weight by font-size, if not explicitly set
 			@if $font-style == '' {
-				font-style: nth($font-list,5);
+				font-style: responslr-typo-family-font-style($font-family-name);
 			}
 		}
 	}
@@ -50,14 +103,20 @@
 	@if type-of($font-size) == number {
 		font-size: $font-size;
 	} @else {
-		@each $font-size-list in $font-sizes {
+		@each $font-size-row in $responslr-typo-sizes {
+			$font-size-name: nth($font-size-row,1);
+
 			// font-size by font-sizes list
-			@if $font-size == nth($font-size-list,1) {
-				font-size: nth($font-size-list,2);
+			@if $font-size == $font-size-name {
+				font-size: responslr-typo-size-value($font-size-name);
 
 				// line-height by font-size, if not explicitly set
 				@if $line-height == '' {
-					line-height: nth($font-size-list,3);
+					@if length($font-size-row) >= 3 {
+						line-height: responslr-typo-size-line-height($font-size-name);
+					} @else {
+						line-height: $responslr-typo-line-height-default;
+					}
 				}
 			}
 		}
@@ -68,9 +127,11 @@
 		@if type-of($line-height) == number {
 			line-height: $line-height;
 		} @else {
-			@each $i in $font-sizes {
-				@if $line-height == nth($i,1) {
-					line-height: nth($i,3);
+			@each $font-size-row in $responslr-typo-sizes {
+				$font-size-name: nth($font-size-row,1);
+
+				@if $line-height == $font-size-name {
+					line-height: responslr-typo-size-line-height($font-size-name);
 				}
 			}
 		}
@@ -89,20 +150,37 @@
 
 
 /***********************************************************************************
-	CLASS GENERATOR: TYPO
+	CLASS GENERATOR
 ***********************************************************************************/
+
 @mixin responslr-generate-typo() {
 	// font-families
-	@each $font-family-list in $font-families {
-		.font-family-#{nth($font-family-list,1)} {
-			@include responslr-typo($font: nth($font-family-list,1), $font-size: '');
+	@if $responslr-generate-typo-families {
+		@each $i in $responslr-typo-families {
+			@if nth($i, 2) {
+				@font-face {
+					font-family: nth($i, 1);
+					src: url('fonts/#{nth($i, 3)}.eot?#iefix') format('embedded-opentype'),
+						 url('fonts/#{nth($i, 3)}.woff') format('woff'),
+						 url('fonts/#{nth($i, 3)}.ttf') format('truetype'),
+						 url('fonts/#{nth($i, 3)}.svg##{nth($i, 1)}') format('svg');
+				}
+			}
+		}
+
+		@each $font-family-list in $responslr-typo-families {
+			.font-family-#{nth($font-family-list,1)} {
+				@include responslr-typo($font: nth($font-family-list,1), $font-size: '');
+			}
 		}
 	}
 
 	// font-sizes
-	@each $font-size-list in $font-sizes {
-		.font-size-#{nth($font-size-list,1)} {
-			@include responslr-typo($font: '', $font-size: nth($font-size-list,1));
+	@if $responslr-generate-typo-sizes {
+		@each $font-size-row in $responslr-typo-sizes {
+			.font-size-#{nth($font-size-row,1)} {
+				@include responslr-typo($font: '', $font-size: nth($font-size-row,1));
+			}
 		}
 	}
 
@@ -111,6 +189,7 @@
 		@include user-select(none);
 	}
 }
-@if $enable-module-typo {
+
+@if $responslr-generate-typo {
 	@include responslr-generate-typo();
 }

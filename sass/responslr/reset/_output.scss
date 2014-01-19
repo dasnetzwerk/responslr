@@ -1,18 +1,12 @@
 /***********************************************************************************
-	MODULES - RESET
+	OUTPUT - RESET
 ***********************************************************************************/
 
 
 /***********************************************************************************
-	MIXIN: RESET
+	CLASS GENERATOR
 ***********************************************************************************/
-// @mixin reset() {}
-
-
-/***********************************************************************************
-	CLASS GENERATOR: POSITION
-***********************************************************************************/
-@mixin generate-reset() {
+@mixin responslr-generate-resets() {
 	html, body, div, span, applet, object, iframe,
 	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 	a, abbr, acronym, address, big, cite, code,
@@ -83,6 +77,6 @@
 	}
 }
 
-@if $enable-module-reset {
-	@include generate-reset();
+@if $responslr-generate-resets {
+	@include responslr-generate-resets();
 }

@@ -1,27 +1,23 @@
 /***********************************************************************************
 	BUTTON - SETTINGS
 ***********************************************************************************/
-$border-size: 3px !default;
-$border-radius: 2px !default;
 
-//	button name			height		padding-x	padding-y		font-size name		border-radius
-//	(first is default)											(by font-sizes)
-$button-styles:
-	normal				40px		30px		0				default				2px,
-	tiny				28px		20px		0				tiny				0,
-	large				60px		20px		0				medium				4px,
-	padding				0			20px		20px			medium				10px
+
+//	button name			height		padding-x	padding-y		border-radius
+$responslr-buttons:
+	normal				40px		30px		0				2px,
+	tiny				28px		20px		0				0,
+	large				60px		20px		0				4px,
+	padding				0			20px		20px			10px
 !default;
 
-$button-styles-default: nth(nth($button-styles,1),1) !default;
+// TODO: Optional font-size
+// TODO: Optional font-family
+
+// Default button
+$responslr-buttons-default: nth(nth($responslr-buttons,1),1) !default;
 
 // Inactive state
-$button-inactive-background-color: $grey-light !default;
-$button-inactive-border-color: $grey-light !default;
-$button-inactive-text-color: $grey-dark !default;
-
-// Default transitions
-//$button-transition-property: none !default;
-//$button-transition-duration: 0 !default;
-//$button-transition-timing-function: ease !default;
-//$button-transition-delay: 0 !default;
+$responslr-button-inactive-background-color: $grey-light !default;
+$responslr-button-inactive-border-color: $grey-light !default;
+$responslr-button-inactive-text-color: $grey-dark !default;

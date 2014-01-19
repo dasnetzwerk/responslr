@@ -1,12 +1,14 @@
 /***********************************************************************************
-	UI - BUTTON
+	OUTPUT - BUTTON
 ***********************************************************************************/
 
+
 /***********************************************************************************
-	FUNCTION: BUTTON
+	FUNCTIONS
 ***********************************************************************************/
-@function responslr-button($name: $button-styles-default) {
-	@each $button in $button-styles {
+
+@function responslr-button($name: $responslr-buttons-default) {
+	@each $button in $responslr-buttons {
 		@if nth($button,1) == $name {
 			@return $button;
 		}
@@ -14,58 +16,48 @@
 	@return null;
 }
 
-@function responslr-button-height($name: $button-styles-default) {
+@function responslr-button-height($name: $responslr-buttons-default) {
 	$return-height: nth(responslr-button($name),2);
 
 	@return $return-height;
 }
 
-@function responslr-button-padding-x($name: $button-styles-default) {
+@function responslr-button-padding-x($name: $responslr-buttons-default) {
 	$return-padding-x: nth(responslr-button($name),3);
 
 	@return $return-padding-x;
 }
 
-@function responslr-button-padding-y($name: $button-styles-default) {
+@function responslr-button-padding-y($name: $responslr-buttons-default) {
 	$return-padding-y: nth(responslr-button($name),4);
 
 	@return $return-padding-y;
 }
 
-@function responslr-button-font-size($name: $button-styles-default) {
-	$return-font-size: nth(responslr-button($name),5);
-
-	@return $return-font-size;
-}
-
-@function responslr-button-border-radius($name: $button-styles-default) {
-	$return-border-radius: nth(responslr-button($name),6);
+@function responslr-button-border-radius($name: $responslr-buttons-default) {
+	$return-border-radius: nth(responslr-button($name),5);
 
 	@return $return-border-radius;
 }
 
 
 /***********************************************************************************
-	MIXIN: BUTTON
+	MIXINS
 ***********************************************************************************/
+
 @mixin responslr-button-default() {
 	display: inline-block;
 	cursor: pointer;
-
-	//@if($button-transition-property != none) {
-	//	@include transition(all, $button-transition-delay, $button-transition-timing-function, $button-transition-delay);
-	//	@include transition-property($button-transition-property);
-	//}
 }
 
 @mixin responslr-button-inactive() {
-	background-color: $button-inactive-background-color;
-	border-color: $button-inactive-text-color;
-	color: $button-inactive-text-color;
+	background-color: $responslr-button-inactive-background-color;
+	border-color: $responslr-button-inactive-text-color;
+	color: $responslr-button-inactive-text-color;
 	cursor: default;
 }
 
-@mixin responslr-button($name: $button-styles-default, $insert-default-styles:true) {
+@mixin responslr-button($name: $responslr-buttons-default, $insert-default-styles:true) {
 	@if $insert-default-styles {
 		@include responslr-button-default();
 	}
@@ -73,15 +65,11 @@
 	@if(responslr-button-height($name) == 0) {
 		padding: responslr-button-padding-y($name) responslr-button-padding-x($name);
 		white-space: pre-wrap;
-
-		@include responslr-typo($font-size: responslr-button-font-size($name), $line-height: responslr-button-font-size($name));
 	} @else {
 		height: responslr-button-height($name);
 		padding: 0 responslr-button-padding-x($name);
 		line-height: responslr-button-height($name);
 		white-space: nowrap;
-
-		@include responslr-typo($font-size: responslr-button-font-size($name), $line-height: responslr-button-height($name));
 	}
 
 	@if(responslr-button-border-radius($name) != 0) {
@@ -91,14 +79,15 @@
 
 
 /***********************************************************************************
-	CLASS GENERATOR: BUTTON
+	CLASS GENERATOR
 ***********************************************************************************/
-@mixin responslr-generate-button() {
+
+@mixin responslr-generate-buttons() {
 	%button {
 		@include responslr-button-default();
 	}
 
-	@each $button in $button-styles {
+	@each $button in $responslr-buttons {
 		$button-name: nth($button,1);
 
 		.button-#{$button-name} {
@@ -122,6 +111,6 @@
 	}
 }
 
-@if $enable-ui-button {
-	@include responslr-generate-button();
+@if $responslr-generate-buttons {
+	@include responslr-generate-buttons();
 }

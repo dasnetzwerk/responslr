@@ -1,6 +1,12 @@
 /***********************************************************************************
-	FUNCTION: ASPECT-RATIO
+	OUTPUT - ASPECT-RATIO
 ***********************************************************************************/
+
+
+/***********************************************************************************
+	FUNCTIONS
+***********************************************************************************/
+
 @function responslr-aspect-ratio($width: 1, $height: 1) {
 	$aspect-ratio: 100%;
 
@@ -11,9 +17,11 @@
 	@return $aspect-ratio;
 }
 
+
 /***********************************************************************************
-	MIXIN: ASPECT-RATIO
+	MIXINS
 ***********************************************************************************/
+
 @mixin responslr-aspect-ratio($width: '', $height: '') {
 	@if type-of($width) == number and type-of($height) == number {
 		position: relative;
@@ -33,10 +41,11 @@
 
 
 /***********************************************************************************
-	CLASS GENERATOR: ASPECT-RATIO
+	CLASS GENERATOR
 ***********************************************************************************/
-@mixin responslr-generate-aspect-ratio() {
-	@each $aspect-ratio-list in $aspect-ratios {
+
+@mixin responslr-generate-aspect-ratios() {
+	@each $aspect-ratio-list in $responslr-aspect-ratios {
 		.aspect-ratio-#{nth($aspect-ratio-list,1)}-#{nth($aspect-ratio-list,2)} {
 			@include responslr-aspect-ratio($width: nth($aspect-ratio-list,1), $height: nth($aspect-ratio-list,2));
 		}
@@ -52,10 +61,10 @@
 		left: 0;
 
 		.column > & {
-			@each $current-breakpoint-list in $grid-breakpoints {
+			@each $current-breakpoint-list in $responslr-grid-breakpoints {
 				$current-breakpoint-name: nth($current-breakpoint-list,1);
 
-				@if(index($grid-breakpoints, $current-breakpoint-list) > 1) {
+				@if(index($responslr-grid-breakpoints, $current-breakpoint-list) > 1) {
 					@include responslr-media-query($media-end: $current-breakpoint-name) {
 						@include responslr-aspect-ratio-content($current-breakpoint-name);
 					}
@@ -67,6 +76,6 @@
 	}
 }
 
-@if $enable-module-aspect-ratio {
-	@include responslr-generate-aspect-ratio();
+@if $responslr-generate-aspect-ratios {
+	@include responslr-generate-aspect-ratios();
 }

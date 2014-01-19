@@ -1,15 +1,20 @@
 /***********************************************************************************
-	GRID - SETTINGS
+	SETTINGS - GRID
 ***********************************************************************************/
-$container-max-width: 1140px !default;
-$container-align: center !default;
-$container-horizontal-margin: 0 !default;
 
-//	name				max-width	columns		gutter			sdfsfd
-$grid-breakpoints:
+
+//	name				max-width	columns		gutter
+$responslr-grid-breakpoints:
 	('large'			1024px		12			16px),
 	('medium'			960px		6			12px),
 	('small'			640px		4			10px)
 !default;
 
-$grid-breakpoint-default: nth(nth($grid-breakpoints,1),1) !default;
+// Default breakpoint
+$responslr-grid-breakpoints-default: nth(nth($responslr-grid-breakpoints,1),1) !default;
+
+
+// Container
+$responslr-grid-container-max-width: 1140px !default;
+$responslr-grid-container-align: center !default;
+$responslr-grid-container-horizontal-margin: 0 !default;

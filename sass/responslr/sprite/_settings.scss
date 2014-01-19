@@ -1,18 +1,23 @@
 /***********************************************************************************
-	SPRITE - SETTINGS
+	SETTINGS - SPRITE
 ***********************************************************************************/
-$default-sprite-map: sprite-map(
-	"sprite/*.png",
 
-	$spacing: 50px
+@if $responslr-generate-sprites {
+	$responslr-sprite-map: sprite-map(
+		"sprite/*.png",
 
-	/* $sprite-icon-facebook-position: 50% */
-) !default;
+		$spacing: 50px
 
-$default-sprite-map-retina: sprite-map(
-	"retina-sprite/*.png",
+		/* $sprite-icon-facebook-position: 50% */
+	) !default;
 
-	$spacing: 50px
+	$responslr-sprite-map-retina: sprite-map(
+		"retina-sprite/*.png",
 
-	/* $retina-sprite-icon-facebook-position: 50%,  */
-) !default;
+		$spacing: 50px
+
+		/* $retina-sprite-icon-facebook-position: 50%,  */
+	) !default;
+}
+
+// TODO: Spritemaps über dieses File konfigurierbar machen und die eigentliche Erstellung + Abfrage ins Output verlegen

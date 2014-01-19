@@ -1,6 +1,7 @@
 /***********************************************************************************
 	GLOBALS
 ***********************************************************************************/
+
 // MIXINS
 @mixin insert-pseudo-element($write: true, $pseudo-element: before) {
 	@if $write {
@@ -12,112 +13,94 @@
 	}
 }
 
-// FUNCTIONS
-@function responslr-get-row($list, $index) {
-	@if(length(nth($list,1)) == 1) {
-		@if($index > 1) {
-			@return null;
-		} @else {
-			@return $list;
-		}
-	} @else {
-		@if(length($list) >= $index) {
-			@return nth($list,$index);
-		} @else {
-			@return null;
-		}
-	}
-}
 
-
-// MODULES
-$enable-module-class-generator: true !default;
+// GENERATORS
+$responslr-generate-classes: true !default;
 
 // Reset
-$enable-module-reset: $enable-module-class-generator !default;
+$responslr-generate-resets: $responslr-generate-classes !default;
 
 
 // Typo
-$enable-module-typo: $enable-module-class-generator !default;
+$responslr-generate-typo: $responslr-generate-classes !default;
+$responslr-generate-typo-families: $responslr-generate-typo !default;
+$responslr-generate-typo-sizes: $responslr-generate-typo !default;
 
 
 // Grid
-$enable-module-grid: $enable-module-class-generator !default;
-$enable-module-grid-helper: $enable-module-class-generator !default;
+$responslr-generate-grid-breakpoints: $responslr-generate-classes !default;
+$responslr-generate-grid-breakpoints-helper: $responslr-generate-classes !default;
 
 
 // Visiblity
-$enable-module-visiblity: $enable-module-class-generator !default;
-$enable-module-shower: $enable-module-visiblity !default;
-$enable-module-hider: $enable-module-visiblity !default;
+$responslr-generate-visiblities: $responslr-generate-classes !default;
+$responslr-generate-visiblities-showers: $responslr-generate-visiblities !default;
+$responslr-generate-visiblities-hiders: $responslr-generate-visiblities !default;
 
 
 // Transition
-$enable-module-transition: $enable-module-class-generator !default;
+$responslr-generate-transitions: $responslr-generate-classes !default;
 
 
 // Alignment
-$enable-module-alignment: $enable-module-class-generator !default;
+$responslr-generate-alignments: $responslr-generate-classes !default;
 
 
 // Position
-$enable-module-position: $enable-module-class-generator !default;
+$responslr-generate-positions: $responslr-generate-classes !default;
 
 
 // Spacing
-$enable-module-spacing: $enable-module-class-generator !default;
+$responslr-generate-spacings: $responslr-generate-classes !default;
 
 
 // Aspect Ratio
-$enable-module-aspect-ratio: $enable-module-class-generator !default;
+$responslr-generate-aspect-ratios: $responslr-generate-classes !default;
 
 
 // Sprite
-$enable-module-sprite: false !default;
+$responslr-generate-sprites: false !default;
 
 
 // Color
-$enable-module-color: $enable-module-class-generator !default;
+$responslr-generate-colors: $responslr-generate-classes !default;
 
-$enable-module-color-bg: $enable-module-color !default;
-$enable-module-color-bg-hover: $enable-module-color-bg !default;
-$enable-module-color-bg-focus: false !default;
+$responslr-generate-colors-bg: $responslr-generate-colors !default;
+$responslr-generate-colors-bg-hover: $responslr-generate-colors-bg !default;
+$responslr-generate-colors-bg-focus: false !default;
 
-$enable-module-color-text: $enable-module-color !default;
-$enable-module-color-text-hover: $enable-module-color-text !default;
-$enable-module-color-text-focus: false !default;
+$responslr-generate-colors-text: $responslr-generate-colors !default;
+$responslr-generate-colors-text-hover: $responslr-generate-colors-text !default;
+$responslr-generate-colors-text-focus: false !default;
 
-$enable-module-color-border: $enable-module-color !default;
-$enable-module-color-border-hover: $enable-module-color-border !default;
-$enable-module-color-border-focus: false !default;
+$responslr-generate-colors-border: $responslr-generate-colors !default;
+$responslr-generate-colors-border-hover: $responslr-generate-colors-border !default;
+$responslr-generate-colors-border-focus: false !default;
 
-$enable-module-color-border-directions: false !default;
-$enable-module-color-border-directions-hover: $enable-module-color-border-directions !default;
-$enable-module-color-border-directions-focus: false !default;
+$responslr-generate-colors-border-directions: false !default;
+$responslr-generate-colors-border-directions-hover: $responslr-generate-colors-border-directions !default;
+$responslr-generate-colors-border-directions-focus: false !default;
 
-
-// UI
-$enable-ui-class-generator: true !default;
 
 // Shape
-$enable-ui-shape: $enable-ui-class-generator !default;
-$enable-ui-shape-square: $enable-ui-shape !default;
-$enable-ui-shape-circle: $enable-ui-shape !default;
-$enable-ui-shape-triangle: $enable-ui-shape !default;
-$enable-ui-shape-arrow: $enable-ui-shape !default;
+$responslr-generate-shapes: $responslr-generate-classes !default;
+$responslr-generate-shapes-squares: $responslr-generate-shapes !default;
+$responslr-generate-shapes-circles: $responslr-generate-shapes !default;
+$responslr-generate-shapes-triangles: $responslr-generate-shapes !default;
+$responslr-generate-shapes-arrows: $responslr-generate-shapes !default;
 
 
 // Tooltip
-$enable-ui-tooltip: $enable-ui-class-generator !default;
+$responslr-generate-tooltips: $responslr-generate-classes !default;
 
 
 // Button
-$enable-ui-button: $enable-ui-class-generator !default;
+$responslr-generate-buttons: $responslr-generate-classes !default;
 
 
 // Form
-$enable-ui-form: $enable-ui-class-generator !default;
+$responslr-generate-forms: $responslr-generate-classes !default;
 
 
 // Table
-$enable-ui-table: $enable-ui-class-generator !default;
+$responslr-generate-tables: $responslr-generate-classes !default;

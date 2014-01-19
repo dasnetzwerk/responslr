@@ -1,10 +1,10 @@
 /***********************************************************************************
-	MODULE: POSITION
+	MODULE - POSITION
 ***********************************************************************************/
 
 
 /***********************************************************************************
-	MIXIN: POSITION
+	MIXINS
 ***********************************************************************************/
 @mixin responslr-position($position: absolute, $where: null, $value: responslr-grid-gutter-half()) {
 	position: unquote($position);
@@ -23,9 +23,9 @@
 
 
 /***********************************************************************************
-	CLASS GENERATOR: POSITION
+	CLASS GENERATOR
 ***********************************************************************************/
-@mixin responslr-generate-position() {
+@mixin responslr-generate-positions() {
 	.position-top {
 		@include responslr-position($where: top, $value: 0);
 	}
@@ -43,6 +43,6 @@
 	}
 }
 
-@if $enable-module-position {
-	@include responslr-generate-position();
+@if $responslr-generate-positions {
+	@include responslr-generate-positions();
 }

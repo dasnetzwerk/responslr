@@ -1,6 +1,7 @@
 /***********************************************************************************
-	UI - TOOLTIP
+	OUTPUT - TOOLTIP
 ***********************************************************************************/
+
 
 // 1 	name
 // 2 	offset
@@ -14,16 +15,20 @@
 // 10	border-radius
 
 /***********************************************************************************
-	FUNCTION: TOOLTIP
+	FUNCTIONS
 ***********************************************************************************/
-@function responslr-tooltip($name: default) {
-	@each $tooltip in $tooltips {
+
+@function responslr-tooltip($name: $responslr-tooltips-default) {
+	@each $tooltip in $responslr-tooltips {
 		@if nth($tooltip,1) == $name {
 			@return $tooltip;
 		}
 	}
 	@return null;
 }
+
+
+// TODO: Functions umbauen, siehe buttons (mit Name als parameter)
 
 @function responslr-tooltip-name($tooltip) {
 	@if $tooltip {
@@ -137,9 +142,11 @@
 	@return $tooltips-directions;
 }
 
+
 /***********************************************************************************
-	MIXIN: TOOLTIP
+	MIXINS
 ***********************************************************************************/
+
 @mixin responslr-tooltip-base() {
 	.tooltip-content {
 		display: none;
@@ -315,13 +322,15 @@
 	}
 }
 
+
 /***********************************************************************************
 	CLASS GENERATOR: TOOLTIP
 ***********************************************************************************/
 
-@if $enable-ui-tooltip {
+@if $responslr-generate-tooltips {
 	@include responslr-tooltip-base();
-	@each $tooltip in $tooltips {
+
+	@each $tooltip in $responslr-tooltips {
 		@if responslr-tooltip-generate-class($tooltip) {
 			@include responslr-tooltip-generate-class($tooltip)
 		}
