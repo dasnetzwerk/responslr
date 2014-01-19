@@ -185,6 +185,8 @@
 
 		@if $responslr-grid-container-align == center {
 			margin: 0 auto;
+		} @elseif $responslr-grid-container-align == right {
+			margin: 0 0 0 auto;
 		}
 
 		@include responslr-media-query($responslr-grid-container-max-width) {
