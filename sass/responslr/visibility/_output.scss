@@ -6,6 +6,7 @@
 /***********************************************************************************
 	MIXINS
 ***********************************************************************************/
+
 @mixin responslr-hide() {
 	display: none;
 }
@@ -14,9 +15,33 @@
 	display: $display-value;
 }
 
-/*@mixin responslr-visibility() {
+@mixin responslr-visibility($visibility-name) {
+	@extend .#{$visibility-name} !optional;
+}
 
-}*/
+@mixin responslr-visibility-show($breakpoint-name) {
+	@include responslr-visibility('show-#{$breakpoint-name}');
+}
+
+@mixin responslr-visibility-show-up($breakpoint-name) {
+	@include responslr-visibility('show-#{$breakpoint-name}-up');
+}
+
+@mixin responslr-visibility-show-down($breakpoint-name) {
+	@include responslr-visibility('show-#{$breakpoint-name}-down');
+}
+
+@mixin responslr-visibility-hide($breakpoint-name) {
+	@include responslr-visibility('hide-#{$breakpoint-name}');
+}
+
+@mixin responslr-visibility-hide-up($breakpoint-name) {
+	@include responslr-visibility('hide-#{$breakpoint-name}-up');
+}
+
+@mixin responslr-visibility-hide-down($breakpoint-name) {
+	@include responslr-visibility('hide-#{$breakpoint-name}-down');
+}
 
 
 /***********************************************************************************
