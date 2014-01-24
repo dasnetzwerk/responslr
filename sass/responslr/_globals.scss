@@ -57,6 +57,9 @@ $responslr-generate-aspect-ratios: $responslr-generate-classes !default;
 // Sprite
 $responslr-generate-sprites: false !default;
 
+// SVG sprite
+$responslr-generate-svg-sprites: true !default;
+
 
 // Color
 $responslr-generate-colors: $responslr-generate-classes !default;

@@ -1,0 +1,110 @@
+/***********************************************************************************
+	OUTPUT - SVG SPRITE
+***********************************************************************************/
+
+
+/***********************************************************************************
+	FUNCTIONS
+***********************************************************************************/
+
+@function responslr-svg-sprite($name: $responslr-svg-sprite-images-default) {
+	@each $sprite-image in $responslr-svg-sprite-images {
+		@if nth($sprite-image,1) == $name {
+			@return $sprite-image;
+		}
+	}
+
+	@return null;
+}
+
+@function responslr-svg-sprite-filename($name: $responslr-svg-sprite-images-default) {
+	$return-filename: nth(responslr-svg-sprite($name),2);
+
+	@return $return-filename;
+}
+
+@function responslr-svg-sprite-width($name: $responslr-svg-sprite-images-default) {
+	$return-width: nth(responslr-svg-sprite($name),3);
+
+	@return $return-width;
+}
+
+@function responslr-svg-sprite-height($name: $responslr-svg-sprite-images-default) {
+	$return-height: nth(responslr-svg-sprite($name),4);
+
+	@return $return-height;
+}
+
+@function responslr-svg-sprite-offset-x($name: $responslr-svg-sprite-images-default) {
+	$return-offset-x: nth(responslr-svg-sprite($name),5);
+
+	@return $return-offset-x;
+}
+
+@function responslr-svg-sprite-offset-y($name: $responslr-svg-sprite-images-default) {
+	$return-offset-y: nth(responslr-svg-sprite($name),6);
+
+	@return $return-offset-y;
+}
+
+@function responslr-svg-sprite-url($name: $responslr-svg-sprite-images-default) {
+	$return-url: inline-image(responslr-svg-sprite-filename($name));
+
+	@return $return-url;
+}
+
+
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+
+@mixin responslr-svg-sprite($name: $responslr-svg-sprite-images-default, $width: null, $height: null, $offset-x: null, $offset-y: null) {
+	background-image: responslr-svg-sprite-url($name);
+	background-repeat: no-repeat;
+
+	@include responslr-svg-sprite-position($name, $offset-x, $offset-y);
+	@include responslr-svg-sprite-size($name, $width, $height);
+}
+
+@mixin responslr-svg-sprite-size($name: $responslr-svg-sprite-images-default, $width: null, $height: null) {
+	@if $width == null {
+		$width: responslr-svg-sprite-width($name);
+	}
+
+	@if $height == null {
+		$height: responslr-svg-sprite-height($name);
+	}
+
+	background-size: $width $height;
+}
+
+@mixin responslr-svg-sprite-position($name: $responslr-svg-sprite-images-default, $offset-x: null, $offset-y: null) {
+	@if $offset-x == null {
+		$offset-x: responslr-svg-sprite-offset-x($name);
+	}
+
+	@if $offset-y == null {
+		$offset-y: responslr-svg-sprite-offset-y($name);
+	}
+
+	background-position: $offset-y $offset-x;
+}
+
+
+/***********************************************************************************
+	CLASS GENERATOR
+***********************************************************************************/
+
+@mixin responslr-generate-svg-sprites() {
+	@each $sprite-image in $responslr-svg-sprite-images {
+		$sprite-image-name: nth($sprite-image,1);
+
+		.svg-sprite-#{$sprite-image-name} {
+			@include responslr-svg-sprite($sprite-image-name);
+		}
+	}
+}
+
+@if $responslr-generate-svg-sprites {
+	@include responslr-generate-svg-sprites();
+}

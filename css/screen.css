@@ -41,6 +41,9 @@
 	SETTINGS - SPRITE
 ***********************************************************************************/
 /***********************************************************************************
+	SETTINGS - SVG SPRITE
+***********************************************************************************/
+/***********************************************************************************
 	SETTINGS - COLOR
 ***********************************************************************************/
 /***********************************************************************************
@@ -1476,6 +1479,32 @@ td.column {
 /***********************************************************************************
 	CLASS GENERATOR
 ***********************************************************************************/
+/***********************************************************************************
+	OUTPUT - SVG SPRITE
+***********************************************************************************/
+/***********************************************************************************
+	FUNCTIONS
+***********************************************************************************/
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+/***********************************************************************************
+	CLASS GENERATOR
+***********************************************************************************/
+.svg-sprite-equalizer {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNS4wLjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkVxdWFsaXplciIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSI0Mi45MzhweCIgaGVpZ2h0PSIzMy42ODhweCIgdmlld0JveD0iMCAwIDQyLjkzOCAzMy42ODgiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQyLjkzOCAzMy42ODgiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHJlY3QgeD0iMC4wNTIiIHk9IjI2LjYiIHdpZHRoPSIxMS42MSIgaGVpZ2h0PSI3LjA1OCIvPg0KPHJlY3QgeD0iMTUuNjc3IiB5PSIwLjA2OCIgd2lkdGg9IjExLjYxIiBoZWlnaHQ9IjMzLjU4OSIvPg0KPHJlY3QgeD0iMzEuMzAyIiB5PSIxNi40MDIiIHdpZHRoPSIxMS42MSIgaGVpZ2h0PSIxNy4yNTUiLz4NCjwvc3ZnPg0K');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: auto 100px;
+}
+
+.svg-sprite-dots {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNS4wLjIsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IlZlcnRpY2FsX2RvdHMiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCINCgkgeT0iMHB4IiB3aWR0aD0iMTguNzI5cHgiIGhlaWdodD0iNzQuNzZweCIgdmlld0JveD0iMCAwIDE4LjcyOSA3NC43NiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTguNzI5IDc0Ljc2Ig0KCSB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxyZWN0IHg9IjAuMDQyIiB5PSIwLjA0MiIgd2lkdGg9IjE4LjY2NyIgaGVpZ2h0PSIxOC42NjciLz4NCjxyZWN0IHg9IjAuMDQyIiB5PSIyOC4wNDIiIHdpZHRoPSIxOC42NjciIGhlaWdodD0iMTguNjY3Ii8+DQo8cmVjdCB4PSIwLjA0MiIgeT0iNTYuMDQyIiB3aWR0aD0iMTguNjY3IiBoZWlnaHQ9IjE4LjY2NyIvPg0KPC9zdmc+DQo=');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: auto 100px;
+}
+
 /***********************************************************************************
 	OUTPUT - COLOR
 ***********************************************************************************/
