@@ -50,9 +50,6 @@
 	SETTINGS - SHAPE
 ***********************************************************************************/
 /***********************************************************************************
-	SQUARE
-***********************************************************************************/
-/***********************************************************************************
 	CIRCLE
 ***********************************************************************************/
 /***********************************************************************************
@@ -1649,57 +1646,6 @@ td.column {
 /***********************************************************************************
 	CLASS GENERATOR: SHAPE
 ***********************************************************************************/
-.square {
-  display: inline-block;
-  padding: 6px 12px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-}
-
-.square-default {
-  display: inline-block;
-  padding: 6px 12px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-}
-
-.square-small {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  padding: 0 0;
-}
-
-.square-medium {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  padding: 0 0;
-  -webkit-border-radius: 1px;
-  -moz-border-radius: 1px;
-  -ms-border-radius: 1px;
-  -o-border-radius: 1px;
-  border-radius: 1px;
-}
-
-.square-large {
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  padding: 8px 16px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
-}
-
 .circle {
   display: inline-block;
   overflow: hidden;

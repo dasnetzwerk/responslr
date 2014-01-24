@@ -4,27 +4,6 @@
 
 
 /***********************************************************************************
-	SQUARE
-***********************************************************************************/
-//	name [unique]	width		height		border-radius	padding-x		padding-y
-//	(frist default)
-$responslr-shape-squares:
-	default			auto		auto		2px				12px			6px,
-	small			30px		30px		0				0				0,
-	medium			50px		50px		1px				0				0,
-	large			100px		100px		4px				16px			8px
-!default;
-
-$responslr-square-settings: nth($responslr-shape-squares, 1) !default;
-$responslr-square-name: nth($responslr-square-settings, 1) !default;
-$responslr-square-width: nth($responslr-square-settings, 2) !default;
-$responslr-square-height: nth($responslr-square-settings, 3) !default;
-$responslr-square-border-radius: nth($responslr-square-settings, 4) !default;
-$responslr-square-padding-x: nth($responslr-square-settings, 5) !default;
-$responslr-square-padding-y: nth($responslr-square-settings, 6) !default;
-$responslr-square-display: inline-block !default;
-
-/***********************************************************************************
 	CIRCLE
 ***********************************************************************************/
 //	name [unique]	width		height

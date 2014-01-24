@@ -7,9 +7,6 @@
 	FUNCTION: SHAPE
 ***********************************************************************************/
 
-// Square
-
-
 // Circle
 
 
@@ -78,49 +75,6 @@
 /***********************************************************************************
 	MIXIN: SHAPE
 ***********************************************************************************/
-// Square
-@mixin square-custom(
-	$width: $responslr-square-width,
-	$height: $responslr-square-height,
-	$border-radius: $responslr-square-border-radius,
-	$padding-x: $responslr-square-padding-x,
-	$padding-y:  $responslr-square-padding-y,
-	$display: $responslr-square-display
-) {
-
-	display: $display;
-
-	@if type-of($width) == number and $width > 0 {
-		width: $width;
-	}
-
-	@if type-of($height) == number and $height > 0 {
-		height: $height;
-	}
-
-	padding: $padding-y $padding-x;
-
-	@if $border-radius > 0 {
-		@include border-radius($border-radius);
-	}
-}
-
-@mixin square($name: $responslr-square-name) {
-	@each $square-list in $responslr-shape-squares {
-		$current-square-name: nth($square-list, 1);
-
-		@if $current-square-name == $name {
-			@include square-custom(
-				$width: nth($square-list, 2),
-				$height: nth($square-list, 3),
-				$border-radius: nth($square-list, 4),
-				$padding-x: nth($square-list, 5),
-				$padding-y: nth($square-list, 6)
-			);
-		}
-	}
-}
-
 
 // Circle
 @mixin circle($radius: 50%, $width: auto, $height: auto, $display: inline-block, $overflow: hidden, $h-align: center, $v-align: center) {
@@ -440,21 +394,6 @@
 	CLASS GENERATOR: SHAPE
 ***********************************************************************************/
 @mixin generate-shape() {
-	// Square
-	@if $responslr-generate-shapes-squares {
-		.square {
-			@include square();
-		}
-
-		@each $square in $responslr-shape-squares {
-			$current-square-name: nth($square, 1);
-
-			.square-#{$current-square-name} {
-				@include square($name: $current-square-name);
-			}
-		}
-	}
-
 	// Circle
 	@if $responslr-generate-shapes-circles {
 		.circle {
