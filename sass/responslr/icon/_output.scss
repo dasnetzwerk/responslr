@@ -1,0 +1,115 @@
+/***********************************************************************************
+	OUTPUT - ICON
+***********************************************************************************/
+
+
+/***********************************************************************************
+	FUNCTIONS
+***********************************************************************************/
+
+@function responslr-icon($name: $responslr-icons-default) {
+	@each $icon-name in $responslr-icons {
+		@if nth($icon-name,1) == $name {
+			@return $icon-name;
+		}
+	}
+
+	@return null;
+}
+
+@function responslr-icon-filename($name: $responslr-icons-default) {
+	$return-filename: nth(responslr-icon($name),2);
+
+	@return $return-filename;
+}
+
+@function responslr-icon-size($name: $responslr-icons-default) {
+	$return-size: nth(responslr-icon($name),3);
+
+	@return $return-size;
+}
+
+@function responslr-icon-offset-x($name: $responslr-icons-default) {
+	$return-offset-x: nth(responslr-icon($name),4);
+
+	@return $return-offset-x;
+}
+
+@function responslr-icon-offset-y($name: $responslr-icons-default) {
+	$return-offset-y: nth(responslr-icon($name),5);
+
+	@return $return-offset-y;
+}
+
+@function responslr-icon-color($name: $responslr-icons-default) {
+	$return-color: nth(responslr-icon($name),6);
+
+	@return $return-color;
+}
+
+@function responslr-icon-url($name: $responslr-icons-default, $color: null) {
+
+	@if $color == null {
+		$color: responslr-icon-color($name);
+	}
+
+	@if responslr-color($color) != null {
+		$color: responslr-color($color);
+	}
+
+	$return-url: inline-svg(responslr-icon-filename($name), $color);
+
+	@return $return-url;
+}
+
+
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+
+@mixin responslr-icon($name: $responslr-icons-default, $size: null, $offset-x: null, $offset-y: null, $color: null) {
+	background-image: responslr-icon-url($name, $color);
+	background-repeat: no-repeat;
+
+	@include responslr-icon-position($name, $offset-x, $offset-y);
+	@include responslr-icon-size($name, $size);
+}
+
+@mixin responslr-icon-size($name: $responslr-icons-default, $size: null) {
+	@if $size == null {
+		$size: responslr-icon-size($name);
+	}
+
+	background-size: unquote($size);
+}
+
+@mixin responslr-icon-position($name: $responslr-icons-default, $offset-x: null, $offset-y: null) {
+	@if $offset-x == null {
+		$offset-x: responslr-icon-offset-x($name);
+	}
+
+	@if $offset-y == null {
+		$offset-y: responslr-icon-offset-y($name);
+	}
+
+	background-position: $offset-y $offset-x;
+}
+
+
+/***********************************************************************************
+	CLASS GENERATOR
+***********************************************************************************/
+
+@mixin responslr-generate-icons() {
+	@each $icon-name in $responslr-icons {
+		$icon-name-name: nth($icon-name,1);
+
+		.icon-#{$icon-name-name} {
+			@include responslr-icon($icon-name-name);
+		}
+	}
+}
+
+@if $responslr-generate-icons {
+	@include responslr-generate-icons();
+}

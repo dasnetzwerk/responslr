@@ -8,16 +8,12 @@
 ***********************************************************************************/
 
 @function responslr-color($color: black) {
-	$return-color: black;
+	$return-color: null;
 
 	@each $current-color in $responslr-colors {
 		@if nth($current-color,1) == $color {
 			$return-color: nth($current-color,2);
 		}
-	}
-
-	@if type-of($return-color) != color {
-		$return-color: black;
 	}
 
 	@return $return-color;

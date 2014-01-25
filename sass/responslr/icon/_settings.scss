@@ -1,0 +1,13 @@
+/***********************************************************************************
+	SETTINGS - ICON
+***********************************************************************************/
+
+//	name				file name					background-size		offset-x	offset-y	color
+$responslr-icons:
+	equalizer 			'svg/equalizer.svg'			'auto 100px' 		50%			50%			black,
+	dots				'svg/vertical-dots.svg'		'auto 100px'		50%			50%			$orange,
+	drinking-horn		'svg/drinking-horn.svg'		'contain'			50%			50%			'grey-light'
+!default;
+
+// Default button
+$responslr-icons-default: nth(nth($responslr-icons,1),1) !default;

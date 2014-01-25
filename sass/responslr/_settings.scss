@@ -10,6 +10,9 @@
 // Grid
 @import "grid/settings";
 
+// Color
+@import "color/settings";
+
 // Hider
 @import "visibility/settings";
 
@@ -28,11 +31,8 @@
 // Sprite
 @import "sprite/settings";
 
-// SVG sprite
-@import "svg-sprite/settings";
-
-// Color
-@import "color/settings";
+// Icon
+@import "icon/settings";
 
 // Shape
 @import "shape/settings";
