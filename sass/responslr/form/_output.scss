@@ -17,10 +17,14 @@
 	CLASS GENERATOR
 ***********************************************************************************/
 
+@function responslr-generate-forms-check() {
+	@return $responslr-generate-forms && responslr-map-isnotempty($responslr-forms);
+}
+
 @mixin responslr-generate-forms() {
 
 }
 
-@if $responslr-generate-forms {
+@if responslr-generate-forms-check() {
 	@include responslr-generate-forms();
 }

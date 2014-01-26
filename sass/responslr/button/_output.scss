@@ -4,41 +4,74 @@
 
 
 /***********************************************************************************
-	FUNCTIONS
+	DEFAULT MAP FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-button($name: $responslr-buttons-default) {
-	@each $button in $responslr-buttons {
-		@if nth($button,1) == $name {
-			@return $button;
-		}
-	}
-	@return null;
+@function responslr-button-exists($name) {
+	@return map-has-key($responslr-buttons, $name);
 }
 
-@function responslr-button-height($name: $responslr-buttons-default) {
-	$return-height: nth(responslr-button($name),2);
+@function responslr-button($name: null) {
+	$return-button: ();
+
+	@if $name == null {
+		$name: $responslr-buttons-default;
+	}
+
+	@if responslr-button-exists($name) {
+		$return-button: map-get($responslr-buttons, $name);
+	}
+
+	@return $return-button;
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
+***********************************************************************************/
+
+@function responslr-button-height($name: null) {
+	$return-height: map-get(responslr-button($name), height);
+
+	@if $return-height == null {
+		$return-height: 0;
+	}
 
 	@return $return-height;
 }
 
-@function responslr-button-padding-x($name: $responslr-buttons-default) {
-	$return-padding-x: nth(responslr-button($name),3);
+@function responslr-button-padding-x($name: null) {
+	$return-padding-x: map-get(responslr-button($name), padding-x);
+
+	@if $return-padding-x == null {
+		$return-padding-x: 0;
+	}
 
 	@return $return-padding-x;
 }
 
-@function responslr-button-padding-y($name: $responslr-buttons-default) {
-	$return-padding-y: nth(responslr-button($name),4);
+@function responslr-button-padding-y($name: null) {
+	$return-padding-y: map-get(responslr-button($name), padding-y);
+
+	@if $return-padding-y == null {
+		$return-padding-y: 0;
+	}
 
 	@return $return-padding-y;
 }
 
-@function responslr-button-border-radius($name: $responslr-buttons-default) {
-	$return-border-radius: nth(responslr-button($name),5);
+@function responslr-button-border-radius($name: null) {
+	$return-border-radius: map-get(responslr-button($name), border-radius);
+
+	@if $return-border-radius == null {
+		$return-border-radius: 0;
+	}
 
 	@return $return-border-radius;
 }
+
+// TODO: font-size hinzufügen
+// TODO: font-family hinzufügen
 
 
 /***********************************************************************************
@@ -57,7 +90,8 @@
 	cursor: default;
 }
 
-@mixin responslr-button($name: $responslr-buttons-default, $insert-default-styles:true) {
+// TODO: Alle argumente zur Verfügung stellen für custom
+@mixin responslr-button($name: null, $insert-default-styles: true) {
 	@if $insert-default-styles {
 		@include responslr-button-default();
 	}
@@ -73,7 +107,7 @@
 	}
 
 	@if(responslr-button-border-radius($name) != 0) {
-		@include border-radius(responslr-button-border-radius($name));
+		border-radius: responslr-button-border-radius($name);
 	}
 }
 
@@ -82,27 +116,33 @@
 	CLASS GENERATOR
 ***********************************************************************************/
 
+@function responslr-generate-buttons-check() {
+	@return $responslr-generate-buttons && responslr-map-isnotempty($responslr-buttons);
+}
+
 @mixin responslr-generate-buttons() {
 	%button {
 		@include responslr-button-default();
 	}
 
-	@each $button in $responslr-buttons {
-		$button-name: nth($button,1);
-
-		.button-#{$button-name} {
+	@each $button-key, $button-list in $responslr-buttons {
+		// Button normal
+		.#{$responslr-button-class-prefix}#{$button-key} {
 			@extend %button;
 
-			@include responslr-button($name: $button-name, $insert-default-styles: false);
+			@include responslr-button($name: $button-key, $insert-default-styles: false);
 		}
 
-		.button-#{$button-name}[disabled] {
-			@extend %button-inactive;
-		}
+		// Button inactive / disabled
+		@if $responslr-generate-buttons-inactive {
+			.#{$responslr-button-class-prefix}#{$button-key}[disabled] {
+				@extend %button-inactive;
+			}
 
-		.button-#{$button-name}-inactive {
-			@extend .button-#{$button-name}[disabled];
-			@extend .button-#{$button-name};
+			.#{$responslr-button-class-prefix}#{$button-key}-inactive {
+				@extend .#{$responslr-button-class-prefix}#{$button-key}[disabled];
+				@extend .#{$responslr-button-class-prefix}#{$button-key};
+			}
 		}
 	}
 
@@ -111,6 +151,6 @@
 	}
 }
 
-@if $responslr-generate-buttons {
+@if responslr-generate-buttons-check() {
 	@include responslr-generate-buttons();
 }

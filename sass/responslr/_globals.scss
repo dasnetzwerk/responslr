@@ -2,7 +2,12 @@
 	GLOBALS
 ***********************************************************************************/
 
-// MIXINS
+
+
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+
 @mixin insert-pseudo-element($write: true, $pseudo-element: before) {
 	@if $write {
 		&:#{$pseudo-element} {
@@ -14,11 +19,39 @@
 }
 
 
-// GENERATORS
+/***********************************************************************************
+	FUNCTIONS
+***********************************************************************************/
+
+@function responslr-map-isnotempty($map) {
+	@return length($map) > 0;
+}
+
+@function responslr-map-getdefault($map) {
+	$map-default: null;
+
+	@if responslr-map-isnotempty($map){
+		@if map-has-key($map, default) {
+			$map-default: default;
+		} @else {
+			$map-default: nth(map-keys($map), 1);
+		}
+	}
+
+	@return $map-default;
+}
+
+
+/***********************************************************************************
+	CLASS GENERATORS
+***********************************************************************************/
+
+// Global
 $responslr-generate-classes: true !default;
 
+
 // Reset
-$responslr-generate-resets: $responslr-generate-classes !default;
+$responslr-generate-reset: $responslr-generate-classes !default;
 
 
 // Typo
@@ -29,7 +62,7 @@ $responslr-generate-typo-sizes: $responslr-generate-typo !default;
 
 // Grid
 $responslr-generate-grid-breakpoints: $responslr-generate-classes !default;
-$responslr-generate-grid-breakpoints-helper: $responslr-generate-classes !default;
+$responslr-generate-grid-helper: $responslr-generate-classes !default;
 
 
 // Visiblity
@@ -58,7 +91,7 @@ $responslr-generate-aspect-ratios: $responslr-generate-classes !default;
 $responslr-generate-sprites: false !default;
 
 // Icon
-$responslr-generate-icons: true !default;
+$responslr-generate-icons: $responslr-generate-classes !default;
 
 
 // Color
@@ -92,8 +125,13 @@ $responslr-generate-shapes-arrows: $responslr-generate-shapes !default;
 $responslr-generate-tooltips: $responslr-generate-classes !default;
 
 
+// Inline-list
+$responslr-generate-inline-lists: $responslr-generate-classes !default;
+
+
 // Button
 $responslr-generate-buttons: $responslr-generate-classes !default;
+$responslr-generate-buttons-inactive: $responslr-generate-buttons !default;
 
 
 // Form

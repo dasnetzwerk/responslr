@@ -1,0 +1,104 @@
+/***********************************************************************************
+	OUTPUT - INLINE-LIST
+***********************************************************************************/
+
+
+
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS
+***********************************************************************************/
+
+@function responslr-inline-list-exists($name) {
+	@return map-has-key($responslr-inline-lists, $name);
+}
+
+@function responslr-inline-list($name: null) {
+	$return-inline-list: ();
+
+	@if $name == null {
+		$name: $responslr-inline-lists-default;
+	}
+
+	@if responslr-inline-list-exists($name) {
+		$return-inline-list: map-get($responslr-inline-lists, $name);
+	}
+
+	@return $return-inline-list;
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
+***********************************************************************************/
+
+@function responslr-inline-list-delimiter($name: null) {
+	$return-delimiter: map-get(responslr-inline-list($name), delimiter);
+
+	@return $return-delimiter;
+}
+
+@function responslr-inline-list-padding-x($name: null) {
+	$return-padding-x: map-get(responslr-inline-list($name), padding-x);
+
+	@return $return-padding-x;
+}
+
+
+// TODO: Hide delimiter on first or special delimiter for the first one
+
+/***********************************************************************************
+	EXTENDED FUNCTIONS
+***********************************************************************************/
+
+
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+
+
+/***********************************************************************************
+	CLASS GENERATOR
+***********************************************************************************/
+
+@function responslr-generate-inline-lists-check() {
+	@return $responslr-generate-inline-lists && responslr-map-isnotempty($responslr-inline-lists);
+}
+
+@mixin responslr-generate-inline-lists() {
+	%inline-list {
+		font-size: 0;
+		line-height: 0;
+	}
+
+	%inline-list-item {
+		display: inline-block;
+
+		&::#{$responslr-inline-list-pseudo-element},
+		a {
+			display: inline-block;
+			@include responslr-typo();
+		}
+	}
+
+	@each $inline-list-key, $inline-list-list in $responslr-inline-lists {
+		.#{$responslr-inline-list-class-prefix}#{$inline-list-key} {
+			@extend %inline-list;
+
+			li {
+				@extend %inline-list-item;
+
+				padding: 0 responslr-inline-list-padding-x($inline-list-key);
+
+				@if responslr-inline-list-delimiter($inline-list-key) != "" {
+					&::#{$responslr-inline-list-pseudo-element} {
+						content: responslr-inline-list-delimiter($inline-list-key);
+					}
+				}
+			}
+		}
+	}
+}
+
+@if responslr-generate-inline-lists-check() {
+	@include responslr-generate-inline-lists();
+}

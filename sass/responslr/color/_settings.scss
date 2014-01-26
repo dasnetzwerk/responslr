@@ -2,26 +2,35 @@
 	SETTINGS - COLOR
 ***********************************************************************************/
 
-$white: rgb(255,255,255) !default;
-$black: rgb(26,32,37) !default;
-$grey: rgb(213,215,217) !default;
-$grey-light: rgb(234,235,235) !default;
-$grey-dark: rgb(45,55,63) !default;
-$green: rgb(39,174,96) !default;
-$blue: rgb(36,156,213) !default;
-$purple: rgb(142,68,173) !default;
-$red: rgb(192,57,43) !default;
-$orange: rgb(242,98,50) !default;
+$responslr-colors: () !default;
 
-$responslr-colors:
-	'white'				$white,
-	'black'				$black,
-	'grey'				$grey,
-	'grey-light'		$grey-light,
-	'grey-dark'			$grey-dark,
-	'green'				$green,
-	'blue'				$blue,
-	'purple'			$purple,
-	'red'				$red,
-	'orange'			$orange
-!default;
+// Default color
+$responslr-colors-default: responslr-map-getdefault($responslr-colors) !default;
+
+// Classes
+$responslr-color-bg-class-prefix: 'bg-' !default;
+$responslr-color-bg-hover-class-prefix: 'bg-hover-' !default;
+$responslr-color-bg-focus-class-prefix: 'bg-focus-' !default;
+
+$responslr-color-text-class-prefix: 'text-' !default;
+$responslr-color-text-hover-class-prefix: 'text-hover-' !default;
+$responslr-color-text-focus-class-prefix: 'text-focus-' !default;
+
+$responslr-color-border-class-prefix: 'border-' !default;
+$responslr-color-border-hover-class-prefix: 'border-hover-' !default;
+$responslr-color-border-focus-class-prefix: 'border-focus-' !default;
+
+$responslr-color-border-top-class-prefix: 'border-top-' !default;
+$responslr-color-border-right-class-prefix: 'border-right-' !default;
+$responslr-color-border-bottom-class-prefix: 'border-bottom-' !default;
+$responslr-color-border-left-class-prefix: 'border-left-' !default;
+
+$responslr-color-border-top-hover-class-prefix: 'border-top-hover-' !default;
+$responslr-color-border-right-hover-class-prefix: 'border-right-hover-' !default;
+$responslr-color-border-bottom-hover-class-prefix: 'border-bottom-hover-' !default;
+$responslr-color-border-left-hover-class-prefix: 'border-left-hover-' !default;
+
+$responslr-color-border-top-focus-class-prefix: 'border-top-focus-' !default;
+$responslr-color-border-right-focus-class-prefix: 'border-right-focus-' !default;
+$responslr-color-border-bottom-focus-class-prefix: 'border-bottom-focus-' !default;
+$responslr-color-border-left-focus-class-prefix: 'border-left-focus-' !default;

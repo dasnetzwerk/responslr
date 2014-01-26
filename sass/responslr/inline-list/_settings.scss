@@ -1,0 +1,14 @@
+/***********************************************************************************
+	SETTINGS - INLINE-LIST
+***********************************************************************************/
+
+$responslr-inline-lists: () !default;
+
+// Default inline-list
+$responslr-inline-lists-default: responslr-map-getdefault($responslr-inline-lists) !default;
+
+// Pseudo element (before or after)
+$responslr-inline-list-pseudo-element: 'before' !default;
+
+// Classes
+$responslr-inline-list-class-prefix: 'inline-list-' !default;

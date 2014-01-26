@@ -2,11 +2,15 @@
 	SETTINGS - TRANSITION
 ***********************************************************************************/
 
-//  transition name (unique)	properties								duration 		timing-function 	delay
-//	(first is default)
-$responslr-transitions:
-	default					'color,background-color,border-color'		.25s			ease				0,
-	box						'height,width'								.5s				linear
-!default;
+$responslr-transitions: (
+	'color': (
+		properties: 'color,background-color,border-color',
+		duration: .25s
+	)
+) !default;
 
-$responslr-transitions-default: nth(nth($responslr-transitions,1),1) !default;
+// Default transition
+$responslr-transitions-default: responslr-map-getdefault($responslr-transitions) !default;
+
+// Classes
+$responslr-transition-class-prefix: 'transition-' !default;

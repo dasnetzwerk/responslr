@@ -1,3 +1,8 @@
 /***********************************************************************************
 	SETTINGS - TABLE
 ***********************************************************************************/
+
+$responslr-tables: () !default;
+
+// Default form
+$responslr-tables-default: responslr-map-getdefault($responslr-tables) !default;

@@ -43,6 +43,7 @@ var oGlobals											= {
 	onBreakpointChange:				function() {
 		oBody.$.unbind('touchstart');
 
+		// TODO: Responsive-helper - remove inline styles
 		switch(oGlobals.oResponsiveHelper.currentBreakpoint.codeName) {
 			/* Smartphone */
 			case 's':

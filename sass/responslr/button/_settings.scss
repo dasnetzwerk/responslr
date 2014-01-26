@@ -2,22 +2,15 @@
 	BUTTON - SETTINGS
 ***********************************************************************************/
 
-
-//	button name			height		padding-x	padding-y		border-radius
-$responslr-buttons:
-	normal				40px		30px		0				2px,
-	tiny				28px		20px		0				0,
-	large				60px		20px		0				4px,
-	padding				0			20px		20px			10px
-!default;
-
-// TODO: Optional font-size
-// TODO: Optional font-family
+$responslr-buttons: () !default;
 
 // Default button
-$responslr-buttons-default: nth(nth($responslr-buttons,1),1) !default;
+$responslr-buttons-default: responslr-map-getdefault($responslr-buttons) !default;
 
 // Inactive state
-$responslr-button-inactive-background-color: $grey-light !default;
-$responslr-button-inactive-border-color: $grey-light !default;
-$responslr-button-inactive-text-color: $grey-dark !default;
+$responslr-button-inactive-background-color: silver !default;
+$responslr-button-inactive-border-color: silver !default;
+$responslr-button-inactive-text-color: gray !default;
+
+// Classes
+$responslr-button-class-prefix: 'button-' !default;

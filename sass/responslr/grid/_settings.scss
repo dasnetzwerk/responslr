@@ -2,19 +2,54 @@
 	SETTINGS - GRID
 ***********************************************************************************/
 
-
-//	name				max-width	columns		gutter
-$responslr-grid-breakpoints:
-	('large'			1024px		12			16px),
-	('medium'			960px		6			12px),
-	('small'			640px		4			10px)
-!default;
+$responslr-grid-breakpoints: (
+	'large': (
+		max-width: 1024px,
+		columns: 12,
+		gutter: 16px
+	),
+	'medium': (
+		max-width: 960px,
+		columns: 6,
+		gutter: 12px
+	),
+	'small': (
+		max-width: 640px,
+		columns: 4,
+		gutter: 10px
+	),
+) !default;
 
 // Default breakpoint
-$responslr-grid-breakpoints-default: nth(nth($responslr-grid-breakpoints,1),1) !default;
-
+$responslr-grid-breakpoints-default: responslr-map-getdefault($responslr-grid-breakpoints) !default;
 
 // Container
 $responslr-grid-container-max-width: 1140px !default;
 $responslr-grid-container-align: center !default;
 $responslr-grid-container-horizontal-margin: 0 !default;
+
+// Classes
+$responslr-grid-row-class: 'row' !default;
+$responslr-grid-column-class: 'column' !default;
+
+$responslr-grid-offset-class-prefix: 'offset-' !default;
+$responslr-grid-inset-class-prefix: 'inset-' !default;
+$responslr-grid-reset-class-prefix: 'reset-' !default;
+
+$responslr-grid-container-class: 'container' !default;
+$responslr-grid-container-full-class: 'container-full' !default;
+
+// Grid helper
+$responslr-grid-helper-id: 'responslr-grid-helper' !default;
+$responslr-grid-helper-toggle-id: 'responslr-grid-helper-toggle' !default;
+
+$responslr-grid-helper-z-index: 100000 !default;
+$responslr-grid-helper-toggle-z-index: 100001 !default;
+
+$responslr-grid-helper-column-background-color: rgba(36,156,213,.5) !default;
+$responslr-grid-helper-gutter-background-color: rgba(39,174,96,.25) !default;
+
+$responslr-grid-helper-toggle-position-top: auto !default;
+$responslr-grid-helper-toggle-position-right: 10px !default;
+$responslr-grid-helper-toggle-position-bottom: 50px !default;
+$responslr-grid-helper-toggle-position-left: auto !default;

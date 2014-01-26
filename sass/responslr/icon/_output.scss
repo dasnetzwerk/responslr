@@ -4,60 +4,89 @@
 
 
 /***********************************************************************************
-	FUNCTIONS
+	DEFAULT MAP FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-icon($name: $responslr-icons-default) {
-	@each $icon-name in $responslr-icons {
-		@if nth($icon-name,1) == $name {
-			@return $icon-name;
-		}
+@function responslr-icon-exists($name) {
+	@return map-has-key($responslr-icons, $name);
+}
+
+@function responslr-icon($name: null) {
+	$return-icon: ();
+
+	@if $name == null {
+		$name: $responslr-icons-default;
 	}
 
-	@return null;
+	@if responslr-icon-exists($name) {
+		$return-icon: map-get($responslr-icons, $name);
+	}
+
+	@return $return-icon;
 }
 
-@function responslr-icon-filename($name: $responslr-icons-default) {
-	$return-filename: nth(responslr-icon($name),2);
 
-	@return $return-filename;
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
+***********************************************************************************/
+
+@function responslr-icon-file($name: null) {
+	$return-file: map-get(responslr-icon($name), file);
+
+	@return $return-file;
 }
 
-@function responslr-icon-size($name: $responslr-icons-default) {
-	$return-size: nth(responslr-icon($name),3);
+@function responslr-icon-size($name: null) {
+	$return-size: map-get(responslr-icon($name), size);
+
+	@if $return-size == null {
+		$return-size: 'auto';
+	}
 
 	@return $return-size;
 }
 
-@function responslr-icon-offset-x($name: $responslr-icons-default) {
-	$return-offset-x: nth(responslr-icon($name),4);
+@function responslr-icon-offset-x($name: null) {
+	$return-offset-x: map-get(responslr-icon($name), offset-x);
+
+	@if $return-offset-x == null {
+		$return-offset-x: 50%;
+	}
 
 	@return $return-offset-x;
 }
 
-@function responslr-icon-offset-y($name: $responslr-icons-default) {
-	$return-offset-y: nth(responslr-icon($name),5);
+@function responslr-icon-offset-y($name: null) {
+	$return-offset-y: map-get(responslr-icon($name), offset-y);
+
+	@if $return-offset-y == null {
+		$return-offset-y: 50%;
+	}
 
 	@return $return-offset-y;
 }
 
-@function responslr-icon-color($name: $responslr-icons-default) {
-	$return-color: nth(responslr-icon($name),6);
+@function responslr-icon-color($name: null) {
+	$return-color: map-get(responslr-icon($name), color);
 
 	@return $return-color;
 }
 
-@function responslr-icon-url($name: $responslr-icons-default, $color: null) {
 
+/***********************************************************************************
+	EXTENDED FUNCTIONS
+***********************************************************************************/
+
+@function responslr-icon-url($name: null, $color: null) {
 	@if $color == null {
 		$color: responslr-icon-color($name);
 	}
 
-	@if responslr-color($color) != null {
+	@if responslr-color-exists($color) {
 		$color: responslr-color($color);
 	}
 
-	$return-url: inline-svg(responslr-icon-filename($name), $color);
+	$return-url: inline-svg(responslr-icon-file($name), $color);
 
 	@return $return-url;
 }
@@ -67,7 +96,7 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-icon($name: $responslr-icons-default, $size: null, $offset-x: null, $offset-y: null, $color: null) {
+@mixin responslr-icon($name: null, $size: null, $offset-x: null, $offset-y: null, $color: null) {
 	background-image: responslr-icon-url($name, $color);
 	background-repeat: no-repeat;
 
@@ -75,7 +104,7 @@
 	@include responslr-icon-size($name, $size);
 }
 
-@mixin responslr-icon-size($name: $responslr-icons-default, $size: null) {
+@mixin responslr-icon-size($name: null, $size: null) {
 	@if $size == null {
 		$size: responslr-icon-size($name);
 	}
@@ -83,7 +112,7 @@
 	background-size: unquote($size);
 }
 
-@mixin responslr-icon-position($name: $responslr-icons-default, $offset-x: null, $offset-y: null) {
+@mixin responslr-icon-position($name: null, $offset-x: null, $offset-y: null) {
 	@if $offset-x == null {
 		$offset-x: responslr-icon-offset-x($name);
 	}
@@ -92,7 +121,7 @@
 		$offset-y: responslr-icon-offset-y($name);
 	}
 
-	background-position: $offset-y $offset-x;
+	background-position: $offset-x $offset-y;
 }
 
 
@@ -100,16 +129,18 @@
 	CLASS GENERATOR
 ***********************************************************************************/
 
-@mixin responslr-generate-icons() {
-	@each $icon-name in $responslr-icons {
-		$icon-name-name: nth($icon-name,1);
+@function responslr-generate-icons-check() {
+	@return $responslr-generate-icons && responslr-map-isnotempty($responslr-icons);
+}
 
-		.icon-#{$icon-name-name} {
-			@include responslr-icon($icon-name-name);
+@mixin responslr-generate-icons() {
+	@each $icon-key, $icon-list in $responslr-icons {
+		.#{$responslr-icon-class-prefix}#{$icon-key} {
+			@include responslr-icon($icon-key);
 		}
 	}
 }
 
-@if $responslr-generate-icons {
+@if responslr-generate-icons-check() {
 	@include responslr-generate-icons();
 }

@@ -1,8 +1,144 @@
-// /***********************************************************************************
-// 	RESPONSLR VARIABLES
-// ***********************************************************************************/
+/***********************************************************************************
+	RESPONSLR VARIABLES
+***********************************************************************************/
 
-// TODO: Neueste Stand der generator variablen einfügen
+
+// Colors
+
+$white: rgb(255,255,255);
+$black: rgb(26,32,37);
+$grey: rgb(213,215,217);
+$grey-light: rgb(234,235,235);
+$grey-dark: rgb(45,55,63);
+$green: rgb(39,174,96);
+$blue: rgb(36,156,213);
+$purple: rgb(142,68,173);
+$red: rgb(192,57,43);
+$orange: rgb(242,98,50);
+
+$responslr-colors: (
+	'white':		$white,
+	'black':		$black,
+	'grey':			$grey,
+	'grey-light':	$grey-light,
+	'grey-dark':	$grey-dark,
+	'green':		$green,
+	'blue':			$blue,
+	'purple':		$purple,
+	'red':			$red,
+	'orange':		$orange
+);
+
+// Grid (siehe default)
+
+// Buttons
+
+$responslr-buttons: (
+	'normal': (
+		height: 40px,
+		padding-x: 30px,
+		border-radius: 2px
+	),
+	'tiny': (
+		height: 28px,
+		padding-x: 20px
+	),
+	'large': (
+		height: 60px,
+		padding-x: 20px,
+		border-radius: 4px
+	),
+	'padding': (
+		padding-x: 20px,
+		padding-y: 20px,
+		border-radius: 10px
+	)
+);
+
+// Aspect-ratios
+
+$responslr-aspect-ratios: (
+	'1-1': (
+		width: 1,
+		height: 1
+	),
+	'2-1': (
+		width: 2,
+		height: 1
+	),
+	'4-3': (
+		width: 4,
+		height: 3
+	),
+	'16-9': (
+		width: 16,
+		height: 9
+	)
+);
+
+// Icons
+
+$responslr-icons: (
+	'equalizer': (
+		file: 'svg/equalizer.svg',
+		size: 'auto 100px'
+	),
+	'dots': (
+		file: 'svg/vertical-dots.svg',
+		size: 'auto 100px',
+		offset-x: 40%,
+		offset-y: 60%,
+		color: $orange
+	),
+	'drinking-horn': (
+		file: 'svg/drinking-horn.svg',
+		size: 'contain',
+		offset-x: 100%,
+		color: 'grey-light'
+	)
+);
+
+// Inline-lists
+
+$responslr-inline-lists: (
+	'breadcrumb': (
+		delimiter: '/',
+		padding-x: 20px
+	),
+	'menu': (
+		delimiter: '-',
+		padding-x: 30px
+	)
+);
+
+// Spacing
+
+$responslr-spacings: (
+	'none':			0,
+	'default':		80px,
+	'tiny':			20px,
+	'small':		40px,
+	'medium':		60px,
+	'large':		100px,
+	'xlarge':		160px
+) !default;
+
+// Transition
+
+$responslr-transitions: (
+	'default': (
+		properties: 'color,background-color,border-color',
+		duration: .25s,
+		timing-function: ease
+	),
+	'box': (
+		properties: 'height,width',
+		duration: .5s,
+		timing-function: linear
+	)
+) !default;
+
+// Tooltips
 
 // 	id 			cursor 	offset		padding		max-width 	font-size	font-color 	bg-color	border-color 	border-width 	border-style 	border-radius 	triangle 	offset 	generate 	directions
 $tooltips:

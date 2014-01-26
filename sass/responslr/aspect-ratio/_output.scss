@@ -4,17 +4,62 @@
 
 
 /***********************************************************************************
-	FUNCTIONS
+	DEFAULT MAP FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-aspect-ratio($width: 1, $height: 1) {
-	$aspect-ratio: 100%;
+@function responslr-aspect-ratio-exists($name) {
+	@return map-has-key($responslr-aspect-ratios, $name);
+}
 
-	@if type-of($width) == number and type-of($height) == number {
-		$aspect-ratio: ($height / $width) * 100%;
+@function responslr-aspect-ratio($name: null) {
+	$return-aspect-ratio: ();
+
+	@if $name == null {
+		$name: $responslr-aspect-ratios-default;
 	}
 
-	@return $aspect-ratio;
+	@if responslr-aspect-ratio-exists($name) {
+		$return-aspect-ratio: map-get($responslr-aspect-ratios, $name);
+	}
+
+	@return $return-aspect-ratio;
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
+***********************************************************************************/
+
+@function responslr-aspect-ratio-width($name: null) {
+	$return-width: map-get(responslr-aspect-ratio($name), width);
+
+	@return $return-width;
+}
+
+@function responslr-aspect-ratio-height($name: null) {
+	$return-height: map-get(responslr-aspect-ratio($name), height);
+
+	@return $return-height;
+}
+
+
+/***********************************************************************************
+	EXTENDED FUNCTIONS
+***********************************************************************************/
+
+@function responslr-aspect-ratio-calc($name: null, $width: null, $height: null) {
+	$return-aspect-ratio: 100%;
+
+	@if responslr-aspect-ratio-exists($name) {
+		$width: responslr-aspect-ratio-width($name);
+		$height: responslr-aspect-ratio-height($name);
+	}
+
+	@if type-of($width) == number and type-of($height) == number {
+		$return-aspect-ratio: ($height / $width) * 100%;
+	}
+
+	@return $return-aspect-ratio;
 }
 
 
@@ -22,19 +67,34 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-aspect-ratio($width: '', $height: '') {
+@mixin responslr-aspect-ratio($name: null, $width: null, $height: null) {
+	@if responslr-aspect-ratio-exists($name) {
+		$width: responslr-aspect-ratio-width($name);
+		$height: responslr-aspect-ratio-height($name);
+	}
+
 	@if type-of($width) == number and type-of($height) == number {
 		position: relative;
 
-		&:before {
+		&::#{$responslr-aspect-ratio-pseudo-element} {
 			content: "";
 			display: block;
-			padding-top: responslr-aspect-ratio($width: $width, $height: $height);
+			padding-top: responslr-aspect-ratio-calc($name: null, $width: $width, $height: $height);
 		}
 	}
 }
 
-@mixin responslr-aspect-ratio-content($current-breakpoint-name: '') {
+@mixin responslr-aspect-ratio-content() {
+	display: block;
+	position: absolute;
+	margin: 0 !important;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+@mixin responslr-aspect-ratio-content-column($current-breakpoint-name: null) {
 	left: responslr-grid-gutter($current-breakpoint-name);
 	right: responslr-grid-gutter($current-breakpoint-name);
 }
@@ -44,38 +104,34 @@
 	CLASS GENERATOR
 ***********************************************************************************/
 
+@function responslr-generate-aspect-ratios-check() {
+	@return $responslr-generate-aspect-ratios && responslr-map-isnotempty($responslr-aspect-ratios);
+}
+
 @mixin responslr-generate-aspect-ratios() {
-	@each $aspect-ratio-list in $responslr-aspect-ratios {
-		.aspect-ratio-#{nth($aspect-ratio-list,1)}-#{nth($aspect-ratio-list,2)} {
-			@include responslr-aspect-ratio($width: nth($aspect-ratio-list,1), $height: nth($aspect-ratio-list,2));
+	@each $aspect-ratio-key, $aspect-ratio-list in $responslr-aspect-ratios {
+		.#{$responslr-aspect-ratio-class-prefix}#{$aspect-ratio-key} {
+			@include responslr-aspect-ratio($name: $aspect-ratio-key);
 		}
 	}
 
-	.aspect-ratio-content {
-		display: block;
-		position: absolute;
-		margin: 0 !important;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+	.#{$responslr-aspect-ratio-content-class} {
+		@include responslr-aspect-ratio-content();
 
-		.column > & {
-			@each $current-breakpoint-list in $responslr-grid-breakpoints {
-				$current-breakpoint-name: nth($current-breakpoint-list,1);
-
-				@if(index($responslr-grid-breakpoints, $current-breakpoint-list) > 1) {
-					@include responslr-media-query($media-end: $current-breakpoint-name) {
-						@include responslr-aspect-ratio-content($current-breakpoint-name);
+		.#{$responslr-grid-column-class} > & {
+			@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
+				@if responslr-grid-breakpoint-index($breakpoint-key) > 1 {
+					@include responslr-media-query($media-end: $breakpoint-key) {
+						@include responslr-aspect-ratio-content-column($breakpoint-key);
 					}
 				} @else {
-					@include responslr-aspect-ratio-content($current-breakpoint-name);
+					@include responslr-aspect-ratio-content-column($breakpoint-key);
 				}
 			}
 		}
 	}
 }
 
-@if $responslr-generate-aspect-ratios {
+@if responslr-generate-aspect-ratios-check() {
 	@include responslr-generate-aspect-ratios();
 }

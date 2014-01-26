@@ -4,54 +4,67 @@
 
 
 /***********************************************************************************
-	FUNCTIONS
+	DEFAULT MAP FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-transition($name: $responslr-transitions-default) {
-	@each $transition in $responslr-transitions {
-		@if nth($transition,1) == $name {
-			@return $transition;
-		}
-	}
-
-	@return null;
+@function responslr-transition-exists($name) {
+	@return map-has-key($responslr-transitions, $name);
 }
 
-@function responslr-transition-property($name: $responslr-transitions-default) {
-	$return-property: all;
+@function responslr-transition($name: null) {
+	$return-transition: ();
 
-	@if(length(responslr-transition($name)) >= 2) {
-		$return-property: nth(responslr-transition($name),2);
+	@if $name == null {
+		$name: $responslr-transitions-default;
 	}
 
-	@return $return-property;
+	@if responslr-transition-exists($name) {
+		$return-transition: map-get($responslr-transitions, $name);
+	}
+
+	@return $return-transition;
 }
 
-@function responslr-transition-duration($name: $responslr-transitions-default) {
-	$return-duration: 0;
 
-	@if(length(responslr-transition($name)) >= 3) {
-		$return-duration: nth(responslr-transition($name),3);
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
+***********************************************************************************/
+
+@function responslr-transition-properties($name: null) {
+	$return-properties: map-get(responslr-transition($name), properties);
+
+	@if $return-properties == null {
+		$return-properties: all;
+	}
+
+	@return $return-properties;
+}
+
+@function responslr-transition-duration($name: null) {
+	$return-duration: map-get(responslr-transition($name), duration);
+
+	@if $return-duration == null {
+		$return-duration: .25s;
 	}
 
 	@return $return-duration;
 }
 
-@function responslr-transition-timing-function($name: $responslr-transitions-default) {
-	$return-timing-function: 0;
+@function responslr-transition-timing-function($name: null) {
+	$return-timing-function: map-get(responslr-transition($name), timing-function);
 
-	@if(length(responslr-transition($name)) >= 4) {
-		$return-timing-function: nth(responslr-transition($name),4);
+	@if $return-timing-function == null {
+		$return-timing-function: ease;
 	}
 
 	@return $return-timing-function;
 }
 
-@function responslr-transition-delay($name: $responslr-transitions-default) {
-	$return-delay: 0;
+@function responslr-transition-delay($name: null) {
+	$return-delay: map-get(responslr-transition($name), delay);
 
-	@if(length(responslr-transition($name)) >= 5) {
-		$return-delay: nth(responslr-transition($name),5);
+	@if $return-delay == null {
+		$return-delay: 0;
 	}
 
 	@return $return-delay;
@@ -68,8 +81,10 @@
 	@include transition-duration($transition-duration-default);
 }*/
 
+// TODO: Custom arguments ermöglichen / default transition
+
 @mixin responslr-transition($name: $responslr-transitions-default) {
-	$property: responslr-transition-property($name);
+	$property: unquote(responslr-transition-properties($name));
 	$duration: responslr-transition-duration($name);
 	$timing-function: responslr-transition-timing-function($name);
 	$delay: responslr-transition-delay($name);
@@ -83,16 +98,18 @@
 	CLASS GENERATOR
 ***********************************************************************************/
 
-@mixin responslr-generate-transitions() {
-	@each $transition in $responslr-transitions {
-		$transition-name: nth($transition,1);
+@function responslr-generate-transitions-check() {
+	@return $responslr-generate-transitions && responslr-map-isnotempty($responslr-transitions);
+}
 
-		.transition-#{$transition-name} {
-			@include responslr-transition($transition-name);
+@mixin responslr-generate-transitions() {
+	@each $transition-key, $transition-list in $responslr-transitions {
+		.#{$responslr-transition-class-prefix}#{$transition-key} {
+			@include responslr-transition($transition-key);
 		}
 	}
 }
 
-@if $responslr-generate-transitions {
+@if responslr-generate-transitions-check() {
 	@include responslr-generate-transitions();
 }

@@ -7,7 +7,7 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-alignment($alignment) {
+@mixin responslr-alignment($alignment: left) {
 	@if index(left right center, $alignment) {
 		text-align: $alignment;
 	} @else {
@@ -15,68 +15,71 @@
 	}
 }
 
+
 /***********************************************************************************
 	CLASS GENERATOR
 ***********************************************************************************/
 
+@function responslr-generate-alignments-check() {
+	@return $responslr-generate-alignments;
+}
+
 @mixin responslr-generate-alignments() {
 	// Default Alignments
-	.h-left {
+	.#{$responslr-alignment-horizonal-left-class} {
 		@include responslr-alignment(left);
 	}
 
-	.h-center {
+	.#{$responslr-alignment-horizonal-center-class} {
 		@include responslr-alignment(center);
 	}
 
-	.h-right {
+	.#{$responslr-alignment-horizonal-right-class} {
 		@include responslr-alignment(right);
 	}
 
-	.v-top {
+	.#{$responslr-alignment-vertical-top-class} {
 		@include responslr-alignment(top);
 	}
 
-	.v-middle {
+	.#{$responslr-alignment-vertical-middle-class} {
 		@include responslr-alignment(middle);
 	}
 
-	.v-bottom {
+	.#{$responslr-alignment-vertical-bottom-class} {
 		@include responslr-alignment(bottom);
 	}
 
 	// Alignments for each breakpoint
-	@each $current-breakpoint-list in $responslr-grid-breakpoints {
-		$current-breakpoint-name: nth($current-breakpoint-list,1);
-
-		@include responslr-media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
-			.h-left-#{$current-breakpoint-name} {
+	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
+		@include responslr-media-query($media-end: $breakpoint-key, $media-start: $breakpoint-key) {
+			.#{$responslr-alignment-horizonal-left-class}-#{$breakpoint-key} {
 				@include responslr-alignment(left);
 			}
 
-			.h-center-#{$current-breakpoint-name} {
+			.#{$responslr-alignment-horizonal-center-class}-#{$breakpoint-key} {
 				@include responslr-alignment(center);
 			}
 
-			.h-right-#{$current-breakpoint-name} {
+			.#{$responslr-alignment-horizonal-right-class}-#{$breakpoint-key} {
 				@include responslr-alignment(right);
 			}
 
-			.v-top-#{$current-breakpoint-name} {
+			.#{$responslr-alignment-vertical-top-class}-#{$breakpoint-key} {
 				@include responslr-alignment(top);
 			}
 
-			.v-middle-#{$current-breakpoint-name} {
+			.#{$responslr-alignment-vertical-middle-class}-#{$breakpoint-key} {
 				@include responslr-alignment(middle);
 			}
 
-			.v-bottom-#{$current-breakpoint-name} {
+			.#{$responslr-alignment-vertical-bottom-class}-#{$breakpoint-key} {
 				@include responslr-alignment(bottom);
 			}
 		}
 	}
 }
 
-@if $responslr-generate-alignments {
+@if responslr-generate-alignments-check() {
 	@include responslr-generate-alignments();
 }

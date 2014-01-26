@@ -4,32 +4,28 @@
 
 
 /***********************************************************************************
-	FUNCTIONS
+	DEFAULT MAP FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-color($color: black) {
+@function responslr-color-exists($name) {
+	@return map-has-key($responslr-colors, $name);
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
+***********************************************************************************/
+
+// TODO: Color-string to hex Problem
+@function responslr-color-value($name: null) {
 	$return-color: null;
 
-	@each $current-color in $responslr-colors {
-		@if nth($current-color,1) == $color {
-			$return-color: nth($current-color,2);
-		}
+	@if $name == null {
+		$name: $responslr-colors-default;
 	}
 
-	@return $return-color;
-}
-
-@function responslr-color-name($color: black) {
-	$return-color: nth($color,1);
-
-	@return $return-color;
-}
-
-@function responslr-color-value($color: black) {
-	$return-color: nth($color,2);
-
-	@if type-of($return-color) != color {
-		$return-color: black;
+	@if responslr-color-exists($name) {
+		$return-color: map-get($responslr-colors, $name);
 	}
 
 	@return $return-color;
@@ -40,19 +36,19 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-bg-color($color: white) {
-	background-color: responslr-color($color);
+@mixin responslr-bg-color($color: null) {
+	background-color: responslr-color-value($color);
 }
 
-@mixin responslr-text-color($color: black) {
-	color: responslr-color($color);
+@mixin responslr-text-color($color: null) {
+	color: responslr-color-value($color);
 }
 
-@mixin responslr-border-color($color: black, $property: border) {
-	#{$property}-color: responslr-color($color);
+@mixin responslr-border-color($color: null, $property: border) {
+	#{$property}-color: responslr-color-value($color);
 }
 
-@mixin responslr-color($color: black, $type: text-color) {
+@mixin responslr-color($color: null, $type: text-color) {
 	// Text Color
 	@if $type == text-color {
 		@include responslr-text-color($color);
@@ -65,6 +61,7 @@
 
 	// Border Color
 	$border-types: border,border-top,border-right,border-bottom,border-left;
+
 	@if index($border-types, $type) {
 		@include responslr-border-color($color, $type);
 	}
@@ -75,125 +72,134 @@
 	CLASS GENERATOR
 ***********************************************************************************/
 
-@mixin responslr-generate-colors() {
-	@each $color in $responslr-colors {
-		$generate-color-name: responslr-color-name($color);
-		$generate-color-value: responslr-color-value($color);
+@function responslr-generate-colors-check() {
+	@return $responslr-generate-colors && responslr-map-isnotempty($responslr-colors);
+}
 
+@mixin responslr-generate-colors() {
+	@each $color-key, $color-value in $responslr-colors {
 		// background-color
 		@if $responslr-generate-colors-bg {
-			.bg-#{$generate-color-name} {
-				@include responslr-bg-color($generate-color-name);
+			.#{$responslr-color-bg-class-prefix}#{$color-key} {
+				@include responslr-bg-color($color-key);
 			}
 
+			// background-color hover
 			@if $responslr-generate-colors-bg-hover {
-				.bg-hover-#{$generate-color-name}:hover {
-					@extend .bg-#{$generate-color-name};
+				.#{$responslr-color-bg-hover-class-prefix}#{$color-key}:hover {
+					@extend .#{$responslr-color-bg-class-prefix}#{$color-key};
 				}
 			}
 
+			// background-color focus
 			@if $responslr-generate-colors-bg-focus {
-				.bg-focus-#{$generate-color-name}:focus {
-					@extend .bg-#{$generate-color-name};
+				.#{$responslr-color-bg-focus-class-prefix}#{$color-key}:focus {
+					@extend .#{$responslr-color-bg-class-prefix}#{$color-key};
 				}
 			}
 		}
 
 		// text-color
 		@if $responslr-generate-colors-text {
-			.text-#{$generate-color-name} {
-				@include responslr-text-color($generate-color-name);
+			.#{$responslr-color-text-class-prefix}#{$color-key} {
+				@include responslr-text-color($color-key);
 			}
 
+			// text-color hover
 			@if $responslr-generate-colors-text-hover {
-				.text-hover-#{$generate-color-name}:hover {
-					@extend .text-#{$generate-color-name};
+				.#{$responslr-color-text-hover-class-prefix}#{$color-key}:hover {
+					@extend .#{$responslr-color-text-class-prefix}#{$color-key};
 				}
 			}
 
+			// text-color focus
 			@if $responslr-generate-colors-text-focus {
-				.text-focus-#{$generate-color-name}:focus {
-					@extend .text-#{$generate-color-name};
+				.#{$responslr-color-text-focus-class-prefix}#{$color-key}:focus {
+					@extend .#{$responslr-color-text-class-prefix}#{$color-key};
 				}
 			}
 		}
 
 		// border-color
 		@if $responslr-generate-colors-border {
-			.border-#{$generate-color-name} {
-				@include responslr-border-color($generate-color-name);
+			.#{$responslr-color-border-class-prefix}#{$color-key} {
+				@include responslr-border-color($color-key);
 			}
 
+			// border-color hover
 			@if $responslr-generate-colors-border-hover {
-				.border-hover-#{$generate-color-name}:hover {
-					@extend .border-#{$generate-color-name};
+				.#{$responslr-color-border-hover-class-prefix}#{$color-key}:hover {
+					@extend .#{$responslr-color-border-class-prefix}#{$color-key};
 				}
 			}
 
+			// border-color focus
 			@if $responslr-generate-colors-border-focus {
-				.border-focus-#{$generate-color-name}:focus {
-					@extend .border-#{$generate-color-name};
+				.#{$responslr-color-border-focus-class-prefix}#{$color-key}:focus {
+					@extend .#{$responslr-color-border-class-prefix}#{$color-key};
 				}
 			}
 		}
 
 		// border-color-directions
 		@if $responslr-generate-colors-border-directions {
-			.border-top-#{$generate-color-name} {
-				@include responslr-border-color($color: $generate-color-name,$property: border-top);
+			.#{$responslr-color-border-top-class-prefix}#{$color-key} {
+				@include responslr-border-color($color: $color-key, $property: border-top);
 			}
 
-			.border-right-#{$generate-color-name} {
-				@include responslr-border-color($color: $generate-color-name,$property: border-right);
+			.#{$responslr-color-border-right-class-prefix}#{$color-key} {
+				@include responslr-border-color($color: $color-key, $property: border-right);
 			}
 
-			.border-bottom-#{$generate-color-name} {
-				@include responslr-border-color($color: $generate-color-name,$property: border-bottom);
+			.#{$responslr-color-border-bottom-class-prefix}#{$color-key} {
+				@include responslr-border-color($color: $color-key, $property: border-bottom);
 			}
 
-			.border-left-#{$generate-color-name} {
-				@include responslr-border-color($color: $generate-color-name,$property: border-left);
+			.#{$responslr-color-border-left-class-prefix}#{$color-key} {
+				@include responslr-border-color($color: $color-key, $property: border-left);
 			}
 
+			// border-color-directions hover
 			@if $responslr-generate-colors-border-directions-hover {
-				.border-top-hover-#{$generate-color-name}:hover {
-					@extend .border-top-#{$generate-color-name};
+				.#{$responslr-color-border-top-hover-class-prefix}#{$color-key}:hover {
+					@extend .#{$responslr-color-border-top-class-prefix}#{$color-key};
 				}
 
-				.border-right-hover-#{$generate-color-name}:hover {
-					@extend .border-right-#{$generate-color-name};
+				.#{$responslr-color-border-right-hover-class-prefix}#{$color-key}:hover {
+					@extend .#{$responslr-color-border-right-class-prefix}#{$color-key};
 				}
 
-				.border-bottom-hover-#{$generate-color-name}:hover {
-					@extend .border-bottom-#{$generate-color-name};
+				.#{$responslr-color-border-bottom-hover-class-prefix}#{$color-key}:hover {
+					@extend .#{$responslr-color-border-bottom-class-prefix}#{$color-key};
 				}
 
-				.border-left-hover-#{$generate-color-name}:hover {
-					@extend .border-left-#{$generate-color-name};
+				.#{$responslr-color-border-left-hover-class-prefix}#{$color-key}:hover {
+					@extend .#{$responslr-color-border-left-class-prefix}#{$color-key};
 				}
 			}
 
+			// border-color-directions focus
 			@if $responslr-generate-colors-border-directions-focus {
-				.border-top-focus-#{$generate-color-name}:focus {
-					@extend .border-top-#{$generate-color-name};
+				.#{$responslr-color-border-top-focus-class-prefix}#{$color-key}:focus {
+					@extend .#{$responslr-color-border-top-class-prefix}#{$color-key};
 				}
 
-				.border-right-focus-#{$generate-color-name}:focus {
-					@extend .border-right-#{$generate-color-name};
+				.#{$responslr-color-border-right-focus-class-prefix}#{$color-key}:focus {
+					@extend .#{$responslr-color-border-right-class-prefix}#{$color-key};
 				}
 
-				.border-bottom-focus-#{$generate-color-name}:focus {
-					@extend .border-bottom-#{$generate-color-name};
+				.#{$responslr-color-border-bottom-focus-class-prefix}#{$color-key}:focus {
+					@extend .#{$responslr-color-border-bottom-class-prefix}#{$color-key};
 				}
 
-				.border-left-focus-#{$generate-color-name}:focus {
-					@extend .border-left-#{$generate-color-name};
+				.#{$responslr-color-border-left-focus-class-prefix}#{$color-key}:focus {
+					@extend .#{$responslr-color-border-left-class-prefix}#{$color-key};
 				}
 			}
 		}
 	}
 }
 
-@if $responslr-generate-colors {
+@if responslr-generate-colors-check() {
 	@include responslr-generate-colors();
 }
