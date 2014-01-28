@@ -8,10 +8,10 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	@include responslr-typo($font: lato-regular);
+	@include responslr-typo($font-family: lato-regular);
 	text-transform: uppercase;
 }
 
 h1 {
-	@include responslr-typo($font: lato-regular, $font-size: large);
+	@include responslr-typo($font-family: lato-regular, $font-size: large);
 }

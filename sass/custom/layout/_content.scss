@@ -33,7 +33,7 @@
 
 	.box {
 		padding: responslr-grid-gutter-half();
-		// @include responslr-typo($font: lato-regular);
+		// @include responslr-typo($font-family: lato-regular);
 	}
 
 	.border {
@@ -44,7 +44,7 @@
 	// FONT TESTING
 	.font-test-1 {
 		display: inline-block;
-		@include responslr-typo($font: lato-light, $font-size: 27px, $line-height: 100px);
+		@include responslr-typo($font-family: lato-light, $font-size: 27px, $line-height: 100px);
 	}
 
 	.font-test-2 {

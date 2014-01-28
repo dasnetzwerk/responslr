@@ -74,21 +74,21 @@
 
 @function responslr-tooltip-font-color($tooltip: responslr-tooltip()) {
 	@if $tooltip and length($tooltip) >= 7 {
-		@return responslr-color(nth($tooltip,7));
+		@return responslr-color-value(nth($tooltip,7));
 	}
 	@return $white;
 }
 
 @function responslr-tooltip-bg-color($tooltip: responslr-tooltip()) {
 	@if $tooltip and length($tooltip) >= 8 {
-		@return responslr-color(nth($tooltip,8));
+		@return responslr-color-value(nth($tooltip,8));
 	}
 	@return $black;
 }
 
 @function responslr-tooltip-border-color($tooltip: responslr-tooltip()) {
 	@if $tooltip and length($tooltip) >= 9 {
-		@return responslr-color(nth($tooltip,9));
+		@return responslr-color-value(nth($tooltip,9));
 	}
 	@return $black;
 }

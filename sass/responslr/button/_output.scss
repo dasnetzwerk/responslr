@@ -71,6 +71,8 @@
 }
 
 // TODO: font-size hinzufügen
+// TODO: font-weight hinzufügen
+// TODO: font-style hinzufügen
 // TODO: font-family hinzufügen
 
 
@@ -96,7 +98,7 @@
 		@include responslr-button-default();
 	}
 
-	@if(responslr-button-height($name) == 0) {
+	@if responslr-button-height($name) == 0 {
 		padding: responslr-button-padding-y($name) responslr-button-padding-x($name);
 		white-space: pre-wrap;
 	} @else {
@@ -106,7 +108,7 @@
 		white-space: nowrap;
 	}
 
-	@if(responslr-button-border-radius($name) != 0) {
+	@if responslr-button-border-radius($name) != 0 {
 		border-radius: responslr-button-border-radius($name);
 	}
 }
@@ -139,7 +141,7 @@
 				@extend %button-inactive;
 			}
 
-			.#{$responslr-button-class-prefix}#{$button-key}-inactive {
+			.#{$responslr-button-class-prefix}#{$button-key}#{$responslr-button-inactive-class-suffix} {
 				@extend .#{$responslr-button-class-prefix}#{$button-key}[disabled];
 				@extend .#{$responslr-button-class-prefix}#{$button-key};
 			}

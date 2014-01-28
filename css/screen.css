@@ -123,6 +123,7 @@ footer, header, hgroup, menu, nav, section {
 
 body {
   line-height: 1;
+  -ms-content-zooming: none;
 }
 
 img {
@@ -169,7 +170,16 @@ body *,
 	OUTPUT - TYPO
 ***********************************************************************************/
 /***********************************************************************************
-	FUNCTIONS
+	DEFAULT MAP FUNCTIONS (FAMILIES)
+***********************************************************************************/
+/***********************************************************************************
+	MAP VALUE FUNCTIONS (FAMILIES)
+***********************************************************************************/
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS (SIZES)
+***********************************************************************************/
+/***********************************************************************************
+	MAP VALUE FUNCTIONS (SIZES)
 ***********************************************************************************/
 /***********************************************************************************
 	MIXINS
@@ -178,67 +188,57 @@ body *,
 	CLASS GENERATOR
 ***********************************************************************************/
 @font-face {
-  font-family: lato-light;
+  font-family: "lato-light";
   src: url("fonts/lato-light.eot?#iefix") format("embedded-opentype"), url("fonts/lato-light.woff") format("woff"), url("fonts/lato-light.ttf") format("truetype"), url("fonts/lato-light.svg#lato-light") format("svg");
 }
 @font-face {
-  font-family: lato-regular;
+  font-family: "lato-regular";
   src: url("fonts/lato-regular.eot?#iefix") format("embedded-opentype"), url("fonts/lato-regular.woff") format("woff"), url("fonts/lato-regular.ttf") format("truetype"), url("fonts/lato-regular.svg#lato-regular") format("svg");
 }
 .font-family-lato-light {
-  -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
 }
 
 .font-family-lato-regular {
-  -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-regular;
+  font-family: "lato-regular";
   font-weight: 400;
   font-style: normal;
 }
 
+.font-family-times-new-roman {
+  font-family: "Times New Roman";
+  font-weight: 400;
+  font-style: italic;
+}
+
 .font-size-default {
-  -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
   font-size: 24px;
   line-height: 1.4;
 }
 
 .font-size-tiny {
-  -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
   font-size: 14px;
   line-height: 1.4;
 }
 
 .font-size-small {
-  -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
   font-size: 18px;
   line-height: 1.4;
 }
 
 .font-size-medium {
-  -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
   font-size: 30px;
   line-height: 1.4;
 }
 
 .font-size-large {
-  -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
   font-size: 48px;
   line-height: 1.4;
 }
 
 .font-size-xlarge {
-  -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
   font-size: 62px;
   line-height: 80px;
 }
@@ -306,8 +306,7 @@ body *,
 }
 .row > * {
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
   font-size: 24px;
@@ -1331,11 +1330,6 @@ td.column {
 /***********************************************************************************
 	MIXINS
 ***********************************************************************************/
-/*@mixin transition-default($transition-properties...) {
-	@include transition-property($transition-properties);
-	@include transition-timing-function($transition-timing-function-default);
-	@include transition-duration($transition-duration-default);
-}*/
 /***********************************************************************************
 	CLASS GENERATOR
 ***********************************************************************************/
@@ -1664,7 +1658,7 @@ td.column {
 }
 
 .icon-drinking-horn {
-  background-image: url('data:image/svg+xml;base64,PHN2ZyBzdHlsZT0iZmlsbDpyZXNwb25zbHItY29sb3IoImdyZXktbGlnaHQiKTsiIHZlcnNpb249IjEuMSIgaWQ9Ik1ldF9ob3JuX291dGxpbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTcuMTU2cHgiIGhlaWdodD0iODcuODEzcHgiIHZpZXdCb3g9IjAgMCA1Ny4xNTYgODcuODEzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1Ny4xNTYgODcuODEzIiAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZD0iTTUyLjY3NywyLjY3NmMwLjMzNywyLjgzOSwwLjg0NSw4Ljg1OCwxLjIzNiwxNC4zMTVsMC4wMTIsMC4xN2wwLjAzNSwwLjE2N2MwLjAyMSwwLjEwMywyLjEyLDEwLjQyNC0yLjAwNCwyMy43MTEgYy01LjQ4NSwxNy42NzQtMTkuNTIyLDMyLjMwNS00MC42MDIsNDIuMzE5Yy0yLjgxLDAuOTEyLTQuODk4LDEuMzk3LTYuNDAyLDEuNjQ4YzEuMzgtMS4zNDUsMy4zMjEtMy4wMTgsNS44MjYtNC43NzRsMC4wMzQtMC4wMjIgbDAuMDMzLTAuMDI1YzIyLjM1My0xNi43OTcsMjYuNTc1LTM4Ljc0MiwyNy4xLTUwLjMyOGMwLjIwNy00LjU0OCwwLjAzMy03LjY0My0wLjUxOS05LjI0MWwwLjA3OS0wLjAyOSBjLTAuMzA0LTAuODM5LTAuNzM2LTIuMDA3LTEuMjI5LTMuMzMxYy0xLjExNi0zLjAwNi0yLjgzOC03LjY0MS0zLjY0Ny0xMC4xNDhDMzYuMjkyLDUuNTM5LDQ3Ljc0OSwyLjk3OCw1Mi42NzcsMi42NzYgIE01My41MzgsMC4xNDZjLTUuMjIsMC0yNC4xOTIsNC4xNDUtMjMuNzU3LDYuMTA0YzAuNSwyLjI1LDQuMDk0LDExLjY0OSw1LjM3NSwxNS4xODhjMC4wODcsMC4wNzksNS4xMjUsMzMuNS0yNS44MTMsNTYuNzUgYy02LjA2Myw0LjI1LTkuNDM4LDguNDE2LTkuMjUsOWMwLjA4NCwwLjI2NCwwLjc1NCwwLjU3NSwyLjI3NCwwLjU3NWMxLjg2MywwLDUuMDA0LTAuNDY5LDkuOTEzLTIuMDc1IGM1My4zMzMtMjUuMjUsNDQuMTI1LTY4Ljg3NSw0NC4xMjUtNjguODc1UzU1LjM0NCwyLDU0Ljg0NCwwLjQzOEM1NC43NzksMC4yMzYsNTQuMzA5LDAuMTQ2LDUzLjUzOCwwLjE0Nkw1My41MzgsMC4xNDZ6Ii8+PC9zdmc+');
+  background-image: url('data:image/svg+xml;base64,PHN2ZyBzdHlsZT0iZmlsbDojZWFlYmViOyIgdmVyc2lvbj0iMS4xIiBpZD0iTWV0X2hvcm5fb3V0bGluZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI1Ny4xNTZweCIgaGVpZ2h0PSI4Ny44MTNweCIgdmlld0JveD0iMCAwIDU3LjE1NiA4Ny44MTMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDU3LjE1NiA4Ny44MTMiICB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBkPSJNNTIuNjc3LDIuNjc2YzAuMzM3LDIuODM5LDAuODQ1LDguODU4LDEuMjM2LDE0LjMxNWwwLjAxMiwwLjE3bDAuMDM1LDAuMTY3YzAuMDIxLDAuMTAzLDIuMTIsMTAuNDI0LTIuMDA0LDIzLjcxMSBjLTUuNDg1LDE3LjY3NC0xOS41MjIsMzIuMzA1LTQwLjYwMiw0Mi4zMTljLTIuODEsMC45MTItNC44OTgsMS4zOTctNi40MDIsMS42NDhjMS4zOC0xLjM0NSwzLjMyMS0zLjAxOCw1LjgyNi00Ljc3NGwwLjAzNC0wLjAyMiBsMC4wMzMtMC4wMjVjMjIuMzUzLTE2Ljc5NywyNi41NzUtMzguNzQyLDI3LjEtNTAuMzI4YzAuMjA3LTQuNTQ4LDAuMDMzLTcuNjQzLTAuNTE5LTkuMjQxbDAuMDc5LTAuMDI5IGMtMC4zMDQtMC44MzktMC43MzYtMi4wMDctMS4yMjktMy4zMzFjLTEuMTE2LTMuMDA2LTIuODM4LTcuNjQxLTMuNjQ3LTEwLjE0OEMzNi4yOTIsNS41MzksNDcuNzQ5LDIuOTc4LDUyLjY3NywyLjY3NiAgTTUzLjUzOCwwLjE0NmMtNS4yMiwwLTI0LjE5Miw0LjE0NS0yMy43NTcsNi4xMDRjMC41LDIuMjUsNC4wOTQsMTEuNjQ5LDUuMzc1LDE1LjE4OGMwLjA4NywwLjA3OSw1LjEyNSwzMy41LTI1LjgxMyw1Ni43NSBjLTYuMDYzLDQuMjUtOS40MzgsOC40MTYtOS4yNSw5YzAuMDg0LDAuMjY0LDAuNzU0LDAuNTc1LDIuMjc0LDAuNTc1YzEuODYzLDAsNS4wMDQtMC40NjksOS45MTMtMi4wNzUgYzUzLjMzMy0yNS4yNSw0NC4xMjUtNjguODc1LDQ0LjEyNS02OC44NzVTNTUuMzQ0LDIsNTQuODQ0LDAuNDM4QzU0Ljc3OSwwLjIzNiw1NC4zMDksMC4xNDYsNTMuNTM4LDAuMTQ2TDUzLjUzOCwwLjE0NnoiLz48L3N2Zz4=');
   background-repeat: no-repeat;
   background-position: 100% 50%;
   background-size: contain;
@@ -2130,15 +2124,14 @@ td.column {
   width: 320px;
   padding: 5px;
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
   font-size: 14px;
   line-height: 1.4;
-  color: responslr-color("white");
-  background-color: responslr-color("black");
-  border: 2px solid responslr-color("black");
+  color: white;
+  background-color: #1a2025;
+  border: 2px solid #1a2025;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -2148,7 +2141,7 @@ td.column {
   bottom: 1.5rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid responslr-color("black");
+  border-top: 0.5em solid #1a2025;
   border-right: 0.5em solid transparent;
   border-left: 0.5em solid transparent;
 }
@@ -2163,7 +2156,7 @@ td.column {
   width: 0;
   height: 0;
   border-top: 0.5em solid transparent;
-  border-right: 0.5em solid responslr-color("black");
+  border-right: 0.5em solid #1a2025;
   border-bottom: 0.5em solid transparent;
 }
 .east[data-tooltip].tooltip-default:after,
@@ -2178,7 +2171,7 @@ td.column {
   width: 0;
   height: 0;
   border-right: 0.5em solid transparent;
-  border-bottom: 0.5em solid responslr-color("black");
+  border-bottom: 0.5em solid #1a2025;
   border-left: 0.5em solid transparent;
 }
 .south[data-tooltip].tooltip-default:after,
@@ -2193,7 +2186,7 @@ td.column {
   height: 0;
   border-top: 0.5em solid transparent;
   border-bottom: 0.5em solid transparent;
-  border-left: 0.5em solid responslr-color("black");
+  border-left: 0.5em solid #1a2025;
 }
 .west[data-tooltip].tooltip-default:after,
 .west.tooltip-default .tooltip-content {
@@ -2247,8 +2240,7 @@ td.column {
 .inline-list-menu li a {
   display: inline-block;
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
   font-size: 24px;
@@ -2297,8 +2289,7 @@ html, body {
   background-color: white;
   color: #1a2025;
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
   font-size: 24px;
@@ -2307,8 +2298,7 @@ html, body {
 
 h1, h2, h3, h4, h5, h6 {
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-regular;
+  font-family: "lato-regular";
   font-weight: 400;
   font-style: normal;
   font-size: 24px;
@@ -2318,8 +2308,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-regular;
+  font-family: "lato-regular";
   font-weight: 400;
   font-style: normal;
   font-size: 48px;
@@ -2341,8 +2330,7 @@ nav ul li.active a:visited {
 nav ul li a,
 nav ul li a:visited {
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-regular;
+  font-family: "lato-regular";
   font-weight: 400;
   font-style: normal;
   font-size: 24px;
@@ -2361,8 +2349,7 @@ nav ul li a:visited:hover {
 }
 #main-navigation ul li a {
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-regular;
+  font-family: "lato-regular";
   font-weight: 400;
   font-style: normal;
   font-size: 30px;
@@ -2399,8 +2386,7 @@ p {
 
 .intro {
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
   font-size: 30px;
@@ -2419,8 +2405,7 @@ p {
 .font-test-1 {
   display: inline-block;
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
   font-size: 27px;
@@ -2430,8 +2415,7 @@ p {
 .font-test-2 {
   display: inline-block;
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
   font-size: 48px;
@@ -2458,14 +2442,13 @@ p {
   width: 320px;
   padding: 5px;
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
   font-size: 14px;
   line-height: 1.4;
-  color: responslr-color("white");
-  background-color: responslr-color("black");
+  color: white;
+  background-color: #1a2025;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -2476,7 +2459,7 @@ p {
   width: 0;
   height: 0;
   border-right: 0.5em solid transparent;
-  border-bottom: 0.5em solid responslr-color("white");
+  border-bottom: 0.5em solid white;
   border-left: 0.5em solid transparent;
 }
 .north[data-tooltip].tooltip-inset:after,
@@ -2491,7 +2474,7 @@ p {
   height: 0;
   border-top: 0.5em solid transparent;
   border-bottom: 0.5em solid transparent;
-  border-left: 0.5em solid responslr-color("white");
+  border-left: 0.5em solid white;
 }
 .east[data-tooltip].tooltip-inset:after,
 .east.tooltip-inset .tooltip-content {
@@ -2504,7 +2487,7 @@ p {
   top: 2rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid responslr-color("white");
+  border-top: 0.5em solid white;
   border-right: 0.5em solid transparent;
   border-left: 0.5em solid transparent;
 }
@@ -2519,7 +2502,7 @@ p {
   width: 0;
   height: 0;
   border-top: 0.5em solid transparent;
-  border-right: 0.5em solid responslr-color("white");
+  border-right: 0.5em solid white;
   border-bottom: 0.5em solid transparent;
 }
 .west[data-tooltip].tooltip-inset:after,
@@ -2537,15 +2520,14 @@ p {
   width: 320px;
   padding: 5px;
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
   font-size: 14px;
   line-height: 1.4;
-  color: responslr-color("white");
-  background-color: responslr-color("blue");
-  border: 2px solid responslr-color("blue");
+  color: white;
+  background-color: #249cd5;
+  border: 2px solid #249cd5;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -2555,7 +2537,7 @@ p {
   bottom: 1.5rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid responslr-color("blue");
+  border-top: 0.5em solid #249cd5;
   border-right: 0.5em solid transparent;
   border-left: 0.5em solid transparent;
 }
@@ -2570,7 +2552,7 @@ p {
   width: 0;
   height: 0;
   border-top: 0.5em solid transparent;
-  border-right: 0.5em solid responslr-color("blue");
+  border-right: 0.5em solid #249cd5;
   border-bottom: 0.5em solid transparent;
 }
 .east[data-tooltip].tooltip-info:after,
@@ -2585,7 +2567,7 @@ p {
   width: 0;
   height: 0;
   border-right: 0.5em solid transparent;
-  border-bottom: 0.5em solid responslr-color("blue");
+  border-bottom: 0.5em solid #249cd5;
   border-left: 0.5em solid transparent;
 }
 .south[data-tooltip].tooltip-info:after,
@@ -2600,7 +2582,7 @@ p {
   height: 0;
   border-top: 0.5em solid transparent;
   border-bottom: 0.5em solid transparent;
-  border-left: 0.5em solid responslr-color("blue");
+  border-left: 0.5em solid #249cd5;
 }
 .west[data-tooltip].tooltip-info:after,
 .west.tooltip-info .tooltip-content {
@@ -2617,15 +2599,14 @@ p {
   width: 320px;
   padding: 5px;
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
   font-size: 14px;
   line-height: 1.4;
-  color: responslr-color("white");
-  background-color: responslr-color("red");
-  border: 2px solid responslr-color("red");
+  color: white;
+  background-color: #c0392b;
+  border: 2px solid #c0392b;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -2635,7 +2616,7 @@ p {
   bottom: 1.5rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid responslr-color("red");
+  border-top: 0.5em solid #c0392b;
   border-right: 0.5em solid transparent;
   border-left: 0.5em solid transparent;
 }
@@ -2650,7 +2631,7 @@ p {
   width: 0;
   height: 0;
   border-top: 0.5em solid transparent;
-  border-right: 0.5em solid responslr-color("red");
+  border-right: 0.5em solid #c0392b;
   border-bottom: 0.5em solid transparent;
 }
 .east[data-tooltip].tooltip-error:after,
@@ -2665,7 +2646,7 @@ p {
   width: 0;
   height: 0;
   border-right: 0.5em solid transparent;
-  border-bottom: 0.5em solid responslr-color("red");
+  border-bottom: 0.5em solid #c0392b;
   border-left: 0.5em solid transparent;
 }
 .south[data-tooltip].tooltip-error:after,
@@ -2680,7 +2661,7 @@ p {
   height: 0;
   border-top: 0.5em solid transparent;
   border-bottom: 0.5em solid transparent;
-  border-left: 0.5em solid responslr-color("red");
+  border-left: 0.5em solid #c0392b;
 }
 .west[data-tooltip].tooltip-error:after,
 .west.tooltip-error .tooltip-content {
@@ -2697,15 +2678,14 @@ p {
   width: 320px;
   padding: 5px;
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
   font-size: 14px;
   line-height: 1.4;
-  color: responslr-color("white");
-  background-color: responslr-color("green");
-  border: 2px solid responslr-color("green");
+  color: white;
+  background-color: #27ae60;
+  border: 2px solid #27ae60;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -2715,7 +2695,7 @@ p {
   bottom: 1.5rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid responslr-color("green");
+  border-top: 0.5em solid #27ae60;
   border-right: 0.5em solid transparent;
   border-left: 0.5em solid transparent;
 }
@@ -2730,7 +2710,7 @@ p {
   width: 0;
   height: 0;
   border-top: 0.5em solid transparent;
-  border-right: 0.5em solid responslr-color("green");
+  border-right: 0.5em solid #27ae60;
   border-bottom: 0.5em solid transparent;
 }
 .east[data-tooltip].tooltip-success:after,
@@ -2745,7 +2725,7 @@ p {
   width: 0;
   height: 0;
   border-right: 0.5em solid transparent;
-  border-bottom: 0.5em solid responslr-color("green");
+  border-bottom: 0.5em solid #27ae60;
   border-left: 0.5em solid transparent;
 }
 .south[data-tooltip].tooltip-success:after,
@@ -2760,7 +2740,7 @@ p {
   height: 0;
   border-top: 0.5em solid transparent;
   border-bottom: 0.5em solid transparent;
-  border-left: 0.5em solid responslr-color("green");
+  border-left: 0.5em solid #27ae60;
 }
 .west[data-tooltip].tooltip-success:after,
 .west.tooltip-success .tooltip-content {
@@ -2777,8 +2757,7 @@ footer .portrait {
 }
 footer h3 {
   -webkit-font-smoothing: antialiased;
-  /* webkit text rendering fix */
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
   font-size: 24px;

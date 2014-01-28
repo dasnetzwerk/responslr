@@ -34,7 +34,7 @@
 	$return-properties: map-get(responslr-transition($name), properties);
 
 	@if $return-properties == null {
-		$return-properties: all;
+		$return-properties: $responslr-transitions-default-properties;
 	}
 
 	@return $return-properties;
@@ -44,7 +44,7 @@
 	$return-duration: map-get(responslr-transition($name), duration);
 
 	@if $return-duration == null {
-		$return-duration: .25s;
+		$return-duration: $responslr-transitions-default-duration;
 	}
 
 	@return $return-duration;
@@ -54,7 +54,7 @@
 	$return-timing-function: map-get(responslr-transition($name), timing-function);
 
 	@if $return-timing-function == null {
-		$return-timing-function: ease;
+		$return-timing-function: $responslr-transitions-default-timing-function;
 	}
 
 	@return $return-timing-function;
@@ -64,10 +64,20 @@
 	$return-delay: map-get(responslr-transition($name), delay);
 
 	@if $return-delay == null {
-		$return-delay: 0;
+		$return-delay: $responslr-transitions-default-delay;
 	}
 
 	@return $return-delay;
+}
+
+@function responslr-transition-hardware-acceleration($name: null) {
+	$return-hardware-acceleration: map-get(responslr-transition($name), hardware-acceleration);
+
+	@if $return-hardware-acceleration == null {
+		$return-hardware-acceleration: $responslr-transitions-default-hardware-acceleration;
+	}
+
+	@return $return-hardware-acceleration;
 }
 
 
@@ -75,22 +85,38 @@
 	MIXINS
 ***********************************************************************************/
 
-/*@mixin transition-default($transition-properties...) {
-	@include transition-property($transition-properties);
-	@include transition-timing-function($transition-timing-function-default);
-	@include transition-duration($transition-duration-default);
-}*/
+@mixin responslr-transition($name: null, $properties: null, $duration: null, $timing-function: null, $delay: null) {
+	@if $properties == null {
+		$properties: unquote(responslr-transition-properties($name));
+	} @else {
+		$properties: unquote($properties);
+	}
 
-// TODO: Custom arguments ermöglichen / default transition
+	@if $duration == null {
+		$duration: responslr-transition-duration($name);
+	}
 
-@mixin responslr-transition($name: $responslr-transitions-default) {
-	$property: unquote(responslr-transition-properties($name));
-	$duration: responslr-transition-duration($name);
-	$timing-function: responslr-transition-timing-function($name);
-	$delay: responslr-transition-delay($name);
+	@if $timing-function == null {
+		$timing-function: responslr-transition-timing-function($name);
+	}
+
+	@if $timing-function == null {
+		$timing-function: responslr-transition-timing-function($name);
+	}
+
+	@if $delay == null {
+		$delay: responslr-transition-delay($name);
+	}
 
 	@include transition(all $duration $timing-function $delay);
-	@include transition-property($property);
+
+	@if $properties != all {
+		@include transition-property($properties);
+	}
+
+	@if responslr-transition-hardware-acceleration($name) {
+		@include transform(translate3d(0,0,0));
+	}
 }
 
 

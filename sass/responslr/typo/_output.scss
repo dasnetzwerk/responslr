@@ -4,148 +4,197 @@
 
 
 /***********************************************************************************
-	FUNCTIONS
+	DEFAULT MAP FUNCTIONS (FAMILIES)
 ***********************************************************************************/
 
-// font-families
-@function responslr-typo-family($name: $responslr-typo-families-default) {
-	@each $font-family in $responslr-typo-families {
-		@if nth($font-family,1) == $name {
-			@return $font-family;
-		}
+@function responslr-typo-family-exists($name) {
+	@return map-has-key($responslr-typo-families, $name);
+}
+
+@function responslr-typo-family($name: null) {
+	$return-typo-family: ();
+
+	@if $name == null {
+		$name: $responslr-typo-families-default;
 	}
-	@return null;
+
+	@if responslr-typo-family-exists($name) {
+		$return-typo-family: map-get($responslr-typo-families, $name);
+	}
+
+	@return $return-typo-family;
 }
 
-@function responslr-typo-family-iscustom($name: $responslr-typo-families-default) {
-	$return-iscustom: nth(responslr-typo-family($name),2);
 
-	@return $return-iscustom;
+/***********************************************************************************
+	MAP VALUE FUNCTIONS (FAMILIES)
+***********************************************************************************/
+
+@function responslr-typo-family-name($name: null) {
+	$return-name: map-get(responslr-typo-family($name), name);
+
+	@if $return-name == null {
+		@warn responslr-map-required-error("name", "typo-family", $name);
+	}
+
+	@return $return-name;
 }
 
-@function responslr-typo-family-filename($name: $responslr-typo-families-default) {
-	$return-filename: nth(responslr-typo-family($name),3);
+@function responslr-typo-family-file($name: null) {
+	$return-file: map-get(responslr-typo-family($name), file);
 
-	@return $return-filename;
+	@if $return-file == null {
+		$return-file: $responslr-typo-families-default-file;
+	}
+
+	@return $return-file;
 }
 
-@function responslr-typo-family-font-weight($name: $responslr-typo-families-default) {
-	$return-font-weight: nth(responslr-typo-family($name),4);
+@function responslr-typo-family-import($name: null) {
+	$return-import: map-get(responslr-typo-family($name), import);
+
+	@if $return-import == null {
+		$return-import: $responslr-typo-families-default-import;
+	}
+
+	@return $return-import;
+}
+
+@function responslr-typo-family-font-weight($name: null) {
+	$return-font-weight: map-get(responslr-typo-family($name), font-weight);
+
+	@if $return-font-weight == null {
+		$return-font-weight: $responslr-typo-families-default-font-weight;
+	}
 
 	@return $return-font-weight;
 }
 
-@function responslr-typo-family-font-style($name: $responslr-typo-families-default) {
-	$return-font-style: nth(responslr-typo-family($name),5);
+@function responslr-typo-family-font-style($name: null) {
+	$return-font-style: map-get(responslr-typo-family($name), font-style);
+
+	@if $return-font-style == null {
+		$return-font-style: $responslr-typo-families-default-font-style;
+	}
 
 	@return $return-font-style;
 }
 
-// font-sizes
-@function responslr-typo-size($name: $responslr-typo-sizes-default) {
-	@each $font-size in $responslr-typo-sizes {
-		@if nth($font-size,1) == $name {
-			@return $font-size;
-		}
+
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS (SIZES)
+***********************************************************************************/
+
+@function responslr-typo-size-exists($name) {
+	@return map-has-key($responslr-typo-sizes, $name);
+}
+
+@function responslr-typo-size($name: null) {
+	$return-typo-size: ();
+
+	@if $name == null {
+		$name: $responslr-typo-sizes-default;
 	}
-	@return null;
+
+	@if responslr-typo-size-exists($name) {
+		$return-typo-size: map-get($responslr-typo-sizes, $name);
+	}
+
+	@return $return-typo-size;
 }
 
-@function responslr-typo-size-value($name: $responslr-typo-sizes-default) {
-	$return-size: nth(responslr-typo-size($name),2);
 
-	@return $return-size;
+/***********************************************************************************
+	MAP VALUE FUNCTIONS (SIZES)
+***********************************************************************************/
+
+@function responslr-typo-size-value($name: null) {
+	$return-value: map-get(responslr-typo-size($name), value);
+
+	@if $return-value == null {
+		@warn responslr-map-required-error("value", "typo-size", $name);
+	}
+
+	@return $return-value;
 }
 
-@function responslr-typo-size-line-height($name: $responslr-typo-sizes-default) {
-	$return-line-height: $responslr-typo-line-height-default;
+@function responslr-typo-size-line-height($name: null) {
+	$return-line-height: map-get(responslr-typo-size($name), line-height);
 
-	@if length(responslr-typo-size($name)) >= 2 {
-		$return-line-height: nth(responslr-typo-size($name),3);
+	@if $return-line-height == null {
+		$return-line-height: $responslr-typo-sizes-default-line-height;
 	}
 
 	@return $return-line-height;
 }
 
+
 /***********************************************************************************
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-typo($font: $responslr-typo-families-default, $font-size: $responslr-typo-sizes-default, $line-height: '', $font-weight: '', $font-style: '') {
-	-webkit-font-smoothing: antialiased; /* webkit text rendering fix */
+@mixin responslr-typo-fix() {
+	-webkit-font-smoothing: antialiased;
+}
 
-	// font-family
-	@each $font-familiy-row in $responslr-typo-families {
-		$font-family-name: nth($font-familiy-row,1);
-
-		@if $font-family-name == $font {
-			// is custom font
-			@if responslr-typo-family-iscustom($font-family-name) {
-				font-family: $font-family-name;
-			// is system font
-			} @else {
-				font-family: responslr-typo-family-filename($font-family-name);
-			}
-
-			// font-weight by font-size, if not explicitly set
-			@if $font-weight == '' {
-				font-weight: responslr-typo-family-font-weight($font-family-name);
-			}
-
-			// font-weight by font-size, if not explicitly set
-			@if $font-style == '' {
-				font-style: responslr-typo-family-font-style($font-family-name);
-			}
-		}
-	}
-
-	// font-size
-	@if type-of($font-size) == number {
-		font-size: $font-size;
+@mixin responslr-typo-family($font-family: null, $font-weight: null, $font-style: null) {
+	// Font-family
+	@if $font-family == null {
+		font-family: responslr-typo-family-name($responslr-typo-families-default);
+	} @elseif responslr-typo-family-exists($font-family) {
+		font-family: responslr-typo-family-name($font-family);
 	} @else {
-		@each $font-size-row in $responslr-typo-sizes {
-			$font-size-name: nth($font-size-row,1);
-
-			// font-size by font-sizes list
-			@if $font-size == $font-size-name {
-				font-size: responslr-typo-size-value($font-size-name);
-
-				// line-height by font-size, if not explicitly set
-				@if $line-height == '' {
-					@if length($font-size-row) >= 3 {
-						line-height: responslr-typo-size-line-height($font-size-name);
-					} @else {
-						line-height: $responslr-typo-line-height-default;
-					}
-				}
-			}
-		}
+		font-family: $font-family;
 	}
 
-	// line-height
-	@if $line-height != '' {
-		@if type-of($line-height) == number {
-			line-height: $line-height;
-		} @else {
-			@each $font-size-row in $responslr-typo-sizes {
-				$font-size-name: nth($font-size-row,1);
-
-				@if $line-height == $font-size-name {
-					line-height: responslr-typo-size-line-height($font-size-name);
-				}
-			}
+	// Font-weight
+	@if $font-weight == null {
+		@if responslr-typo-family-font-weight($font-family) {
+			font-weight: responslr-typo-family-font-weight($font-family);
 		}
-	}
-
-	// font-weight
-	@if $font-weight != '' {
+	} @else {
 		font-weight: $font-weight;
 	}
 
-	// font-style
-	@if $font-style != '' {
+	// Font-style
+	@if $font-style == null {
+		@if responslr-typo-family-font-style($font-family) {
+			font-style: responslr-typo-family-font-style($font-family);
+		}
+	} @else {
 		font-style: $font-style;
 	}
+}
+
+@mixin responslr-typo-size($font-size: null, $line-height: null) {
+	// Font-size
+	@if $font-size == null {
+		font-size: responslr-typo-size-value($responslr-typo-sizes-default);
+	} @elseif responslr-typo-size-exists($font-size) {
+		font-size: responslr-typo-size-value($font-size);
+	} @else {
+		font-size: $font-size;
+	}
+
+	// Line-height
+	@if $line-height == null {
+		@if responslr-typo-size-line-height($font-size) {
+			line-height: responslr-typo-size-line-height($font-size);
+		}
+	} @else {
+		line-height: $line-height;
+	}
+}
+
+@mixin responslr-typo($font-family: null, $font-weight: null, $font-style: null, $font-size: null, $line-height: null) {
+	// Font fix
+	@include responslr-typo-fix();
+
+	// Font-family
+	@include responslr-typo-family($font-family: $font-family, $font-weight: $font-weight, $font-style: $font-style);
+
+	// Font-size
+	@include responslr-typo-size($font-size: $font-size, $line-height: $line-height);
 }
 
 
@@ -153,43 +202,54 @@
 	CLASS GENERATOR
 ***********************************************************************************/
 
+@function responslr-generate-typo-check() {
+	@return $responslr-generate-typo;
+}
+
 @mixin responslr-generate-typo() {
-	// font-families
-	@if $responslr-generate-typo-families {
-		@each $i in $responslr-typo-families {
-			@if nth($i, 2) {
+	// Font-families
+	@if $responslr-generate-typo-families && responslr-map-isnotempty($responslr-typo-families) {
+
+		@each $font-family-key, $font-family-list in $responslr-typo-families {
+			// Generate font-faces
+			@if responslr-typo-family-file($font-family-key) {
 				@font-face {
-					font-family: nth($i, 1);
-					src: url('fonts/#{nth($i, 3)}.eot?#iefix') format('embedded-opentype'),
-						 url('fonts/#{nth($i, 3)}.woff') format('woff'),
-						 url('fonts/#{nth($i, 3)}.ttf') format('truetype'),
-						 url('fonts/#{nth($i, 3)}.svg##{nth($i, 1)}') format('svg');
+					font-family: responslr-typo-family-name($font-family-key);
+					src: url('#{responslr-typo-family-file($font-family-key)}.eot?#iefix') format('embedded-opentype'),
+						 url('#{responslr-typo-family-file($font-family-key)}.woff') format('woff'),
+						 url('#{responslr-typo-family-file($font-family-key)}.ttf') format('truetype'),
+						 url('#{responslr-typo-family-file($font-family-key)}.svg##{responslr-typo-family-name($font-family-key)}') format('svg');
 				}
 			}
+
+			// Generate imports
+			@if responslr-typo-family-import($font-family-key) {
+				@import url(responslr-typo-family-import($font-family-key));
+			}
 		}
 
-		@each $font-family-list in $responslr-typo-families {
-			.font-family-#{nth($font-family-list,1)} {
-				@include responslr-typo($font: nth($font-family-list,1), $font-size: '');
+		@each $font-family-key, $font-family-list in $responslr-typo-families {
+			.#{$responslr-typo-family-class-prefix}#{$font-family-key} {
+				@include responslr-typo-family($font-family: $font-family-key);
 			}
 		}
 	}
 
-	// font-sizes
-	@if $responslr-generate-typo-sizes {
-		@each $font-size-row in $responslr-typo-sizes {
-			.font-size-#{nth($font-size-row,1)} {
-				@include responslr-typo($font: '', $font-size: nth($font-size-row,1));
+	// Font-sizes
+	@if $responslr-generate-typo-sizes && responslr-map-isnotempty($responslr-typo-sizes) {
+		@each $font-size-key, $font-size-list in $responslr-typo-sizes {
+			.#{$responslr-typo-size-class-prefix}#{$font-size-key} {
+				@include responslr-typo-size($font-size: $font-size-key);
 			}
 		}
 	}
 
-	// Text No-Select
-	.no-select {
+	// Disable user-select
+	.#{$responslr-typo-no-select-class} {
 		@include user-select(none);
 	}
 }
 
-@if $responslr-generate-typo {
+@if responslr-generate-typo-check() {
 	@include responslr-generate-typo();
 }

@@ -19,28 +19,30 @@
 	@extend .#{$visibility-name} !optional;
 }
 
+// Shower
 @mixin responslr-visibility-show($breakpoint-name) {
-	@include responslr-visibility('show-#{$breakpoint-name}');
+	@include responslr-visibility('#{$responslr-visibility-showers-class-prefix}#{$breakpoint-name}');
 }
 
 @mixin responslr-visibility-show-up($breakpoint-name) {
-	@include responslr-visibility('show-#{$breakpoint-name}-up');
+	@include responslr-visibility('#{$responslr-visibility-showers-class-prefix}#{$breakpoint-name}#{$responslr-visibility-up-class-suffix}');
 }
 
 @mixin responslr-visibility-show-down($breakpoint-name) {
-	@include responslr-visibility('show-#{$breakpoint-name}-down');
+	@include responslr-visibility('#{$responslr-visibility-showers-class-prefix}#{$breakpoint-name}#{$responslr-visibility-down-class-suffix}');
 }
 
+// Hider
 @mixin responslr-visibility-hide($breakpoint-name) {
-	@include responslr-visibility('hide-#{$breakpoint-name}');
+	@include responslr-visibility('#{$responslr-visibility-hiders-class-prefix}#{$breakpoint-name}');
 }
 
 @mixin responslr-visibility-hide-up($breakpoint-name) {
-	@include responslr-visibility('hide-#{$breakpoint-name}-up');
+	@include responslr-visibility('#{$responslr-visibility-hiders-class-prefix}#{$breakpoint-name}#{$responslr-visibility-up-class-suffix}');
 }
 
 @mixin responslr-visibility-hide-down($breakpoint-name) {
-	@include responslr-visibility('hide-#{$breakpoint-name}-down');
+	@include responslr-visibility('#{$responslr-visibility-hiders-class-prefix}#{$breakpoint-name}#{$responslr-visibility-down-class-suffix}');
 }
 
 
@@ -48,24 +50,31 @@
 	CLASS GENERATOR
 ***********************************************************************************/
 
+@function responslr-generate-visibility-check() {
+	@return $responslr-generate-visibility;
+}
+
 @mixin responslr-generate-hiders() {
-	@each $current-breakpoint-list in $responslr-grid-breakpoints {
-		$current-breakpoint-name: nth($current-breakpoint-list,1);
+	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
+		$hider-class-name: #{$responslr-visibility-hiders-class-prefix}#{$breakpoint-key};
 
-		@include responslr-media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
-			.hide-#{$current-breakpoint-name} {
+		// Hider normal
+		@include responslr-media-query($media-end: $breakpoint-key, $media-start: $breakpoint-key) {
+			.#{$hider-class-name} {
 				@include responslr-hide();
 			}
 		}
 
-		@include responslr-media-query($media-start: $current-breakpoint-name) {
-			.hide-#{$current-breakpoint-name}-up {
+		// Hider up
+		@include responslr-media-query($media-start: $breakpoint-key) {
+			.#{$hider-class-name}#{$responslr-visibility-up-class-suffix} {
 				@include responslr-hide();
 			}
 		}
 
-		@include responslr-media-query($media-end: $current-breakpoint-name) {
-			.hide-#{$current-breakpoint-name}-down {
+		// Hider down
+		@include responslr-media-query($media-end: $breakpoint-key) {
+			.#{$hider-class-name}#{$responslr-visibility-down-class-suffix} {
 				@include responslr-hide();
 			}
 		}
@@ -73,69 +82,73 @@
 }
 
 @mixin responslr-generate-showers() {
-	.hide-all {
+	// Hide all
+	.#{$responslr-visibility-hide-all-class} {
 		@include responslr-hide();
 	}
 
-	@each $current-breakpoint-list in $responslr-grid-breakpoints {
-		$current-breakpoint-name: nth($current-breakpoint-list,1);
+	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
+		$shower-class-name: #{$responslr-visibility-showers-class-prefix}#{$breakpoint-key};
 
-		.show-#{$current-breakpoint-name},
-		.show-#{$current-breakpoint-name}-up,
-		.show-#{$current-breakpoint-name}-down {
-			@extend .hide-all;
+		// Shower normal
+		.#{$shower-class-name},
+		.#{$shower-class-name}#{$responslr-visibility-up-class-suffix},
+		.#{$shower-class-name}#{$responslr-visibility-down-class-suffix} {
+			@extend .#{$responslr-visibility-hide-all-class};
 		}
 
-		@include responslr-media-query($media-end: $current-breakpoint-name, $media-start: $current-breakpoint-name) {
-			.show-#{$current-breakpoint-name} {
+		@include responslr-media-query($media-end: $breakpoint-key, $media-start: $breakpoint-key) {
+			.#{$shower-class-name} {
 				@include responslr-show(block);
 
-				&.column {
+				&.#{$responslr-grid-column-class} {
 					@include responslr-show(inline-block);
 				}
 			}
 
-			span.show-#{$current-breakpoint-name} {
+			span.#{$shower-class-name} {
 				@include responslr-show(inline);
 			}
 		}
 
-		@include responslr-media-query($media-start: $current-breakpoint-name) {
-			.show-#{$current-breakpoint-name}-up {
+		// Shower up
+		@include responslr-media-query($media-start: $breakpoint-key) {
+			.#{$shower-class-name}#{$responslr-visibility-up-class-suffix} {
 				@include responslr-show(block);
 
-				&.column {
+				&.#{$responslr-grid-column-class} {
 					@include responslr-show(inline-block);
 				}
 			}
 
-			span.show-#{$current-breakpoint-name}-up {
+			span.#{$shower-class-name}#{$responslr-visibility-up-class-suffix} {
 				@include responslr-show(inline);
 			}
 		}
 
-		@include responslr-media-query($media-end: $current-breakpoint-name) {
-			.show-#{$current-breakpoint-name}-down {
+		// Shower down
+		@include responslr-media-query($media-end: $breakpoint-key) {
+			.#{$shower-class-name}#{$responslr-visibility-down-class-suffix} {
 				@include responslr-show();
 
-				&.column {
+				&.#{$responslr-grid-column-class} {
 					@include responslr-show(inline-block);
 				}
 			}
 
-			span.show-#{$current-breakpoint-name}-down {
+			span.#{$shower-class-name}#{$responslr-visibility-down-class-suffix} {
 				@include responslr-show(inline);
 			}
 		}
 	}
 }
 
-@if $responslr-generate-visiblities {
-	@if $responslr-generate-visiblities-hiders {
+@if responslr-generate-visibility-check() {
+	@if $responslr-generate-visibility-hiders {
 		@include responslr-generate-hiders();
 	}
 
-	@if $responslr-generate-visiblities-showers {
+	@if $responslr-generate-visibility-showers {
 		@include responslr-generate-showers();
 	}
 }

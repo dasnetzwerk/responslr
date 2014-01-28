@@ -2,30 +2,51 @@
 	SETTINGS - TYPO
 ***********************************************************************************/
 
-//  font name (unique)		is custom 	name on file system			font-weight porperty		font-style property
-//																	400 = regular, 700 = bold
-$responslr-typo-families:
-	lato-light				true		lato-light					300							normal,
-	lato-regular			true		lato-regular				400							normal
-!default;
-
-// Default font-family
-$responslr-typo-families-default: nth(nth($responslr-typo-families,1),1) !default;
-
-
-//	font-size name		font-size	line-height
-$responslr-typo-sizes:
-	default				24px,
-	tiny				14px,
-	small				18px,
-	medium				30px,
-	large				48px,
-	xlarge				62px		80px
-!default;
-
-// Default font-size
-$responslr-typo-sizes-default: nth(nth($responslr-typo-sizes,1),1) !default;
-
-
 // Default line-height
 $responslr-typo-line-height-default: 1.4 !default;
+
+// Font families
+$responslr-typo-families: (
+	'arial': (
+		name: 'Arial'
+	)
+) !default;
+
+
+// Font-families default
+$responslr-typo-families-default: responslr-map-getdefault($responslr-typo-families) !default;
+
+// Font-families map value defaults
+$responslr-typo-families-default-file: null !default;
+$responslr-typo-families-default-import: null !default;
+$responslr-typo-families-default-font-weight: null !default;
+$responslr-typo-families-default-font-style: null !default;
+
+// Font-families classes
+$responslr-typo-family-class-prefix: 'font-family-' !default;
+
+
+// Font sizes
+$responslr-typo-sizes: (
+	'small': (
+		value: 12px
+	),
+	'medium': (
+		value: 24px
+	),
+	'large': (
+		value: 48px
+	)
+) !default;
+
+// Font-sizes default
+$responslr-typo-sizes-default: responslr-map-getdefault($responslr-typo-sizes) !default;
+
+// Font-sizes map value defaults
+$responslr-typo-sizes-default-line-height: $responslr-typo-line-height-default !default;
+
+// Font-sizes classes
+$responslr-typo-size-class-prefix: 'font-size-' !default;
+
+// Other classes
+$responslr-typo-no-select-class: 'no-select' !default;

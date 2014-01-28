@@ -121,7 +121,7 @@ $responslr-spacings: (
 	'medium':		60px,
 	'large':		100px,
 	'xlarge':		160px
-) !default;
+);
 
 // Transition
 
@@ -136,7 +136,52 @@ $responslr-transitions: (
 		duration: .5s,
 		timing-function: linear
 	)
-) !default;
+);
+
+// Font-families
+
+$responslr-typo-families: (
+	'lato-light': (
+		name: 'lato-light',
+		file: 'fonts/lato-light',
+		font-weight: 300,
+		font-style: normal
+	),
+	'lato-regular': (
+		name: 'lato-regular',
+		file: 'fonts/lato-regular',
+		font-weight: 400,
+		font-style: normal
+	),
+	'times-new-roman': (
+		name: 'Times New Roman',
+		font-weight: 400,
+		font-style: italic
+	)
+);
+
+// Font-sizes
+$responslr-typo-sizes: (
+	'default': (
+		value: 24px
+	),
+	'tiny': (
+		value: 14px
+	),
+	'small': (
+		value: 18px
+	),
+	'medium': (
+		value: 30px
+	),
+	'large': (
+		value: 48px
+	),
+	'xlarge': (
+		value: 62px,
+		line-height: 80px
+	)
+);
 
 // Tooltips
 

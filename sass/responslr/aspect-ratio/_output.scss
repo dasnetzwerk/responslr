@@ -33,11 +33,19 @@
 @function responslr-aspect-ratio-width($name: null) {
 	$return-width: map-get(responslr-aspect-ratio($name), width);
 
+	@if $return-width == null {
+		@warn responslr-map-required-error("width", "aspect-ratio", $name);
+	}
+
 	@return $return-width;
 }
 
 @function responslr-aspect-ratio-height($name: null) {
 	$return-height: map-get(responslr-aspect-ratio($name), height);
+
+	@if $return-height == null {
+		@warn responslr-map-required-error("height", "aspect-ratio", $name);
+	}
 
 	@return $return-height;
 }

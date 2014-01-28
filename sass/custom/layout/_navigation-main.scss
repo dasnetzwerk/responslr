@@ -13,7 +13,7 @@ nav {
 
 			a,
 			a:visited {
-				@include responslr-typo($font: lato-regular);
+				@include responslr-typo($font-family: lato-regular);
 				display: block;
 				text-transform: uppercase;
 				color: $black;
@@ -32,7 +32,7 @@ nav {
 	ul {
 		li {
 			a {
-				@include responslr-typo($font: lato-regular, $font-size: medium);
+				@include responslr-typo($font-family: lato-regular, $font-size: medium);
 			}
 		}
 	}

@@ -41,6 +41,10 @@
 	@return $map-default;
 }
 
+@function responslr-map-required-error($param-name, $map-name, $item-key) {
+	@return 'Parameter "#{$param-name}" for the #{$map-name} "#{$item-key}" is required.';
+}
+
 
 /***********************************************************************************
 	CLASS GENERATORS
@@ -66,9 +70,9 @@ $responslr-generate-grid-helper: $responslr-generate-classes !default;
 
 
 // Visiblity
-$responslr-generate-visiblities: $responslr-generate-classes !default;
-$responslr-generate-visiblities-showers: $responslr-generate-visiblities !default;
-$responslr-generate-visiblities-hiders: $responslr-generate-visiblities !default;
+$responslr-generate-visibility: $responslr-generate-classes !default;
+$responslr-generate-visibility-showers: $responslr-generate-visibility !default;
+$responslr-generate-visibility-hiders: $responslr-generate-visibility !default;
 
 
 // Transition

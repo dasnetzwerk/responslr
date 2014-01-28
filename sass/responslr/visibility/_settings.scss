@@ -1,3 +1,12 @@
 /***********************************************************************************
 	SETTINGS - VISIBILITY
 ***********************************************************************************/
+
+// Classes
+$responslr-visibility-showers-class-prefix: 'show-' !default;
+$responslr-visibility-hiders-class-prefix: 'hide-' !default;
+
+$responslr-visibility-hide-all-class: 'hide-all' !default;
+
+$responslr-visibility-up-class-suffix: '-up' !default;
+$responslr-visibility-down-class-suffix: '-down' !default;

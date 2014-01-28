@@ -2,15 +2,17 @@
 	SETTINGS - TRANSITION
 ***********************************************************************************/
 
-$responslr-transitions: (
-	'color': (
-		properties: 'color,background-color,border-color',
-		duration: .25s
-	)
-) !default;
+$responslr-transitions: () !default;
 
 // Default transition
 $responslr-transitions-default: responslr-map-getdefault($responslr-transitions) !default;
+
+// Map value defaults
+$responslr-transitions-default-properties: all !default;
+$responslr-transitions-default-duration: .25s !default;
+$responslr-transitions-default-timing-function: ease !default;
+$responslr-transitions-default-delay: 0 !default;
+$responslr-transitions-default-hardware-acceleration: false !default;
 
 // Classes
 $responslr-transition-class-prefix: 'transition-' !default;

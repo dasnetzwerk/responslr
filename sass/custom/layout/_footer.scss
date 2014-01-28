@@ -6,6 +6,6 @@ footer {
 	}
 
 	h3 {
-		@include responslr-typo($font: lato-light);
+		@include responslr-typo($font-family: lato-light);
 	}
 }

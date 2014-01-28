@@ -33,6 +33,10 @@
 @function responslr-icon-file($name: null) {
 	$return-file: map-get(responslr-icon($name), file);
 
+	@if $return-file == null {
+		@warn responslr-map-required-error("file", "icons", $name);
+	}
+
 	@return $return-file;
 }
 
@@ -40,7 +44,7 @@
 	$return-size: map-get(responslr-icon($name), size);
 
 	@if $return-size == null {
-		$return-size: 'auto';
+		$return-size: $responslr-icons-default-size;
 	}
 
 	@return $return-size;
@@ -50,7 +54,7 @@
 	$return-offset-x: map-get(responslr-icon($name), offset-x);
 
 	@if $return-offset-x == null {
-		$return-offset-x: 50%;
+		$return-offset-x: $responslr-icons-default-offset-x;
 	}
 
 	@return $return-offset-x;
@@ -60,7 +64,7 @@
 	$return-offset-y: map-get(responslr-icon($name), offset-y);
 
 	@if $return-offset-y == null {
-		$return-offset-y: 50%;
+		$return-offset-y: $responslr-icons-default-offset-y;
 	}
 
 	@return $return-offset-y;
@@ -77,16 +81,23 @@
 	EXTENDED FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-icon-url($name: null, $color: null) {
+@function responslr-icon-url($name: null, $file: null, $color: null) {
 	@if $color == null {
 		$color: responslr-icon-color($name);
 	}
 
 	@if responslr-color-exists($color) {
-		$color: responslr-color($color);
+		$color: responslr-color-value($color);
+
 	}
 
-	$return-url: inline-svg(responslr-icon-file($name), $color);
+	$return-url: '';
+
+	@if $file == null {
+		$return-url: inline-svg(responslr-icon-file($name), $color);
+	} @else {
+		$return-url: inline-svg($file, $color);
+	}
 
 	@return $return-url;
 }
@@ -96,12 +107,17 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-icon($name: null, $size: null, $offset-x: null, $offset-y: null, $color: null) {
-	background-image: responslr-icon-url($name, $color);
+@mixin responslr-icon($name: null, $file: null, $size: null, $offset-x: null, $offset-y: null, $color: null) {
+	@if $file == null {
+		background-image: responslr-icon-url($name: $name, $color: $color);
+	} @else {
+		background-image: responslr-icon-url($file: $file, $color: $color);
+	}
+
 	background-repeat: no-repeat;
 
-	@include responslr-icon-position($name, $offset-x, $offset-y);
-	@include responslr-icon-size($name, $size);
+	@include responslr-icon-position($name: $name, $offset-x: $offset-x, $offset-y: $offset-y);
+	@include responslr-icon-size($name: $name, $size: $size);
 }
 
 @mixin responslr-icon-size($name: null, $size: null) {
