@@ -4,55 +4,306 @@
 
 
 /***********************************************************************************
-	FUNCTION: SHAPE
+	DEFAULT MAP FUNCTIONS (CIRCLE)
 ***********************************************************************************/
 
-// Circle
-
-
-// Triangle
-
-
-// Arrow
-@function arrow-settings($name: $responslr-arrow-name, $index: 0) {
-	$return-arrow-list: $responslr-arrow-settings;
-
-	@if type-of($index) == number and $index > 0 and $index <= length($responslr-shape-arrows) {
-		$return-arrow-list: nth($responslr-shape-arrows, $index);
-	} @else {
-		@each $arrow-list in $responslr-shape-arrows {
-			@if nth($arrow-list, 1) == $name {
-				$return-arrow-list: $arrow-list;
-			}
-		}
-	}
-
-	@return $return-arrow-list;
+@function responslr-shape-circle-exists($name) {
+	@return map-has-key($responslr-shape-circles, $name);
 }
 
-// Arrow Name [1]
-@function arrow-name($arrow-settings: arrow-settings()) {
-	$return-arrow-name: $responslr-arrow-name;
+@function responslr-shape-circle($name: null) {
+	$return-shape-circle: ();
 
-	@if type-of(nth($arrow-settings, 1)) == string {
-		$return-arrow-name: nth($arrow-settings, 1);
+	@if $name == null {
+		$name: $responslr-shape-circles-default;
 	}
 
-	@return $return-arrow-name;
-}
-
-// Arrow Direction [2]
-@function arrow-direction($name: $responslr-arrow-name) {
-	$return-arrow-direction: $responslr-arrow-direction;
-
-	@if type-of(nth($arrow-settings, 2)) == string {
-		$return-arrow-direction: nth($arrow-settings, 2);
+	@if responslr-shape-circle-exists($name) {
+		$return-shape-circle: map-get($responslr-shape-circles, $name);
 	}
 
-	@return $return-arrow-direction;
+	@return $return-shape-circle;
 }
 
-@function arrow-center-margin($size: $responslr-arrow-size, $position-is-alignment: true) {
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS (CIRCLE)
+***********************************************************************************/
+
+@function responslr-shape-circle-width($name: null) {
+	$return-width: map-get(responslr-shape-circle($name), width);
+
+	@if $return-width == null {
+		$return-width: $responslr-shape-circles-default-width;
+	}
+
+	@return $return-width;
+}
+
+@function responslr-shape-circle-height($name: null) {
+	$return-height: map-get(responslr-shape-circle($name), height);
+
+	@if $return-height == null {
+		$return-height: $responslr-shape-circles-default-height;
+	}
+
+	@return $return-height;
+}
+
+@function responslr-shape-circle-radius($name: null) {
+	$return-radius: map-get(responslr-shape-circle($name), radius);
+
+	@if $return-radius == null {
+		$return-radius: $responslr-shape-circles-default-radius;
+	}
+
+	@return $return-radius;
+}
+
+@function responslr-shape-circle-display($name: null) {
+	$return-display: map-get(responslr-shape-circle($name), display);
+
+	@if $return-display == null {
+		$return-display: $responslr-shape-circles-default-display;
+	}
+
+	@return $return-display;
+}
+
+@function responslr-shape-circle-overflow($name: null) {
+	$return-overflow: map-get(responslr-shape-circle($name), overflow);
+
+	@if $return-overflow == null {
+		$return-overflow: $responslr-shape-circles-default-overflow;
+	}
+
+	@return $return-overflow;
+}
+
+@function responslr-shape-circle-horizontal-align($name: null) {
+	$return-horizontal-align: map-get(responslr-shape-circle($name), horizontal-align);
+
+	@if $return-horizontal-align == null {
+		$return-horizontal-align: $responslr-shape-circles-default-horizontal-align;
+	}
+
+	@return $return-horizontal-align;
+}
+
+@function responslr-shape-circle-vertical-align($name: null) {
+	$return-vertical-align: map-get(responslr-shape-circle($name), vertical-align);
+
+	@if $return-vertical-align == null {
+		$return-vertical-align: $responslr-shape-circles-default-vertical-align;
+	}
+
+	@return $return-vertical-align;
+}
+
+
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS (TRIANGLE)
+***********************************************************************************/
+
+@function responslr-shape-triangle-exists($name) {
+	@return map-has-key($responslr-shape-triangles, $name);
+}
+
+@function responslr-shape-triangle($name: null) {
+	$return-shape-triangle: ();
+
+	@if $name == null {
+		$name: $responslr-shape-triangles-default;
+	}
+
+	@if responslr-shape-triangle-exists($name) {
+		$return-shape-triangle: map-get($responslr-shape-triangles, $name);
+	}
+
+	@return $return-shape-triangle;
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS (TRIANGLE)
+***********************************************************************************/
+
+@function responslr-shape-triangle-width($name: null) {
+	$return-width: map-get(responslr-shape-triangle($name), width);
+
+	@if $return-width == null {
+		@warn responslr-map-required-error("width", "shape-triangle", $name);
+	}
+
+	@return $return-width;
+}
+
+@function responslr-shape-triangle-height($name: null) {
+	$return-height: map-get(responslr-shape-triangle($name), height);
+
+	@if $return-height == null {
+		@warn responslr-map-required-error("height", "shape-height", $name);
+	}
+
+	@return $return-height;
+}
+
+
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS (ARROW)
+***********************************************************************************/
+
+@function responslr-shape-arrow-exists($name) {
+	@return map-has-key($responslr-shape-arrows, $name);
+}
+
+@function responslr-shape-arrow($name: null) {
+	$return-shape-arrow: ();
+
+	@if $name == null {
+		$name: $responslr-shape-arrows-default;
+	}
+
+	@if responslr-shape-arrow-exists($name) {
+		$return-shape-arrow: map-get($responslr-shape-arrows, $name);
+	}
+
+	@return $return-shape-arrow;
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS (ARROW)
+***********************************************************************************/
+
+@function responslr-shape-arrow-direction($name: null) {
+	$return-direction: map-get(responslr-shape-arrow($name), direction);
+
+	@if $return-direction == null {
+		$return-direction: $responslr-shape-arrows-default-direction;
+	}
+
+	@return $return-direction;
+}
+
+@function responslr-shape-arrow-size($name: null) {
+	$return-size: map-get(responslr-shape-arrow($name), size);
+
+	@if $return-size == null {
+		$return-size: $responslr-shape-arrows-default-size;
+	}
+
+	@return $return-size;
+}
+
+@function responslr-shape-arrow-width($name: null) {
+	$return-width: map-get(responslr-shape-arrow($name), width);
+
+	@if $return-width == null {
+		$return-width: $responslr-shape-arrows-default-width;
+	}
+
+	@return $return-width;
+}
+
+@function responslr-shape-arrow-color($name: null) {
+	$return-color: map-get(responslr-shape-arrow($name), color);
+
+	@if $return-color == null {
+		$return-color: $responslr-shape-arrows-default-color;
+	}
+
+	@return $return-color;
+}
+
+@function responslr-shape-arrow-position($name: null) {
+	$return-position: map-get(responslr-shape-arrow($name), position);
+
+	@if $return-position == null {
+		$return-position: $responslr-shape-arrows-default-position;
+	}
+
+	@return $return-position;
+}
+
+@function responslr-shape-arrow-position-x($name: null) {
+	$return-position-x: map-get(responslr-shape-arrow($name), position-x);
+
+	@if $return-position-x == null {
+		$return-position-x: $responslr-shape-arrows-default-position-x;
+	}
+
+	@return $return-position-x;
+}
+
+@function responslr-shape-arrow-position-y($name: null) {
+	$return-position-y: map-get(responslr-shape-arrow($name), position-y);
+
+	@if $return-position-y == null {
+		$return-position-y: $responslr-shape-arrows-default-position-y;
+	}
+
+	@return $return-position-y;
+}
+
+@function responslr-shape-arrow-offset-x($name: null) {
+	$return-offset-x: map-get(responslr-shape-arrow($name), offset-x);
+
+	@if $return-offset-x == null {
+		$return-offset-x: $responslr-shape-arrows-default-offset-x;
+	}
+
+	@return $return-offset-x;
+}
+
+@function responslr-shape-arrow-offset-y($name: null) {
+	$return-offset-y: map-get(responslr-shape-arrow($name), offset-y);
+
+	@if $return-offset-y == null {
+		$return-offset-y: $responslr-shape-arrows-default-offset-y;
+	}
+
+	@return $return-offset-y;
+}
+
+@function responslr-shape-arrow-transition-properties($name: null) {
+	$return-transition-properties: map-get(responslr-shape-arrow($name), transition-properties);
+
+	@if $return-transition-properties == null {
+		$return-transition-properties: $responslr-shape-arrows-default-transition-properties;
+	}
+
+	@return $return-transition-properties;
+}
+
+@function responslr-shape-arrow-transition-values($name: null) {
+	$return-transition-values: map-get(responslr-shape-arrow($name), transition-values);
+
+	@if $return-transition-values == null {
+		$return-transition-values: $responslr-shape-arrows-default-transition-values;
+	}
+
+	@return $return-transition-values;
+}
+
+@function responslr-shape-arrow-pseudo-element($name: null) {
+	$return-pseudo-element: map-get(responslr-shape-arrow($name), pseudo-element);
+
+	@if $return-pseudo-element == null {
+		$return-pseudo-element: $responslr-shape-arrows-default-pseudo-element;
+	}
+
+	@return $return-pseudo-element;
+}
+
+
+/***********************************************************************************
+	EXTENDED FUNCTIONS (ARROW)
+***********************************************************************************/
+
+// TODO: Brauchts die beiden functions noch?
+/*
+@function responslr-shape-arrow-center-margin($size: $responslr-arrow-size, $position-is-alignment: true) {
 	$return-margin: $size;
 
 	@if $position-is-alignment {
@@ -64,22 +315,33 @@
 	@return $return-margin;
 }
 
-@function arrow-offset-correct($offset: 0, $width: $responslr-arrow-width) {
+@function responslr-shape-arrow-offset-correct($offset: 0, $width: $responslr-arrow-width) {
 	$return-offset: 0;
 
 	$return-offset: $offset + $width;
 
 	@return $return-offset;
-}
+}*/
+
 
 /***********************************************************************************
-	MIXIN: SHAPE
+	MIXINS (CIRCLE)
 ***********************************************************************************/
 
-// Circle
-@mixin circle($radius: 50%, $width: auto, $height: auto, $display: inline-block, $overflow: hidden, $h-align: center, $v-align: center) {
+@mixin responslr-shape-circle($name: null, $width: null, $height: null, $radius: null, $display: null, $overflow: null, $horizontal-align: null, $vertical-align: null) {
+	@if responslr-shape-circle-exists($name) {
+		$width: responslr-shape-circle-width($name);
+		$height: responslr-shape-circle-height($name);
+		$radius: responslr-shape-circle-radius($name);
+		$display: responslr-shape-circle-display($name);
+		$overflow: responslr-shape-circle-overflow($name);
+		$horizontal-align: responslr-shape-circle-horizontal-align($name);
+		$vertical-align: responslr-shape-circle-vertical-align($name);
+	}
+
 	display: $display;
 	overflow: $overflow;
+	text-align: $horizontal-align;
 
 	@if type-of($width) == number {
 		width: $width;
@@ -88,19 +350,23 @@
 	@if type-of($height) == number {
 		height: $height;
 
-		@if $v-align == center {
+		@if $vertical-align == center {
 			line-height: $height;
 		}
 	}
 
-	text-align: $h-align;
-
-	@include border-radius($radius);
+	@if type-of($radius) == number {
+		border-radius: $radius;
+	}
 }
 
 
-// Triangle
-@mixin triangle($direction: top, $width: 1em, $height: half, $color: $black) {
+/***********************************************************************************
+	MIXINS (TRIANGLE)
+***********************************************************************************/
+
+// TODO: Mixin verbessern und schöner schreiben
+@mixin responslr-shape-triangle($direction: top, $width: 1em, $height: half, $color: $black) {
 	@if ($direction == top or $direction == right or $direction == bottom or $direction == left) {
 		@if ($height == half) {
 			$height: $width / 2;
@@ -169,8 +435,11 @@
 }
 
 
-// Arrow
-@mixin arrow-direction($direction: $arrow-default-direction, $insert-pseudo-element: $responslr-arrow-insert-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
+/***********************************************************************************
+	MIXINS (ARROW)
+***********************************************************************************/
+
+@mixin responslr-shape-arrow-direction($direction: $arrow-default-direction, $insert-pseudo-element: $responslr-arrow-insert-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
 	@if $direction == up {
 		@include insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 			@include transform(rotate(45deg));
@@ -196,21 +465,21 @@
 	}
 }
 
-@mixin arrow-size($size: $responslr-arrow-size, $insert-pseudo-element: $insert-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
+@mixin responslr-shape-arrow-size($size: $responslr-arrow-size, $insert-pseudo-element: $insert-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
 	@include insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 		width: $size;
 		height: $size;
 	}
 }
 
-@mixin arrow-width($width: $responslr-arrow-width, $insert-pseudo-element: $responslr-arrow-insert-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
+@mixin responslr-shape-arrow-width($width: $responslr-arrow-width, $insert-pseudo-element: $responslr-arrow-insert-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
 	@include insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 		border-top-width: $width;
 		border-left-width: $width;
 	}
 }
 
-@mixin arrow-color($color: $responslr-arrow-color, $insert-pseudo-element: $responslr-arrow-insert-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
+@mixin responslr-shape-arrow-color($color: $responslr-arrow-color, $insert-pseudo-element: $responslr-arrow-insert-pseudo-element, $pseudo-element: $responslr-arrow-pseudo-element) {
 	@include insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 		border-color: $color;
 	}
@@ -234,21 +503,38 @@
 	}
 }
 
-@mixin arrow-custom(
-	$direction: $responslr-arrow-direction,
-	$size: $responslr-arrow-size,
-	$width: $responslr-arrow-width,
-	$color: $responslr-arrow-color,
-	$position: $responslr-arrow-position,
-	$position-x: $responslr-arrow-position-x,
-	$position-y: $responslr-arrow-position-y,
-	$offset-x: $responslr-arrow-offset-x,
-	$offset-y: $responslr-arrow-offset-y,
-	$transition-properties: $responslr-arrow-transition-properties,
-	$transition-values: $responslr-arrow-transition-values,
-	$pseudo-element: $responslr-arrow-pseudo-element,
-	$insert-pseudo-element: $responslr-arrow-insert-pseudo-element
+@mixin responslr-shape-arrow-custom(
+	$name: null,
+	$direction: null,
+	$size: null,
+	$width: null,
+	$color: null,
+	$position: null,
+	$position-x: null,
+	$position-y: null,
+	$offset-x: null,
+	$offset-y: null,
+	$transition-properties: null,
+	$transition-values: null,
+	$pseudo-element: null,
+	$insert-pseudo-element: true
 ) {
+
+	@if responslr-shape-arrow-exists($name) {
+		$direction: responslr-shape-arrow-direction($name);
+		$size: responslr-shape-arrow-size($name);
+		$width: responslr-shape-arrow-width($name);
+		$color: responslr-shape-arrow-color($name);
+		$position: responslr-shape-arrow-position($name);
+		$position-x: responslr-shape-arrow-position-x($name);
+		$position-y: responslr-shape-arrow-position-y($name);
+		$offset-x: responslr-shape-arrow-offset-x($name);
+		$offset-y: responslr-shape-arrow-offset-y($name);
+		$transition-properties: responslr-shape-arrow-transition-properties($name);
+		$transition-values: responslr-shape-arrow-transition-values($name);
+		$pseudo-element: responslr-shape-arrow-pseudo-element($name);
+		$insert-pseudo-element: $insert-pseudo-element;
+	}
 
 	$position: unquote($position);
 
@@ -256,19 +542,19 @@
 		position: $position;
 
 		@if $position != absolute {
-			&.aspect-ratio-content {
+			&.#{$responslr-aspect-ratio-content-class} {
 				position: absolute;
 			}
 		}
 	}
 
 	@include insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
-		@extend .arrow;
+		@extend .#{$responslr-shape-arrow-class};
 
-		@include arrow-width($width: $width, $insert-pseudo-element: false);
-		@include arrow-size($size: $size, $insert-pseudo-element: false);
-		@include arrow-color($color: $color, $insert-pseudo-element: false);
-		@include arrow-direction($direction: $direction, $insert-pseudo-element: false);
+		@include responslr-shape-arrow-width($width: $width, $insert-pseudo-element: false);
+		@include responslr-shape-arrow-size($size: $size, $insert-pseudo-element: false);
+		@include responslr-shape-arrow-color($color: $color, $insert-pseudo-element: false);
+		@include responslr-shape-arrow-direction($direction: $direction, $insert-pseudo-element: false);
 
 		@if $position-x == center {
 			left: 50%;
@@ -371,20 +657,20 @@
 		$current-arrow-name: nth($arrow-list, 1);
 
 		@if $current-arrow-name == $name {
-			@include arrow-custom(
-				$direction: nth($arrow-list, 2),
-				$size: nth($arrow-list, 3),
-				$width: nth($arrow-list, 4),
-				$color: nth($arrow-list, 5),
-				$position: nth($arrow-list, 6),
-				$position-x: nth($arrow-list, 7),
-				$position-y: nth($arrow-list, 8),
-				$offset-x: nth($arrow-list, 9),
-				$offset-y: nth($arrow-list, 10),
-				$transition-properties: nth($arrow-list, 11),
-				$transition-values: nth($arrow-list, 12),
-				$pseudo-element: nth($arrow-list, 13)
-			);
+			//@include responslr-shape-arrow-custom(
+			//	$direction: nth($arrow-list, 2),
+			//	$size: nth($arrow-list, 3),
+			//	$width: nth($arrow-list, 4),
+			//	$color: nth($arrow-list, 5),
+			//	$position: nth($arrow-list, 6),
+			//	$position-x: nth($arrow-list, 7),
+			//	$position-y: nth($arrow-list, 8),
+			//	$offset-x: nth($arrow-list, 9),
+			//	$offset-y: nth($arrow-list, 10),
+			//	$transition-properties: nth($arrow-list, 11),
+			//	$transition-values: nth($arrow-list, 12),
+			//	$pseudo-element: nth($arrow-list, 13)
+			//);
 		}
 	}
 }
@@ -393,44 +679,55 @@
 /***********************************************************************************
 	CLASS GENERATOR: SHAPE
 ***********************************************************************************/
+
+@function responslr-generate-shapes-check() {
+	@return $responslr-generate-shapes;
+}
+
 @mixin generate-shape() {
 	// Circle
-	@if $responslr-generate-shapes-circles {
-		.circle {
-			@include circle();
+	@if $responslr-generate-shapes-circles AND responslr-map-isnotempty($responslr-shape-circles) {
+		.#{$responslr-shape-circle-class} {
+			@include responslr-shape-circle(
+				$width: $responslr-shape-circles-default-width,
+				$height: $responslr-shape-circles-default-height,
+				$radius: $responslr-shape-circles-default-radius,
+				$display: $responslr-shape-circles-default-display,
+				$overflow: $responslr-shape-circles-default-overflow,
+				$horizontal-align: $responslr-shape-circles-default-horizontal-align,
+				$vertical-align: $responslr-shape-circles-default-vertical-align
+			);
 		}
 
-		@each $circle in $responslr-shape-circles {
-			$current-circle-name: nth($circle, 1);
-
-			.circle-#{$current-circle-name} {
-				@include circle($width: nth($circle, 2), $height: nth($circle, 3));
+		@each $circle-key, $circle-list in $responslr-shape-circles {
+			.#{$responslr-shape-circle-class-prefix}#{$circle-key} {
+				@include responslr-shape-circle($name: $circle-key);
 			}
 		}
 	}
 
 	// Triangle
-	@if $responslr-generate-shapes-triangles {
+	@if $responslr-generate-shapes-triangles AND responslr-map-isnotempty($responslr-shape-triangles) {
 		.triangle-top {
-			@include triangle(top);
+			@include responslr-shape-triangle(top);
 		}
 
 		.triangle-right {
-			@include triangle(right);
+			@include responslr-shape-triangle(right);
 		}
 
 		.triangle-bottom {
-			@include triangle(bottom);
+			@include responslr-shape-triangle(bottom);
 		}
 
 		.triangle-left {
-			@include triangle(left);
+			@include responslr-shape-triangle(left);
 		}
 	}
 
 	// Arrow
-	@if $responslr-generate-shapes-arrows {
-		.arrow {
+	@if $responslr-generate-shapes-arrows AND responslr-map-isnotempty($responslr-shape-arrows) {
+		.#{$responslr-shape-arrow-class} {
 			content: "";
 			display: block;
 			position: absolute;
@@ -441,31 +738,29 @@
 		}
 
 		.arrow-up {
-			@include arrow-custom($direction: up);
+			//@include responslr-shape-arrow-custom($direction: up);
 		}
 
 		.arrow-right {
-			@include arrow-custom($direction: right);
+			//@include responslr-shape-arrow-custom($direction: right);
 		}
 
 		.arrow-down {
-			@include arrow-custom($direction: down);
+			//@include responslr-shape-arrow-custom($direction: down);
 		}
 
 		.arrow-left {
-			@include arrow-custom($direction: left);
+			//@include responslr-shape-arrow-custom($direction: left);
 		}
 
-		@each $arrow-list in $responslr-shape-arrows {
-			$current-arrow-name: arrow-name($arrow-list);
-
-			.arrow-#{$current-arrow-name} {
-				@include arrow($name: $current-arrow-name);
+		@each $arrow-key, $arrow-list in $responslr-shape-arrows {
+			.#{$responslr-shape-arrow-class-prefix}#{$arrow-key} {
+				@include arrow($name: $arrow-key);
 			}
 		}
 	}
 }
 
-@if $responslr-generate-shapes {
+@if responslr-generate-shapes-check() {
 	@include generate-shape();
 }

@@ -34,7 +34,7 @@
 	$return-height: map-get(responslr-button($name), height);
 
 	@if $return-height == null {
-		$return-height: 0;
+		$return-height: $responslr-buttons-default-height;
 	}
 
 	@return $return-height;
@@ -44,7 +44,7 @@
 	$return-padding-x: map-get(responslr-button($name), padding-x);
 
 	@if $return-padding-x == null {
-		$return-padding-x: 0;
+		$return-padding-x: $responslr-buttons-default-padding-x;
 	}
 
 	@return $return-padding-x;
@@ -54,7 +54,7 @@
 	$return-padding-y: map-get(responslr-button($name), padding-y);
 
 	@if $return-padding-y == null {
-		$return-padding-y: 0;
+		$return-padding-y: $responslr-buttons-default-padding-y;
 	}
 
 	@return $return-padding-y;
@@ -64,16 +64,11 @@
 	$return-border-radius: map-get(responslr-button($name), border-radius);
 
 	@if $return-border-radius == null {
-		$return-border-radius: 0;
+		$return-border-radius: $responslr-buttons-default-border-radius;
 	}
 
 	@return $return-border-radius;
 }
-
-// TODO: font-size hinzufügen
-// TODO: font-weight hinzufügen
-// TODO: font-style hinzufügen
-// TODO: font-family hinzufügen
 
 
 /***********************************************************************************
@@ -92,24 +87,30 @@
 	cursor: default;
 }
 
-// TODO: Alle argumente zur Verfügung stellen für custom
-@mixin responslr-button($name: null, $insert-default-styles: true) {
+@mixin responslr-button($name: null, $height: null, $padding-x: null, $padding-y: null, $border-radius: null, $insert-default-styles: true) {
 	@if $insert-default-styles {
 		@include responslr-button-default();
 	}
 
-	@if responslr-button-height($name) == 0 {
-		padding: responslr-button-padding-y($name) responslr-button-padding-x($name);
+	@if responslr-button-exists($name) {
+		$height: responslr-button-height($name);
+		$padding-x: responslr-button-padding-x($name);
+		$padding-y: responslr-button-padding-y($name);
+		$border-radius: responslr-button-border-radius($name);
+	}
+
+	@if $height == 0 {
+		padding: $padding-y $padding-x;
 		white-space: pre-wrap;
 	} @else {
-		height: responslr-button-height($name);
-		padding: 0 responslr-button-padding-x($name);
-		line-height: responslr-button-height($name);
+		height: $height;
+		padding: 0 $padding-x;
+		line-height: $height;
 		white-space: nowrap;
 	}
 
-	@if responslr-button-border-radius($name) != 0 {
-		border-radius: responslr-button-border-radius($name);
+	@if $border-radius != 0 {
+		border-radius: $border-radius;
 	}
 }
 
@@ -119,7 +120,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-buttons-check() {
-	@return $responslr-generate-buttons && responslr-map-isnotempty($responslr-buttons);
+	@return $responslr-generate-buttons AND responslr-map-isnotempty($responslr-buttons);
 }
 
 @mixin responslr-generate-buttons() {

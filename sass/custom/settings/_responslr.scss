@@ -111,6 +111,87 @@ $responslr-inline-lists: (
 	)
 );
 
+// Shape (circles)
+
+$responslr-shape-circles: (
+	'auto': (
+		width: auto,
+		height: auto
+	),
+	'default': (
+		width: 50px,
+		height: 50px
+	),
+	'small': (
+		width: 30px,
+		height: 30px
+	),
+	'large': (
+		width: 100px,
+		height: 100px
+	),
+	'oval': (
+		width: 100px,
+		height: 80px
+	)
+);
+
+// Shape (triangles)
+
+$responslr-shape-triangles: (
+	'default': (
+		width: 10px,
+		height: 10px
+	)
+);
+
+// Shape (arrow)
+
+$responslr-shape-arrows: (
+	'default': (
+		direction: right,
+		size: 12px,
+		width: 3px,
+		color: 'black',
+		position: relative,
+		position-x: center,
+		position-y: center,
+		offset-x: 0,
+		offset-y: 0,
+		transition-properties: (),
+		transition-values: (),
+		pseudo-element: 'before'
+	),
+	'button': (
+		direction: right,
+		size: 8px,
+		width: 2px,
+		color: 'white',
+		position: relative,
+		position-x: right,
+		position-y: center,
+		offset-x: 8px,
+		offset-y: 0,
+		transition-properties: (right,border-color),
+		transition-values: (6px,$black),
+		pseudo-element: 'before'
+	),
+	'circle-large': (
+		direction: right,
+		size: 50px,
+		width: 10px,
+		color: 'white',
+		position: relative,
+		position-x: center,
+		position-y: center,
+		offset-x: 10px,
+		offset-y: 0,
+		transition-properties: (),
+		transition-values: (),
+		pseudo-element: 'before'
+	)
+);
+
 // Spacing
 
 $responslr-spacings: (
@@ -185,11 +266,89 @@ $responslr-typo-sizes: (
 
 // Tooltips
 
-// 	id 			cursor 	offset		padding		max-width 	font-size	font-color 	bg-color	border-color 	border-width 	border-style 	border-radius 	triangle 	offset 	generate 	directions
-$tooltips:
-	default 	help 	0.75rem 	5px			320px		'tiny'  	'white' 	'black' 	'black' 		2px 			solid 			3px 			true 		true 	true 		(north,south,east,west),
-	inset 		help 	0.75rem 	5px			320px		'tiny'  	'white' 	'black' 	'white' 		0 				solid 			3px 			true 		false 	false 		(north),
-	info 		help 	0.75rem 	5px			320px		'tiny'  	'white' 	'blue' 		'blue' 			0 				solid 			0 				false 		true 	false 		(south),
-	error 		help 	0.75rem 	5px			320px		'tiny'  	'white' 	'red' 		'red' 			0 				solid 			0 				false 		true 	false 		(east),
-	success 	help 	0.75rem 	5px			320px		'tiny'  	'white' 	'green' 	'green' 		0 				solid 			0 				false 		true 	false 		(west)
-;
+$responslr-tooltips: (
+	'default': (
+		offset: 0.75rem,
+		padding: 5px,
+		max-width: 320px,
+		font-size: tiny,
+		font-color: 'white',
+		bg-color: 'black',
+		border-color: 'black',
+		border-width: 2px,
+		border-style: solid,
+		border-radius: 3px,
+		triangle: true,
+		triangle-is-offset: true,
+		generate: true,
+		directions: north south east west
+	),
+	'inset': (
+		cursor: help,
+		offset: 0.75rem,
+		padding: 5px,
+		max-width: 320px,
+		font-size: tiny,
+		font-color: 'white',
+		bg-color: 'black',
+		border-color: 'white',
+		border-width: 0,
+		border-style: solid,
+		border-radius: 3px,
+		triangle: true,
+		triangle-is-offset: false,
+		generate: false,
+		directions: north south east west
+	),
+	'info': (
+		cursor: help,
+		offset: 0.75rem,
+		padding: 5px,
+		max-width: 320px,
+		font-size: tiny,
+		font-color: 'white',
+		bg-color: 'blue',
+		border-color: 'blue',
+		border-width: 2px,
+		border-style: solid,
+		border-radius: 3px,
+		triangle: true,
+		triangle-is-offset: true,
+		generate: false,
+		directions: north south east west
+	),
+	'error': (
+		cursor: help,
+		offset: 0.75rem,
+		padding: 5px,
+		max-width: 320px,
+		font-size: tiny,
+		font-color: 'white',
+		bg-color: 'red',
+		border-color: 'red',
+		border-width: 2px,
+		border-style: solid,
+		border-radius: 3px,
+		triangle: true,
+		triangle-is-offset: true,
+		generate: false,
+		directions: north south east west
+	),
+	'success': (
+		cursor: help,
+		offset: 0.75rem,
+		padding: 5px,
+		max-width: 320px,
+		font-size: tiny,
+		font-color: 'white',
+		bg-color: 'green',
+		border-color: 'green',
+		border-width: 2px,
+		border-style: solid,
+		border-radius: 3px,
+		triangle: true,
+		triangle-is-offset: true,
+		generate: false,
+		directions: north south east west
+	)
+);

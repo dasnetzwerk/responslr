@@ -122,7 +122,7 @@ $responslr-generate-colors-border-directions-focus: false !default;
 $responslr-generate-shapes: $responslr-generate-classes !default;
 $responslr-generate-shapes-circles: $responslr-generate-shapes !default;
 $responslr-generate-shapes-triangles: $responslr-generate-shapes !default;
-$responslr-generate-shapes-arrows: $responslr-generate-shapes !default;
+$responslr-generate-shapes-arrows: false !default; // $responslr-generate-shapes
 
 
 // Tooltip

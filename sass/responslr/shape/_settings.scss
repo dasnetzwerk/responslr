@@ -3,50 +3,56 @@
 ***********************************************************************************/
 
 
-/***********************************************************************************
-	CIRCLE
-***********************************************************************************/
-//	name [unique]	width		height
-$responslr-shape-circles:
-	default			50px		50px,
-	small			30px		30px,
-	large			100px		100px,
-	oval			100px		80px
-!default;
+// Circles
+$responslr-shape-circles: () !default;
+
+// Default circle
+$responslr-shape-circles-default: responslr-map-getdefault($responslr-shape-circles) !default;
+
+// Circle map value defaults
+$responslr-shape-circles-default-width: auto !default;
+$responslr-shape-circles-default-height: auto !default;
+$responslr-shape-circles-default-radius: 50% !default;
+$responslr-shape-circles-default-display: inline-block !default;
+$responslr-shape-circles-default-overflow: hidden !default;
+$responslr-shape-circles-default-horizontal-align: center !default;
+$responslr-shape-circles-default-vertical-align: center !default;
+
+// Circle classes
+$responslr-shape-circle-class: 'circle' !default;
+$responslr-shape-circle-class-prefix: 'circle-' !default;
 
 
-/***********************************************************************************
-	TRIANGLE
-***********************************************************************************/
-//	name [unique]	width		height
-$responslr-shape-triangles:
-	default			10px		10px
-!default;
+// Triangles
+$responslr-shape-triangles: () !default;
+
+// Default triangle
+$responslr-shape-triangles-default: responslr-map-getdefault($responslr-shape-triangles) !default;
+
+// Triangle classes
+$responslr-shape-triangle-class-prefix: 'triangle-' !default;
 
 
-/***********************************************************************************
-	ARROW
-***********************************************************************************/
-// 1 name [unique]		2 direction		3 size	4 width	5 color		6 position	7 pos-x		8 pos-y		9 offset-x	10 offset-y	11 transition			12 transisition		13 pseudo-element
-//																																properties				values
-$responslr-shape-arrows:
-	default				right			12px	3px		$black		relative	center		center		0			0			none					()					before,
-	button				right			8px		2px		$white		relative	right		center		8px			0			(right,border-color)	(6px,$black)		before,
-	circle-large		right			50px	10px	$white		relative	center		center		10px		0			none					()					before
-!default;
+// Arrows
+$responslr-shape-arrows: () !default;
 
-$responslr-arrow-settings: nth($responslr-shape-arrows, 1);
-$responslr-arrow-name: nth($responslr-arrow-settings, 1) !default;;
-$responslr-arrow-direction: nth($responslr-arrow-settings, 2) !default;
-$responslr-arrow-size: nth($responslr-arrow-settings, 3) !default;
-$responslr-arrow-width: nth($responslr-arrow-settings, 4) !default;
-$responslr-arrow-color: nth($responslr-arrow-settings, 5) !default;
-$responslr-arrow-position: nth($responslr-arrow-settings, 6) !default;
-$responslr-arrow-position-x: nth($responslr-arrow-settings, 7) !default;
-$responslr-arrow-position-y: nth($responslr-arrow-settings, 8) !default;
-$responslr-arrow-offset-x: nth($responslr-arrow-settings, 9) !default;
-$responslr-arrow-offset-y: nth($responslr-arrow-settings, 10) !default;
-$responslr-arrow-transition-properties: nth($responslr-arrow-settings, 11) !default;
-$responslr-arrow-transition-values: nth($responslr-arrow-settings, 12) !default;
-$responslr-arrow-pseudo-element: nth($responslr-arrow-settings, 13) !default;
-$responslr-arrow-insert-pseudo-element: true;
+// Default arrow
+$responslr-shape-arrows-default: responslr-map-getdefault($responslr-shape-arrows) !default;
+
+// Arrows map value defaults
+$responslr-shape-arrows-default-direction: right !default;
+$responslr-shape-arrows-default-size: 12px !default;
+$responslr-shape-arrows-default-width: 3px !default;
+$responslr-shape-arrows-default-color: black !default;
+$responslr-shape-arrows-default-position: relative !default;
+$responslr-shape-arrows-default-position-x: center !default;
+$responslr-shape-arrows-default-position-y: center !default;
+$responslr-shape-arrows-default-offset-x: 0 !default;
+$responslr-shape-arrows-default-offset-y: 0 !default;
+$responslr-shape-arrows-default-transition-properties: () !default;
+$responslr-shape-arrows-default-transition-values: () !default;
+$responslr-shape-arrows-default-pseudo-element: 'before' !default;
+
+// Arrow classes
+$responslr-shape-arrow-class: 'arrow' !default;
+$responslr-shape-arrow-class-prefix: 'arrow-' !default;

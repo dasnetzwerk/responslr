@@ -4,14 +4,32 @@
 
 $responslr-tooltip-directions: north,south,east,west !default;
 
-// 	id 			cursor 	offset		padding		max-width 	font-size	font-color 	bg-color	border-color 	border-width 	border-style 	border-radius 	triangle 	offset 	generate 	directions
-$responslr-tooltips:
-	default 	help 	0.75rem 	5px			320px		'tiny'  	'white' 	'black' 	'black' 		2px 			solid 			3px 			true 		true 	true 		($responslr-tooltip-directions),
-	inset 		help 	0.75rem 	5px			320px		'tiny'  	'white' 	'black' 	'white' 		0 				solid 			3px 			true 		false 	false 		($responslr-tooltip-directions),
-	info 		help 	0.75rem 	5px			320px		'tiny'  	'white' 	'blue' 		'blue' 			2px 			solid 			3px 			true 		true 	false 		($responslr-tooltip-directions),
-	error 		help 	0.75rem 	5px			320px		'tiny'  	'white' 	'red' 		'red' 			2px 			solid 			3px 			true 		true 	false 		($responslr-tooltip-directions),
-	success 	help 	0.75rem 	5px			320px		'tiny'  	'white' 	'green' 	'green' 		2px 			solid 			3px 			true 		true 	false 		($responslr-tooltip-directions)
-!default;
+// Tooltips
+$responslr-tooltips: () !default;
 
 // Default tooltip
-$responslr-tooltips-default: nth(nth($responslr-tooltips,1),1) !default;
+$responslr-tooltips-default: responslr-map-getdefault($responslr-tooltips) !default;
+
+// Map value defaults
+$responslr-tooltips-default-cursor: help !default;
+$responslr-tooltips-default-offset: 0.75rem !default;
+$responslr-tooltips-default-padding: 10px !default;
+$responslr-tooltips-default-max-width: 100% !default;
+$responslr-tooltips-default-font-size: $responslr-typo-sizes-default !default;
+$responslr-tooltips-default-font-color: white !default;
+$responslr-tooltips-default-bg-color: black !default;
+$responslr-tooltips-default-border-color: black !default;
+$responslr-tooltips-default-border-width: 0 !default;
+$responslr-tooltips-default-border-style: none !default;
+$responslr-tooltips-default-border-radius: 0 !default;
+$responslr-tooltips-default-triangle: true !default;
+$responslr-tooltips-default-triangle-is-offset: true !default;
+$responslr-tooltips-default-generate: true !default;
+$responslr-tooltips-default-directions: $responslr-tooltip-directions !default;
+
+// Classes
+$responslr-tooltip-content-class: 'tooltip-content' !default;
+$responslr-tooltip-north-class: 'north' !default;
+$responslr-tooltip-east-class: 'east' !default;
+$responslr-tooltip-south-class: 'south' !default;
+$responslr-tooltip-west-class: 'west' !default;

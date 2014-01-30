@@ -16,7 +16,6 @@
 	MAP VALUE FUNCTIONS
 ***********************************************************************************/
 
-// TODO: Color-string to hex Problem
 @function responslr-color-value($name: null) {
 	$return-color: null;
 
@@ -36,34 +35,43 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-bg-color($color: null) {
-	background-color: responslr-color-value($color);
+@mixin responslr-bg-color($name: null, $color: null) {
+	@if responslr-color-exists($name) {
+		$color: responslr-color-value($name);
+	}
+
+	background-color: $color;
 }
 
-@mixin responslr-text-color($color: null) {
-	color: responslr-color-value($color);
+@mixin responslr-text-color($name: null, $color: null) {
+	@if responslr-color-exists($name) {
+		$color: responslr-color-value($name);
+	}
+
+	color: $color;
 }
 
-@mixin responslr-border-color($color: null, $property: border) {
-	#{$property}-color: responslr-color-value($color);
+@mixin responslr-border-color($name: null, $color: null, $property: border) {
+	@if responslr-color-exists($name) {
+		$color: responslr-color-value($name);
+	}
+
+	#{$property}-color: $color;
 }
 
-@mixin responslr-color($color: null, $type: text-color) {
-	// Text Color
+@mixin responslr-color($name: null, $color: null, $type: text-color) {
 	@if $type == text-color {
-		@include responslr-text-color($color);
+		@include responslr-text-color($name: $name, $color: $color);
 	}
 
-	// Background Color
 	@if $type == bg-color {
-		@include responslr-bg-color($color);
+		@include responslr-bg-color($name: $name, $color: $color);
 	}
 
-	// Border Color
 	$border-types: border,border-top,border-right,border-bottom,border-left;
 
 	@if index($border-types, $type) {
-		@include responslr-border-color($color, $type);
+		@include responslr-border-color($name: $name, $color: $color, $property: $type);
 	}
 }
 
@@ -73,7 +81,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-colors-check() {
-	@return $responslr-generate-colors && responslr-map-isnotempty($responslr-colors);
+	@return $responslr-generate-colors AND responslr-map-isnotempty($responslr-colors);
 }
 
 @mixin responslr-generate-colors() {

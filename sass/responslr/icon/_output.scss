@@ -73,6 +73,10 @@
 @function responslr-icon-color($name: null) {
 	$return-color: map-get(responslr-icon($name), color);
 
+	@if $return-color == null {
+		$return-color: $responslr-icons-default-color;
+	}
+
 	@return $return-color;
 }
 
@@ -146,7 +150,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-icons-check() {
-	@return $responslr-generate-icons && responslr-map-isnotempty($responslr-icons);
+	@return $responslr-generate-icons AND responslr-map-isnotempty($responslr-icons);
 }
 
 @mixin responslr-generate-icons() {

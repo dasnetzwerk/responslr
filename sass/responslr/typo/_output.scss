@@ -138,52 +138,56 @@
 }
 
 @mixin responslr-typo-family($font-family: null, $font-weight: null, $font-style: null) {
+	$font-family-name: $font-family;
+
 	// Font-family
 	@if $font-family == null {
-		font-family: responslr-typo-family-name($responslr-typo-families-default);
-	} @elseif responslr-typo-family-exists($font-family) {
-		font-family: responslr-typo-family-name($font-family);
-	} @else {
-		font-family: $font-family;
+		$font-family: responslr-typo-family-name($responslr-typo-families-default);
+	} @elseif responslr-typo-family-exists($font-family-name) {
+		$font-family: responslr-typo-family-name($font-family-name);
 	}
+
+	font-family: $font-family;
 
 	// Font-weight
 	@if $font-weight == null {
-		@if responslr-typo-family-font-weight($font-family) {
-			font-weight: responslr-typo-family-font-weight($font-family);
+		@if responslr-typo-family-font-weight($font-family-name) {
+			$font-weight: responslr-typo-family-font-weight($font-family-name);
 		}
-	} @else {
-		font-weight: $font-weight;
 	}
+
+	font-weight: $font-weight;
 
 	// Font-style
 	@if $font-style == null {
-		@if responslr-typo-family-font-style($font-family) {
-			font-style: responslr-typo-family-font-style($font-family);
+		@if responslr-typo-family-font-style($font-family-name) {
+			$font-style: responslr-typo-family-font-style($font-family-name);
 		}
-	} @else {
-		font-style: $font-style;
 	}
+
+	font-style: $font-style;
 }
 
 @mixin responslr-typo-size($font-size: null, $line-height: null) {
+	$font-size-name: $font-size;
+
 	// Font-size
 	@if $font-size == null {
-		font-size: responslr-typo-size-value($responslr-typo-sizes-default);
-	} @elseif responslr-typo-size-exists($font-size) {
-		font-size: responslr-typo-size-value($font-size);
-	} @else {
-		font-size: $font-size;
+		$font-size: responslr-typo-size-value($responslr-typo-sizes-default);
+	} @elseif responslr-typo-size-exists($font-size-name) {
+		$font-size: responslr-typo-size-value($font-size-name);
 	}
+
+	font-size: $font-size;
 
 	// Line-height
 	@if $line-height == null {
-		@if responslr-typo-size-line-height($font-size) {
-			line-height: responslr-typo-size-line-height($font-size);
+		@if responslr-typo-size-line-height($font-size-name) {
+			$line-height: responslr-typo-size-line-height($font-size-name);
 		}
-	} @else {
-		line-height: $line-height;
 	}
+
+	line-height: $line-height;
 }
 
 @mixin responslr-typo($font-family: null, $font-weight: null, $font-style: null, $font-size: null, $line-height: null) {
@@ -208,7 +212,7 @@
 
 @mixin responslr-generate-typo() {
 	// Font-families
-	@if $responslr-generate-typo-families && responslr-map-isnotempty($responslr-typo-families) {
+	@if $responslr-generate-typo-families AND responslr-map-isnotempty($responslr-typo-families) {
 
 		@each $font-family-key, $font-family-list in $responslr-typo-families {
 			// Generate font-faces
@@ -236,7 +240,7 @@
 	}
 
 	// Font-sizes
-	@if $responslr-generate-typo-sizes && responslr-map-isnotempty($responslr-typo-sizes) {
+	@if $responslr-generate-typo-sizes AND responslr-map-isnotempty($responslr-typo-sizes) {
 		@each $font-size-key, $font-size-list in $responslr-typo-sizes {
 			.#{$responslr-typo-size-class-prefix}#{$font-size-key} {
 				@include responslr-typo-size($font-size: $font-size-key);

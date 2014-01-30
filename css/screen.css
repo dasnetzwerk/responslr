@@ -62,15 +62,6 @@
 	SETTINGS - SHAPE
 ***********************************************************************************/
 /***********************************************************************************
-	CIRCLE
-***********************************************************************************/
-/***********************************************************************************
-	TRIANGLE
-***********************************************************************************/
-/***********************************************************************************
-	ARROW
-***********************************************************************************/
-/***********************************************************************************
 	BUTTON - SETTINGS
 ***********************************************************************************/
 /***********************************************************************************
@@ -265,21 +256,6 @@ body *,
 /***********************************************************************************
 	MIXINS
 ***********************************************************************************/
-/*@mixin responslr-column-width($column-count, $size){
-	@if type-of($size) == string {
-		$column-total: $responslr-grid-column-width-large;
-
-		@if $size == medium {
-			$column-total: $responslr-grid-columns-medium;
-		} @else if $size == small {
-			$column-total: $responslr-grid-columns-small;
-		}
-
-		width: (100% / $column-total * $column-part);
-	} @else {
-		width: (($column-part / $size) * 100%);
-	}
-}*/
 /***********************************************************************************
 	CLASS GENERATOR
 ***********************************************************************************/
@@ -1334,11 +1310,10 @@ td.column {
 	CLASS GENERATOR
 ***********************************************************************************/
 .transition-default {
-  -moz-transition: all 0.25s ease 0;
-  -o-transition: all 0.25s ease 0;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
   -webkit-transition: all 0.25s ease;
-  -webkit-transition-delay: 0;
-  transition: all 0.25s ease 0;
+  transition: all 0.25s ease;
   -moz-transition-property: color,background-color,border-color;
   -o-transition-property: color,background-color,border-color;
   -webkit-transition-property: color,background-color,border-color;
@@ -1346,11 +1321,10 @@ td.column {
 }
 
 .transition-box {
-  -moz-transition: all 0.5s linear 0;
-  -o-transition: all 0.5s linear 0;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
   -webkit-transition: all 0.5s linear;
-  -webkit-transition-delay: 0;
-  transition: all 0.5s linear 0;
+  transition: all 0.5s linear;
   -moz-transition-property: height,width;
   -o-transition-property: height,width;
   -webkit-transition-property: height,width;
@@ -1668,10 +1642,54 @@ td.column {
 	OUTPUT - SHAPE
 ***********************************************************************************/
 /***********************************************************************************
-	FUNCTION: SHAPE
+	DEFAULT MAP FUNCTIONS (CIRCLE)
 ***********************************************************************************/
 /***********************************************************************************
-	MIXIN: SHAPE
+	MAP VALUE FUNCTIONS (CIRCLE)
+***********************************************************************************/
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS (TRIANGLE)
+***********************************************************************************/
+/***********************************************************************************
+	MAP VALUE FUNCTIONS (TRIANGLE)
+***********************************************************************************/
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS (ARROW)
+***********************************************************************************/
+/***********************************************************************************
+	MAP VALUE FUNCTIONS (ARROW)
+***********************************************************************************/
+/***********************************************************************************
+	EXTENDED FUNCTIONS (ARROW)
+***********************************************************************************/
+/*
+@function responslr-shape-arrow-center-margin($size: $responslr-arrow-size, $position-is-alignment: true) {
+	$return-margin: $size;
+
+	@if $position-is-alignment {
+		$return-margin: -($size / 2);
+	} @else {
+		$return-margin: -($size / 3);
+	}
+
+	@return $return-margin;
+}
+
+@function responslr-shape-arrow-offset-correct($offset: 0, $width: $responslr-arrow-width) {
+	$return-offset: 0;
+
+	$return-offset: $offset + $width;
+
+	@return $return-offset;
+}*/
+/***********************************************************************************
+	MIXINS (CIRCLE)
+***********************************************************************************/
+/***********************************************************************************
+	MIXINS (TRIANGLE)
+***********************************************************************************/
+/***********************************************************************************
+	MIXINS (ARROW)
 ***********************************************************************************/
 /***********************************************************************************
 	CLASS GENERATOR: SHAPE
@@ -1680,56 +1698,53 @@ td.column {
   display: inline-block;
   overflow: hidden;
   text-align: center;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.circle-auto {
+  display: inline-block;
+  overflow: hidden;
+  text-align: center;
   border-radius: 50%;
 }
 
 .circle-default {
   display: inline-block;
   overflow: hidden;
+  text-align: center;
   width: 50px;
   height: 50px;
   line-height: 50px;
-  text-align: center;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
   border-radius: 50%;
 }
 
 .circle-small {
   display: inline-block;
   overflow: hidden;
+  text-align: center;
   width: 30px;
   height: 30px;
   line-height: 30px;
-  text-align: center;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
   border-radius: 50%;
 }
 
 .circle-large {
   display: inline-block;
   overflow: hidden;
+  text-align: center;
   width: 100px;
   height: 100px;
   line-height: 100px;
-  text-align: center;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
   border-radius: 50%;
 }
 
 .circle-oval {
   display: inline-block;
   overflow: hidden;
+  text-align: center;
   width: 100px;
   height: 80px;
   line-height: 80px;
-  text-align: center;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
   border-radius: 50%;
 }
 
@@ -1765,7 +1780,7 @@ td.column {
   border-bottom: 0.5em solid transparent;
 }
 
-.arrow, .arrow-up:before, .arrow-right:before, .arrow-down:before, .arrow-left:before, .arrow-default:before, .arrow-button:before, .arrow-circle-large:before {
+.arrow {
   content: "";
   display: block;
   position: absolute;
@@ -1773,199 +1788,6 @@ td.column {
   border-style: solid;
   border-right-style: none;
   border-bottom-style: none;
-}
-
-.arrow-up {
-  position: relative;
-}
-.arrow-up.aspect-ratio-content {
-  position: absolute;
-}
-.arrow-up:before {
-  border-top-width: 3px;
-  border-left-width: 3px;
-  width: 12px;
-  height: 12px;
-  border-color: #1a2025;
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-  left: 50%;
-  right: auto;
-  top: 50%;
-  margin-left: -6px;
-  margin-top: -4px;
-}
-
-.arrow-right {
-  position: relative;
-}
-.arrow-right.aspect-ratio-content {
-  position: absolute;
-}
-.arrow-right:before {
-  border-top-width: 3px;
-  border-left-width: 3px;
-  width: 12px;
-  height: 12px;
-  border-color: #1a2025;
-  -moz-transform: rotate(135deg);
-  -ms-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  transform: rotate(135deg);
-  left: 50%;
-  right: auto;
-  top: 50%;
-  right: 50%;
-  margin-right: -4px;
-  left: auto;
-  margin-top: -6px;
-}
-
-.arrow-down {
-  position: relative;
-}
-.arrow-down.aspect-ratio-content {
-  position: absolute;
-}
-.arrow-down:before {
-  border-top-width: 3px;
-  border-left-width: 3px;
-  width: 12px;
-  height: 12px;
-  border-color: #1a2025;
-  -moz-transform: rotate(225deg);
-  -ms-transform: rotate(225deg);
-  -o-transform: rotate(225deg);
-  -webkit-transform: rotate(225deg);
-  transform: rotate(225deg);
-  left: 50%;
-  right: auto;
-  top: 50%;
-  margin-left: -6px;
-  bottom: 50%;
-  margin-bottom: -4px;
-  top: auto;
-}
-
-.arrow-left {
-  position: relative;
-}
-.arrow-left.aspect-ratio-content {
-  position: absolute;
-}
-.arrow-left:before {
-  border-top-width: 3px;
-  border-left-width: 3px;
-  width: 12px;
-  height: 12px;
-  border-color: #1a2025;
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  left: 50%;
-  right: auto;
-  top: 50%;
-  margin-left: -4px;
-  margin-top: -6px;
-}
-
-.arrow-default {
-  position: relative;
-}
-.arrow-default.aspect-ratio-content {
-  position: absolute;
-}
-.arrow-default:before {
-  border-top-width: 3px;
-  border-left-width: 3px;
-  width: 12px;
-  height: 12px;
-  border-color: #1a2025;
-  -moz-transform: rotate(135deg);
-  -ms-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  transform: rotate(135deg);
-  left: 50%;
-  right: auto;
-  top: 50%;
-  right: 50%;
-  margin-right: -4px;
-  left: auto;
-  margin-top: -6px;
-}
-
-.arrow-button {
-  position: relative;
-}
-.arrow-button.aspect-ratio-content {
-  position: absolute;
-}
-.arrow-button:before {
-  border-top-width: 2px;
-  border-left-width: 2px;
-  width: 8px;
-  height: 8px;
-  border-color: white;
-  -moz-transform: rotate(135deg);
-  -ms-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  transform: rotate(135deg);
-  right: 10px;
-  top: 50%;
-  margin-top: -4px;
-}
-.arrow-button:before {
-  -moz-transition: all 0.25s ease 0;
-  -o-transition: all 0.25s ease 0;
-  -webkit-transition: all 0.25s ease;
-  -webkit-transition-delay: 0;
-  transition: all 0.25s ease 0;
-  -moz-transition-property: color,background-color,border-color;
-  -o-transition-property: color,background-color,border-color;
-  -webkit-transition-property: color,background-color,border-color;
-  transition-property: color,background-color,border-color;
-  -moz-transition-property: right, border-color;
-  -o-transition-property: right, border-color;
-  -webkit-transition-property: right, border-color;
-  transition-property: right, border-color;
-}
-.arrow-button:hover:before {
-  right: 8px;
-  border-color: #1a2025;
-}
-
-.arrow-circle-large {
-  position: relative;
-}
-.arrow-circle-large.aspect-ratio-content {
-  position: absolute;
-}
-.arrow-circle-large:before {
-  border-top-width: 10px;
-  border-left-width: 10px;
-  width: 50px;
-  height: 50px;
-  border-color: white;
-  -moz-transform: rotate(135deg);
-  -ms-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  transform: rotate(135deg);
-  left: 50%;
-  right: auto;
-  top: 50%;
-  right: 50%;
-  margin-right: -16.666666666667px;
-  left: auto;
-  margin-top: -25px;
 }
 
 /***********************************************************************************
@@ -2028,7 +1850,10 @@ td.column {
 	OUTPUT - TOOLTIP
 ***********************************************************************************/
 /***********************************************************************************
-	FUNCTIONS
+	DEFAULT MAP FUNCTIONS
+***********************************************************************************/
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
 ***********************************************************************************/
 /***********************************************************************************
 	MIXINS
@@ -2123,15 +1948,11 @@ td.column {
 .tooltip-default .tooltip-content {
   width: 320px;
   padding: 5px;
-  -webkit-font-smoothing: antialiased;
-  font-family: "lato-light";
-  font-weight: 300;
-  font-style: normal;
   font-size: 14px;
   line-height: 1.4;
   color: white;
-  background-color: #1a2025;
-  border: 2px solid #1a2025;
+  background-color: black;
+  border: 2px solid black;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -2141,7 +1962,7 @@ td.column {
   bottom: 1.5rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid #1a2025;
+  border-top: 0.5em solid black;
   border-right: 0.5em solid transparent;
   border-left: 0.5em solid transparent;
 }
@@ -2156,7 +1977,7 @@ td.column {
   width: 0;
   height: 0;
   border-top: 0.5em solid transparent;
-  border-right: 0.5em solid #1a2025;
+  border-right: 0.5em solid black;
   border-bottom: 0.5em solid transparent;
 }
 .east[data-tooltip].tooltip-default:after,
@@ -2171,7 +1992,7 @@ td.column {
   width: 0;
   height: 0;
   border-right: 0.5em solid transparent;
-  border-bottom: 0.5em solid #1a2025;
+  border-bottom: 0.5em solid black;
   border-left: 0.5em solid transparent;
 }
 .south[data-tooltip].tooltip-default:after,
@@ -2186,10 +2007,309 @@ td.column {
   height: 0;
   border-top: 0.5em solid transparent;
   border-bottom: 0.5em solid transparent;
-  border-left: 0.5em solid #1a2025;
+  border-left: 0.5em solid black;
 }
 .west[data-tooltip].tooltip-default:after,
 .west.tooltip-default .tooltip-content {
+  right: 100%;
+  top: -0.1rem;
+  margin-right: 0.75rem;
+}
+
+.tooltip-inset {
+  cursor: help;
+}
+[data-tooltip].tooltip-inset:after,
+.tooltip-inset .tooltip-content {
+  width: 320px;
+  padding: 5px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: white;
+  background-color: black;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.north.tooltip-inset:before {
+  left: 1rem;
+  bottom: 2rem;
+  width: 0;
+  height: 0;
+  border-right: 0.5em solid transparent;
+  border-bottom: 0.5em solid white;
+  border-left: 0.5em solid transparent;
+}
+.north[data-tooltip].tooltip-inset:after,
+.north.tooltip-inset .tooltip-content {
+  bottom: 2rem;
+  left: -0.25rem;
+}
+.east.tooltip-inset:before {
+  top: 0.2rem;
+  right: -1.25rem;
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid transparent;
+  border-bottom: 0.5em solid transparent;
+  border-left: 0.5em solid white;
+}
+.east[data-tooltip].tooltip-inset:after,
+.east.tooltip-inset .tooltip-content {
+  left: 100%;
+  top: -0.1rem;
+  margin-left: 0.75rem;
+}
+.south.tooltip-inset:before {
+  left: 1rem;
+  top: 2rem;
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid white;
+  border-right: 0.5em solid transparent;
+  border-left: 0.5em solid transparent;
+}
+.south[data-tooltip].tooltip-inset:after,
+.south.tooltip-inset .tooltip-content {
+  top: 2rem;
+  left: -0.25rem;
+}
+.west.tooltip-inset:before {
+  top: 0.2rem;
+  left: -1.25rem;
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid transparent;
+  border-right: 0.5em solid white;
+  border-bottom: 0.5em solid transparent;
+}
+.west[data-tooltip].tooltip-inset:after,
+.west.tooltip-inset .tooltip-content {
+  right: 100%;
+  top: -0.1rem;
+  margin-right: 0.75rem;
+}
+
+.tooltip-info {
+  cursor: help;
+}
+[data-tooltip].tooltip-info:after,
+.tooltip-info .tooltip-content {
+  width: 320px;
+  padding: 5px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: white;
+  background-color: blue;
+  border: 2px solid blue;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.north.tooltip-info:before {
+  left: 1rem;
+  bottom: 1.5rem;
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid blue;
+  border-right: 0.5em solid transparent;
+  border-left: 0.5em solid transparent;
+}
+.north[data-tooltip].tooltip-info:after,
+.north.tooltip-info .tooltip-content {
+  bottom: 2rem;
+  left: -0.25rem;
+}
+.east.tooltip-info:before {
+  top: 0.2rem;
+  right: -0.75rem;
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid transparent;
+  border-right: 0.5em solid blue;
+  border-bottom: 0.5em solid transparent;
+}
+.east[data-tooltip].tooltip-info:after,
+.east.tooltip-info .tooltip-content {
+  left: 100%;
+  top: -0.1rem;
+  margin-left: 0.75rem;
+}
+.south.tooltip-info:before {
+  left: 1rem;
+  top: 1.5rem;
+  width: 0;
+  height: 0;
+  border-right: 0.5em solid transparent;
+  border-bottom: 0.5em solid blue;
+  border-left: 0.5em solid transparent;
+}
+.south[data-tooltip].tooltip-info:after,
+.south.tooltip-info .tooltip-content {
+  top: 2rem;
+  left: -0.25rem;
+}
+.west.tooltip-info:before {
+  top: 0.2rem;
+  left: -0.75rem;
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid transparent;
+  border-bottom: 0.5em solid transparent;
+  border-left: 0.5em solid blue;
+}
+.west[data-tooltip].tooltip-info:after,
+.west.tooltip-info .tooltip-content {
+  right: 100%;
+  top: -0.1rem;
+  margin-right: 0.75rem;
+}
+
+.tooltip-error {
+  cursor: help;
+}
+[data-tooltip].tooltip-error:after,
+.tooltip-error .tooltip-content {
+  width: 320px;
+  padding: 5px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: white;
+  background-color: red;
+  border: 2px solid red;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.north.tooltip-error:before {
+  left: 1rem;
+  bottom: 1.5rem;
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid red;
+  border-right: 0.5em solid transparent;
+  border-left: 0.5em solid transparent;
+}
+.north[data-tooltip].tooltip-error:after,
+.north.tooltip-error .tooltip-content {
+  bottom: 2rem;
+  left: -0.25rem;
+}
+.east.tooltip-error:before {
+  top: 0.2rem;
+  right: -0.75rem;
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid transparent;
+  border-right: 0.5em solid red;
+  border-bottom: 0.5em solid transparent;
+}
+.east[data-tooltip].tooltip-error:after,
+.east.tooltip-error .tooltip-content {
+  left: 100%;
+  top: -0.1rem;
+  margin-left: 0.75rem;
+}
+.south.tooltip-error:before {
+  left: 1rem;
+  top: 1.5rem;
+  width: 0;
+  height: 0;
+  border-right: 0.5em solid transparent;
+  border-bottom: 0.5em solid red;
+  border-left: 0.5em solid transparent;
+}
+.south[data-tooltip].tooltip-error:after,
+.south.tooltip-error .tooltip-content {
+  top: 2rem;
+  left: -0.25rem;
+}
+.west.tooltip-error:before {
+  top: 0.2rem;
+  left: -0.75rem;
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid transparent;
+  border-bottom: 0.5em solid transparent;
+  border-left: 0.5em solid red;
+}
+.west[data-tooltip].tooltip-error:after,
+.west.tooltip-error .tooltip-content {
+  right: 100%;
+  top: -0.1rem;
+  margin-right: 0.75rem;
+}
+
+.tooltip-success {
+  cursor: help;
+}
+[data-tooltip].tooltip-success:after,
+.tooltip-success .tooltip-content {
+  width: 320px;
+  padding: 5px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: white;
+  background-color: green;
+  border: 2px solid green;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.north.tooltip-success:before {
+  left: 1rem;
+  bottom: 1.5rem;
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid green;
+  border-right: 0.5em solid transparent;
+  border-left: 0.5em solid transparent;
+}
+.north[data-tooltip].tooltip-success:after,
+.north.tooltip-success .tooltip-content {
+  bottom: 2rem;
+  left: -0.25rem;
+}
+.east.tooltip-success:before {
+  top: 0.2rem;
+  right: -0.75rem;
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid transparent;
+  border-right: 0.5em solid green;
+  border-bottom: 0.5em solid transparent;
+}
+.east[data-tooltip].tooltip-success:after,
+.east.tooltip-success .tooltip-content {
+  left: 100%;
+  top: -0.1rem;
+  margin-left: 0.75rem;
+}
+.south.tooltip-success:before {
+  left: 1rem;
+  top: 1.5rem;
+  width: 0;
+  height: 0;
+  border-right: 0.5em solid transparent;
+  border-bottom: 0.5em solid green;
+  border-left: 0.5em solid transparent;
+}
+.south[data-tooltip].tooltip-success:after,
+.south.tooltip-success .tooltip-content {
+  top: 2rem;
+  left: -0.25rem;
+}
+.west.tooltip-success:before {
+  top: 0.2rem;
+  left: -0.75rem;
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid transparent;
+  border-bottom: 0.5em solid transparent;
+  border-left: 0.5em solid green;
+}
+.west[data-tooltip].tooltip-success:after,
+.west.tooltip-success .tooltip-content {
   right: 100%;
   top: -0.1rem;
   margin-right: 0.75rem;
@@ -2441,14 +2561,10 @@ p {
 .tooltip-inset .tooltip-content {
   width: 320px;
   padding: 5px;
-  -webkit-font-smoothing: antialiased;
-  font-family: "lato-light";
-  font-weight: 300;
-  font-style: normal;
   font-size: 14px;
   line-height: 1.4;
   color: white;
-  background-color: #1a2025;
+  background-color: black;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -2519,15 +2635,11 @@ p {
 .tooltip-info .tooltip-content {
   width: 320px;
   padding: 5px;
-  -webkit-font-smoothing: antialiased;
-  font-family: "lato-light";
-  font-weight: 300;
-  font-style: normal;
   font-size: 14px;
   line-height: 1.4;
   color: white;
-  background-color: #249cd5;
-  border: 2px solid #249cd5;
+  background-color: blue;
+  border: 2px solid blue;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -2537,7 +2649,7 @@ p {
   bottom: 1.5rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid #249cd5;
+  border-top: 0.5em solid blue;
   border-right: 0.5em solid transparent;
   border-left: 0.5em solid transparent;
 }
@@ -2552,7 +2664,7 @@ p {
   width: 0;
   height: 0;
   border-top: 0.5em solid transparent;
-  border-right: 0.5em solid #249cd5;
+  border-right: 0.5em solid blue;
   border-bottom: 0.5em solid transparent;
 }
 .east[data-tooltip].tooltip-info:after,
@@ -2567,7 +2679,7 @@ p {
   width: 0;
   height: 0;
   border-right: 0.5em solid transparent;
-  border-bottom: 0.5em solid #249cd5;
+  border-bottom: 0.5em solid blue;
   border-left: 0.5em solid transparent;
 }
 .south[data-tooltip].tooltip-info:after,
@@ -2582,7 +2694,7 @@ p {
   height: 0;
   border-top: 0.5em solid transparent;
   border-bottom: 0.5em solid transparent;
-  border-left: 0.5em solid #249cd5;
+  border-left: 0.5em solid blue;
 }
 .west[data-tooltip].tooltip-info:after,
 .west.tooltip-info .tooltip-content {
@@ -2598,15 +2710,11 @@ p {
 .tooltip-error .tooltip-content {
   width: 320px;
   padding: 5px;
-  -webkit-font-smoothing: antialiased;
-  font-family: "lato-light";
-  font-weight: 300;
-  font-style: normal;
   font-size: 14px;
   line-height: 1.4;
   color: white;
-  background-color: #c0392b;
-  border: 2px solid #c0392b;
+  background-color: red;
+  border: 2px solid red;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -2616,7 +2724,7 @@ p {
   bottom: 1.5rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid #c0392b;
+  border-top: 0.5em solid red;
   border-right: 0.5em solid transparent;
   border-left: 0.5em solid transparent;
 }
@@ -2631,7 +2739,7 @@ p {
   width: 0;
   height: 0;
   border-top: 0.5em solid transparent;
-  border-right: 0.5em solid #c0392b;
+  border-right: 0.5em solid red;
   border-bottom: 0.5em solid transparent;
 }
 .east[data-tooltip].tooltip-error:after,
@@ -2646,7 +2754,7 @@ p {
   width: 0;
   height: 0;
   border-right: 0.5em solid transparent;
-  border-bottom: 0.5em solid #c0392b;
+  border-bottom: 0.5em solid red;
   border-left: 0.5em solid transparent;
 }
 .south[data-tooltip].tooltip-error:after,
@@ -2661,7 +2769,7 @@ p {
   height: 0;
   border-top: 0.5em solid transparent;
   border-bottom: 0.5em solid transparent;
-  border-left: 0.5em solid #c0392b;
+  border-left: 0.5em solid red;
 }
 .west[data-tooltip].tooltip-error:after,
 .west.tooltip-error .tooltip-content {
@@ -2677,15 +2785,11 @@ p {
 .tooltip-success .tooltip-content {
   width: 320px;
   padding: 5px;
-  -webkit-font-smoothing: antialiased;
-  font-family: "lato-light";
-  font-weight: 300;
-  font-style: normal;
   font-size: 14px;
   line-height: 1.4;
   color: white;
-  background-color: #27ae60;
-  border: 2px solid #27ae60;
+  background-color: green;
+  border: 2px solid green;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -2695,7 +2799,7 @@ p {
   bottom: 1.5rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid #27ae60;
+  border-top: 0.5em solid green;
   border-right: 0.5em solid transparent;
   border-left: 0.5em solid transparent;
 }
@@ -2710,7 +2814,7 @@ p {
   width: 0;
   height: 0;
   border-top: 0.5em solid transparent;
-  border-right: 0.5em solid #27ae60;
+  border-right: 0.5em solid green;
   border-bottom: 0.5em solid transparent;
 }
 .east[data-tooltip].tooltip-success:after,
@@ -2725,7 +2829,7 @@ p {
   width: 0;
   height: 0;
   border-right: 0.5em solid transparent;
-  border-bottom: 0.5em solid #27ae60;
+  border-bottom: 0.5em solid green;
   border-left: 0.5em solid transparent;
 }
 .south[data-tooltip].tooltip-success:after,
@@ -2740,7 +2844,7 @@ p {
   height: 0;
   border-top: 0.5em solid transparent;
   border-bottom: 0.5em solid transparent;
-  border-left: 0.5em solid #27ae60;
+  border-left: 0.5em solid green;
 }
 .west[data-tooltip].tooltip-success:after,
 .west.tooltip-success .tooltip-content {

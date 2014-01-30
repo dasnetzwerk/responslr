@@ -33,17 +33,33 @@
 @function responslr-grid-max-width($name: null) {
 	$return-max-width: map-get(responslr-grid-breakpoint($name), max-width);
 
+	@if $return-max-width == null {
+		@warn responslr-map-required-error("max-width", "grid-breakpoint", $name);
+	}
+
 	@return $return-max-width;
 }
 
 @function responslr-grid-columns($name: null) {
 	$return-columns: map-get(responslr-grid-breakpoint($name), columns);
 
+	@if $return-columns == null {
+		$return-columns: $responslr-grid-breakpoints-default-columns;
+	}
+
 	@return $return-columns;
 }
 
-@function responslr-grid-gutter($name: null) {
+@function responslr-grid-gutter($name: null, $multiplier: 1) {
 	$return-gutter: map-get(responslr-grid-breakpoint($name), gutter);
+
+	@if $return-gutter == null {
+		$return-gutter: $responslr-grid-breakpoints-default-gutter;
+	}
+
+	@if type-of($return-gutter) == number AND type-of($multiplier) == number {
+		$return-gutter: $return-gutter * $multiplier;
+	}
 
 	@return $return-gutter;
 }
@@ -54,21 +70,13 @@
 ***********************************************************************************/
 
 @function responslr-grid-gutter-half($name: null) {
-	$return-gutter-half: responslr-grid-gutter($name);
-
-	@if type-of($return-gutter-half) == number {
-		$return-gutter-half: $return-gutter-half * 0.5;
-	}
+	$return-gutter-half: responslr-grid-gutter($name, 0.5);
 
 	@return $return-gutter-half;
 }
 
 @function responslr-grid-gutter-double($name: null) {
-	$return-gutter-double: responslr-grid-gutter($name);
-
-	@if type-of($return-gutter-double) == number {
-		$return-gutter-double: $return-gutter-double * 2;
-	}
+	$return-gutter-double: responslr-grid-gutter($name, 2);
 
 	@return $return-gutter-double;
 }
@@ -97,43 +105,24 @@
 	MIXINS
 ***********************************************************************************/
 
-// Mixin: column-width
-// TODO: new column-width-function
-/*@mixin responslr-column-width($column-count, $size){
-	@if type-of($size) == string {
-		$column-total: $responslr-grid-column-width-large;
-
-		@if $size == medium {
-			$column-total: $responslr-grid-columns-medium;
-		} @else if $size == small {
-			$column-total: $responslr-grid-columns-small;
-		}
-
-		width: (100% / $column-total * $column-part);
-	} @else {
-		width: (($column-part / $size) * 100%);
-	}
-}*/
-
-// Mixin: media-width
-@mixin responslr-media-query($media-end: '', $media-start: '', $media-orientation: '') {
+@mixin responslr-media-query($media-end: null, $media-start: null, $media-orientation: null) {
 	$breakpoint-max: '';
 	$breakpoint-min: '';
 	$breakpoint-orientation: '';
 
-	@if type-of($media-end) == string and $media-end != '' {
+	@if type-of($media-end) == string and $media-end != null {
 		$breakpoint-max: ' and (max-width:' + responslr-grid-max-width($media-end) + ')';
 	} @else if type-of($media-end) == number {
 		$breakpoint-max: ' and (max-width: #{$media-end})';
 	}
 
-	@if type-of($media-start) == string and $media-start != '' {
+	@if type-of($media-start) == string and $media-start != null {
 		$breakpoint-min: ' and (min-width:' + responslr-grid-min-width($media-start) + ')';
 	} @else if type-of($media-start) == number {
 		$breakpoint-min: ' and (min-width: #{$media-start})'
 	}
 
-	@if $media-orientation != '' and ($media-orientation == 'portrait' or $media-orientation == 'landscape') {
+	@if $media-orientation != null and ($media-orientation == 'portrait' or $media-orientation == 'landscape') {
 		$breakpoint-orientation: ' and (orientation: #{$media-orientation})';
 	}
 
@@ -148,7 +137,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-grid-breakpoints-check() {
-	@return $responslr-generate-grid-breakpoints && responslr-map-isnotempty($responslr-grid-breakpoints);
+	@return $responslr-generate-grid-breakpoints AND responslr-map-isnotempty($responslr-grid-breakpoints);
 }
 
 @mixin responslr-generate-grid-breakpoint($name: $responslr-grid-breakpoints-default, $column-index: 0, $current-column-width: 100%) {
@@ -327,11 +316,9 @@
 				display: inline-block;
 				height: 100%;
 
-				@each $current-breakpoint-list in $responslr-grid-breakpoints {
-					$current-breakpoint-name: nth($current-breakpoint-list,1);
-
-					@include responslr-media-query($current-breakpoint-name) {
-						&:nth-child(1n+#{responslr-grid-columns($current-breakpoint-name) + 1}) {
+				@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
+					@include responslr-media-query($breakpoint-key) {
+						&:nth-child(1n+#{responslr-grid-columns($breakpoint-key) + 1}) {
 							display: none;
 						}
 					}

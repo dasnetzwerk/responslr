@@ -61,7 +61,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-inline-lists-check() {
-	@return $responslr-generate-inline-lists && responslr-map-isnotempty($responslr-inline-lists);
+	@return $responslr-generate-inline-lists AND responslr-map-isnotempty($responslr-inline-lists);
 }
 
 @mixin responslr-generate-inline-lists() {

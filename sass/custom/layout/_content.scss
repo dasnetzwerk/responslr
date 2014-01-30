@@ -71,22 +71,22 @@
 		@extend %tooltip-default;
 	}
 
-	@include responslr-tooltip-generate-class(responslr-tooltip(inset));
+	@include responslr-tooltip-generate-class(inset);
 	.tooltip-inset {
 		@extend %tooltip-inset;
 	}
 
-	@include responslr-tooltip-generate-class(responslr-tooltip(info));
+	@include responslr-tooltip-generate-class(info);
 	.tooltip-info {
 		@extend %tooltip-info;
 	}
 
-	@include responslr-tooltip-generate-class(responslr-tooltip(error));
+	@include responslr-tooltip-generate-class(error);
 	.tooltip-error {
 		@extend %tooltip-error;
 	}
 
-	@include responslr-tooltip-generate-class(responslr-tooltip(success));
+	@include responslr-tooltip-generate-class(success);
 	.tooltip-success {
 		@extend %tooltip-success;
 	}
