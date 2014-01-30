@@ -2347,17 +2347,12 @@ td.column {
 /***********************************************************************************
 	CLASS GENERATOR
 ***********************************************************************************/
-.inline-list-breadcrumb, .inline-list-menu {
+.inline-list-breadcrumb, .inline-list-hashtags {
   font-size: 0;
   line-height: 0;
 }
 
-.inline-list-breadcrumb li, .inline-list-menu li {
-  display: inline-block;
-}
-.inline-list-breadcrumb li::before, .inline-list-menu li::before,
-.inline-list-breadcrumb li a,
-.inline-list-menu li a {
+.inline-list-breadcrumb > *, .inline-list-hashtags > * {
   display: inline-block;
   -webkit-font-smoothing: antialiased;
   font-family: "lato-light";
@@ -2367,18 +2362,23 @@ td.column {
   line-height: 1.4;
 }
 
-.inline-list-breadcrumb li {
-  padding: 0 20px;
+.inline-list-breadcrumb > * {
+  display: inline-block;
+  width: auto;
+  padding: 10px 20px;
+  margin: 0;
+  position: relative;
 }
-.inline-list-breadcrumb li::before {
+.inline-list-breadcrumb > *:not(.no-delimiter)::before {
   content: "/";
+  position: absolute;
 }
 
-.inline-list-menu li {
-  padding: 0 30px;
-}
-.inline-list-menu li::before {
-  content: "-";
+.inline-list-hashtags > * {
+  display: inline-block;
+  width: auto;
+  padding: 10px 30px;
+  margin: 0 5px 5px 0;
 }
 
 /***********************************************************************************
@@ -2851,6 +2851,17 @@ p {
   right: 100%;
   top: -0.1rem;
   margin-right: 0.75rem;
+}
+
+.inline-list-hashtags a {
+  background-color: #27ae60;
+}
+
+.inline-list-breadcrumb li {
+  background-color: #c0392b;
+}
+.inline-list-breadcrumb li:before {
+  background-color: #f26232;
 }
 
 footer {

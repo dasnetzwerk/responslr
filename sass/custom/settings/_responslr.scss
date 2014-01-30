@@ -103,11 +103,11 @@ $responslr-icons: (
 $responslr-inline-lists: (
 	'breadcrumb': (
 		delimiter: '/',
-		padding-x: 20px
+		padding: 10px 20px
 	),
-	'menu': (
-		delimiter: '-',
-		padding-x: 30px
+	'hashtags': (
+		padding: 10px 30px,
+		margin: 0 5px 5px 0
 	)
 );
 

@@ -1,93 +1,107 @@
-//#content {
-	article {
-		@include responslr-spacing-bottom();
-	}
+article {
+	@include responslr-spacing-bottom();
+}
 
-	h3 {
-		@include responslr-spacing-bottom(small);
-	}
+h3 {
+	@include responslr-spacing-bottom(small);
+}
 
-	p {
-		margin-bottom: responslr-spacing-size(small);
-	}
+p {
+	margin-bottom: responslr-spacing-size(small);
+}
 
-	.test-min-width:before {
-		content: "min-width: " + responslr-grid-min-width(large);
-	}
-	.test-max-width:before {
-		content: "max-width: " + responslr-grid-max-width(large);
-	}
-	.test-columns:before {
-		content: "columns: " + responslr-grid-columns(large);
-	}
-	.test-gutter:before {
-		content: "gutter: " + responslr-grid-gutter(large);
-	}
-	.text-name:before {
-		content: "breakpoint name: " + responslr-grid-breakpoint-name(2);
-	}
+.test-min-width:before {
+	content: "min-width: " + responslr-grid-min-width(large);
+}
+.test-max-width:before {
+	content: "max-width: " + responslr-grid-max-width(large);
+}
+.test-columns:before {
+	content: "columns: " + responslr-grid-columns(large);
+}
+.test-gutter:before {
+	content: "gutter: " + responslr-grid-gutter(large);
+}
+.text-name:before {
+	content: "breakpoint name: " + responslr-grid-breakpoint-name(2);
+}
 
-	.intro {
-		@include responslr-typo($font-size: medium);
-	}
+.intro {
+	@include responslr-typo($font-size: medium);
+}
 
-	.box {
-		padding: responslr-grid-gutter-half();
-		// @include responslr-typo($font-family: lato-regular);
-	}
+.box {
+	padding: responslr-grid-gutter-half();
+	// @include responslr-typo($font-family: lato-regular);
+}
 
-	.border {
-		border-width: 1px;
-		border-style: solid;
-	}
+.border {
+	border-width: 1px;
+	border-style: solid;
+}
 
-	// FONT TESTING
-	.font-test-1 {
-		display: inline-block;
-		@include responslr-typo($font-family: lato-light, $font-size: 27px, $line-height: 100px);
-	}
+// FONT TESTING
+.font-test-1 {
+	display: inline-block;
+	@include responslr-typo($font-family: lato-light, $font-size: 27px, $line-height: 100px);
+}
 
-	.font-test-2 {
-		display: inline-block;
-		@include responslr-typo($font-size: large, $line-height: 200px)
-	}
+.font-test-2 {
+	display: inline-block;
+	@include responslr-typo($font-size: large, $line-height: 200px)
+}
 
-	// BUTTON TESTING
-	[class^=button-] {
-		margin-bottom: responslr-grid-gutter(large);
-	}
+// BUTTON TESTING
+[class^=button-] {
+	margin-bottom: responslr-grid-gutter(large);
+}
 
-	// SPACING TESTING
-	.spacing-top-test {
-		@include responslr-spacing-bottom(none);
-	}
+// SPACING TESTING
+.spacing-top-test {
+	@include responslr-spacing-bottom(none);
+}
 
-	.spacing-bottom-test {
-		@include responslr-spacing-top(none);
-	}
+.spacing-bottom-test {
+	@include responslr-spacing-top(none);
+}
 
-	// TOOLTIP TESTING
-	.tooltip-default {
-		@extend %tooltip-default;
-	}
+// TOOLTIP TESTING
+.tooltip-default {
+	@extend %tooltip-default;
+}
 
-	@include responslr-tooltip-generate-class(inset);
-	.tooltip-inset {
-		@extend %tooltip-inset;
-	}
+@include responslr-tooltip-generate-class(inset);
+.tooltip-inset {
+	@extend %tooltip-inset;
+}
 
-	@include responslr-tooltip-generate-class(info);
-	.tooltip-info {
-		@extend %tooltip-info;
-	}
+@include responslr-tooltip-generate-class(info);
+.tooltip-info {
+	@extend %tooltip-info;
+}
 
-	@include responslr-tooltip-generate-class(error);
-	.tooltip-error {
-		@extend %tooltip-error;
-	}
+@include responslr-tooltip-generate-class(error);
+.tooltip-error {
+	@extend %tooltip-error;
+}
 
-	@include responslr-tooltip-generate-class(success);
-	.tooltip-success {
-		@extend %tooltip-success;
+@include responslr-tooltip-generate-class(success);
+.tooltip-success {
+	@extend %tooltip-success;
+}
+
+.inline-list-hashtags {
+	a {
+		background-color: $green;
 	}
-//}
+}
+
+.inline-list-breadcrumb {
+	li {
+		background-color: $red;
+
+		&:before {
+			background-color: $orange;
+		}
+	}
+}
