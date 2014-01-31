@@ -6,17 +6,17 @@ $responslr-grid-breakpoints: (
 	'large': (
 		max-width: 1024px,
 		columns: 12,
-		gutter: 44px
+		gutter: 32px
 	),
 	'medium': (
 		max-width: 960px,
 		columns: 6,
-		gutter: 12px
+		gutter: 24px
 	),
 	'small': (
 		max-width: 640px,
 		columns: 4,
-		gutter: 10px
+		gutter: 20px
 	),
 ) !default;
 
