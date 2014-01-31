@@ -103,8 +103,8 @@
 }
 
 @mixin responslr-aspect-ratio-content-column($current-breakpoint-name: null) {
-	left: responslr-grid-gutter($current-breakpoint-name);
-	right: responslr-grid-gutter($current-breakpoint-name);
+	left: responslr-grid-gutter-half($current-breakpoint-name);
+	right: responslr-grid-gutter-half($current-breakpoint-name);
 }
 
 

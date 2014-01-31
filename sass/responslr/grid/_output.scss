@@ -180,13 +180,13 @@
 
 @mixin responslr-generate-grid-gutter($name: null) {
 	.#{$responslr-grid-row-class} .#{$responslr-grid-row-class} {
-		margin-left: -(responslr-grid-gutter($name));
-		margin-right: -(responslr-grid-gutter($name));;
+		margin-left: -(responslr-grid-gutter-half($name));
+		margin-right: -(responslr-grid-gutter-half($name));;
 	}
 
 	.#{$responslr-grid-column-class} {
-		padding-left: responslr-grid-gutter($name);
-		padding-right: responslr-grid-gutter($name);
+		padding-left: responslr-grid-gutter-half($name);
+		padding-right: responslr-grid-gutter-half($name);
 	}
 }
 
