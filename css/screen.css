@@ -2347,12 +2347,12 @@ td.column {
 /***********************************************************************************
 	CLASS GENERATOR
 ***********************************************************************************/
-.inline-list-breadcrumb, .inline-list-hashtags {
+.list-breadcrumb, .list-hashtags {
   font-size: 0;
   line-height: 0;
 }
 
-.inline-list-breadcrumb > *, .inline-list-hashtags > * {
+.list-breadcrumb > *, .list-hashtags > * {
   display: inline-block;
   -webkit-font-smoothing: antialiased;
   font-family: "lato-light";
@@ -2362,19 +2362,19 @@ td.column {
   line-height: 1.4;
 }
 
-.inline-list-breadcrumb > * {
+.list-breadcrumb > * {
   display: inline-block;
   width: auto;
   padding: 10px 20px;
   margin: 0;
   position: relative;
 }
-.inline-list-breadcrumb > *:not(.no-delimiter)::before {
+.list-breadcrumb > *:not(.no-delimiter)::before {
   content: "/";
   position: absolute;
 }
 
-.inline-list-hashtags > * {
+.list-hashtags > * {
   display: inline-block;
   width: auto;
   padding: 10px 30px;
@@ -2857,14 +2857,14 @@ p {
   margin-right: 0.75rem;
 }
 
-.inline-list-hashtags a {
+.list-hashtags a {
   background-color: #27ae60;
 }
 
-.inline-list-breadcrumb li {
+.list-breadcrumb li {
   background-color: #c0392b;
 }
-.inline-list-breadcrumb li:before {
+.list-breadcrumb li:before {
   background-color: #f26232;
 }
 

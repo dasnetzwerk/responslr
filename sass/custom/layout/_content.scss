@@ -90,13 +90,13 @@ p {
 	@extend %tooltip-success;
 }
 
-.inline-list-hashtags {
+.list-hashtags {
 	a {
 		background-color: $green;
 	}
 }
 
-.inline-list-breadcrumb {
+.list-breadcrumb {
 	li {
 		background-color: $red;
 

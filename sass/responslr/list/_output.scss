@@ -1,0 +1,219 @@
+/***********************************************************************************
+	OUTPUT - INLINE-LIST
+***********************************************************************************/
+
+
+
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS
+***********************************************************************************/
+
+@function responslr-list-exists($name) {
+	@return map-has-key($responslr-lists, $name);
+}
+
+@function responslr-list($name: null) {
+	$return-list: ();
+
+	@if $name == null {
+		$name: $responslr-lists-default;
+	}
+
+	@if responslr-list-exists($name) {
+		$return-list: map-get($responslr-lists, $name);
+	}
+
+	@return $return-list;
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
+***********************************************************************************/
+
+@function responslr-list-display($name: null) {
+	$return-display: map-get(responslr-list($name), display);
+
+	@if $return-display == null {
+		$return-display: $responslr-lists-default-display;
+	}
+
+	@return $return-display;
+}
+
+@function responslr-list-delimiter($name: null) {
+	$return-delimiter: map-get(responslr-list($name), delimiter);
+
+	@if $return-delimiter == null {
+		$return-delimiter: $responslr-lists-default-delimiter;
+	}
+
+	@return $return-delimiter;
+}
+
+@function responslr-list-width($name: null) {
+	$return-width: map-get(responslr-list($name), width);
+
+	@if $return-width == null {
+		$return-width: $responslr-lists-default-width;
+	}
+
+	@return $return-width;
+}
+
+@function responslr-list-padding($name: null) {
+	$return-padding: map-get(responslr-list($name), padding);
+
+	@if $return-padding == null {
+		$return-padding: $responslr-lists-default-padding;
+	}
+
+	@return $return-padding;
+}
+
+@function responslr-list-padding-first($name: null) {
+	$return-padding-first: map-get(responslr-list($name), padding-first);
+
+	@if $return-padding-first == null {
+		$return-padding-first: responslr-list-padding($name);
+	}
+
+	@return $return-padding-first;
+}
+
+@function responslr-list-padding-last($name: null) {
+	$return-padding-last: map-get(responslr-list($name), padding-last);
+
+	@if $return-padding-last == null {
+		$return-padding-last: responslr-list-padding($name);
+	}
+
+	@return $return-padding-last;
+}
+
+@function responslr-list-margin($name: null) {
+	$return-margin: map-get(responslr-list($name), margin);
+
+	@if $return-margin == null {
+		$return-margin: $responslr-lists-default-margin;
+	}
+
+	@return $return-margin;
+}
+
+@function responslr-list-margin-first($name: null) {
+	$return-margin-first: map-get(responslr-list($name), margin-first);
+
+	@if $return-margin-first == null {
+		$return-margin-first: responslr-list-margin($name);
+	}
+
+	@return $return-margin-first;
+}
+
+@function responslr-list-margin-last($name: null) {
+	$return-margin-last: map-get(responslr-list($name), margin-last);
+
+	@if $return-margin-last == null {
+		$return-margin-last: responslr-list-margin($name);
+	}
+
+	@return $return-margin-last;
+}
+
+@function responslr-list-bullet($name: null) {
+	$return-bullet: map-get(responslr-list($name), bullet);
+
+	@if $return-bullet == null {
+		$return-bullet: $responslr-lists-default-bullet;
+	}
+
+	@return $return-bullet;
+}
+
+
+// TODO: Hide delimiter on first or special delimiter for the first one
+
+/***********************************************************************************
+	EXTENDED FUNCTIONS
+***********************************************************************************/
+
+
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+
+
+/***********************************************************************************
+	CLASS GENERATOR
+***********************************************************************************/
+
+@function responslr-generate-lists-check() {
+	@return $responslr-generate-lists AND responslr-map-isnotempty($responslr-lists);
+}
+
+@mixin responslr-generate-lists() {
+	%list {
+		font-size: 0;
+		line-height: 0;
+	}
+
+	%list-item {
+		display: inline-block;
+
+		@include responslr-typo();
+	}
+
+	@each $list-key, $list-list in $responslr-lists {
+		.#{$responslr-list-class-prefix}#{$list-key} {
+			@extend %list;
+
+			& > * {
+				@extend %list-item;
+
+				display: responslr-list-display($list-key);
+				width: responslr-list-width($list-key);
+				padding: responslr-list-padding($list-key);
+
+				@if responslr-list-padding($list-key) != responslr-list-padding-first($list-key) {
+					&:first-child {
+						padding: responslr-list-padding-first($list-key);
+					}
+				}
+
+				@if responslr-list-padding($list-key) != responslr-list-padding-last($list-key) {
+					&:last-child {
+						padding: responslr-list-padding-last($list-key);
+					}
+				}
+
+				margin: responslr-list-margin($list-key);
+
+				@if responslr-list-margin($list-key) != responslr-list-margin-first($list-key) {
+					&:first-child {
+						margin: responslr-list-margin-first($list-key);
+					}
+				}
+
+				@if responslr-list-margin($list-key) != responslr-list-margin-last($list-key) {
+					&:last-child {
+						margin: responslr-list-margin-last($list-key);
+					}
+				}
+
+				@if responslr-list-delimiter($list-key) != '' {
+					position: relative;
+
+					&:not(.no-delimiter)::#{$responslr-list-pseudo-element} {
+						content: responslr-list-delimiter($list-key);
+						position: absolute;
+					}
+				}
+			}
+		}
+	}
+}
+
+@if responslr-generate-lists-check() {
+	@include responslr-generate-lists();
+}

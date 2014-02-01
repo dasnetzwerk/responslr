@@ -1,0 +1,22 @@
+/***********************************************************************************
+	SETTINGS - INLINE-LIST
+***********************************************************************************/
+
+$responslr-lists: () !default;
+
+// Default list
+$responslr-lists-default: responslr-map-getdefault($responslr-lists) !default;
+
+// Map value defaults
+$responslr-lists-default-display: inline-block !default;
+$responslr-lists-default-delimiter: '' !default;
+$responslr-lists-default-width: auto !default;
+$responslr-lists-default-padding: 0 !default;
+$responslr-lists-default-margin: 0 !default;
+$responslr-lists-default-bullet: '' !default;
+
+// Pseudo element (before or after)
+$responslr-list-pseudo-element: 'before' !default;
+
+// Classes
+$responslr-list-class-prefix: 'list-' !default;
