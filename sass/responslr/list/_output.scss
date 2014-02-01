@@ -31,94 +31,14 @@
 	MAP VALUE FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-list-display($name: null) {
-	$return-display: map-get(responslr-list($name), display);
+@function responslr-list-type($name: null) {
+	$return-type: map-get(responslr-list($name), type);
 
-	@if $return-display == null {
-		$return-display: $responslr-lists-default-display;
+	@if $return-type == null {
+		$return-type: $responslr-lists-default-type;
 	}
 
-	@return $return-display;
-}
-
-@function responslr-list-delimiter($name: null) {
-	$return-delimiter: map-get(responslr-list($name), delimiter);
-
-	@if $return-delimiter == null {
-		$return-delimiter: $responslr-lists-default-delimiter;
-	}
-
-	@return $return-delimiter;
-}
-
-@function responslr-list-width($name: null) {
-	$return-width: map-get(responslr-list($name), width);
-
-	@if $return-width == null {
-		$return-width: $responslr-lists-default-width;
-	}
-
-	@return $return-width;
-}
-
-@function responslr-list-padding($name: null) {
-	$return-padding: map-get(responslr-list($name), padding);
-
-	@if $return-padding == null {
-		$return-padding: $responslr-lists-default-padding;
-	}
-
-	@return $return-padding;
-}
-
-@function responslr-list-padding-first($name: null) {
-	$return-padding-first: map-get(responslr-list($name), padding-first);
-
-	@if $return-padding-first == null {
-		$return-padding-first: responslr-list-padding($name);
-	}
-
-	@return $return-padding-first;
-}
-
-@function responslr-list-padding-last($name: null) {
-	$return-padding-last: map-get(responslr-list($name), padding-last);
-
-	@if $return-padding-last == null {
-		$return-padding-last: responslr-list-padding($name);
-	}
-
-	@return $return-padding-last;
-}
-
-@function responslr-list-margin($name: null) {
-	$return-margin: map-get(responslr-list($name), margin);
-
-	@if $return-margin == null {
-		$return-margin: $responslr-lists-default-margin;
-	}
-
-	@return $return-margin;
-}
-
-@function responslr-list-margin-first($name: null) {
-	$return-margin-first: map-get(responslr-list($name), margin-first);
-
-	@if $return-margin-first == null {
-		$return-margin-first: responslr-list-margin($name);
-	}
-
-	@return $return-margin-first;
-}
-
-@function responslr-list-margin-last($name: null) {
-	$return-margin-last: map-get(responslr-list($name), margin-last);
-
-	@if $return-margin-last == null {
-		$return-margin-last: responslr-list-margin($name);
-	}
-
-	@return $return-margin-last;
+	@return $return-type;
 }
 
 @function responslr-list-bullet($name: null) {
@@ -131,8 +51,66 @@
 	@return $return-bullet;
 }
 
+@function responslr-list-bullet-custom($name: null) {
+	$return-bullet-custom: map-get(responslr-list($name), bullet-custom);
 
-// TODO: Hide delimiter on first or special delimiter for the first one
+	@if $return-bullet-custom == null {
+		$return-bullet-custom: $responslr-lists-default-bullet-custom;
+	}
+
+	@return $return-bullet-custom;
+}
+
+@function responslr-list-bullet-position($name: null) {
+	$return-bullet-position: map-get(responslr-list($name), bullet-position);
+
+	@if $return-bullet-position == null {
+		$return-bullet-position: $responslr-lists-default-bullet-position;
+	}
+
+	@return $return-bullet-position;
+}
+
+@function responslr-list-bullet-width($name: null) {
+	$return-bullet-width: map-get(responslr-list($name), bullet-width);
+
+	@if $return-bullet-width == null {
+		$return-bullet-width: $responslr-lists-default-bullet-width;
+	}
+
+	@return $return-bullet-width;
+}
+
+@function responslr-list-bullet-margin($name: null) {
+	$return-bullet-margin: map-get(responslr-list($name), bullet-margin);
+
+	@if $return-bullet-margin == null {
+		$return-bullet-margin: $responslr-lists-default-bullet-margin;
+	}
+
+	@return $return-bullet-margin;
+}
+
+@function responslr-list-padding($name: null) {
+	$return-padding: map-get(responslr-list($name), padding);
+
+	@if $return-padding == null {
+		$return-padding: $responslr-lists-default-padding;
+	}
+
+	@return $return-padding;
+}
+
+@function responslr-list-margin($name: null) {
+	$return-margin: map-get(responslr-list($name), margin);
+
+	@if $return-margin == null {
+		$return-margin: $responslr-lists-default-margin;
+	}
+
+	@return $return-margin;
+}
+
 
 /***********************************************************************************
 	EXTENDED FUNCTIONS
@@ -156,57 +134,79 @@
 	%list {
 		font-size: 0;
 		line-height: 0;
-	}
 
-	%list-item {
-		display: inline-block;
+		& > * {
+			position: relative;
+			display: block;
 
-		@include responslr-typo();
+			@include responslr-typo();
+		}
 	}
 
 	@each $list-key, $list-list in $responslr-lists {
+		$list-item-margin: responslr-list-margin($list-key);
+		$list-item-padding: responslr-list-padding($list-key);
+
 		.#{$responslr-list-class-prefix}#{$list-key} {
 			@extend %list;
 
 			& > * {
-				@extend %list-item;
-
-				display: responslr-list-display($list-key);
-				width: responslr-list-width($list-key);
-				padding: responslr-list-padding($list-key);
-
-				@if responslr-list-padding($list-key) != responslr-list-padding-first($list-key) {
-					&:first-child {
-						padding: responslr-list-padding-first($list-key);
-					}
+				@if responslr-list-type($list-key) == horizontal {
+					display: inline-block;
 				}
 
-				@if responslr-list-padding($list-key) != responslr-list-padding-last($list-key) {
-					&:last-child {
-						padding: responslr-list-padding-last($list-key);
-					}
-				}
+				padding: $list-item-padding;
+				margin: $list-item-margin;
 
-				margin: responslr-list-margin($list-key);
+				@if responslr-list-bullet($list-key) != none {
+					$bullet-type: responslr-list-bullet($list-key);
+					$bullet-position: responslr-list-bullet-position($list-key);
+					$bullet-width: responslr-list-bullet-width($list-key);
+					$bullet-margin: responslr-list-bullet-margin($list-key);
 
-				@if responslr-list-margin($list-key) != responslr-list-margin-first($list-key) {
-					&:first-child {
-						margin: responslr-list-margin-first($list-key);
-					}
-				}
+					$bullet-margin-left: responslr-split-shorthand($bullet-margin, 'left');
+					$bullet-margin-right: responslr-split-shorthand($bullet-margin, 'right');
 
-				@if responslr-list-margin($list-key) != responslr-list-margin-last($list-key) {
-					&:last-child {
-						margin: responslr-list-margin-last($list-key);
-					}
-				}
+					$list-item-margin-left: responslr-split-shorthand($list-item-margin, 'left');
+					$list-item-padding-left: responslr-split-shorthand($list-item-padding, 'left');
 
-				@if responslr-list-delimiter($list-key) != '' {
-					position: relative;
-
-					&:not(.no-delimiter)::#{$responslr-list-pseudo-element} {
-						content: responslr-list-delimiter($list-key);
+					&:not(.no-bullet)::#{$responslr-list-pseudo-element} {
 						position: absolute;
+						width: responslr-list-bullet-width($list-key);
+
+						@if $bullet-type == 'custom' {
+							content: responslr-list-bullet-custom($list-key);
+
+							@if $bullet-position == 'between' {
+								text-align: center;
+							} @else {
+								text-align: left;
+							}
+						}
+
+						@if $bullet-position == 'inside' {
+							left: $list-item-padding-left + $bullet-margin-left;
+						} @else {
+							right: 100%;
+						}
+
+						margin: $bullet-margin;
+
+						$list-item-margin-left: $list-item-margin-left + $bullet-margin-left + $bullet-margin-right;
+					}
+
+					@if $bullet-position == 'between' {
+						&:not(.no-bullet):not(:first-child) {
+							margin-left: $list-item-margin-left + $bullet-width;
+						}
+
+						&:first-child::#{$responslr-list-pseudo-element} {
+							display: none;
+						}
+					} @elseif $bullet-position == 'outside' {
+						margin-left: $list-item-margin-left + $bullet-width;
+					} @else {
+						padding-left: $list-item-padding-left + $bullet-width + $bullet-margin-left + $bullet-margin-right;
 					}
 				}
 			}

@@ -90,18 +90,32 @@ p {
 	@extend %tooltip-success;
 }
 
-.list-hashtags {
-	a {
-		background-color: $green;
-	}
-}
-
 .list-breadcrumb {
 	li {
 		background-color: $red;
 
 		&:before {
 			background-color: $orange;
+		}
+	}
+}
+
+.list-hashtags {
+	a {
+		background-color: $green;
+
+		&:before {
+			background-color: $blue;
+		}
+	}
+}
+
+.list-normal {
+	li {
+		background-color: $purple;
+
+		&:before {
+			background-color: $blue;
 		}
 	}
 }

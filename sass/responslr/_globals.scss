@@ -45,6 +45,41 @@
 	@return 'Parameter "#{$param-name}" for the #{$map-name} "#{$item-key}" is required.';
 }
 
+@function responslr-split-shorthand($padding-string, $part) {
+	$length: length(unquote($padding-string));
+	$return-value: $padding-string;
+
+	@if $length == 4 {
+		@if $part == top {
+			$return-value: nth($padding-string, 1);
+		} @elseif $part == right {
+			$return-value: nth($padding-string, 2);
+		} @elseif $part == bottom {
+			$return-value: nth($padding-string, 3);
+		} @else {
+			$return-value: nth($padding-string, 4);
+		}
+	} @elseif $length == 3 {
+		@if $part == top {
+			$return-value: nth($padding-string, 1);
+		} @elseif $part == bottom {
+			$return-value: nth($padding-string, 3);
+		} @else {
+			$return-value: nth($padding-string, 2);
+		}
+	} @elseif $length == 2 {
+		@if $part == top {
+			$return-value: nth($padding-string, 1);
+		} @elseif $part == bottom {
+			$return-value: nth($padding-string, 1);
+		} @else {
+			$return-value: nth($padding-string, 2);
+		}
+	}
+
+	@return $return-value;
+}
+
 
 /***********************************************************************************
 	CLASS GENERATORS

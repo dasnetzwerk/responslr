@@ -1,3 +1,4 @@
+@charset "CP850";
 /***********************************************************************************
 	COMPASS
 ***********************************************************************************/
@@ -2347,13 +2348,13 @@ td.column {
 /***********************************************************************************
 	CLASS GENERATOR
 ***********************************************************************************/
-.list-breadcrumb, .list-hashtags {
+.list-breadcrumb, .list-hashtags, .list-normal, .list-all-done, .list-all-new {
   font-size: 0;
   line-height: 0;
 }
-
-.list-breadcrumb > *, .list-hashtags > * {
-  display: inline-block;
+.list-breadcrumb > *, .list-hashtags > *, .list-normal > *, .list-all-done > *, .list-all-new > * {
+  position: relative;
+  display: block;
   -webkit-font-smoothing: antialiased;
   font-family: "lato-light";
   font-weight: 300;
@@ -2364,21 +2365,71 @@ td.column {
 
 .list-breadcrumb > * {
   display: inline-block;
-  width: auto;
-  padding: 10px 20px;
+  padding: 5px 10px;
   margin: 0;
-  position: relative;
 }
-.list-breadcrumb > *:not(.no-delimiter)::before {
-  content: "/";
+.list-breadcrumb > *:not(.no-bullet)::before {
   position: absolute;
+  width: 10px;
+  content: "/";
+  text-align: center;
+  right: 100%;
+  margin: 0 10px;
+}
+.list-breadcrumb > *:not(.no-bullet):not(:first-child) {
+  margin-left: 30px;
+}
+.list-breadcrumb > *:first-child::before {
+  display: none;
 }
 
 .list-hashtags > * {
   display: inline-block;
-  width: auto;
   padding: 10px 30px;
   margin: 0 5px 5px 0;
+  padding-left: 44px;
+}
+.list-hashtags > *:not(.no-bullet)::before {
+  position: absolute;
+  width: 14px;
+  content: "#";
+  text-align: left;
+  left: 30px;
+  margin: 0;
+}
+
+.list-normal > * {
+  padding: 0;
+  margin: 0 0 10px 0;
+  margin-left: 20px;
+}
+.list-normal > *:not(.no-bullet)::before {
+  position: absolute;
+  width: 20px;
+  content: "»";
+  text-align: left;
+  right: 100%;
+  margin: 0;
+}
+
+.list-all-done > * {
+  display: inline-block;
+  padding: 10px 30px;
+  margin: 0 5px 5px 0;
+  margin-left: 10px;
+}
+.list-all-done > *:not(.no-bullet)::before {
+  position: absolute;
+  width: 10px;
+  content: "/";
+  text-align: left;
+  right: 100%;
+  margin: 0;
+}
+
+.list-all-new > * {
+  padding: 0;
+  margin: 0;
 }
 
 /***********************************************************************************
@@ -2857,15 +2908,25 @@ p {
   margin-right: 0.75rem;
 }
 
-.list-hashtags a {
-  background-color: #27ae60;
-}
-
 .list-breadcrumb li {
   background-color: #c0392b;
 }
 .list-breadcrumb li:before {
   background-color: #f26232;
+}
+
+.list-hashtags a {
+  background-color: #27ae60;
+}
+.list-hashtags a:before {
+  background-color: #249cd5;
+}
+
+.list-normal li {
+  background-color: #8e44ad;
+}
+.list-normal li:before {
+  background-color: #249cd5;
 }
 
 footer {
