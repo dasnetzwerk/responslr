@@ -51,9 +51,9 @@
 	color: $color;
 }
 
-@mixin responslr-border-color($name: null, $color: null, $property: border) {
+@mixin responslr-border-color($name: $responslr-colors-default, $color: null, $property: border) {
 	@if responslr-color-exists($name) {
-		$color: responslr-color-value($name);
+		$color: responslr-color-value($name) !default;
 	}
 
 	#{$property}-color: $color;

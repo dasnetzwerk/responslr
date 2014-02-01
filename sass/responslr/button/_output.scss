@@ -87,16 +87,16 @@
 	cursor: default;
 }
 
-@mixin responslr-button($name: null, $height: null, $padding-x: null, $padding-y: null, $border-radius: null, $insert-default-styles: true) {
+@mixin responslr-button($name: $responslr-buttons-default, $height: null, $padding-x: null, $padding-y: null, $border-radius: null, $insert-default-styles: true) {
 	@if $insert-default-styles {
 		@include responslr-button-default();
 	}
 
 	@if responslr-button-exists($name) {
-		$height: responslr-button-height($name);
-		$padding-x: responslr-button-padding-x($name);
-		$padding-y: responslr-button-padding-y($name);
-		$border-radius: responslr-button-border-radius($name);
+		$height: responslr-button-height($name) !default;
+		$padding-x: responslr-button-padding-x($name) !default;
+		$padding-y: responslr-button-padding-y($name) !default;
+		$border-radius: responslr-button-border-radius($name) !default;
 	}
 
 	@if $height == 0 {

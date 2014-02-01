@@ -1948,7 +1948,7 @@ td.column {
 .tooltip-default .tooltip-content {
   width: 320px;
   padding: 5px;
-  font-size: 14px;
+  font-size: tiny;
   line-height: 1.4;
   color: white;
   background-color: black;
@@ -2023,7 +2023,7 @@ td.column {
 .tooltip-inset .tooltip-content {
   width: 320px;
   padding: 5px;
-  font-size: 14px;
+  font-size: tiny;
   line-height: 1.4;
   color: white;
   background-color: black;
@@ -2097,7 +2097,7 @@ td.column {
 .tooltip-info .tooltip-content {
   width: 320px;
   padding: 5px;
-  font-size: 14px;
+  font-size: tiny;
   line-height: 1.4;
   color: white;
   background-color: blue;
@@ -2172,7 +2172,7 @@ td.column {
 .tooltip-error .tooltip-content {
   width: 320px;
   padding: 5px;
-  font-size: 14px;
+  font-size: tiny;
   line-height: 1.4;
   color: white;
   background-color: red;
@@ -2247,7 +2247,7 @@ td.column {
 .tooltip-success .tooltip-content {
   width: 320px;
   padding: 5px;
-  font-size: 14px;
+  font-size: tiny;
   line-height: 1.4;
   color: white;
   background-color: green;
@@ -2418,8 +2418,8 @@ html, body {
 
 h1, h2, h3, h4, h5, h6 {
   -webkit-font-smoothing: antialiased;
-  font-family: "lato-regular";
-  font-weight: 400;
+  font-family: lato-regular;
+  font-weight: 300;
   font-style: normal;
   font-size: 24px;
   line-height: 1.4;
@@ -2428,10 +2428,10 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   -webkit-font-smoothing: antialiased;
-  font-family: "lato-regular";
-  font-weight: 400;
+  font-family: lato-regular;
+  font-weight: 300;
   font-style: normal;
-  font-size: 48px;
+  font-size: large;
   line-height: 1.4;
 }
 
@@ -2450,8 +2450,8 @@ nav ul li.active a:visited {
 nav ul li a,
 nav ul li a:visited {
   -webkit-font-smoothing: antialiased;
-  font-family: "lato-regular";
-  font-weight: 400;
+  font-family: lato-regular;
+  font-weight: 300;
   font-style: normal;
   font-size: 24px;
   line-height: 1.4;
@@ -2469,11 +2469,15 @@ nav ul li a:visited:hover {
 }
 #main-navigation ul li a {
   -webkit-font-smoothing: antialiased;
-  font-family: "lato-regular";
-  font-weight: 400;
+  font-family: lato-regular;
+  font-weight: 300;
   font-style: normal;
-  font-size: 30px;
+  font-size: medium;
   line-height: 1.4;
+}
+
+article {
+  margin-bottom: 80px;
 }
 
 h3 {
@@ -2509,7 +2513,7 @@ p {
   font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
-  font-size: 30px;
+  font-size: medium;
   line-height: 1.4;
 }
 
@@ -2525,7 +2529,7 @@ p {
 .font-test-1 {
   display: inline-block;
   -webkit-font-smoothing: antialiased;
-  font-family: "lato-light";
+  font-family: lato-light;
   font-weight: 300;
   font-style: normal;
   font-size: 27px;
@@ -2538,7 +2542,7 @@ p {
   font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
-  font-size: 48px;
+  font-size: large;
   line-height: 200px;
 }
 
@@ -2561,7 +2565,7 @@ p {
 .tooltip-inset .tooltip-content {
   width: 320px;
   padding: 5px;
-  font-size: 14px;
+  font-size: tiny;
   line-height: 1.4;
   color: white;
   background-color: black;
@@ -2635,7 +2639,7 @@ p {
 .tooltip-info .tooltip-content {
   width: 320px;
   padding: 5px;
-  font-size: 14px;
+  font-size: tiny;
   line-height: 1.4;
   color: white;
   background-color: blue;
@@ -2710,7 +2714,7 @@ p {
 .tooltip-error .tooltip-content {
   width: 320px;
   padding: 5px;
-  font-size: 14px;
+  font-size: tiny;
   line-height: 1.4;
   color: white;
   background-color: red;
@@ -2785,7 +2789,7 @@ p {
 .tooltip-success .tooltip-content {
   width: 320px;
   padding: 5px;
-  font-size: 14px;
+  font-size: tiny;
   line-height: 1.4;
   color: white;
   background-color: green;
@@ -2872,7 +2876,7 @@ footer .portrait {
 }
 footer h3 {
   -webkit-font-smoothing: antialiased;
-  font-family: "lato-light";
+  font-family: lato-light;
   font-weight: 300;
   font-style: normal;
   font-size: 24px;

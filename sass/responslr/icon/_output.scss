@@ -80,14 +80,24 @@
 	@return $return-color;
 }
 
+@function responslr-icon-repeat($name: null) {
+	$return-repeat: map-get(responslr-icon($name), repeat);
+
+	@if $return-repeat == null {
+		$return-repeat: $responslr-icons-default-repeat;
+	}
+
+	@return $return-repeat;
+}
+
 
 /***********************************************************************************
 	EXTENDED FUNCTIONS
 ***********************************************************************************/
 
 @function responslr-icon-url($name: null, $file: null, $color: null) {
-	@if $color == null {
-		$color: responslr-icon-color($name);
+	@if responslr-icon-exists($name) {
+		$color: responslr-icon-color($name) !default;
 	}
 
 	@if responslr-color-exists($color) {
@@ -111,34 +121,35 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-icon($name: null, $file: null, $size: null, $offset-x: null, $offset-y: null, $color: null) {
-	@if $file == null {
-		background-image: responslr-icon-url($name: $name, $color: $color);
-	} @else {
-		background-image: responslr-icon-url($file: $file, $color: $color);
+@mixin responslr-icon($name: $responslr-icons-default, $file: null, $size: null, $offset-x: null, $offset-y: null, $color: null, $repeat: null) {
+	@if responslr-icon-exists($name) {
+		$file: responslr-icon-file($name) !default;
+		$size: responslr-icon-size($name) !default;
+		$offset-x: responslr-icon-offset-x($name) !default;
+		$offset-y: responslr-icon-offset-y($name) !default;
+		$color: responslr-icon-color($name) !default;
+		$repeat: responslr-icon-repeat($name) !default;
 	}
 
-	background-repeat: no-repeat;
+	background-image: responslr-icon-url($file: $file, $color: $color);
+	background-repeat: $repeat;
 
-	@include responslr-icon-position($name: $name, $offset-x: $offset-x, $offset-y: $offset-y);
-	@include responslr-icon-size($name: $name, $size: $size);
+	@include responslr-icon-position($offset-x: $offset-x, $offset-y: $offset-y);
+	@include responslr-icon-size($size: $size);
 }
 
-@mixin responslr-icon-size($name: null, $size: null) {
-	@if $size == null {
-		$size: responslr-icon-size($name);
+@mixin responslr-icon-size($name: $responslr-icons-default, $size: null) {
+	@if responslr-icon-exists($name) {
+		$size: responslr-icon-size($name) !default;
 	}
 
 	background-size: unquote($size);
 }
 
-@mixin responslr-icon-position($name: null, $offset-x: null, $offset-y: null) {
-	@if $offset-x == null {
-		$offset-x: responslr-icon-offset-x($name);
-	}
-
-	@if $offset-y == null {
-		$offset-y: responslr-icon-offset-y($name);
+@mixin responslr-icon-position($name: $responslr-icons-default, $offset-x: null, $offset-y: null) {
+	@if responslr-icon-exists($name) {
+		$offset-x: responslr-icon-offset-x($name) !default;
+		$offset-y: responslr-icon-offset-y($name) !default;
 	}
 
 	background-position: $offset-x $offset-y;

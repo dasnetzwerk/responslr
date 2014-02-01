@@ -137,56 +137,25 @@
 	-webkit-font-smoothing: antialiased;
 }
 
-@mixin responslr-typo-family($font-family: null, $font-weight: null, $font-style: null) {
-	$font-family-name: $font-family;
-
-	// Font-family
-	@if $font-family == null {
-		$font-family: responslr-typo-family-name($responslr-typo-families-default);
-	} @elseif responslr-typo-family-exists($font-family-name) {
-		$font-family: responslr-typo-family-name($font-family-name);
+@mixin responslr-typo-family($name: $responslr-typo-families-default, $font-family: null, $font-weight: null, $font-style: null) {
+	@if responslr-typo-family-exists($name) {
+		$font-family: responslr-typo-family-name($name) !default;
+		$font-weight: responslr-typo-family-font-weight($name) !default;
+		$font-style: responslr-typo-family-font-style($name) !default;
 	}
 
 	font-family: $font-family;
-
-	// Font-weight
-	@if $font-weight == null {
-		@if responslr-typo-family-font-weight($font-family-name) {
-			$font-weight: responslr-typo-family-font-weight($font-family-name);
-		}
-	}
-
 	font-weight: $font-weight;
-
-	// Font-style
-	@if $font-style == null {
-		@if responslr-typo-family-font-style($font-family-name) {
-			$font-style: responslr-typo-family-font-style($font-family-name);
-		}
-	}
-
 	font-style: $font-style;
 }
 
-@mixin responslr-typo-size($font-size: null, $line-height: null) {
-	$font-size-name: $font-size;
-
-	// Font-size
-	@if $font-size == null {
-		$font-size: responslr-typo-size-value($responslr-typo-sizes-default);
-	} @elseif responslr-typo-size-exists($font-size-name) {
-		$font-size: responslr-typo-size-value($font-size-name);
+@mixin responslr-typo-size($name: $responslr-typo-sizes-default, $font-size: null, $line-height: null) {
+	@if responslr-typo-size-exists($name) {
+		$font-size: responslr-typo-size-value($name) !default;
+		$line-height: responslr-typo-size-line-height($name) !default;
 	}
 
 	font-size: $font-size;
-
-	// Line-height
-	@if $line-height == null {
-		@if responslr-typo-size-line-height($font-size-name) {
-			$line-height: responslr-typo-size-line-height($font-size-name);
-		}
-	}
-
 	line-height: $line-height;
 }
 
@@ -234,7 +203,7 @@
 
 		@each $font-family-key, $font-family-list in $responslr-typo-families {
 			.#{$responslr-typo-family-class-prefix}#{$font-family-key} {
-				@include responslr-typo-family($font-family: $font-family-key);
+				@include responslr-typo-family($name: $font-family-key);
 			}
 		}
 	}
@@ -243,7 +212,7 @@
 	@if $responslr-generate-typo-sizes AND responslr-map-isnotempty($responslr-typo-sizes) {
 		@each $font-size-key, $font-size-list in $responslr-typo-sizes {
 			.#{$responslr-typo-size-class-prefix}#{$font-size-key} {
-				@include responslr-typo-size($font-size: $font-size-key);
+				@include responslr-typo-size($name: $font-size-key);
 			}
 		}
 	}

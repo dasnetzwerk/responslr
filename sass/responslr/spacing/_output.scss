@@ -54,18 +54,18 @@
 }
 
 // Apply leading whitespace as margin.
-@mixin responslr-spacing-top($spacing-size: null, $property: margin) {
-	@if responslr-spacing-exists($spacing-size) {
-		$spacing-size: responslr-spacing-size($spacing-size);
+@mixin responslr-spacing-top($name: $responslr-spacings-default, $spacing-size: null, $property: margin) {
+	@if responslr-spacing-exists($name) {
+		$spacing-size: responslr-spacing-size($name) !default;
 	}
 
 	@include responslr-spacing($spacing-size-top: $spacing-size, $property: $property);
 }
 
 // Apply trailing whitespace as margin.
-@mixin responslr-spacing-bottom($spacing-size: null, $property: margin) {
-	@if responslr-spacing-exists($spacing-size) {
-		$spacing-size: responslr-spacing-size($spacing-size);
+@mixin responslr-spacing-bottom($name: $responslr-spacings-default, $spacing-size: null, $property: margin) {
+	@if responslr-spacing-exists($name) {
+		$spacing-size: responslr-spacing-size($name) !default;
 	}
 
 	@include responslr-spacing($spacing-size-bottom: $spacing-size, $property: $property);
@@ -83,11 +83,11 @@
 @mixin responslr-generate-spacings() {
 	@each $spacing-key, $spacing-value in $responslr-spacings {
 		.#{$responslr-spacing-top-class-prefix}#{$spacing-key} {
-			@include responslr-spacing-top($spacing-value);
+			@include responslr-spacing-top($name: $spacing-key);
 		}
 
 		.#{$responslr-spacing-bottom-class-prefix}#{$spacing-key} {
-			@include responslr-spacing-bottom($spacing-value);
+			@include responslr-spacing-bottom($name: $spacing-key);
 		}
 	}
 }

@@ -89,14 +89,12 @@
 	@include transform(translate3d(0,0,0));
 }
 
-@mixin responslr-transition($name: null, $properties: null, $duration: null, $timing-function: null, $delay: null) {
+@mixin responslr-transition($name: $responslr-transitions-default, $properties: null, $duration: null, $timing-function: null, $delay: null) {
 	@if responslr-transition-exists($name) {
-		$properties: unquote(responslr-transition-properties($name));
-		$duration: responslr-transition-duration($name);
-		$timing-function: responslr-transition-timing-function($name);
-		$delay: responslr-transition-delay($name);
-	} @else {
-		$properties: unquote($properties);
+		$properties: responslr-transition-properties($name) !default;
+		$duration: responslr-transition-duration($name) !default;
+		$timing-function: responslr-transition-timing-function($name) !default;
+		$delay: responslr-transition-delay($name) !default;
 	}
 
 	@include transition(all $duration $timing-function);
@@ -106,7 +104,7 @@
 	}
 
 	@if $properties != all {
-		@include transition-property($properties);
+		@include transition-property(unquote($properties));
 	}
 
 	@if responslr-transition-hardware-acceleration($name) {
