@@ -81,6 +81,16 @@
 	@return $return-bullet-width;
 }
 
+@function responslr-list-bullet-height($name: null) {
+	$return-bullet-height: map-get(responslr-list($name), bullet-height);
+
+	@if $return-bullet-height == null {
+		$return-bullet-height: $responslr-lists-default-bullet-height;
+	}
+
+	@return $return-bullet-height;
+}
+
 @function responslr-list-bullet-margin($name: null) {
 	$return-bullet-margin: map-get(responslr-list($name), bullet-margin);
 
@@ -89,6 +99,26 @@
 	}
 
 	@return $return-bullet-margin;
+}
+
+@function responslr-list-bullet-color($name: null) {
+	$return-bullet-color: map-get(responslr-list($name), bullet-color);
+
+	@if $return-bullet-color == null {
+		$return-bullet-color: $responslr-lists-default-bullet-color;
+	}
+
+	@return $return-bullet-color;
+}
+
+@function responslr-list-bullet-icon($name: null) {
+	$return-bullet-icon: map-get(responslr-list($name), bullet-icon);
+
+	@if $return-bullet-icon == null {
+		$return-bullet-icon: $responslr-lists-default-bullet-icon;
+	}
+
+	@return $return-bullet-icon;
 }
 
 @function responslr-list-padding($name: null) {
@@ -121,6 +151,127 @@
 	MIXINS
 ***********************************************************************************/
 
+@mixin responslr-list-default() {
+	font-size: 0;
+	line-height: 0;
+
+	& > * {
+		position: relative;
+		display: block;
+
+		@include responslr-typo();
+	}
+}
+
+@mixin responslr-list($name: $responslr-lists-default) {
+	$list-item-margin: responslr-list-margin($name);
+	$list-item-padding: responslr-list-padding($name);
+
+	& > * {
+		@if responslr-list-type($name) == horizontal {
+			display: inline-block;
+		}
+
+		padding: $list-item-padding;
+		margin: $list-item-margin;
+
+		@if responslr-list-bullet($name) != none {
+			$bullet-type: responslr-list-bullet($name);
+			$bullet-position: responslr-list-bullet-position($name);
+			$bullet-width: responslr-list-bullet-width($name);
+			$bullet-height: responslr-list-bullet-height($name);
+			$bullet-margin: responslr-list-bullet-margin($name);
+			$bullet-color: responslr-list-bullet-color($name);
+			$bullet-icon: responslr-list-bullet-icon($name);
+
+			$bullet-margin-left: responslr-split-shorthand($bullet-margin, 'left');
+			$bullet-margin-right: responslr-split-shorthand($bullet-margin, 'right');
+
+			$list-item-margin-left: responslr-split-shorthand($list-item-margin, 'left');
+			$list-item-margin-right: responslr-split-shorthand($list-item-margin, 'right');
+
+			$list-item-padding-left: responslr-split-shorthand($list-item-padding, 'left');
+
+			$list-item-margin-left: $list-item-margin-left + $bullet-margin-left + $bullet-margin-right;
+			$list-item-margin-right: $list-item-margin-right + $bullet-margin-left + $bullet-margin-right;
+
+			&:not(.#{$responslr-list-no-bullet-class})::#{$responslr-list-pseudo-element} {
+				position: absolute;
+				width: $bullet-width;
+
+				@if $bullet-height != auto {
+					height: $bullet-height;
+				}
+
+				@if $bullet-type == 'custom' {
+					content: responslr-list-bullet-custom($name);
+
+					@if index(between-before between-after, $bullet-position) {
+						text-align: center;
+					} @else {
+						text-align: left;
+					}
+				} @else {
+					content: '';
+
+					@if $bullet-type == 'circle' {
+						@include responslr-shape-circle($width: $bullet-width, $height: $bullet-height, $radius: 50%);
+					}
+
+					@if $bullet-type == 'triangle' {
+						@include responslr-shape-triangle($direction: right, $width: $bullet-width, $height: auto, $color: $bullet-color);
+					}
+
+					@if $bullet-type == 'icon' {
+						@if responslr-icon-exists($bullet-icon) {
+							@include responslr-icon($name: $bullet-icon, $size: '#{$bullet-width} auto', $offset-x: null, $offset-y: null, $color: $bullet-color, $repeat: no-repeat);
+						} @else {
+							@include responslr-icon($file: $bullet-icon, $size: '#{$bullet-width} auto', $offset-x: null, $offset-y: null, $color: $bullet-color, $repeat: no-repeat);
+						}
+					}
+
+					@if $bullet-height == auto {
+						height: $bullet-width;
+					}
+				}
+
+				@if $bullet-position == 'inside' {
+					left: $list-item-padding-left + $bullet-margin-left;
+				} @else {
+					@if $bullet-position == 'between-after' {
+						left: 100%;
+					} @else {
+						right: 100%;
+					}
+				}
+
+				margin: $bullet-margin;
+			}
+
+			@if $bullet-position == 'between-before' {
+				&:not(.#{$responslr-list-no-bullet-class}):not(:first-child) {
+					margin-left: $list-item-margin-left + $bullet-width;
+				}
+
+				&:first-child::#{$responslr-list-pseudo-element} {
+					display: none;
+				}
+			} @elseif $bullet-position == 'between-after' {
+				&:not(.#{$responslr-list-no-bullet-class}):not(:last-child) {
+					margin-right: $list-item-margin-right + $bullet-width;
+				}
+
+				&:last-child::#{$responslr-list-pseudo-element} {
+					display: none;
+				}
+			} @elseif $bullet-position == 'outside' {
+				margin-left: $list-item-margin-left + $bullet-width;
+			} @else {
+				padding-left: $list-item-padding-left + $bullet-width + $bullet-margin-left + $bullet-margin-right;
+			}
+		}
+	}
+}
 
 /***********************************************************************************
 	CLASS GENERATOR
@@ -132,84 +283,14 @@
 
 @mixin responslr-generate-lists() {
 	%list {
-		font-size: 0;
-		line-height: 0;
-
-		& > * {
-			position: relative;
-			display: block;
-
-			@include responslr-typo();
-		}
+		@include responslr-list-default();
 	}
 
 	@each $list-key, $list-list in $responslr-lists {
-		$list-item-margin: responslr-list-margin($list-key);
-		$list-item-padding: responslr-list-padding($list-key);
-
 		.#{$responslr-list-class-prefix}#{$list-key} {
 			@extend %list;
 
-			& > * {
-				@if responslr-list-type($list-key) == horizontal {
-					display: inline-block;
-				}
-
-				padding: $list-item-padding;
-				margin: $list-item-margin;
-
-				@if responslr-list-bullet($list-key) != none {
-					$bullet-type: responslr-list-bullet($list-key);
-					$bullet-position: responslr-list-bullet-position($list-key);
-					$bullet-width: responslr-list-bullet-width($list-key);
-					$bullet-margin: responslr-list-bullet-margin($list-key);
-
-					$bullet-margin-left: responslr-split-shorthand($bullet-margin, 'left');
-					$bullet-margin-right: responslr-split-shorthand($bullet-margin, 'right');
-
-					$list-item-margin-left: responslr-split-shorthand($list-item-margin, 'left');
-					$list-item-padding-left: responslr-split-shorthand($list-item-padding, 'left');
-
-					&:not(.no-bullet)::#{$responslr-list-pseudo-element} {
-						position: absolute;
-						width: responslr-list-bullet-width($list-key);
-
-						@if $bullet-type == 'custom' {
-							content: responslr-list-bullet-custom($list-key);
-
-							@if $bullet-position == 'between' {
-								text-align: center;
-							} @else {
-								text-align: left;
-							}
-						}
-
-						@if $bullet-position == 'inside' {
-							left: $list-item-padding-left + $bullet-margin-left;
-						} @else {
-							right: 100%;
-						}
-
-						margin: $bullet-margin;
-
-						$list-item-margin-left: $list-item-margin-left + $bullet-margin-left + $bullet-margin-right;
-					}
-
-					@if $bullet-position == 'between' {
-						&:not(.no-bullet):not(:first-child) {
-							margin-left: $list-item-margin-left + $bullet-width;
-						}
-
-						&:first-child::#{$responslr-list-pseudo-element} {
-							display: none;
-						}
-					} @elseif $bullet-position == 'outside' {
-						margin-left: $list-item-margin-left + $bullet-width;
-					} @else {
-						padding-left: $list-item-padding-left + $bullet-width + $bullet-margin-left + $bullet-margin-right;
-					}
-				}
-			}
+			@include responslr-list($name: $list-key);
 		}
 	}
 }

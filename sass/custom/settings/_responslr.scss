@@ -105,10 +105,21 @@ $responslr-lists: (
 		type: 'horizontal',
 		bullet: 'custom',
 		bullet-custom: '/',
-		bullet-position: 'between',
+		bullet-position: 'between-before',
 		bullet-width: 10px,
-		bullet-margin: 0 10px,
+		bullet-margin: 0 10px 0 0,
 		padding: 5px 10px,
+		margin: 0 10px 10px 0
+	),
+	'breadcrumb-after': (
+		type: 'horizontal',
+		bullet: 'custom',
+		bullet-custom: '»',
+		bullet-position: 'between-after',
+		bullet-width: 10px,
+		bullet-margin: 0 0 0 10px,
+		padding: 5px 10px,
+		margin: 0 10px 10px 0
 	),
 	'hashtags': (
 		type: 'horizontal',
@@ -119,34 +130,36 @@ $responslr-lists: (
 		padding: 10px 30px,
 		margin: 0 5px 5px 0,
 	),
-	'normal': (
-		bullet: 'custom',
-		bullet-custom: '»',
-		bullet-width: 20px,
+	'triangle': (
+		bullet: 'triangle',
+		bullet-width: 10px,
+		bullet-margin: 9px 10px 0 0,
+		bullet-color: $blue,
 		margin: 0 0 10px 0,
 	),
-	'all-done': (
-		type: 'horizontal',
-		bullet: 'custom',
-		bullet-custom: '/',
-		bullet-position: 'outside',
-		bullet-width: 10px,
-		bullet-margin: 0,
-		padding: 10px 30px,
-		margin: 0 5px 5px 0,
-
+	'icon': (
+		bullet: 'icon',
+		bullet-icon: 'equalizer',
+		bullet-width: 15px,
+		bullet-margin: 9px 10px 0 0,
+		bullet-color: $red,
+		margin: 0 0 10px 0,
 	),
 	'all-new': (
 		bullet-height: 10px,
-		padding-first: 10px 30px,
-		padding-last: 10px 30px,
-		margin-first: 0 5px 5px 0,
-		margin-last: 0 5px 5px 0,
-
 	)
 );
 
-// Bullet types: circle, square, arrow, triangle, icon, custom
+// Bullet types done: circle, square, triangle, icon, custom
+// Bullet types todo: arrow
+
+// padding-first: 10px 30px,
+// padding-last: 10px 30px,
+// margin-first: 0 5px 5px 0,
+// margin-last: 0 5px 5px 0,
+// bullet-font-family: 'times-new-roman',
+// bullet-font-size: 10px,
+// bullet-line-height: 10px,
 
 // Shape (circles)
 

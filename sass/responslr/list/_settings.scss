@@ -13,7 +13,10 @@ $responslr-lists-default-bullet: none !default;
 $responslr-lists-default-bullet-custom: '' !default;
 $responslr-lists-default-bullet-position: outside !default;
 $responslr-lists-default-bullet-width: 10px !default;
+$responslr-lists-default-bullet-height: auto !default;
 $responslr-lists-default-bullet-margin: 0 !default;
+$responslr-lists-default-bullet-color: null !default;
+$responslr-lists-default-bullet-icon: null !default;
 $responslr-lists-default-padding: 0 !default;
 $responslr-lists-default-margin: 0 !default;
 
@@ -22,3 +25,4 @@ $responslr-list-pseudo-element: 'before' !default;
 
 // Classes
 $responslr-list-class-prefix: 'list-' !default;
+$responslr-list-no-bullet-class: 'no-bullet' !default;

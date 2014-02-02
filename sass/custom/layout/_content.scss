@@ -90,7 +90,8 @@ p {
 	@extend %tooltip-success;
 }
 
-.list-breadcrumb {
+.list-breadcrumb,
+.list-breadcrumb-after {
 	li {
 		background-color: $red;
 
@@ -110,12 +111,18 @@ p {
 	}
 }
 
-.list-normal {
+.list-triangle {
 	li {
 		background-color: $purple;
 
 		&:before {
-			background-color: $blue;
+			//background-color: $blue;
 		}
+	}
+}
+
+.list-icon {
+	li {
+		background-color: $orange;
 	}
 }

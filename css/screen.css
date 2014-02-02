@@ -2348,11 +2348,11 @@ td.column {
 /***********************************************************************************
 	CLASS GENERATOR
 ***********************************************************************************/
-.list-breadcrumb, .list-hashtags, .list-normal, .list-all-done, .list-all-new {
+.list-breadcrumb, .list-breadcrumb-after, .list-hashtags, .list-triangle, .list-icon, .list-all-new {
   font-size: 0;
   line-height: 0;
 }
-.list-breadcrumb > *, .list-hashtags > *, .list-normal > *, .list-all-done > *, .list-all-new > * {
+.list-breadcrumb > *, .list-breadcrumb-after > *, .list-hashtags > *, .list-triangle > *, .list-icon > *, .list-all-new > * {
   position: relative;
   display: block;
   -webkit-font-smoothing: antialiased;
@@ -2366,7 +2366,7 @@ td.column {
 .list-breadcrumb > * {
   display: inline-block;
   padding: 5px 10px;
-  margin: 0;
+  margin: 0 10px 10px 0;
 }
 .list-breadcrumb > *:not(.no-bullet)::before {
   position: absolute;
@@ -2374,12 +2374,32 @@ td.column {
   content: "/";
   text-align: center;
   right: 100%;
-  margin: 0 10px;
+  margin: 0 10px 0 0;
 }
 .list-breadcrumb > *:not(.no-bullet):not(:first-child) {
-  margin-left: 30px;
+  margin-left: 20px;
 }
 .list-breadcrumb > *:first-child::before {
+  display: none;
+}
+
+.list-breadcrumb-after > * {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0 10px 10px 0;
+}
+.list-breadcrumb-after > *:not(.no-bullet)::before {
+  position: absolute;
+  width: 10px;
+  content: "»";
+  text-align: center;
+  left: 100%;
+  margin: 0 0 0 10px;
+}
+.list-breadcrumb-after > *:not(.no-bullet):not(:last-child) {
+  margin-right: 30px;
+}
+.list-breadcrumb-after > *:last-child::before {
   display: none;
 }
 
@@ -2398,33 +2418,41 @@ td.column {
   margin: 0;
 }
 
-.list-normal > * {
+.list-triangle > * {
   padding: 0;
   margin: 0 0 10px 0;
   margin-left: 20px;
 }
-.list-normal > *:not(.no-bullet)::before {
-  position: absolute;
-  width: 20px;
-  content: "»";
-  text-align: left;
-  right: 100%;
-  margin: 0;
-}
-
-.list-all-done > * {
-  display: inline-block;
-  padding: 10px 30px;
-  margin: 0 5px 5px 0;
-  margin-left: 10px;
-}
-.list-all-done > *:not(.no-bullet)::before {
+.list-triangle > *:not(.no-bullet)::before {
   position: absolute;
   width: 10px;
-  content: "/";
-  text-align: left;
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 10px solid #249cd5;
+  height: 10px;
   right: 100%;
-  margin: 0;
+  margin: 9px 10px 0 0;
+}
+
+.list-icon > * {
+  padding: 0;
+  margin: 0 0 10px 0;
+  margin-left: 25px;
+}
+.list-icon > *:not(.no-bullet)::before {
+  position: absolute;
+  width: 15px;
+  content: '';
+  background-image: url('data:image/svg+xml;base64,PHN2ZyBzdHlsZT0iZmlsbDojYzAzOTJiOyIgdmVyc2lvbj0iMS4xIiBpZD0iRXF1YWxpemVyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjQyLjkzOHB4IiBoZWlnaHQ9IjMzLjY4OHB4IiB2aWV3Qm94PSIwIDAgNDIuOTM4IDMzLjY4OCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNDIuOTM4IDMzLjY4OCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHJlY3QgeD0iMC4wNTIiIHk9IjI2LjYiIHdpZHRoPSIxMS42MSIgaGVpZ2h0PSI3LjA1OCIvPjxyZWN0IHg9IjE1LjY3NyIgeT0iMC4wNjgiIHdpZHRoPSIxMS42MSIgaGVpZ2h0PSIzMy41ODkiLz48cmVjdCB4PSIzMS4zMDIiIHk9IjE2LjQwMiIgd2lkdGg9IjExLjYxIiBoZWlnaHQ9IjE3LjI1NSIvPjwvc3ZnPg==');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 15px auto;
+  height: 15px;
+  right: 100%;
+  margin: 9px 10px 0 0;
 }
 
 .list-all-new > * {
@@ -2908,10 +2936,12 @@ p {
   margin-right: 0.75rem;
 }
 
-.list-breadcrumb li {
+.list-breadcrumb li,
+.list-breadcrumb-after li {
   background-color: #c0392b;
 }
-.list-breadcrumb li:before {
+.list-breadcrumb li:before,
+.list-breadcrumb-after li:before {
   background-color: #f26232;
 }
 
@@ -2922,11 +2952,12 @@ p {
   background-color: #249cd5;
 }
 
-.list-normal li {
+.list-triangle li {
   background-color: #8e44ad;
 }
-.list-normal li:before {
-  background-color: #249cd5;
+
+.list-icon li {
+  background-color: #f26232;
 }
 
 footer {
