@@ -164,10 +164,18 @@
 	@include responslr-typo-fix();
 
 	// Font-family
-	@include responslr-typo-family($font-family: $font-family, $font-weight: $font-weight, $font-style: $font-style);
+	@if responslr-typo-family-exists($font-family) {
+		@include responslr-typo-family($name: $font-family, $font-weight: $font-weight, $font-style: $font-style);
+	} @else {
+		@include responslr-typo-family($font-family: $font-family, $font-weight: $font-weight, $font-style: $font-style);
+	}
 
 	// Font-size
-	@include responslr-typo-size($font-size: $font-size, $line-height: $line-height);
+	@if responslr-typo-size-exists($font-size) {
+		@include responslr-typo-size($name: $font-size, $line-height: $line-height);
+	} @else {
+		@include responslr-typo-size($font-size: $font-size, $line-height: $line-height);
+	}
 }
 
 

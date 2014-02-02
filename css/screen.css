@@ -2497,8 +2497,8 @@ html, body {
 
 h1, h2, h3, h4, h5, h6 {
   -webkit-font-smoothing: antialiased;
-  font-family: lato-regular;
-  font-weight: 300;
+  font-family: "lato-regular";
+  font-weight: 400;
   font-style: normal;
   font-size: 24px;
   line-height: 1.4;
@@ -2507,10 +2507,10 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   -webkit-font-smoothing: antialiased;
-  font-family: lato-regular;
-  font-weight: 300;
+  font-family: "lato-regular";
+  font-weight: 400;
   font-style: normal;
-  font-size: large;
+  font-size: 48px;
   line-height: 1.4;
 }
 
@@ -2529,8 +2529,8 @@ nav ul li.active a:visited {
 nav ul li a,
 nav ul li a:visited {
   -webkit-font-smoothing: antialiased;
-  font-family: lato-regular;
-  font-weight: 300;
+  font-family: "lato-regular";
+  font-weight: 400;
   font-style: normal;
   font-size: 24px;
   line-height: 1.4;
@@ -2548,10 +2548,10 @@ nav ul li a:visited:hover {
 }
 #main-navigation ul li a {
   -webkit-font-smoothing: antialiased;
-  font-family: lato-regular;
-  font-weight: 300;
+  font-family: "lato-regular";
+  font-weight: 400;
   font-style: normal;
-  font-size: medium;
+  font-size: 30px;
   line-height: 1.4;
 }
 
@@ -2592,7 +2592,7 @@ p {
   font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
-  font-size: medium;
+  font-size: 30px;
   line-height: 1.4;
 }
 
@@ -2608,7 +2608,7 @@ p {
 .font-test-1 {
   display: inline-block;
   -webkit-font-smoothing: antialiased;
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
   font-size: 27px;
@@ -2621,7 +2621,7 @@ p {
   font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
-  font-size: large;
+  font-size: 48px;
   line-height: 200px;
 }
 
@@ -2968,7 +2968,7 @@ footer .portrait {
 }
 footer h3 {
   -webkit-font-smoothing: antialiased;
-  font-family: lato-light;
+  font-family: "lato-light";
   font-weight: 300;
   font-style: normal;
   font-size: 24px;
