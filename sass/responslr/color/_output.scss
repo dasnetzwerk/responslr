@@ -17,7 +17,7 @@
 ***********************************************************************************/
 
 @function responslr-color-value($name: null) {
-	$return-color: null;
+	$return-color: $name;
 
 	@if $name == null {
 		$name: $responslr-colors-default;

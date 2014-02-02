@@ -1,5 +1,5 @@
 /***********************************************************************************
-	OUTPUT - INLINE-LIST
+	OUTPUT - LIST
 ***********************************************************************************/
 
 
@@ -41,14 +41,14 @@
 	@return $return-type;
 }
 
-@function responslr-list-bullet($name: null) {
-	$return-bullet: map-get(responslr-list($name), bullet);
+@function responslr-list-bullet-type($name: null) {
+	$return-bullet-type: map-get(responslr-list($name), bullet-type);
 
-	@if $return-bullet == null {
-		$return-bullet: $responslr-lists-default-bullet;
+	@if $return-bullet-type == null {
+		$return-bullet-type: $responslr-lists-default-bullet-type;
 	}
 
-	@return $return-bullet;
+	@return $return-bullet-type;
 }
 
 @function responslr-list-bullet-custom($name: null) {
@@ -121,25 +121,37 @@
 	@return $return-bullet-icon;
 }
 
-@function responslr-list-padding($name: null) {
-	$return-padding: map-get(responslr-list($name), padding);
+@function responslr-list-item-padding($name: null) {
+	$return-item-padding: map-get(responslr-list($name), item-padding);
 
-	@if $return-padding == null {
-		$return-padding: $responslr-lists-default-padding;
+	@if $return-item-padding == null {
+		$return-item-padding: $responslr-lists-default-item-padding;
 	}
 
-	@return $return-padding;
+	@return $return-item-padding;
 }
 
-@function responslr-list-margin($name: null) {
-	$return-margin: map-get(responslr-list($name), margin);
+@function responslr-list-item-margin($name: null) {
+	$return-item-margin: map-get(responslr-list($name), item-margin);
 
-	@if $return-margin == null {
-		$return-margin: $responslr-lists-default-margin;
+	@if $return-item-margin == null {
+		$return-item-margin: $responslr-lists-default-item-margin;
 	}
 
-	@return $return-margin;
+	@return $return-item-margin;
 }
+
+// TODO: Bullet types arrow and sprite
+
+// TODO: list-padding
+// TODO: list-margin
+// TODO: item-padding-first: 10px 30px,
+// TODO: item-padding-last: 10px 30px,
+// TODO: item-margin-first: 0 5px 5px 0,
+// TODO: item-margin-last: 0 5px 5px 0,
+// TODO: bullet-font-family: 'times-new-roman',
+// TODO: bullet-font-size: 10px,
+// TODO: bullet-line-height: 10px,
 
 
 /***********************************************************************************
@@ -163,37 +175,40 @@
 	}
 }
 
-@mixin responslr-list($name: $responslr-lists-default) {
-	$list-item-margin: responslr-list-margin($name);
-	$list-item-padding: responslr-list-padding($name);
+@mixin responslr-list($name: $responslr-lists-default, $type: null, $bullet-type: null, $bullet-custom: null, $bullet-position: null, $bullet-width: null, $bullet-height: null, $bullet-margin: null, $bullet-color: null, $bullet-icon: null, $item-padding: null, $item-margin: null) {
+	@if responslr-list-exists($name) {
+		$type:  responslr-list-type($name) !default;
+		$bullet-type: responslr-list-bullet-type($name) !default;
+		$bullet-custom: responslr-list-bullet-custom($name) !default;
+		$bullet-position: responslr-list-bullet-position($name) !default;
+		$bullet-width: responslr-list-bullet-width($name) !default;
+		$bullet-height: responslr-list-bullet-height($name) !default;
+		$bullet-margin: responslr-list-bullet-margin($name) !default;
+		$bullet-color: responslr-list-bullet-color($name) !default;
+		$bullet-icon: responslr-list-bullet-icon($name) !default;
+		$item-padding: responslr-list-item-padding($name) !default;
+		$item-margin: responslr-list-item-margin($name) !default;
+	}
 
 	& > * {
-		@if responslr-list-type($name) == horizontal {
+		@if $type == horizontal {
 			display: inline-block;
 		}
 
-		padding: $list-item-padding;
-		margin: $list-item-margin;
+		padding: $item-padding;
+		margin: $item-margin;
 
-		@if responslr-list-bullet($name) != none {
-			$bullet-type: responslr-list-bullet($name);
-			$bullet-position: responslr-list-bullet-position($name);
-			$bullet-width: responslr-list-bullet-width($name);
-			$bullet-height: responslr-list-bullet-height($name);
-			$bullet-margin: responslr-list-bullet-margin($name);
-			$bullet-color: responslr-list-bullet-color($name);
-			$bullet-icon: responslr-list-bullet-icon($name);
-
+		@if $bullet-type != none {
 			$bullet-margin-left: responslr-split-shorthand($bullet-margin, 'left');
 			$bullet-margin-right: responslr-split-shorthand($bullet-margin, 'right');
 
-			$list-item-margin-left: responslr-split-shorthand($list-item-margin, 'left');
-			$list-item-margin-right: responslr-split-shorthand($list-item-margin, 'right');
+			$item-margin-left: responslr-split-shorthand($item-margin, 'left');
+			$item-margin-right: responslr-split-shorthand($item-margin, 'right');
 
-			$list-item-padding-left: responslr-split-shorthand($list-item-padding, 'left');
+			$item-padding-left: responslr-split-shorthand($item-padding, 'left');
 
-			$list-item-margin-left: $list-item-margin-left + $bullet-margin-left + $bullet-margin-right;
-			$list-item-margin-right: $list-item-margin-right + $bullet-margin-left + $bullet-margin-right;
+			$item-margin-left: $item-margin-left + $bullet-margin-left + $bullet-margin-right;
+			$item-margin-right: $item-margin-right + $bullet-margin-left + $bullet-margin-right;
 
 			&:not(.#{$responslr-list-no-bullet-class})::#{$responslr-list-pseudo-element} {
 				position: absolute;
@@ -204,7 +219,11 @@
 				}
 
 				@if $bullet-type == 'custom' {
-					content: responslr-list-bullet-custom($name);
+					content: $bullet-custom;
+
+					@if $bullet-color != null {
+						color: responslr-color-value($bullet-color);
+					}
 
 					@if index(between-before between-after, $bullet-position) {
 						text-align: center;
@@ -236,7 +255,7 @@
 				}
 
 				@if $bullet-position == 'inside' {
-					left: $list-item-padding-left + $bullet-margin-left;
+					left: $item-padding-left + $bullet-margin-left;
 				} @else {
 					@if $bullet-position == 'between-after' {
 						left: 100%;
@@ -250,7 +269,7 @@
 
 			@if $bullet-position == 'between-before' {
 				&:not(.#{$responslr-list-no-bullet-class}):not(:first-child) {
-					margin-left: $list-item-margin-left + $bullet-width;
+					margin-left: $item-margin-left + $bullet-width;
 				}
 
 				&:first-child::#{$responslr-list-pseudo-element} {
@@ -258,16 +277,16 @@
 				}
 			} @elseif $bullet-position == 'between-after' {
 				&:not(.#{$responslr-list-no-bullet-class}):not(:last-child) {
-					margin-right: $list-item-margin-right + $bullet-width;
+					margin-right: $item-margin-right + $bullet-width;
 				}
 
 				&:last-child::#{$responslr-list-pseudo-element} {
 					display: none;
 				}
 			} @elseif $bullet-position == 'outside' {
-				margin-left: $list-item-margin-left + $bullet-width;
+				margin-left: $item-margin-left + $bullet-width;
 			} @else {
-				padding-left: $list-item-padding-left + $bullet-width + $bullet-margin-left + $bullet-margin-right;
+				padding-left: $item-padding-left + $bullet-width + $bullet-margin-left + $bullet-margin-right;
 			}
 		}
 	}
