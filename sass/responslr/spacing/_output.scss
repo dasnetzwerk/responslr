@@ -77,7 +77,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-spacings-check() {
-	@return $responslr-generate-spacings AND responslr-map-isnotempty($responslr-spacings);
+	@return $responslr-generate-spacings and responslr-map-isnotempty($responslr-spacings);
 }
 
 @mixin responslr-generate-spacings() {

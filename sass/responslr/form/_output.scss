@@ -18,7 +18,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-forms-check() {
-	@return $responslr-generate-forms AND responslr-map-isnotempty($responslr-forms);
+	@return $responslr-generate-forms and responslr-map-isnotempty($responslr-forms);
 }
 
 @mixin responslr-generate-forms() {

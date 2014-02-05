@@ -118,7 +118,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-transitions-check() {
-	@return $responslr-generate-transitions AND responslr-map-isnotempty($responslr-transitions);
+	@return $responslr-generate-transitions and responslr-map-isnotempty($responslr-transitions);
 }
 
 @mixin responslr-generate-transitions() {

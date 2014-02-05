@@ -8,7 +8,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-tables-check() {
-	@return $responslr-generate-tables AND responslr-map-isnotempty($responslr-tables);
+	@return $responslr-generate-tables and responslr-map-isnotempty($responslr-tables);
 }
 
 @mixin responslr-generate-tables() {

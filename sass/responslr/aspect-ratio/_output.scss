@@ -81,7 +81,7 @@
 		$height: responslr-aspect-ratio-height($name) !default;
 	}
 
-	@if type-of($width) == number AND type-of($height) == number {
+	@if type-of($width) == number and type-of($height) == number {
 		position: relative;
 
 		&::#{$responslr-aspect-ratio-pseudo-element} {
@@ -113,7 +113,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-aspect-ratios-check() {
-	@return $responslr-generate-aspect-ratios AND responslr-map-isnotempty($responslr-aspect-ratios);
+	@return $responslr-generate-aspect-ratios and responslr-map-isnotempty($responslr-aspect-ratios);
 }
 
 @mixin responslr-generate-aspect-ratios() {

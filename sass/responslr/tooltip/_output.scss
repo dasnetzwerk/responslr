@@ -367,7 +367,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-tooltips-check() {
-	@return $responslr-generate-tooltips AND responslr-map-isnotempty($responslr-tooltips);
+	@return $responslr-generate-tooltips and responslr-map-isnotempty($responslr-tooltips);
 }
 
 @if responslr-generate-tooltips-check() {

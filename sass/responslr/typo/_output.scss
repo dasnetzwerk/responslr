@@ -189,7 +189,7 @@
 
 @mixin responslr-generate-typo() {
 	// Font-families
-	@if $responslr-generate-typo-families AND responslr-map-isnotempty($responslr-typo-families) {
+	@if $responslr-generate-typo-families and responslr-map-isnotempty($responslr-typo-families) {
 
 		@each $font-family-key, $font-family-list in $responslr-typo-families {
 			// Generate font-faces
@@ -217,7 +217,7 @@
 	}
 
 	// Font-sizes
-	@if $responslr-generate-typo-sizes AND responslr-map-isnotempty($responslr-typo-sizes) {
+	@if $responslr-generate-typo-sizes and responslr-map-isnotempty($responslr-typo-sizes) {
 		@each $font-size-key, $font-size-list in $responslr-typo-sizes {
 			.#{$responslr-typo-size-class-prefix}#{$font-size-key} {
 				@include responslr-typo-size($name: $font-size-key);

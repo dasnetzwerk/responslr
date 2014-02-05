@@ -57,7 +57,7 @@
 		$return-gutter: $responslr-grid-breakpoints-default-gutter;
 	}
 
-	@if type-of($return-gutter) == number AND type-of($multiplier) == number {
+	@if type-of($return-gutter) == number and type-of($multiplier) == number {
 		$return-gutter: $return-gutter * $multiplier;
 	}
 
@@ -137,7 +137,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-grid-breakpoints-check() {
-	@return $responslr-generate-grid-breakpoints AND responslr-map-isnotempty($responslr-grid-breakpoints);
+	@return $responslr-generate-grid-breakpoints and responslr-map-isnotempty($responslr-grid-breakpoints);
 }
 
 @mixin responslr-generate-grid-breakpoint($name: $responslr-grid-breakpoints-default, $column-index: 0, $current-column-width: 100%) {

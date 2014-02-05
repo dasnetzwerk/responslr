@@ -686,7 +686,7 @@
 
 @mixin generate-shape() {
 	// Circle
-	@if $responslr-generate-shapes-circles AND responslr-map-isnotempty($responslr-shape-circles) {
+	@if $responslr-generate-shapes-circles and responslr-map-isnotempty($responslr-shape-circles) {
 		.#{$responslr-shape-circle-class} {
 			@include responslr-shape-circle(
 				$width: $responslr-shape-circles-default-width,
@@ -707,7 +707,7 @@
 	}
 
 	// Triangle
-	@if $responslr-generate-shapes-triangles AND responslr-map-isnotempty($responslr-shape-triangles) {
+	@if $responslr-generate-shapes-triangles and responslr-map-isnotempty($responslr-shape-triangles) {
 		.triangle-top {
 			@include responslr-shape-triangle(top);
 		}
@@ -726,7 +726,7 @@
 	}
 
 	// Arrow
-	@if $responslr-generate-shapes-arrows AND responslr-map-isnotempty($responslr-shape-arrows) {
+	@if $responslr-generate-shapes-arrows and responslr-map-isnotempty($responslr-shape-arrows) {
 		.#{$responslr-shape-arrow-class} {
 			content: "";
 			display: block;

@@ -297,7 +297,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-lists-check() {
-	@return $responslr-generate-lists AND responslr-map-isnotempty($responslr-lists);
+	@return $responslr-generate-lists and responslr-map-isnotempty($responslr-lists);
 }
 
 @mixin responslr-generate-lists() {

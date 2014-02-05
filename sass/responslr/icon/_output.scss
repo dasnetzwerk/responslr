@@ -161,7 +161,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-icons-check() {
-	@return $responslr-generate-icons AND responslr-map-isnotempty($responslr-icons);
+	@return $responslr-generate-icons and responslr-map-isnotempty($responslr-icons);
 }
 
 @mixin responslr-generate-icons() {

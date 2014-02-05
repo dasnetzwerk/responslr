@@ -417,7 +417,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-shapes-check() {
-	@return $responslr-generate-shapes AND responslr-map-isnotempty($responslr-shapes);
+	@return $responslr-generate-shapes and responslr-map-isnotempty($responslr-shapes);
 }
 
 @mixin generate-shape() {

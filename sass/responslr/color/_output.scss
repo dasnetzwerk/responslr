@@ -81,7 +81,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-colors-check() {
-	@return $responslr-generate-colors AND responslr-map-isnotempty($responslr-colors);
+	@return $responslr-generate-colors and responslr-map-isnotempty($responslr-colors);
 }
 
 @mixin responslr-generate-colors() {

@@ -120,7 +120,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-buttons-check() {
-	@return $responslr-generate-buttons AND responslr-map-isnotempty($responslr-buttons);
+	@return $responslr-generate-buttons and responslr-map-isnotempty($responslr-buttons);
 }
 
 @mixin responslr-generate-buttons() {
