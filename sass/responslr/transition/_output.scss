@@ -98,9 +98,7 @@
 		@include transition-property(unquote($property));
 	}
 
-	@if $duration != 0 {
-		@include transition-duration(unquote($duration));
-	}
+	@include transition-duration(unquote($duration));
 
 	@if $timing-function != ease {
 		$timing-function: str-replace($timing-function, easeInQuad, 'cubic-bezier(0.550, 0.085, 0.680, 0.530)');
