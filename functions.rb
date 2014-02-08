@@ -35,4 +35,8 @@ module Sass::Script::Functions
    		# Create sass string
 	  	Sass::Script::String.new(url)
 	end
+
+	def str_replace(string, search, replace)
+		Sass::Script::String.new(string.value.gsub(search.value,replace.value))
+	end
 end

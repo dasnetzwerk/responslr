@@ -1307,25 +1307,29 @@ td.column {
 	CLASS GENERATOR
 ***********************************************************************************/
 .transition-default {
-  -moz-transition: all 0.25s ease;
-  -o-transition: all 0.25s ease;
-  -webkit-transition: all 0.25s ease;
-  transition: all 0.25s ease;
   -moz-transition-property: color,background-color,border-color;
   -o-transition-property: color,background-color,border-color;
   -webkit-transition-property: color,background-color,border-color;
   transition-property: color,background-color,border-color;
+  -moz-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  transition-duration: 0.25s;
 }
 
 .transition-box {
-  -moz-transition: all 0.5s linear;
-  -o-transition: all 0.5s linear;
-  -webkit-transition: all 0.5s linear;
-  transition: all 0.5s linear;
   -moz-transition-property: height,width;
   -o-transition-property: height,width;
   -webkit-transition-property: height,width;
   transition-property: height,width;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-timing-function: linear;
+  -o-transition-timing-function: linear;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
 }
 
 /***********************************************************************************

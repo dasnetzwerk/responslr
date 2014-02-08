@@ -8,7 +8,7 @@ $responslr-transitions: () !default;
 $responslr-transitions-default: responslr-map-getdefault($responslr-transitions) !default;
 
 // Map value defaults
-$responslr-transitions-default-properties: all !default;
+$responslr-transitions-default-property: all !default;
 $responslr-transitions-default-duration: .25s !default;
 $responslr-transitions-default-timing-function: ease !default;
 $responslr-transitions-default-delay: 0 !default;

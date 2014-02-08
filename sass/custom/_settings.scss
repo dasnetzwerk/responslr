@@ -243,12 +243,12 @@ $responslr-spacings: (
 
 $responslr-transitions: (
 	'default': (
-		properties: 'color,background-color,border-color',
+		property: 'color,background-color,border-color',
 		duration: .25s,
 		timing-function: ease
 	),
 	'box': (
-		properties: 'height,width',
+		property: 'height,width',
 		duration: .5s,
 		timing-function: linear
 	)
