@@ -94,46 +94,44 @@
 	$timing-function: responslr-transition-timing-function($name) !default;
 	$delay: responslr-transition-delay($name) !default;
 
-	@if $property != all {
-		@include transition-property(unquote($property));
-	}
+	// Property
+	@include transition-property(unquote($property));
 
+	// Duration
 	@include transition-duration(unquote($duration));
 
-	@if $timing-function != ease {
-		$timing-function: str-replace($timing-function, easeInQuad, 'cubic-bezier(0.550, 0.085, 0.680, 0.530)');
-		$timing-function: str-replace($timing-function, easeInCubic, 'cubic-bezier(0.550, 0.055, 0.675, 0.190)');
-		$timing-function: str-replace($timing-function, easeInQuart, 'cubic-bezier(0.895, 0.030, 0.685, 0.220)');
-		$timing-function: str-replace($timing-function, easeInQuint, 'cubic-bezier(0.755, 0.050, 0.855, 0.060)');
-		$timing-function: str-replace($timing-function, easeInSine, 'cubic-bezier(0.470, 0.000, 0.745, 0.715)');
-		$timing-function: str-replace($timing-function, easeInExpo, 'cubic-bezier(0.950, 0.050, 0.795, 0.035)');
-		$timing-function: str-replace($timing-function, easeInCirc, 'cubic-bezier(0.600, 0.040, 0.980, 0.335)');
-		$timing-function: str-replace($timing-function, easeInBack, 'cubic-bezier(0.600, -0.280, 0.735, 0.045)');
+	// Timing-function
+	$timing-function: str-replace($timing-function, easeInQuad, 'cubic-bezier(0.550, 0.085, 0.680, 0.530)');
+	$timing-function: str-replace($timing-function, easeInCubic, 'cubic-bezier(0.550, 0.055, 0.675, 0.190)');
+	$timing-function: str-replace($timing-function, easeInQuart, 'cubic-bezier(0.895, 0.030, 0.685, 0.220)');
+	$timing-function: str-replace($timing-function, easeInQuint, 'cubic-bezier(0.755, 0.050, 0.855, 0.060)');
+	$timing-function: str-replace($timing-function, easeInSine, 'cubic-bezier(0.470, 0.000, 0.745, 0.715)');
+	$timing-function: str-replace($timing-function, easeInExpo, 'cubic-bezier(0.950, 0.050, 0.795, 0.035)');
+	$timing-function: str-replace($timing-function, easeInCirc, 'cubic-bezier(0.600, 0.040, 0.980, 0.335)');
+	$timing-function: str-replace($timing-function, easeInBack, 'cubic-bezier(0.600, -0.280, 0.735, 0.045)');
 
-		$timing-function: str-replace($timing-function, easeOutQuad, 'cubic-bezier(0.250, 0.460, 0.450, 0.940)');
-		$timing-function: str-replace($timing-function, easeOutCubic, 'cubic-bezier(0.215, 0.610, 0.355, 1.000)');
-		$timing-function: str-replace($timing-function, easeOutQuart, 'cubic-bezier(0.165, 0.840, 0.440, 1.000)');
-		$timing-function: str-replace($timing-function, easeOutQuint, 'cubic-bezier(0.230, 1.000, 0.320, 1.000)');
-		$timing-function: str-replace($timing-function, easeOutSine, 'cubic-bezier(0.390, 0.575, 0.565, 1.000)');
-		$timing-function: str-replace($timing-function, easeOutExpo, 'cubic-bezier(0.190, 1.000, 0.220, 1.000)');
-		$timing-function: str-replace($timing-function, easeOutCirc, 'cubic-bezier(0.075, 0.820, 0.165, 1.000)');
-		$timing-function: str-replace($timing-function, easeOutBack, 'cubic-bezier(0.175, 0.885, 0.320, 1.275)');
+	$timing-function: str-replace($timing-function, easeOutQuad, 'cubic-bezier(0.250, 0.460, 0.450, 0.940)');
+	$timing-function: str-replace($timing-function, easeOutCubic, 'cubic-bezier(0.215, 0.610, 0.355, 1.000)');
+	$timing-function: str-replace($timing-function, easeOutQuart, 'cubic-bezier(0.165, 0.840, 0.440, 1.000)');
+	$timing-function: str-replace($timing-function, easeOutQuint, 'cubic-bezier(0.230, 1.000, 0.320, 1.000)');
+	$timing-function: str-replace($timing-function, easeOutSine, 'cubic-bezier(0.390, 0.575, 0.565, 1.000)');
+	$timing-function: str-replace($timing-function, easeOutExpo, 'cubic-bezier(0.190, 1.000, 0.220, 1.000)');
+	$timing-function: str-replace($timing-function, easeOutCirc, 'cubic-bezier(0.075, 0.820, 0.165, 1.000)');
+	$timing-function: str-replace($timing-function, easeOutBack, 'cubic-bezier(0.175, 0.885, 0.320, 1.275)');
 
-		$timing-function: str-replace($timing-function, easeInOutQuad, 'cubic-bezier(0.455, 0.030, 0.515, 0.955)');
-		$timing-function: str-replace($timing-function, easeInOutCubic, 'cubic-bezier(0.645, 0.045, 0.355, 1.000)');
-		$timing-function: str-replace($timing-function, easeInOutQuart, 'cubic-bezier(0.770, 0.000, 0.175, 1.000)');
-		$timing-function: str-replace($timing-function, easeInOutQuint, 'cubic-bezier(0.860, 0.000, 0.070, 1.000)');
-		$timing-function: str-replace($timing-function, easeInOutSine, 'cubic-bezier(0.445, 0.050, 0.550, 0.950)');
-		$timing-function: str-replace($timing-function, easeInOutExpo, 'cubic-bezier(1.000, 0.000, 0.000, 1.000)');
-		$timing-function: str-replace($timing-function, easeInOutCirc, 'cubic-bezier(0.785, 0.135, 0.150, 0.860)');
-		$timing-function: str-replace($timing-function, easeInOutBack, 'cubic-bezier(0.680, -0.550, 0.265, 1.550)');
+	$timing-function: str-replace($timing-function, easeInOutQuad, 'cubic-bezier(0.455, 0.030, 0.515, 0.955)');
+	$timing-function: str-replace($timing-function, easeInOutCubic, 'cubic-bezier(0.645, 0.045, 0.355, 1.000)');
+	$timing-function: str-replace($timing-function, easeInOutQuart, 'cubic-bezier(0.770, 0.000, 0.175, 1.000)');
+	$timing-function: str-replace($timing-function, easeInOutQuint, 'cubic-bezier(0.860, 0.000, 0.070, 1.000)');
+	$timing-function: str-replace($timing-function, easeInOutSine, 'cubic-bezier(0.445, 0.050, 0.550, 0.950)');
+	$timing-function: str-replace($timing-function, easeInOutExpo, 'cubic-bezier(1.000, 0.000, 0.000, 1.000)');
+	$timing-function: str-replace($timing-function, easeInOutCirc, 'cubic-bezier(0.785, 0.135, 0.150, 0.860)');
+	$timing-function: str-replace($timing-function, easeInOutBack, 'cubic-bezier(0.680, -0.550, 0.265, 1.550)');
 
-		@include transition-timing-function(unquote($timing-function));
-	}
+	@include transition-timing-function(unquote($timing-function));
 
-	@if $delay != 0 {
-		@include transition-delay(unquote($delay));
-	}
+	// Delay
+	@include transition-delay(unquote($delay));
 
 	@if responslr-transition-hardware-acceleration($name) {
 		@include responslr-transition-hardware-acceleration();
