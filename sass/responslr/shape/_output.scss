@@ -329,15 +329,13 @@
 ***********************************************************************************/
 
 @mixin responslr-shape-circle($name: null, $width: null, $height: null, $radius: null, $display: null, $overflow: null, $horizontal-align: null, $vertical-align: null) {
-	@if responslr-shape-circle-exists($name) {
-		$width: responslr-shape-circle-width($name);
-		$height: responslr-shape-circle-height($name);
-		$radius: responslr-shape-circle-radius($name);
-		$display: responslr-shape-circle-display($name);
-		$overflow: responslr-shape-circle-overflow($name);
-		$horizontal-align: responslr-shape-circle-horizontal-align($name);
-		$vertical-align: responslr-shape-circle-vertical-align($name);
-	}
+	$width: responslr-shape-circle-width($name) !default;
+	$height: responslr-shape-circle-height($name) !default;
+	$radius: responslr-shape-circle-radius($name) !default;
+	$display: responslr-shape-circle-display($name) !default;
+	$overflow: responslr-shape-circle-overflow($name) !default;
+	$horizontal-align: responslr-shape-circle-horizontal-align($name) !default;
+	$vertical-align: responslr-shape-circle-vertical-align($name) !default;
 
 	display: $display;
 	overflow: $overflow;

@@ -122,14 +122,12 @@
 ***********************************************************************************/
 
 @mixin responslr-icon($name: $responslr-icons-default, $file: null, $size: null, $offset-x: null, $offset-y: null, $color: null, $repeat: null) {
-	@if responslr-icon-exists($name) {
-		$file: responslr-icon-file($name) !default;
-		$size: responslr-icon-size($name) !default;
-		$offset-x: responslr-icon-offset-x($name) !default;
-		$offset-y: responslr-icon-offset-y($name) !default;
-		$color: responslr-icon-color($name) !default;
-		$repeat: responslr-icon-repeat($name) !default;
-	}
+	$file: responslr-icon-file($name) !default;
+	$size: responslr-icon-size($name) !default;
+	$offset-x: responslr-icon-offset-x($name) !default;
+	$offset-y: responslr-icon-offset-y($name) !default;
+	$color: responslr-icon-color($name) !default;
+	$repeat: responslr-icon-repeat($name) !default;
 
 	background-image: responslr-icon-url($file: $file, $color: $color);
 	background-repeat: $repeat;
@@ -139,18 +137,14 @@
 }
 
 @mixin responslr-icon-size($name: $responslr-icons-default, $size: null) {
-	@if responslr-icon-exists($name) {
-		$size: responslr-icon-size($name) !default;
-	}
+	$size: responslr-icon-size($name) !default;
 
 	background-size: unquote($size);
 }
 
 @mixin responslr-icon-position($name: $responslr-icons-default, $offset-x: null, $offset-y: null) {
-	@if responslr-icon-exists($name) {
-		$offset-x: responslr-icon-offset-x($name) !default;
-		$offset-y: responslr-icon-offset-y($name) !default;
-	}
+	$offset-x: responslr-icon-offset-x($name) !default;
+	$offset-y: responslr-icon-offset-y($name) !default;
 
 	background-position: $offset-x $offset-y;
 }

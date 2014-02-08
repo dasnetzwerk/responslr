@@ -90,12 +90,10 @@
 }
 
 @mixin responslr-transition($name: $responslr-transitions-default, $properties: null, $duration: null, $timing-function: null, $delay: null) {
-	@if responslr-transition-exists($name) {
-		$properties: responslr-transition-properties($name) !default;
-		$duration: responslr-transition-duration($name) !default;
-		$timing-function: responslr-transition-timing-function($name) !default;
-		$delay: responslr-transition-delay($name) !default;
-	}
+	$properties: responslr-transition-properties($name) !default;
+	$duration: responslr-transition-duration($name) !default;
+	$timing-function: responslr-transition-timing-function($name) !default;
+	$delay: responslr-transition-delay($name) !default;
 
 	@include transition(all $duration $timing-function);
 

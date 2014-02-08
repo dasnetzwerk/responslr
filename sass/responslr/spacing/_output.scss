@@ -55,18 +55,14 @@
 
 // Apply leading whitespace as margin.
 @mixin responslr-spacing-top($name: $responslr-spacings-default, $spacing-size: null, $property: margin) {
-	@if responslr-spacing-exists($name) {
-		$spacing-size: responslr-spacing-size($name) !default;
-	}
+	$spacing-size: responslr-spacing-size($name) !default;
 
 	@include responslr-spacing($spacing-size-top: $spacing-size, $property: $property);
 }
 
 // Apply trailing whitespace as margin.
 @mixin responslr-spacing-bottom($name: $responslr-spacings-default, $spacing-size: null, $property: margin) {
-	@if responslr-spacing-exists($name) {
-		$spacing-size: responslr-spacing-size($name) !default;
-	}
+	$spacing-size: responslr-spacing-size($name) !default;
 
 	@include responslr-spacing($spacing-size-bottom: $spacing-size, $property: $property);
 }

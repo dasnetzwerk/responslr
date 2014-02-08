@@ -58,10 +58,8 @@
 @function responslr-aspect-ratio-calc($name: $responslr-aspect-ratios-default, $width: null, $height: null) {
 	$return-aspect-ratio: 100%;
 
-	@if responslr-aspect-ratio-exists($name) {
-		$width: responslr-aspect-ratio-width($name) !default;
-		$height: responslr-aspect-ratio-height($name) !default;
-	}
+	$width: responslr-aspect-ratio-width($name) !default;
+	$height: responslr-aspect-ratio-height($name) !default;
 
 	@if type-of($width) == number and type-of($height) == number {
 		$return-aspect-ratio: ($height / $width) * 100%;
@@ -76,10 +74,8 @@
 ***********************************************************************************/
 
 @mixin responslr-aspect-ratio($name: $responslr-aspect-ratios-default, $width: null, $height: null) {
-	@if responslr-aspect-ratio-exists($name) {
-		$width: responslr-aspect-ratio-width($name) !default;
-		$height: responslr-aspect-ratio-height($name) !default;
-	}
+	$width: responslr-aspect-ratio-width($name) !default;
+	$height: responslr-aspect-ratio-height($name) !default;
 
 	@if type-of($width) == number and type-of($height) == number {
 		position: relative;

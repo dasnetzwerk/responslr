@@ -176,19 +176,17 @@
 }
 
 @mixin responslr-list($name: $responslr-lists-default, $type: null, $bullet-type: null, $bullet-custom: null, $bullet-position: null, $bullet-width: null, $bullet-height: null, $bullet-margin: null, $bullet-color: null, $bullet-icon: null, $item-padding: null, $item-margin: null) {
-	@if responslr-list-exists($name) {
-		$type:  responslr-list-type($name) !default;
-		$bullet-type: responslr-list-bullet-type($name) !default;
-		$bullet-custom: responslr-list-bullet-custom($name) !default;
-		$bullet-position: responslr-list-bullet-position($name) !default;
-		$bullet-width: responslr-list-bullet-width($name) !default;
-		$bullet-height: responslr-list-bullet-height($name) !default;
-		$bullet-margin: responslr-list-bullet-margin($name) !default;
-		$bullet-color: responslr-list-bullet-color($name) !default;
-		$bullet-icon: responslr-list-bullet-icon($name) !default;
-		$item-padding: responslr-list-item-padding($name) !default;
-		$item-margin: responslr-list-item-margin($name) !default;
-	}
+	$type:  responslr-list-type($name) !default;
+	$bullet-type: responslr-list-bullet-type($name) !default;
+	$bullet-custom: responslr-list-bullet-custom($name) !default;
+	$bullet-position: responslr-list-bullet-position($name) !default;
+	$bullet-width: responslr-list-bullet-width($name) !default;
+	$bullet-height: responslr-list-bullet-height($name) !default;
+	$bullet-margin: responslr-list-bullet-margin($name) !default;
+	$bullet-color: responslr-list-bullet-color($name) !default;
+	$bullet-icon: responslr-list-bullet-icon($name) !default;
+	$item-padding: responslr-list-item-padding($name) !default;
+	$item-margin: responslr-list-item-margin($name) !default;
 
 	& > * {
 		@if $type == horizontal {

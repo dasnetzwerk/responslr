@@ -138,11 +138,9 @@
 }
 
 @mixin responslr-typo-family($name: $responslr-typo-families-default, $font-family: null, $font-weight: null, $font-style: null) {
-	@if responslr-typo-family-exists($name) {
-		$font-family: responslr-typo-family-name($name) !default;
-		$font-weight: responslr-typo-family-font-weight($name) !default;
-		$font-style: responslr-typo-family-font-style($name) !default;
-	}
+	$font-family: responslr-typo-family-name($name) !default;
+	$font-weight: responslr-typo-family-font-weight($name) !default;
+	$font-style: responslr-typo-family-font-style($name) !default;
 
 	font-family: $font-family;
 	font-weight: $font-weight;
@@ -150,10 +148,8 @@
 }
 
 @mixin responslr-typo-size($name: $responslr-typo-sizes-default, $font-size: null, $line-height: null) {
-	@if responslr-typo-size-exists($name) {
-		$font-size: responslr-typo-size-value($name) !default;
-		$line-height: responslr-typo-size-line-height($name) !default;
-	}
+	$font-size: responslr-typo-size-value($name) !default;
+	$line-height: responslr-typo-size-line-height($name) !default;
 
 	font-size: $font-size;
 	line-height: $line-height;
