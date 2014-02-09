@@ -1785,32 +1785,222 @@ td.column {
 /***********************************************************************************
 	EXTENDED FUNCTIONS
 ***********************************************************************************/
-/*
-@function responslr-arrow-center-margin($size: $responslr-arrow-size, $position-is-alignment: true) {
-	$return-margin: $size;
-
-	@if $position-is-alignment {
-		$return-margin: -($size / 2);
-	} @else {
-		$return-margin: -($size / 3);
-	}
-
-	@return $return-margin;
-}
-
-@function responslr-arrow-offset-correct($offset: 0, $width: $responslr-arrow-width) {
-	$return-offset: 0;
-
-	$return-offset: $offset + $width;
-
-	@return $return-offset;
-}*/
 /***********************************************************************************
 	MIXINS
 ***********************************************************************************/
 /***********************************************************************************
 	CLASS GENERATOR: ARROW
 ***********************************************************************************/
+.arrow, .arrow-up::before, .arrow-right::before, .arrow-down::before, .arrow-left::before, .arrow-default::before, .arrow-button::before, .arrow-circle-large::before {
+  content: "";
+  display: block;
+  position: absolute;
+  border-width: 0;
+  border-style: solid;
+  border-right-style: none;
+  border-bottom-style: none;
+}
+
+.arrow-up {
+  position: relative;
+}
+.arrow-up.aspect-ratio-content {
+  position: absolute;
+}
+.arrow-up::before {
+  border-top-width: 3px;
+  border-left-width: 3px;
+  width: 12px;
+  height: 12px;
+  border-color: black;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  left: 50%;
+  right: auto;
+  top: 50%;
+  margin-left: -6px;
+  margin-top: -4px;
+}
+
+.arrow-right {
+  position: relative;
+}
+.arrow-right.aspect-ratio-content {
+  position: absolute;
+}
+.arrow-right::before {
+  border-top-width: 3px;
+  border-left-width: 3px;
+  width: 12px;
+  height: 12px;
+  border-color: black;
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+  left: 50%;
+  right: auto;
+  top: 50%;
+  right: 50%;
+  margin-right: -4px;
+  left: auto;
+  margin-top: -6px;
+}
+
+.arrow-down {
+  position: relative;
+}
+.arrow-down.aspect-ratio-content {
+  position: absolute;
+}
+.arrow-down::before {
+  border-top-width: 3px;
+  border-left-width: 3px;
+  width: 12px;
+  height: 12px;
+  border-color: black;
+  -moz-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  -o-transform: rotate(225deg);
+  -webkit-transform: rotate(225deg);
+  transform: rotate(225deg);
+  left: 50%;
+  right: auto;
+  top: 50%;
+  margin-left: -6px;
+  bottom: 50%;
+  margin-bottom: -4px;
+  top: auto;
+}
+
+.arrow-left {
+  position: relative;
+}
+.arrow-left.aspect-ratio-content {
+  position: absolute;
+}
+.arrow-left::before {
+  border-top-width: 3px;
+  border-left-width: 3px;
+  width: 12px;
+  height: 12px;
+  border-color: black;
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  left: 50%;
+  right: auto;
+  top: 50%;
+  margin-left: -4px;
+  margin-top: -6px;
+}
+
+.arrow-default {
+  position: relative;
+}
+.arrow-default.aspect-ratio-content {
+  position: absolute;
+}
+.arrow-default::before {
+  border-top-width: 3px;
+  border-left-width: 3px;
+  width: 12px;
+  height: 12px;
+  border-color: black;
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+  left: 50%;
+  right: auto;
+  top: 50%;
+  right: 50%;
+  margin-right: -4px;
+  left: auto;
+  margin-top: -6px;
+}
+
+.arrow-button {
+  position: relative;
+}
+.arrow-button.aspect-ratio-content {
+  position: absolute;
+}
+.arrow-button::before {
+  border-top-width: 2px;
+  border-left-width: 2px;
+  width: 8px;
+  height: 8px;
+  border-color: "white";
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+  right: 10px;
+  top: 50%;
+  margin-top: -4px;
+}
+.arrow-button:before {
+  -moz-transition-property: color,background-color,border-color;
+  -o-transition-property: color,background-color,border-color;
+  -webkit-transition-property: color,background-color,border-color;
+  transition-property: color,background-color,border-color;
+  -moz-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -moz-transition-delay: 0;
+  -o-transition-delay: 0;
+  -webkit-transition-delay: 0;
+  transition-delay: 0;
+  -moz-transition-property: right, border-color;
+  -o-transition-property: right, border-color;
+  -webkit-transition-property: right, border-color;
+  transition-property: right, border-color;
+}
+.arrow-button:hover:before {
+  right: arrow-offset-correct(6px, 2px);
+  border-color: #1a2025;
+}
+
+.arrow-circle-large {
+  position: relative;
+}
+.arrow-circle-large.aspect-ratio-content {
+  position: absolute;
+}
+.arrow-circle-large::before {
+  border-top-width: 10px;
+  border-left-width: 10px;
+  width: 50px;
+  height: 50px;
+  border-color: "white";
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+  left: 50%;
+  right: auto;
+  top: 50%;
+  right: 50%;
+  margin-right: -16.666666666667px;
+  left: auto;
+  margin-top: -25px;
+}
+
 /***********************************************************************************
 	OUTPUT - BUTTON
 ***********************************************************************************/

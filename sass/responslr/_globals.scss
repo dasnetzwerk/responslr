@@ -8,9 +8,9 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin insert-pseudo-element($write: true, $pseudo-element: before) {
+@mixin responslr-insert-pseudo-element($write: true, $pseudo-element: before) {
 	@if $write {
-		&:#{$pseudo-element} {
+		&::#{$pseudo-element} {
 			@content;
 		}
 	} @else {
@@ -162,7 +162,7 @@ $responslr-generate-triangles: $responslr-generate-classes !default;
 
 
 // Arrows
-$responslr-generate-arrows: false !default; // $responslr-generate-classes
+$responslr-generate-arrows: $responslr-generate-classes !default;
 
 
 // Tooltip

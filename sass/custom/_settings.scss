@@ -2,6 +2,8 @@
 	RESPONSLR VARIABLES
 ***********************************************************************************/
 
+// Set your ninja-its-magic variables here:
+
 // Colors
 
 $white: rgb(255,255,255);
@@ -146,7 +148,7 @@ $responslr-lists: (
 );
 
 
-// Shape (circles)
+// Circles
 
 $responslr-circles: (
 	'auto': (
@@ -171,7 +173,7 @@ $responslr-circles: (
 	)
 );
 
-// Shape (triangles)
+// Triangles
 
 $responslr-triangles: (
 	'default': (
@@ -180,25 +182,14 @@ $responslr-triangles: (
 	)
 );
 
-// Shape (arrow)
+// Arrow
 
 $responslr-arrows: (
 	'default': (
-		direction: right,
 		size: 12px,
-		width: 3px,
-		color: 'black',
-		position: relative,
-		position-x: center,
-		position-y: center,
-		offset-x: 0,
-		offset-y: 0,
-		transition-properties: (),
-		transition-values: (),
-		pseudo-element: 'before'
+		width: 3px
 	),
 	'button': (
-		direction: right,
 		size: 8px,
 		width: 2px,
 		color: 'white',
@@ -212,7 +203,6 @@ $responslr-arrows: (
 		pseudo-element: 'before'
 	),
 	'circle-large': (
-		direction: right,
 		size: 50px,
 		width: 10px,
 		color: 'white',
