@@ -1136,47 +1136,47 @@ td.column {
 ***********************************************************************************/
 @media only screen and (min-width: 1025px) and (max-width: 1024px), print {
   .hide-large {
-    display: none;
+    display: none !important;
   }
 }
 @media only screen and (min-width: 1025px), print {
   .hide-large-up {
-    display: none;
+    display: none !important;
   }
 }
 @media only screen and (max-width: 1024px), print {
   .hide-large-down {
-    display: none;
+    display: none !important;
   }
 }
 @media only screen and (min-width: 961px) and (max-width: 960px), print {
   .hide-medium {
-    display: none;
+    display: none !important;
   }
 }
 @media only screen and (min-width: 961px), print {
   .hide-medium-up {
-    display: none;
+    display: none !important;
   }
 }
 @media only screen and (max-width: 960px), print {
   .hide-medium-down {
-    display: none;
+    display: none !important;
   }
 }
 @media only screen and (min-width: 0) and (max-width: 640px), print {
   .hide-small {
-    display: none;
+    display: none !important;
   }
 }
 @media only screen and (min-width: 0), print {
   .hide-small-up {
-    display: none;
+    display: none !important;
   }
 }
 @media only screen and (max-width: 640px), print {
   .hide-small-down {
-    display: none;
+    display: none !important;
   }
 }
 .hide-all, .show-large,
@@ -1186,115 +1186,115 @@ td.column {
 .show-medium-down, .show-small,
 .show-small-up,
 .show-small-down {
-  display: none;
+  display: none !important;
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1024px), print {
   .show-large {
-    display: block;
+    display: block !important;
   }
   .show-large.column {
-    display: inline-block;
+    display: inline-block !important;
   }
 
   span.show-large {
-    display: inline;
+    display: inline !important;
   }
 }
 @media only screen and (min-width: 1025px), print {
   .show-large-up {
-    display: block;
+    display: block !important;
   }
   .show-large-up.column {
-    display: inline-block;
+    display: inline-block !important;
   }
 
   span.show-large-up {
-    display: inline;
+    display: inline !important;
   }
 }
 @media only screen and (max-width: 1024px), print {
   .show-large-down {
-    display: inherit;
+    display: inherit !important;
   }
   .show-large-down.column {
-    display: inline-block;
+    display: inline-block !important;
   }
 
   span.show-large-down {
-    display: inline;
+    display: inline !important;
   }
 }
 @media only screen and (min-width: 961px) and (max-width: 960px), print {
   .show-medium {
-    display: block;
+    display: block !important;
   }
   .show-medium.column {
-    display: inline-block;
+    display: inline-block !important;
   }
 
   span.show-medium {
-    display: inline;
+    display: inline !important;
   }
 }
 @media only screen and (min-width: 961px), print {
   .show-medium-up {
-    display: block;
+    display: block !important;
   }
   .show-medium-up.column {
-    display: inline-block;
+    display: inline-block !important;
   }
 
   span.show-medium-up {
-    display: inline;
+    display: inline !important;
   }
 }
 @media only screen and (max-width: 960px), print {
   .show-medium-down {
-    display: inherit;
+    display: inherit !important;
   }
   .show-medium-down.column {
-    display: inline-block;
+    display: inline-block !important;
   }
 
   span.show-medium-down {
-    display: inline;
+    display: inline !important;
   }
 }
 @media only screen and (min-width: 0) and (max-width: 640px), print {
   .show-small {
-    display: block;
+    display: block !important;
   }
   .show-small.column {
-    display: inline-block;
+    display: inline-block !important;
   }
 
   span.show-small {
-    display: inline;
+    display: inline !important;
   }
 }
 @media only screen and (min-width: 0), print {
   .show-small-up {
-    display: block;
+    display: block !important;
   }
   .show-small-up.column {
-    display: inline-block;
+    display: inline-block !important;
   }
 
   span.show-small-up {
-    display: inline;
+    display: inline !important;
   }
 }
 @media only screen and (max-width: 640px), print {
   .show-small-down {
-    display: inherit;
+    display: inherit !important;
   }
   .show-small-down.column {
-    display: inline-block;
+    display: inline-block !important;
   }
 
   span.show-small-down {
-    display: inline;
+    display: inline !important;
   }
 }
 /***********************************************************************************

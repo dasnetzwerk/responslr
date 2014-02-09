@@ -8,11 +8,11 @@
 ***********************************************************************************/
 
 @mixin responslr-hide() {
-	display: none;
+	display: none !important;
 }
 
 @mixin responslr-show($display-value: inherit) {
-	display: $display-value;
+	display: $display-value !important;
 }
 
 @mixin responslr-visibility($visibility-name) {
