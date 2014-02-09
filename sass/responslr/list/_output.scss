@@ -232,11 +232,11 @@
 					content: '';
 
 					@if $bullet-type == 'circle' {
-						@include responslr-shape-circle($width: $bullet-width, $height: $bullet-height, $radius: 50%);
+						@include responslr-circle($width: $bullet-width, $height: $bullet-height, $radius: 50%);
 					}
 
 					@if $bullet-type == 'triangle' {
-						@include responslr-shape-triangle($direction: right, $width: $bullet-width, $height: auto, $color: $bullet-color);
+						@include responslr-triangle($direction: right, $width: $bullet-width, $height: auto, $color: $bullet-color);
 					}
 
 					@if $bullet-type == 'icon' {

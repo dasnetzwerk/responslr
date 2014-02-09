@@ -1,0 +1,12 @@
+/***********************************************************************************
+	SETTINGS - TRIANGLE
+***********************************************************************************/
+
+// Triangles
+$responslr-triangles: () !default;
+
+// Default triangle
+$responslr-triangles-default: responslr-map-getdefault($responslr-triangles) !default;
+
+// Triangle classes
+$responslr-triangle-class-prefix: 'triangle-' !default;

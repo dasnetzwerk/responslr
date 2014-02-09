@@ -153,11 +153,16 @@ $responslr-generate-colors-border-directions-hover: $responslr-generate-colors-b
 $responslr-generate-colors-border-directions-focus: false !default;
 
 
-// Shape
-$responslr-generate-shapes: $responslr-generate-classes !default;
-$responslr-generate-shapes-circles: $responslr-generate-shapes !default;
-$responslr-generate-shapes-triangles: $responslr-generate-shapes !default;
-$responslr-generate-shapes-arrows: false !default; // $responslr-generate-shapes
+// Circles
+$responslr-generate-circles: $responslr-generate-classes !default;
+
+
+// Triangles
+$responslr-generate-triangles: $responslr-generate-classes !default;
+
+
+// Arrows
+$responslr-generate-arrows: false !default; // $responslr-generate-classes
 
 
 // Tooltip

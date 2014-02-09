@@ -268,10 +268,10 @@
 						left: 1rem;
 						@if responslr-tooltip-triangle-is-offset($name) {
 							bottom: responslr-tooltip-offset($name)+0.75rem;
-							@include responslr-shape-triangle($direction: bottom, $color: responslr-tooltip-border-color($name));
+							@include responslr-triangle($direction: bottom, $color: responslr-tooltip-border-color($name));
 						} @else {
 							bottom: responslr-tooltip-offset($name)+1.25rem;
-							@include responslr-shape-triangle($direction: top, $color: responslr-tooltip-border-color($name));
+							@include responslr-triangle($direction: top, $color: responslr-tooltip-border-color($name));
 						}
 					}
 				}
@@ -292,10 +292,10 @@
 						top: 0.2rem;
 						@if responslr-tooltip-triangle-is-offset($name) {
 							right: -(responslr-tooltip-offset($name));
-							@include responslr-shape-triangle($direction: left, $color: responslr-tooltip-border-color($name));
+							@include responslr-triangle($direction: left, $color: responslr-tooltip-border-color($name));
 						} @else {
 							right: -(responslr-tooltip-offset($name)+0.5rem);
-							@include responslr-shape-triangle($direction: right, $color: responslr-tooltip-border-color($name));
+							@include responslr-triangle($direction: right, $color: responslr-tooltip-border-color($name));
 						}
 					}
 				}
@@ -317,10 +317,10 @@
 						left: 1rem;
 						@if responslr-tooltip-triangle-is-offset($name) {
 							top: responslr-tooltip-offset($name)+0.75rem;
-							@include responslr-shape-triangle($direction: top, $color: responslr-tooltip-border-color($name));
+							@include responslr-triangle($direction: top, $color: responslr-tooltip-border-color($name));
 						} @else {
 							top: responslr-tooltip-offset($name)+1.25rem;
-							@include responslr-shape-triangle($direction: bottom, $color: responslr-tooltip-border-color($name));
+							@include responslr-triangle($direction: bottom, $color: responslr-tooltip-border-color($name));
 						}
 					}
 				}
@@ -342,10 +342,10 @@
 						top: 0.2rem;
 						@if responslr-tooltip-triangle-is-offset($name) {
 							left: -(responslr-tooltip-offset($name));
-							@include responslr-shape-triangle($direction: right, $color: responslr-tooltip-border-color($name));
+							@include responslr-triangle($direction: right, $color: responslr-tooltip-border-color($name));
 						} @else {
 							left: -(responslr-tooltip-offset($name)+0.5rem);
-							@include responslr-shape-triangle($direction: left, $color: responslr-tooltip-border-color($name));
+							@include responslr-triangle($direction: left, $color: responslr-tooltip-border-color($name));
 						}
 					}
 				}

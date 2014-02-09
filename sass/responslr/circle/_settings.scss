@@ -1,0 +1,23 @@
+/***********************************************************************************
+	SETTINGS - CIRCLE
+***********************************************************************************/
+
+
+// Circles
+$responslr-circles: () !default;
+
+// Default circle
+$responslr-circles-default: responslr-map-getdefault($responslr-circles) !default;
+
+// Circle map value defaults
+$responslr-circles-default-width: auto !default;
+$responslr-circles-default-height: auto !default;
+$responslr-circles-default-radius: 50% !default;
+$responslr-circles-default-display: inline-block !default;
+$responslr-circles-default-overflow: hidden !default;
+$responslr-circles-default-horizontal-align: center !default;
+$responslr-circles-default-vertical-align: center !default;
+
+// Circle classes
+$responslr-circle-class: 'circle' !default;
+$responslr-circle-class-prefix: 'circle-' !default;

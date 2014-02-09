@@ -148,7 +148,7 @@ $responslr-lists: (
 
 // Shape (circles)
 
-$responslr-shape-circles: (
+$responslr-circles: (
 	'auto': (
 		width: auto,
 		height: auto
@@ -173,7 +173,7 @@ $responslr-shape-circles: (
 
 // Shape (triangles)
 
-$responslr-shape-triangles: (
+$responslr-triangles: (
 	'default': (
 		width: 10px,
 		height: 10px
@@ -182,7 +182,7 @@ $responslr-shape-triangles: (
 
 // Shape (arrow)
 
-$responslr-shape-arrows: (
+$responslr-arrows: (
 	'default': (
 		direction: right,
 		size: 12px,
