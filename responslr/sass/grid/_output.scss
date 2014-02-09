@@ -69,6 +69,10 @@
 	EXTENDED FUNCTIONS
 ***********************************************************************************/
 
+@function responslr-grid-breakpoint-index($name) {
+	@return index(map-keys($responslr-grid-breakpoints), $name);
+}
+
 @function responslr-grid-gutter-half($name: null) {
 	$return-gutter-half: responslr-grid-gutter($name, 0.5);
 
@@ -83,10 +87,11 @@
 
 @function responslr-grid-min-width($name: null) {
 	$return-min-width: 0;
-	$breakpoint-index: index(map-keys($responslr-grid-breakpoints), $name) + 1;
+	$breakpoint-index: responslr-grid-breakpoint-index($name) + 1;
 
 	@if $breakpoint-index > 0 and $breakpoint-index <= length($responslr-grid-breakpoints) {
-		$return-min-width: responslr-grid-max-width($name) + 1;
+		$min-width-name: nth(map-keys($responslr-grid-breakpoints), $breakpoint-index);
+		$return-min-width: responslr-grid-max-width($min-width-name) + 1;
 	}
 
 	@return $return-min-width;
@@ -94,10 +99,6 @@
 
 @function responslr-grid-column-width($column-count, $size) {
 	@return (($column-part / $size) * 100%);
-}
-
-@function responslr-grid-breakpoint-index($name) {
-	@return index(map-keys($responslr-grid-breakpoints), $name);
 }
 
 

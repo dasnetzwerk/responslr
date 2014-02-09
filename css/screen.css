@@ -1140,12 +1140,12 @@ td.column {
 /***********************************************************************************
 	CLASS GENERATOR
 ***********************************************************************************/
-@media only screen and (min-width: 1025px) and (max-width: 1024px), print {
+@media only screen and (min-width: 961px) and (max-width: 1024px), print {
   .hide-large {
     display: none !important;
   }
 }
-@media only screen and (min-width: 1025px), print {
+@media only screen and (min-width: 961px), print {
   .hide-large-up {
     display: none !important;
   }
@@ -1155,12 +1155,12 @@ td.column {
     display: none !important;
   }
 }
-@media only screen and (min-width: 961px) and (max-width: 960px), print {
+@media only screen and (min-width: 641px) and (max-width: 960px), print {
   .hide-medium {
     display: none !important;
   }
 }
-@media only screen and (min-width: 961px), print {
+@media only screen and (min-width: 641px), print {
   .hide-medium-up {
     display: none !important;
   }
@@ -1195,7 +1195,7 @@ td.column {
   display: none !important;
 }
 
-@media only screen and (min-width: 1025px) and (max-width: 1024px), print {
+@media only screen and (min-width: 961px) and (max-width: 1024px), print {
   .show-large {
     display: inherit !important;
   }
@@ -1207,7 +1207,7 @@ td.column {
     display: inline !important;
   }
 }
-@media only screen and (min-width: 1025px), print {
+@media only screen and (min-width: 961px), print {
   .show-large-up {
     display: inherit !important;
   }
@@ -1231,7 +1231,7 @@ td.column {
     display: inline !important;
   }
 }
-@media only screen and (min-width: 961px) and (max-width: 960px), print {
+@media only screen and (min-width: 641px) and (max-width: 960px), print {
   .show-medium {
     display: inherit !important;
   }
@@ -1243,7 +1243,7 @@ td.column {
     display: inline !important;
   }
 }
-@media only screen and (min-width: 961px), print {
+@media only screen and (min-width: 641px), print {
   .show-medium-up {
     display: inherit !important;
   }
@@ -1389,7 +1389,7 @@ td.column {
   vertical-align: bottom;
 }
 
-@media only screen and (min-width: 1025px) and (max-width: 1024px), print {
+@media only screen and (min-width: 961px) and (max-width: 1024px), print {
   .h-left-large {
     text-align: left;
   }
@@ -1414,7 +1414,7 @@ td.column {
     vertical-align: bottom;
   }
 }
-@media only screen and (min-width: 961px) and (max-width: 960px), print {
+@media only screen and (min-width: 641px) and (max-width: 960px), print {
   .h-left-medium {
     text-align: left;
   }
@@ -2784,7 +2784,7 @@ p {
 }
 
 .test-min-width:before {
-  content: "min-width: 1025px";
+  content: "min-width: 961px";
 }
 
 .test-max-width:before {
