@@ -11,7 +11,7 @@
 	display: none !important;
 }
 
-@mixin responslr-show($display-value: inherit) {
+@mixin responslr-show($display-value: $responslr-visiblity-showers-default-display-value) {
 	display: $display-value !important;
 }
 
@@ -99,7 +99,7 @@
 
 		@include responslr-media-query($media-end: $breakpoint-key, $media-start: $breakpoint-key) {
 			.#{$shower-class-name} {
-				@include responslr-show(block);
+				@include responslr-show();
 
 				&.#{$responslr-grid-column-class} {
 					@include responslr-show(inline-block);
@@ -114,7 +114,7 @@
 		// Shower up
 		@include responslr-media-query($media-start: $breakpoint-key) {
 			.#{$shower-class-name}#{$responslr-visibility-up-class-suffix} {
-				@include responslr-show(block);
+				@include responslr-show();
 
 				&.#{$responslr-grid-column-class} {
 					@include responslr-show(inline-block);

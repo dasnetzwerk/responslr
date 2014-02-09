@@ -3,6 +3,5 @@
 *.scssc
 *.css
 css/*.css
-config.rb
 
 WEB-INF/*
