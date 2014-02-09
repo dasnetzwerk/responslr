@@ -11,7 +11,7 @@ var oGlobals											= {
 		oFooter.$										= $('footer');
 	},
 	init:							function() {
-		oBody.$.responsivehelper({
+		/*oBody.$.responsivehelper({
 			showWindowSize: false,
 			showHeight: true,
 			showGrid: true,
@@ -37,36 +37,36 @@ var oGlobals											= {
 					breakpoint: 1
 				}
 			}
-		});
+		});*/
 	},
-	oResponsiveHelper:				null,
+	/*oResponsiveHelper:				null,
 	onBreakpointChange:				function() {
 		oBody.$.unbind('touchstart');
 
 		// TODO: Responsive-helper - remove inline styles
 		switch(oGlobals.oResponsiveHelper.currentBreakpoint.codeName) {
-			/* Smartphone */
+
 			case 's':
 				oBody.$.bind('touchstart', function(e){});
 			break;
-			/* Tablet Portrait */
+
 			case 'tp':
 				oBody.$.bind('touchstart', function(e){});
 			break;
-			/* Tablet Landscape */
+
 			case 'tl':
 				oBody.$.bind('touchstart', function(e){});
 			break;
-			/* Desktop */
+
 			case 'd':
 
 			break;
-			/* High Definition */
+
 			case 'hd':
 
 			break;
 		}
-	}
+	}*/
 };
 
 /***********************************************************************************
