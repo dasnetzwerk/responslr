@@ -52,7 +52,7 @@
 
 
 /***********************************************************************************
-	MIXINS (TRIANGLE)
+	MIXINS
 ***********************************************************************************/
 
 // TODO: Mixin verbessern und schöner schreiben
@@ -130,7 +130,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-triangles-check() {
-	@return $responslr-generate-triangles and responslr-map-isnotempty($responslr-triangles);
+	@return $responslr-generate-triangles;
 }
 
 @mixin generate-triangles() {
@@ -148,6 +148,11 @@
 
 	.#{$responslr-triangle-class-prefix}left {
 		@include responslr-triangle(left);
+	}
+
+	// TODO: Generate Triangles by Responslr-Triangle-Map
+	@if responslr-map-isnotempty($responslr-triangles) {
+		// cool shit here
 	}
 }
 

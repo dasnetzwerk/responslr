@@ -422,7 +422,7 @@
 ***********************************************************************************/
 
 @function responslr-generate-arrows-check() {
-	@return $responslr-generate-arrows and responslr-map-isnotempty($responslr-arrows);
+	@return $responslr-generate-arrows;
 }
 
 @mixin generate-arrows() {
@@ -452,9 +452,11 @@
 		@include responslr-arrow-custom($direction: left);
 	}
 
-	@each $arrow-key, $arrow-list in $responslr-arrows {
-		.#{$responslr-arrow-class-prefix}#{$arrow-key} {
-			@include responslr-arrow($name: $arrow-key);
+	@if responslr-map-isnotempty($responslr-arrows) {
+		@each $arrow-key, $arrow-list in $responslr-arrows {
+			.#{$responslr-arrow-class-prefix}#{$arrow-key} {
+				@include responslr-arrow($name: $arrow-key);
+			}
 		}
 	}
 }

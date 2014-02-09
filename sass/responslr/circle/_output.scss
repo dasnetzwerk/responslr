@@ -137,11 +137,11 @@
 
 
 /***********************************************************************************
-	CLASS GENERATOR: SHAPE
+	CLASS GENERATOR: CIRCLE
 ***********************************************************************************/
 
 @function responslr-generate-circles-check() {
-	@return $responslr-generate-circles and  responslr-map-isnotempty($responslr-circles);
+	@return $responslr-generate-circles;
 }
 
 @mixin generate-circles() {
@@ -157,9 +157,11 @@
 		);
 	}
 
-	@each $circle-key, $circle-list in $responslr-circles {
-		.#{$responslr-circle-class-prefix}#{$circle-key} {
-			@include responslr-circle($name: $circle-key);
+	@if responslr-map-isnotempty($responslr-circles) {
+		@each $circle-key, $circle-list in $responslr-circles {
+			.#{$responslr-circle-class-prefix}#{$circle-key} {
+				@include responslr-circle($name: $circle-key);
+			}
 		}
 	}
 }
