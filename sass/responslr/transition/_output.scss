@@ -88,11 +88,12 @@
 	@include transform(translate3d(0,0,0));
 }
 
-@mixin responslr-transition($name: $responslr-transitions-default, $property: null, $duration: null, $timing-function: null, $delay: null) {
+@mixin responslr-transition($name: $responslr-transitions-default, $property: null, $duration: null, $timing-function: null, $delay: null, $hardware-acceleration: null) {
 	$property: responslr-transition-property($name) !default;
 	$duration: responslr-transition-duration($name) !default;
 	$timing-function: responslr-transition-timing-function($name) !default;
 	$delay: responslr-transition-delay($name) !default;
+	$hardware-acceleration: responslr-transition-hardware-acceleration($name) !default;
 
 	// Property
 	@include transition-property(unquote($property));
@@ -133,7 +134,7 @@
 	// Delay
 	@include transition-delay(unquote($delay));
 
-	@if responslr-transition-hardware-acceleration($name) {
+	@if $hardware-acceleration {
 		@include responslr-transition-hardware-acceleration();
 	}
 }
