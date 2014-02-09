@@ -1,19 +1,37 @@
 /***********************************************************************************
 	COMPASS
 ***********************************************************************************/
+
 @import "compass";
 @import "compass/utilities/general/clearfix";
 @import "compass/css3";
 @import "compass/css3/user-interface";
 @import "compass/support";
 
-$experimental-support-for-microsoft: true;
 
 /***********************************************************************************
-	RESPONSLR
+	SETTINGS
 ***********************************************************************************/
-@import "custom/settings";
-@import "responslr/globals";
-@import "responslr/settings";
-@import "responslr/outputs";
-@import "custom/layout";
+
+@import "settings";
+
+
+/***********************************************************************************
+	RESPONSLR CORE
+***********************************************************************************/
+
+@import "../responslr/sass/globals";
+@import "../responslr/sass/settings";
+@import "../responslr/sass/outputs";
+
+
+/***********************************************************************************
+	LAYOUT (import your own layout files here)
+***********************************************************************************/
+
+@import "layout/base";
+@import "layout/header";
+@import "layout/navigation-service";
+@import "layout/navigation-main";
+@import "layout/content";
+@import "layout/footer";
