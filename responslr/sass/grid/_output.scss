@@ -338,3 +338,37 @@
 @if responslr-generate-grid-breakpoints-check() {
 	@include responslr-generate-grid-breakpoints();
 }
+
+/***********************************************************************************
+	SETTINGS GENERATOR
+***********************************************************************************/
+
+@mixin responslr-generate-grid-settings() {
+	$grid-breakpoints: ();
+
+	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
+		$breakpoint-map: (
+			$breakpoint-key: (
+				maxWidth: responslr-grid-max-width($breakpoint-key),
+				columns: responslr-grid-columns($breakpoint-key),
+				gutter: responslr-grid-gutter($breakpoint-key)
+			)
+		);
+
+		$grid-breakpoints: map-merge($grid-breakpoints, $breakpoint-map);
+	}
+
+	$grid-settings: (
+		breakpoints: $grid-breakpoints,
+		bla: huiiii
+	);
+
+	$global-settings: map-merge($global-settings, ( grid: $grid-settings ) ) !global;
+}
+
+
+@if responslr-generate-grid-breakpoints-check() {
+	@include responslr-generate-grid-breakpoints();
+}
+
+@include responslr-generate-grid-settings();

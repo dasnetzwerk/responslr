@@ -45,6 +45,7 @@
 	@return 'Parameter "#{$param-name}" for the #{$map-name} "#{$item-key}" is required.';
 }
 
+// Split shorthand
 @function responslr-split-shorthand($padding-string, $part) {
 	$length: length(unquote($padding-string));
 	$return-value: $padding-string;
@@ -78,6 +79,65 @@
 	}
 
 	@return $return-value;
+}
+
+// JSON Functions
+@function json-value-quote($value) {
+	@return '"' + $value + '"';
+}
+
+@function json-encode-string($string) {
+	@return json-value-quote($string);
+}
+
+@function json-encode-number($number) {
+	@if unitless($number) == false {
+		$number: json-value-quote($number);
+	}
+
+	@return $number;
+}
+
+@function json-encode-null($null) {
+	@return "null";
+}
+
+@function json-encode-bool($boolean) {
+	@return $boolean;
+}
+
+@function json-encode-color($color) {
+	@return json-value-quote($color);
+}
+
+@function json-encode-list($list) {
+	$string: "";
+
+	@each $list-item in $list {
+		$string: $string + "," + json-encode($list-item);
+	}
+
+	@return "[" + str-slice($string, 2) + "]";
+}
+
+@function json-encode-map($map) {
+	$string: "";
+
+	@each $map-key, $map-value in $map {
+		$string: $string + "," + json-value-quote($map-key) + ":" + json-encode($map-value);
+	}
+
+	@return "{" + str-slice($string, 2) + "}";
+}
+
+@function json-encode($value) {
+	$value-type: type-of($value);
+
+	@if function_exists("json-encode-#{$value-type}") {
+		@return call("json-encode-#{$value-type}", $value);
+	}
+
+	@return false;
 }
 
 

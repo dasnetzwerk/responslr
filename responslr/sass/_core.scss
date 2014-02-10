@@ -2,6 +2,15 @@
 	RESPONSLR CORE
 ***********************************************************************************/
 
+$global-settings: ();
+
 @import "globals";
 @import "settings";
 @import "outputs";
+
+@if $global-settings != () {
+	html::before {
+		display: none;
+		content: json-encode($global-settings);
+	}
+}
