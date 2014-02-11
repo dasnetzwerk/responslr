@@ -12,10 +12,21 @@ function responslr() {
 
 	// PUBLIC: Init
 	this.init = function() {
+		var loadModules = arguments;
+
 		this.settings = loadAllSettings();
 
-		for(var moduleIndex in this.loadedModules) {
-			this[this.loadedModules[moduleIndex]].settings = getModuleSettings(this.loadedModules[moduleIndex]);
+		//this.loadedModules.push(moduleName);
+
+		for(var moduleIndex in loadModules) {
+			var moduleName = loadModules[moduleIndex];
+
+			if(typeof window["responslr_" + moduleName] != "undefined") {
+				this[moduleName] = new window["responslr_" + moduleName]();
+				this[moduleName].settings = getModuleSettings(moduleName);
+			} else {
+				console.error('responslr module "' + moduleName + '" does not exist!');
+			}
 		}
 	}
 
@@ -39,19 +50,13 @@ function responslr() {
 	}
 
 	// PUBLIC: Add module
-	this.addModule = function(moduleName) {
-		if(typeof window["responslr_" + moduleName] != "undefined") {
-			this[moduleName] = new window["responslr_" + moduleName]();
+	/*this.addModule = function(moduleName) {
+		this[moduleName] = new window["responslr_" + moduleName]();
 
-			this.loadedModules.push(moduleName);
+		this.loadedModules.push(moduleName);
 
-			return this[moduleName];
-		} else {
-			console.error('responslr module "' + moduleName + '" does not exist!');
-
-			return null;
-		}
-	}
+		return this[moduleName];
+	}*/
 }
 
 var responslr = new responslr();

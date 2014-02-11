@@ -11,62 +11,25 @@ var oGlobals											= {
 		oFooter.$										= $('footer');
 	},
 	init:							function() {
-		/*oBody.$.responsivehelper({
-			showWindowSize: false,
-			showHeight: true,
-			showGrid: true,
-			breakpoints: {
-				hd	 : {
-					name: 'High Definition',
-					breakpoint: 1281
-				},
-				d	 : {
-					name: 'Desktop',
-					breakpoint: 1025
-				},
-				tl	 : {
-					name: 'Tablet Landscape',
-					breakpoint: 961
-				},
-				tp	 : {
-					name: 'Tablet Portrait',
-					breakpoint: 641
-				},
-				s	 : {
-					name: 'Smartphone',
-					breakpoint: 1
-				}
-			}
-		});*/
-	},
-	/*oResponsiveHelper:				null,
-	onBreakpointChange:				function() {
-		oBody.$.unbind('touchstart');
+		// Init responslr
+		responslr.init();
 
-		// TODO: Responsive-helper - remove inline styles
-		switch(oGlobals.oResponsiveHelper.currentBreakpoint.codeName) {
+		// Show gridhelper
+		responslr.grid.showHelper();
 
-			case 's':
-				oBody.$.bind('touchstart', function(e){});
-			break;
+		// Add breakpoint events
+		responslr.grid.addBreakpointEvent("small,large", "enter", function() {
+			console.log('small or large entered');
+		});
 
-			case 'tp':
-				oBody.$.bind('touchstart', function(e){});
-			break;
+		responslr.grid.addBreakpointEvent("small", "leave", function() {
+			console.log('small leaved');
+		});
 
-			case 'tl':
-				oBody.$.bind('touchstart', function(e){});
-			break;
-
-			case 'd':
-
-			break;
-
-			case 'hd':
-
-			break;
-		}
-	}*/
+		responslr.grid.addBreakpointEvent("*", "leave", function() {
+			console.log('all leaved');
+		});
+	}
 };
 
 /***********************************************************************************
