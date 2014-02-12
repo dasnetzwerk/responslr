@@ -18,16 +18,19 @@ var oGlobals											= {
 		responslr.grid.showHelper();
 
 		// Add breakpoint events
-		responslr.grid.addBreakpointEvent("small,large", "enter", function() {
-			console.log('small or large entered');
-		});
-
-		responslr.grid.addBreakpointEvent("small", "leave", function() {
-			console.log('small leaved');
-		});
-
-		responslr.grid.addBreakpointEvent("*", "leave", function() {
-			console.log('all leaved');
+		responslr.grid.addBreakpointEvents({
+			breakpoint: 'small',
+			onEnter: function() {
+				console.log('small enter');
+			},
+			onLeave: function() {
+				console.log('small leave');
+			}
+		}, {
+			breakpoint: 'medium,large',
+			onEnter: function() {
+				console.log('medium or large enter');
+			}
 		});
 	}
 };

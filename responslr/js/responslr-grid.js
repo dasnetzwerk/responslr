@@ -1,21 +1,14 @@
 function responslr_grid() {
 
 	/***********************************************************************************
-		PUBLIC PROPERTIES
-	***********************************************************************************/
-
-	this.breakpointEvents = [];
-	this.previousBreakpoint = {};
-	this.currentBreakpoint = {};
-	this.windowWidth = 0;
-
-
-	/***********************************************************************************
 		PRIVATE PROPERTIES
 	***********************************************************************************/
 
 	var self = this;
-	var resizeBound = false;
+	var bResizeAlreadyBound = false;
+	var aBreakpointEvents = [];
+	var oPreviousBreakpoint = {};
+	var oCurrentBreakpoint = {};
 
 
 	/***********************************************************************************
@@ -37,69 +30,60 @@ function responslr_grid() {
 
 	// Bind resize
 	var bindResize = function() {
-		if(!resizeBound) {
+		if(!bResizeAlreadyBound) {
 			$(window).resize(function() {
-				setWindowWidth();
+				var oNewBreakpoint = checkCurrentBreakpoint();
 
-				var sNewBreakpoint = self.getCurrentBreakpoint();
-
-				if(sNewBreakpoint != self.currentBreakpoint) {
-					self.previousBreakpoint = self.currentBreakpoint;
-					self.currentBreakpoint = sNewBreakpoint;
-
-					// ZODO: Name in objekt ergänzen
-
-					var oPreviousBreakpoint = self.settings.breakpoints[self.previousBreakpoint];
-					var oCurrentBreakpoint = self.settings.breakpoints[self.currentBreakpoint];
-
-					// Single breakpoint enter
-					if(typeof self.breakpointEvents[self.currentBreakpoint] != 'undefined') {
-						var aEnterCallbacks = self.breakpointEvents[self.currentBreakpoint]['enter'];
-
-						for(var iEnterCallback in aEnterCallbacks) {
-							aEnterCallbacks[iEnterCallback](oCurrentBreakpoint, oPreviousBreakpoint);
-						}
-					}
-
-					// All breakpoints enter
-					if(typeof self.breakpointEvents["*"] != 'undefined') {
-						var aAllEnterCallbacks = self.breakpointEvents["*"]['enter'];
-
-						for(var iAllEnterCallback in aAllEnterCallbacks) {
-							aAllEnterCallbacks[iAllEnterCallback](oCurrentBreakpoint, oPreviousBreakpoint);
-						}
-					}
+				if(oNewBreakpoint.name != oCurrentBreakpoint.name) {
+					oPreviousBreakpoint = oCurrentBreakpoint;
+					oCurrentBreakpoint = oNewBreakpoint;
 
 					// Single breakpoint leave
-					if(typeof self.breakpointEvents[self.previousBreakpoint] != 'undefined') {
-						var aLeaveCallbacks = self.breakpointEvents[self.previousBreakpoint]['leave'];
+					if(typeof aBreakpointEvents[oPreviousBreakpoint.name] != 'undefined') {
+						var aLeaveCallbacks = aBreakpointEvents[oPreviousBreakpoint.name]['onLeave'];
 
-						for(var iLeaveCallback in aLeaveCallbacks) {
-							aLeaveCallbacks[iLeaveCallback](oCurrentBreakpoint, oPreviousBreakpoint);
+						for(var iCallbackIndex in aLeaveCallbacks) {
+							aLeaveCallbacks[iCallbackIndex](oCurrentBreakpoint, oPreviousBreakpoint);
 						}
 					}
 
 					// All breakpoints leave
-					if(typeof self.breakpointEvents["*"] != 'undefined') {
-						var aAllLeaveCallbacks = self.breakpointEvents["*"]['leave'];
+					if(typeof aBreakpointEvents["*"] != 'undefined') {
+						var aAllLeaveCallbacks = aBreakpointEvents["*"]['onLeave'];
 
-						for(var iAllLeaveCallback in aAllLeaveCallbacks) {
-							aAllLeaveCallbacks[iAllLeaveCallback](oCurrentBreakpoint, oPreviousBreakpoint);
+						for(var iAllLeaveCallbackIndex in aAllLeaveCallbacks) {
+							aAllLeaveCallbacks[iAllLeaveCallbackIndex](oCurrentBreakpoint, oPreviousBreakpoint);
+						}
+					}
+
+					// Single breakpoint enter
+					if(typeof aBreakpointEvents[oCurrentBreakpoint.name] != 'undefined') {
+						var aEnterCallbacks = aBreakpointEvents[oCurrentBreakpoint.name]['onEnter'];
+
+						for(var iEnterCallbackIndex in aEnterCallbacks) {
+							aEnterCallbacks[iEnterCallbackIndex](oCurrentBreakpoint, oPreviousBreakpoint);
+						}
+					}
+
+					// All breakpoints enter
+					if(typeof aBreakpointEvents["*"] != 'undefined') {
+						var aAllEnterCallbacks = aBreakpointEvents["*"]['onEnter'];
+
+						for(var iAllEnterCallbackIndex in aAllEnterCallbacks) {
+							aAllEnterCallbacks[iAllEnterCallbackIndex](oCurrentBreakpoint, oPreviousBreakpoint);
 						}
 					}
 				}
 			});
 
-			$(window).resize();
-
-			resizeBound = true;
+			bResizeAlreadyBound = true;
 		}
 	}
 
-	// Set window width
-	var setWindowWidth = function() {
-		self.windowWidth = window.innerWidth;
-	}
+	// Check current breakpoint
+	var checkCurrentBreakpoint = function() {
+		return self.getBreakpointByWidth(self.getWindowWidth());
+	};
 
 
 	/***********************************************************************************
@@ -107,39 +91,53 @@ function responslr_grid() {
 	***********************************************************************************/
 
 	// Add breakpoint event
-	this.addBreakpointEvent = function(breakpoints, events, callback) {
-		var aBreakpoints = breakpoints.split(',');
-		var aEvents = events.split(',');
+	this.addBreakpointEvents = function() {
 
-		for(var iBreakpoint in aBreakpoints) {
-			var sBreakpointName = $.trim(aBreakpoints[iBreakpoint]);
+		// Get breakpoint events
+		for(var iEventIndex in arguments) {
+			var oBreakpointEvent = arguments[iEventIndex];
 
-			if(typeof self.breakpointEvents[sBreakpointName] == 'undefined') {
-				self.breakpointEvents[sBreakpointName] = { 'enter': [], 'leave': [] };
-			}
+			oBreakpointEvent.breakpoint = oBreakpointEvent.breakpoint || '*';
+			oBreakpointEvent.onEnter = oBreakpointEvent.onEnter || null;
+			oBreakpointEvent.onLeave = oBreakpointEvent.onLeave || null;
 
-			for(var iEvent in aEvents) {
-				var sEventName = $.trim(aEvents[iEvent]);
+			var aBreakpoints = oBreakpointEvent.breakpoint.split(',');
 
-				self.breakpointEvents[sBreakpointName][sEventName].push(callback);
+			for(var iBreakpointIndex in aBreakpoints) {
+				var sBreakpointName = aBreakpoints[iBreakpointIndex];
+
+				if(typeof aBreakpointEvents[sBreakpointName] == 'undefined') {
+					aBreakpointEvents[sBreakpointName] = { 'onEnter': [], 'onLeave': [] };
+				}
+
+				if(oBreakpointEvent.onEnter != null) {
+					aBreakpointEvents[sBreakpointName]['onEnter'].push(oBreakpointEvent.onEnter);
+				}
+
+				if(oBreakpointEvent.onLeave != null) {
+					aBreakpointEvents[sBreakpointName]['onLeave'].push(oBreakpointEvent.onLeave);
+				}
 			}
 		}
 
-		// Bind resize event only on the first time
+		// Bind resize event
 		bindResize();
+
+		// Trigger resize event once
+		$(window).resize();
 	};
 
 	// Get breakpoint by width
 	this.getBreakpointByWidth = function(iWidth) {
 		var oMatchedBreakpoint = {};
 
-		for(var sBreakpoint in self.settings.breakpoints) {
-			var oBreakpoint = self.settings.breakpoints[sBreakpoint];
+		for(var sBreakpointName in self.settings.breakpoints) {
+			var oBreakpoint = self.settings.breakpoints[sBreakpointName];
 			var iMinWidth = parseInt(oBreakpoint.minWidth);
 			var iMaxWidth = parseInt(oBreakpoint.maxWidth);
 
 			if(iMinWidth <= iWidth && (iMaxWidth >= iWidth || iMaxWidth == -1)) {
-				oMatchedBreakpoint = sBreakpoint;
+				oMatchedBreakpoint = oBreakpoint;
 				break;
 			}
 		}
@@ -149,8 +147,19 @@ function responslr_grid() {
 
 	// Get current breakpoint
 	this.getCurrentBreakpoint = function() {
-		return self.getBreakpointByWidth(self.windowWidth);
-	};
+		return oCurrentBreakpoint;
+	}
+
+	// Get previous breakpoint
+	this.getPreviousBreakpoint = function() {
+		return oPreviousBreakpoint;
+	}
+
+	// Get window width
+	this.getWindowWidth = function() {
+		return window.innerWidth;
+	}
 }
 
+// Add grid module to the responslr core
 responslr.addModule('grid');

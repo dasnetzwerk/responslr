@@ -349,6 +349,7 @@
 	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
 		$breakpoint-map: (
 			$breakpoint-key: (
+				name: $breakpoint-key,
 				maxWidth: if($breakpoint-key == nth(map-keys($responslr-grid-breakpoints), 1), -1, responslr-grid-max-width($breakpoint-key)),
 				minWidth: responslr-grid-min-width($breakpoint-key),
 				columns: responslr-grid-columns($breakpoint-key),

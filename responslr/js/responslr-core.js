@@ -1,25 +1,28 @@
 function responslr() {
 
-	var self = this;
+	/***********************************************************************************
+		PUBLIC PROPERTIES
+	***********************************************************************************/
 
-	// Config
+	this.settings = {};
+
+
+	/***********************************************************************************
+		PRIVATE PROPERTIES
+	***********************************************************************************/
+
+	var self = this;
+	var aLoadedModules = [];
+
 	var sSettingsElement = 'html';
 	var sSettingsPseudo = 'before';
 
-	// Core
-	this.settings = {};
-	this.loadedModules = [];
 
-	// PUBLIC: Init
-	this.init = function() {
-		this.settings = loadAllSettings();
+	/***********************************************************************************
+		PRIVATE CORE METHODS
+	***********************************************************************************/
 
-		for(var moduleIndex in this.loadedModules) {
-			this[this.loadedModules[moduleIndex]].settings = getModuleSettings(this.loadedModules[moduleIndex]);
-		}
-	}
-
-	// PRIVATE: Load settings
+	// Load all settings
 	var loadAllSettings = function() {
 		var jsonContent = window.getComputedStyle(document.querySelector(sSettingsElement), sSettingsPseudo).getPropertyValue('content');
 		var oSettings = JSON.parse(jsonContent.slice(1, -1).replace(/\\"/ig, '"'));
@@ -27,31 +30,46 @@ function responslr() {
 		return oSettings;
 	}
 
-	// PRIVATE: Get settings
-	var getModuleSettings = function(moduleName) {
-		var moduleSettings = {};
+	// Get module settings
+	var getModuleSettings = function(sModuleName) {
+		var oModuleSettings = {};
 
-		if(typeof self.settings[moduleName] != 'undefined') {
-			moduleSettings = self.settings[moduleName];
+		if(typeof self.settings[sModuleName] != 'undefined') {
+			oModuleSettings = self.settings[sModuleName];
 		}
 
-		return moduleSettings;
+		return oModuleSettings;
 	}
 
-	// PUBLIC: Add module
-	this.addModule = function(moduleName) {
-		if(typeof window["responslr_" + moduleName] != "undefined") {
-			this[moduleName] = new window["responslr_" + moduleName]();
 
-			this.loadedModules.push(moduleName);
+	/***********************************************************************************
+		PUBLIC CORE METHODS
+	***********************************************************************************/
 
-			return this[moduleName];
+	// Init core
+	this.init = function() {
+		this.settings = loadAllSettings();
+
+		for(var iModuleIndex in aLoadedModules) {
+			this[aLoadedModules[iModuleIndex]].settings = getModuleSettings(aLoadedModules[iModuleIndex]);
+		}
+	}
+
+	// Add module to the core
+	this.addModule = function(sModuleName) {
+		if(typeof window['responslr_' + sModuleName] != 'undefined') {
+			this[sModuleName] = new window['responslr_' + sModuleName]();
+
+			aLoadedModules.push(sModuleName);
+
+			return this[sModuleName];
 		} else {
-			console.error('responslr module "' + moduleName + '" does not exist!');
+			console.error('responslr module "' + sModuleName + '" does not exist!');
 
 			return null;
 		}
 	}
 }
 
+// Create main responslr object
 var responslr = new responslr();
