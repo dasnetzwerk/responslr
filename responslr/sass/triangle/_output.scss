@@ -34,7 +34,7 @@
 	$return-width: map-get(responslr-triangle($name), width);
 
 	@if $return-width == null {
-		@warn responslr-map-required-error("width", "shape-triangle", $name);
+		@warn responslr-map-required-error("width", "triangle", $name);
 	}
 
 	@return $return-width;
@@ -44,7 +44,7 @@
 	$return-height: map-get(responslr-triangle($name), height);
 
 	@if $return-height == null {
-		@warn responslr-map-required-error("height", "shape-height", $name);
+		@warn responslr-map-required-error("height", "triangle", $name);
 	}
 
 	@return $return-height;
