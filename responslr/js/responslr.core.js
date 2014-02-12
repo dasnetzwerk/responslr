@@ -15,7 +15,7 @@ function responslr() {
 	var aLoadedModules = [];
 
 	var sSettingsElement = 'html';
-	var sSettingsPseudo = 'before';
+	var sSettingsPseudo = '::before';
 
 
 	/***********************************************************************************
@@ -24,8 +24,14 @@ function responslr() {
 
 	// Load all settings
 	var loadAllSettings = function() {
+		var oSettings = {};
 		var jsonContent = window.getComputedStyle(document.querySelector(sSettingsElement), sSettingsPseudo).getPropertyValue('content');
-		var oSettings = JSON.parse(jsonContent.slice(1, -1).replace(/\\"/ig, '"'));
+
+		jsonContent = jsonContent.slice(1, -1).replace(/\\"/ig, '"');
+
+		try {
+			oSettings = JSON.parse(jsonContent);
+		} catch(e) {}
 
 		return oSettings;
 	}
