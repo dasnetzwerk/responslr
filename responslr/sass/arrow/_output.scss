@@ -271,7 +271,7 @@
 	$transition-properties: responslr-arrow-transition-properties($name) !default;
 	$transition-values: responslr-arrow-transition-values($name) !default;
 	$pseudo-element: responslr-arrow-pseudo-element($name) !default;
-	$insert-pseudo-element: $insert-pseudo-element !default;
+	$insert-pseudo-element: $responslr-arrows-default-insert-pseudo-element !default;
 
 	$position: unquote($position);
 
@@ -286,8 +286,6 @@
 	}
 
 	@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
-		@extend .#{$responslr-arrow-class};
-
 		@include responslr-arrow-width($width: $width, $insert-pseudo-element: false);
 		@include responslr-arrow-size($size: $size, $insert-pseudo-element: false);
 		@include responslr-arrow-color($color: $color, $insert-pseudo-element: false);
