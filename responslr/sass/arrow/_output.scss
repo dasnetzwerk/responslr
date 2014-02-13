@@ -225,7 +225,7 @@
 	}
 }
 
-@mixin arrow-transition($transition-properties: null,	$transition-values: null, $pseudo-element: null) {
+@mixin arrow-transition($transition-properties: null, $transition-values: null, $pseudo-element: null) {
 	$transition-properties: unquote($transition-properties);
 	$transition-values: unquote($transition-values);
 
@@ -392,6 +392,10 @@
 @mixin responslr-arrow($name: null) {
 
 	@if responslr-arrow-exists($name) {
+		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
+			@extend .#{$responslr-arrow-class};
+		}
+
 		@include responslr-arrow-custom($name: $name);
 	}
 	//@each $arrow-list in $responslr-arrows {
@@ -437,18 +441,34 @@
 	}
 
 	.#{$responslr-arrow-class-prefix}up {
+		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
+			@extend .#{$responslr-arrow-class};
+		}
+
 		@include responslr-arrow-custom($direction: up);
 	}
 
 	.#{$responslr-arrow-class-prefix}right {
+		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
+			@extend .#{$responslr-arrow-class};
+		}
+
 		@include responslr-arrow-custom($direction: right);
 	}
 
 	.#{$responslr-arrow-class-prefix}down {
+		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
+			@extend .#{$responslr-arrow-class};
+		}
+
 		@include responslr-arrow-custom($direction: down);
 	}
 
 	.#{$responslr-arrow-class-prefix}left {
+		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
+			@extend .#{$responslr-arrow-class};
+		}
+
 		@include responslr-arrow-custom($direction: left);
 	}
 
