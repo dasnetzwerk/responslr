@@ -184,9 +184,8 @@
 }
 
 @mixin responslr-generate-typo() {
-	// Font-families
-	@if $responslr-generate-typo-families and responslr-map-isnotempty($responslr-typo-families) {
 
+	@if $responslr-generate-typo-faces and responslr-map-isnotempty($responslr-typo-families) {
 		@each $font-family-key, $font-family-list in $responslr-typo-families {
 			// Generate font-faces
 			@if responslr-typo-family-file($font-family-key) {
@@ -204,7 +203,10 @@
 				@import url(responslr-typo-family-import($font-family-key));
 			}
 		}
+	}
 
+	// Font-families
+	@if $responslr-generate-typo-families and responslr-map-isnotempty($responslr-typo-families) {
 		@each $font-family-key, $font-family-list in $responslr-typo-families {
 			.#{$responslr-typo-family-class-prefix}#{$font-family-key} {
 				@include responslr-typo-family($name: $font-family-key);

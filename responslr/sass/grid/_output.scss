@@ -367,9 +367,4 @@
 	$global-settings: map-merge($global-settings, ( grid: $grid-settings ) ) !global;
 }
 
-
-@if responslr-generate-grid-breakpoints-check() {
-	@include responslr-generate-grid-breakpoints();
-}
-
 @include responslr-generate-grid-settings();
