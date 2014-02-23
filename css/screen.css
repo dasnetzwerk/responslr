@@ -2698,8 +2698,12 @@ td.column {
 	CLASS GENERATOR
 ***********************************************************************************/
 html::before {
-  display: none;
   content: '{"grid":{"breakpoints":{"large":{"name":"large","maxWidth":-1,"minWidth":"961px","columns":12,"gutter":"32px"},"medium":{"name":"medium","maxWidth":"960px","minWidth":"641px","columns":6,"gutter":"24px"},"small":{"name":"small","maxWidth":"640px","minWidth":0,"columns":4,"gutter":"20px"}}}}';
+  visibility: hidden;
+  position: absolute;
+  font-size: 0;
+  line-height: 0;
+  height: 0;
 }
 
 /***********************************************************************************

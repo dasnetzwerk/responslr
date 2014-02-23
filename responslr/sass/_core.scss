@@ -10,7 +10,11 @@ $global-settings: ();
 
 @if $global-settings != () {
 	html::before {
-		display: none;
 		content: json-encode($global-settings);
+		visibility: hidden;
+		position: absolute;
+		font-size: 0;
+		line-height: 0;
+		height: 0;
 	}
 }
