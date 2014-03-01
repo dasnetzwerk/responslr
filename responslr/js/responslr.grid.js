@@ -15,12 +15,66 @@ function responslr_grid() {
 		PUBLIC GRIDHELPER METHODS
 	***********************************************************************************/
 
+	// Show grid helper
 	this.showHelper = function() {
+		var settings = self.settings.helper;
 
+		var defaultBreakpoint = {};
+
+		for(breakpoint in self.settings.breakpoints) {
+			defaultBreakpoint = self.settings.breakpoints[breakpoint];
+			break;
+		}
+
+		if(settings.show) {
+			// Grid
+			if(settings.gridShow) {
+				var $gridContainer = $('<div />').attr('id', settings.gridId);
+				var $grid = $('<div />').addClass(self.settings.rowClass).addClass(self.settings.containerClass);
+
+				// Create column elements
+				for(var i = 1; i <= defaultBreakpoint.columns; i++) {
+					var $column = $('<div></div>').addClass(self.settings.columnClass).append('<div />');
+
+					$grid.append($column);
+				};
+
+				// Add classes to column elements
+				for(breakpoint in self.settings.breakpoints) {
+					for(var j = 0; j < self.settings.breakpoints[breakpoint].columns; j++) {
+						$grid.children().eq(j).addClass(breakpoint + '-1').addClass(responslr.settings.visibility.showClassPrefix + breakpoint);
+					}
+				}
+
+				$gridContainer.append($grid);
+				$('body').append($gridContainer);
+			}
+
+			// Info box
+			var $info = $('<div></div>').attr('id', settings.infoId);
+
+			// Show breakpoint name
+			if(settings.breakpointShow) {
+				for(breakpoint in self.settings.breakpoints) {
+					$info.append('<span class="' + responslr.settings.visibility.showClassPrefix + breakpoint + '">' + breakpoint + '</span>');
+				}
+			}
+
+			if(settings.gridShow) {
+				$info.append('<input type="checkbox" />').bind('click', function() {
+					$gridContainer.toggleClass(settings.gridShowerClass);
+				});
+			}
+
+			$('body').append($info);
+		}
 	};
 
+	// Hide grid helper
 	this.hideHelper = function() {
+		var settings = self.settings.helper;
 
+		$('#' + settings.gridId + ', #' + settings.infoId).remove();
 	};
 
 

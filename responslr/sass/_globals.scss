@@ -147,6 +147,7 @@
 
 // Global
 $responslr-generate-classes: true !default;
+$responslr-generate-settings: true !default;
 
 
 // Reset
@@ -164,11 +165,15 @@ $responslr-generate-typo-sizes: $responslr-generate-typo !default;
 $responslr-generate-grid-breakpoints: $responslr-generate-classes !default;
 $responslr-generate-grid-helper: $responslr-generate-classes !default;
 
+$responslr-generate-grid-settings: $responslr-generate-settings !default;
+
 
 // Visiblity
 $responslr-generate-visibility: $responslr-generate-classes !default;
 $responslr-generate-visibility-showers: $responslr-generate-visibility !default;
 $responslr-generate-visibility-hiders: $responslr-generate-visibility !default;
+
+$responslr-generate-visibility-settings: $responslr-generate-settings !default;
 
 
 // Transition

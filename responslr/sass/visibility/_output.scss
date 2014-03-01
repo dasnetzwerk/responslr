@@ -152,3 +152,25 @@
 		@include responslr-generate-showers();
 	}
 }
+
+
+/***********************************************************************************
+	SETTINGS GENERATOR
+***********************************************************************************/
+
+@function responslr-generate-visibility-settings-check() {
+	@return $responslr-generate-visibility-settings;
+}
+
+@mixin responslr-generate-visibility-settings() {
+	$visibility-settings: (
+		showClassPrefix: $responslr-visibility-showers-class-prefix,
+		hiderClassPrefix: $responslr-visibility-hiders-class-prefix
+	);
+
+	$global-settings: map-merge($global-settings, ( visibility: $visibility-settings ) ) !global;
+}
+
+@if responslr-generate-visibility-settings-check() {
+	@include responslr-generate-visibility-settings();
+}

@@ -34,7 +34,7 @@
 	$return-max-width: map-get(responslr-grid-breakpoint($name), max-width);
 
 	@if $return-max-width == null {
-		@warn responslr-map-required-error("max-width", "grid-breakpoint", $name);
+		$return-max-width: none;
 	}
 
 	@return $return-max-width;
@@ -111,10 +111,12 @@
 	$breakpoint-min: '';
 	$breakpoint-orientation: '';
 
-	@if type-of($media-end) == string and $media-end != null {
-		$breakpoint-max: ' and (max-width:' + responslr-grid-max-width($media-end) + ')';
-	} @else if type-of($media-end) == number {
-		$breakpoint-max: ' and (max-width: #{$media-end})';
+	@if responslr-grid-max-width($media-end) != none or type-of($media-end) == number {
+		@if type-of($media-end) == string and $media-end != null {
+			$breakpoint-max: ' and (max-width:' + responslr-grid-max-width($media-end) + ')';
+		} @else if type-of($media-end) == number {
+			$breakpoint-max: ' and (max-width: #{$media-end})';
+		}
 	}
 
 	@if type-of($media-start) == string and $media-start != null {
@@ -263,70 +265,60 @@
 		}
 	}
 
-	// Grid helper
+	// Grid helpers
 	@if $responslr-generate-grid-helper {
-		##{$responslr-grid-helper-toggle-id} {
+		##{$responslr-grid-helper-info-id} {
 			position: fixed;
-			z-index: $responslr-grid-helper-toggle-z-index;
+			z-index: $responslr-grid-helper-info-z-index;
+			padding: $responslr-grid-helper-info-padding;
+			background-color: $responslr-grid-helper-info-background-color;
+			color: $responslr-grid-helper-info-text-color;
+			@include responslr-typo-size();
 
-			@if type-of($responslr-grid-helper-toggle-position-top) == number {
-				top: $responslr-grid-helper-toggle-position-top;
+			@if type-of($responslr-grid-helper-info-position-top) == number {
+				top: $responslr-grid-helper-info-position-top;
 			}
 
-			@if type-of($responslr-grid-helper-toggle-position-right) == number {
-				right: $responslr-grid-helper-toggle-position-right;
+			@if type-of($responslr-grid-helper-info-position-right) == number {
+				right: $responslr-grid-helper-info-position-right;
 			}
 
-			@if type-of($responslr-grid-helper-toggle-position-bottom) == number {
-				bottom: $responslr-grid-helper-toggle-position-bottom;
+			@if type-of($responslr-grid-helper-info-position-bottom) == number {
+				bottom: $responslr-grid-helper-info-position-bottom;
 			}
 
-			@if type-of($responslr-grid-helper-toggle-position-left) == number {
-				left: $responslr-grid-helper-toggle-position-left;
+			@if type-of($responslr-grid-helper-info-position-left) == number {
+				left: $responslr-grid-helper-info-position-left;
 			}
 
-			&:checked + ##{$responslr-grid-helper-id} {
-				display: block;
+			span + input[type=checkbox] {
+				margin-left: $responslr-grid-helper-info-padding;
 			}
 		}
 
-		##{$responslr-grid-helper-id} {
+		##{$responslr-grid-helper-grid-id} {
 			display: none;
 			position: fixed;
 			z-index: $responslr-grid-helper-z-index;
 			top: 0;
 			bottom: 0;
-			background-color: $responslr-grid-helper-gutter-background-color;
 			width: 100%;
-			height: 100%;
 			overflow: hidden;
 
-
-			left: 50%;
-			max-width: $responslr-grid-container-max-width;
-			width: 100%;
-			margin-left: -($responslr-grid-container-max-width / 2);
-
-			@include responslr-media-query($responslr-grid-container-max-width) {
-				left: auto;
-				margin-left: 0;
-				max-width: 100%;
+			&.#{$responslr-grid-helper-grid-shower-class} {
+				display: block;
 			}
 
-			& > div {
+			.#{$responslr-grid-row-class} {
+				height: 100%;
+				background-color: $responslr-grid-helper-gutter-background-color;
+			}
+
+			.#{$responslr-grid-column-class} {
 				display: inline-block;
 				height: 100%;
 
-				@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
-					@include responslr-media-query($breakpoint-key) {
-						&:nth-child(1n+#{responslr-grid-columns($breakpoint-key) + 1}) {
-							display: none;
-						}
-					}
-				}
-
 				div {
-					width: 100%;
 					height: 100%;
 					background-color: $responslr-grid-helper-column-background-color;
 				}
@@ -342,6 +334,10 @@
 /***********************************************************************************
 	SETTINGS GENERATOR
 ***********************************************************************************/
+
+@function responslr-generate-grid-settings-check() {
+	@return $responslr-generate-grid-settings;
+}
 
 @mixin responslr-generate-grid-settings() {
 	$grid-breakpoints: ();
@@ -361,10 +357,24 @@
 	}
 
 	$grid-settings: (
-		breakpoints: $grid-breakpoints
+		containerClass: $responslr-grid-container-class,
+		rowClass: $responslr-grid-row-class,
+		columnClass: $responslr-grid-column-class,
+		breakpoints: $grid-breakpoints,
+		helper: (
+			infoId: $responslr-grid-helper-info-id,
+			gridId: $responslr-grid-helper-grid-id,
+			gridShowerClass: $responslr-grid-helper-grid-shower-class,
+
+			show: $responslr-grid-helper-show,
+			gridShow: $responslr-grid-helper-show-grid,
+			breakpointShow: $responslr-grid-helper-show-breakpoint
+		)
 	);
 
 	$global-settings: map-merge($global-settings, ( grid: $grid-settings ) ) !global;
 }
 
-@include responslr-generate-grid-settings();
+@if responslr-generate-grid-settings-check() {
+	@include responslr-generate-grid-settings();
+}

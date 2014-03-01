@@ -4,7 +4,6 @@
 
 $responslr-grid-breakpoints: (
 	'large': (
-		max-width: 1024px,
 		columns: 12,
 		gutter: 32px
 	),
@@ -44,16 +43,23 @@ $responslr-grid-container-class: 'container' !default;
 $responslr-grid-container-full-class: 'container-full' !default;
 
 // Grid helper
-$responslr-grid-helper-id: 'responslr-grid-helper' !default;
-$responslr-grid-helper-toggle-id: 'responslr-grid-helper-toggle' !default;
+$responslr-grid-helper-show: true !default;
+$responslr-grid-helper-show-grid: $responslr-grid-helper-show !default;
+$responslr-grid-helper-show-breakpoint: $responslr-grid-helper-show !default;
+
+$responslr-grid-helper-info-id: 'responslr-grid-helper-info' !default;
+$responslr-grid-helper-grid-id: 'responslr-grid-helper' !default;
+$responslr-grid-helper-grid-shower-class: 'show' !default;
 
 $responslr-grid-helper-z-index: 100000 !default;
-$responslr-grid-helper-toggle-z-index: 100001 !default;
-
 $responslr-grid-helper-column-background-color: rgba(36,156,213,.5) !default;
 $responslr-grid-helper-gutter-background-color: rgba(39,174,96,.25) !default;
 
-$responslr-grid-helper-toggle-position-top: auto !default;
-$responslr-grid-helper-toggle-position-right: 10px !default;
-$responslr-grid-helper-toggle-position-bottom: 50px !default;
-$responslr-grid-helper-toggle-position-left: auto !default;
+$responslr-grid-helper-info-z-index: 100001 !default;
+$responslr-grid-helper-info-background-color: rgba(0,0,0,.7) !default;
+$responslr-grid-helper-info-text-color: white !default;
+$responslr-grid-helper-info-padding: 5px !default;
+$responslr-grid-helper-info-position-top: auto !default;
+$responslr-grid-helper-info-position-right: 10px !default;
+$responslr-grid-helper-info-position-bottom: 10px !default;
+$responslr-grid-helper-info-position-left: auto !default;

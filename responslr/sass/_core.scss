@@ -8,7 +8,7 @@ $global-settings: ();
 @import "settings";
 @import "outputs";
 
-@if $global-settings != () {
+@if $responslr-generate-settings != false and $global-settings != () {
 	html::before {
 		content: json-encode($global-settings);
 		visibility: hidden;
