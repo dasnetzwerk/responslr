@@ -61,9 +61,11 @@ function responslr_grid() {
 			}
 
 			if(settings.gridShow) {
-				$info.append('<input type="checkbox" />').bind('click', function() {
+				var $checkbox = $('<input type="checkbox" />').bind('click', function() {
 					$gridContainer.toggleClass(settings.gridShowerClass);
 				});
+
+				$info.append($checkbox);
 			}
 
 			$('body').append($info);
