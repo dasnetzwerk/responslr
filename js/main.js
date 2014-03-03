@@ -2,7 +2,6 @@
 	GLOBALS
 ***********************************************************************************/
 var oGlobals											= {
-	bDebug:							(document.location.hostname.indexOf('dev.') > -1),
 	sLanguage:						$('html').attr('lang').split('-')[0],
 	cacheJQueryObjects:				function() {
 		oWindow.$										= $(window);
@@ -14,22 +13,27 @@ var oGlobals											= {
 		// Init responslr
 		responslr.init();
 
+		// Set live url
+		responslr.setLiveUrl('responslr.ch', 'www.responslr.ch');
+
 		// Show gridhelper
-		responslr.grid.showHelper();
+		if(responslr.isDev) {
+			responslr.grid.showHelper();
+		}
 
 		// Add breakpoint events
 		responslr.grid.addBreakpointEvents({
 			breakpoint: 'small',
 			onEnter: function() {
-				console.log('small enter');
+				responslr.log('small enter');
 			},
 			onLeave: function() {
-				console.log('small leave');
+				responslr.log('small leave');
 			}
 		}, {
 			breakpoint: 'medium,large',
 			onEnter: function() {
-				console.log('medium or large enter');
+				responslr.log('medium or large enter');
 			}
 		});
 	}

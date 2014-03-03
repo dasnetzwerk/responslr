@@ -5,6 +5,9 @@ function responslr() {
 	***********************************************************************************/
 
 	this.settings = {};
+	this.isLive = false;
+	this.isDev = true;
+	this.support = {};
 
 
 	/***********************************************************************************
@@ -47,6 +50,18 @@ function responslr() {
 		return oModuleSettings;
 	}
 
+	// Apply fixes
+	var applyFixes = function() {
+		// Touch device hover fix
+		document.addEventListener('touchstart', function(){}, true);
+	}
+
+	// Check touch support
+	var checkBrowserSupport = function() {
+		// Touch
+		self.support.touch = ('ontouchstart' in window || 'onmsgesturechange' in window);
+	}
+
 
 	/***********************************************************************************
 		PUBLIC CORE METHODS
@@ -56,9 +71,16 @@ function responslr() {
 	this.init = function() {
 		this.settings = loadAllSettings();
 
+		// Load modules
 		for(var iModuleIndex in aLoadedModules) {
 			this[aLoadedModules[iModuleIndex]].settings = getModuleSettings(aLoadedModules[iModuleIndex]);
 		}
+
+		// Apply fixes
+		applyFixes();
+
+		// Check browser support
+		checkBrowserSupport();
 	}
 
 	// Add module to the core
@@ -73,6 +95,55 @@ function responslr() {
 			console.error('responslr module "' + sModuleName + '" does not exist!');
 
 			return null;
+		}
+	}
+
+	// Set live url
+	this.setLiveUrl = function() {
+		var isLive = false;
+
+		for(url in arguments) {
+			isLive = document.location.hostname.match(new RegExp('^' + arguments[url] + '$', 'i')) !== null;
+
+			if(isLive) break;
+		}
+
+		self.isLive = isLive;
+		self.isDev = !isLive;
+	}
+
+	// Set dev url
+	this.setDevUrl = function() {
+		var isDev = false;
+
+		for(url in arguments) {
+			isDev = document.location.hostname.match(new RegExp('^' + arguments[url] + '$', 'i')) !== null;
+
+			if(isDev) break;
+		}
+
+		self.isDev = isDev;
+		self.isLive = !isDev;
+	}
+
+	// Custom log function
+	this.log = function(output) {
+		if(!self.isLive) {
+			console.log(output);
+		}
+	}
+
+	// Custom warn function
+	this.warn = function(output) {
+		if(!self.isLive) {
+			console.warn(output);
+		}
+	}
+
+	// Custom error function
+	this.error = function(output) {
+		if(!self.isLive) {
+			console.error(output);
 		}
 	}
 }
