@@ -125,7 +125,7 @@
 		.#{$responslr-grid-column-class} > & {
 			@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
 				@if responslr-grid-breakpoint-index($breakpoint-key) > 1 {
-					@include responslr-media-query($media-end: $breakpoint-key) {
+					@include responslr-media-query($breakpoint-key) {
 						@include responslr-aspect-ratio-content-column($breakpoint-key);
 					}
 				} @else {

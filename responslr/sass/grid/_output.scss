@@ -30,6 +30,16 @@
 	MAP VALUE FUNCTIONS
 ***********************************************************************************/
 
+@function responslr-grid-min-width($name: null) {
+	$return-min-width: map-get(responslr-grid-breakpoint($name), min-width);
+
+	@if $return-min-width == null {
+		$return-min-width: none;
+	}
+
+	@return $return-min-width;
+}
+
 @function responslr-grid-max-width($name: null) {
 	$return-max-width: map-get(responslr-grid-breakpoint($name), max-width);
 
@@ -85,16 +95,36 @@
 	@return $return-gutter-double;
 }
 
-@function responslr-grid-min-width($name: null) {
-	$return-min-width: 0;
-	$breakpoint-index: responslr-grid-breakpoint-index($name) + 1;
+@function responslr-grid-calculate-min-width($name: null) {
+	@if responslr-grid-breakpoint-exists($name) {
+		$return-min-width: 0;
+		$breakpoint-index: responslr-grid-breakpoint-index($name) + 1;
 
-	@if $breakpoint-index > 0 and $breakpoint-index <= length($responslr-grid-breakpoints) {
-		$min-width-name: nth(map-keys($responslr-grid-breakpoints), $breakpoint-index);
-		$return-min-width: responslr-grid-max-width($min-width-name) + 1;
+		@if $breakpoint-index > 0 and $breakpoint-index <= length($responslr-grid-breakpoints) {
+			$min-width-name: nth(map-keys($responslr-grid-breakpoints), $breakpoint-index);
+			$return-min-width: responslr-grid-max-width($min-width-name) + 1;
+		}
+
+		@return $return-min-width;
+	} @else {
+		@return none;
 	}
+}
 
-	@return $return-min-width;
+@function responslr-grid-calculate-max-width($name: null) {
+	@if responslr-grid-breakpoint-exists($name) {
+		$return-max-width: 0;
+		$breakpoint-index: responslr-grid-breakpoint-index($name) + 1;
+
+		@if $breakpoint-index > 0 and $breakpoint-index <= length($responslr-grid-breakpoints) {
+			$max-width-name: nth(map-keys($responslr-grid-breakpoints), $breakpoint-index);
+			$return-max-width: responslr-grid-min-width($max-width-name) - 1;
+		}
+
+		@return $return-max-width;
+	} @else {
+		@return none;
+	}
 }
 
 @function responslr-grid-column-width($column-count, $size) {
@@ -106,32 +136,82 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-media-query($media-end: null, $media-start: null, $media-orientation: null) {
+@mixin responslr-media-query($name: null, $max-width: null, $min-width: null, $media-orientation: null) {
 	$breakpoint-max: '';
 	$breakpoint-min: '';
 	$breakpoint-orientation: '';
 
-	@if responslr-grid-max-width($media-end) != none or type-of($media-end) == number {
-		@if type-of($media-end) == string and $media-end != null {
-			$breakpoint-max: ' and (max-width:' + responslr-grid-max-width($media-end) + ')';
-		} @else if type-of($media-end) == number {
-			$breakpoint-max: ' and (max-width: #{$media-end})';
+	$min-width-content: none;
+	$max-width-content: none;
+
+
+	@if $name != null {
+		$breakpoint-name: $name;
+		$breakpoint-only: false;
+
+		@if str-index($name, '-only') != 0 {
+			$breakpoint-name: str-slice($name, 1, str-index($name, '-only') - 1);
+			$breakpoint-only: true;
 		}
+
+		@if $responslr-grid-mobile-first {
+			$min-width-content: responslr-grid-min-width($breakpoint-name);
+
+			@if $breakpoint-only {
+				$max-width-content: responslr-grid-calculate-max-width($breakpoint-name);
+			}
+		} @else {
+			$max-width-content: responslr-grid-max-width($breakpoint-name);
+
+			@if $breakpoint-only {
+				$min-width-content: responslr-grid-calculate-min-width($breakpoint-name);
+			}
+		}
+
+	} @else {
+
+		@if type-of($max-width) == number {
+			$max-width-content: $max-width;
+		} @else {
+
+			@if $responslr-grid-mobile-first {
+				$max-width-content: responslr-grid-calculate-max-width($max-width);
+			} @else {
+				$max-width-content: responslr-grid-max-width($max-width);
+			}
+		}
+
+		@if type-of($min-width) == number {
+			$min-width-content: $min-width;
+		} @else {
+			@if $responslr-grid-mobile-first == false {
+				$min-width-content: responslr-grid-calculate-min-width($min-width);
+			} @else {
+				$min-width-content: responslr-grid-min-width($min-width);
+			}
+		}
+
 	}
 
-	@if type-of($media-start) == string and $media-start != null {
-		$breakpoint-min: ' and (min-width:' + responslr-grid-min-width($media-start) + ')';
-	} @else if type-of($media-start) == number {
-		$breakpoint-min: ' and (min-width: #{$media-start})'
+	@if $min-width-content != none or $max-width-content != none or $media-orientation == 'portrait' or $media-orientation == 'landscape' {
+		@if $min-width-content != none {
+			$breakpoint-min: ' and (min-width: #{$min-width-content})';
+		}
+
+		@if $max-width-content != none and $max-width-content != 0 {
+			$breakpoint-max: ' and (max-width: #{$max-width-content})';
+		}
+
+		@if $media-orientation == 'portrait' or $media-orientation == 'landscape' {
+			$breakpoint-orientation: ' and (orientation: #{$media-orientation})';
+		}
+
+		$media: 'only screen' + $breakpoint-min + $breakpoint-max + $breakpoint-orientation + ', print';
+
+		@media #{$media} { @content; };
+	} @else {
+		@content;
 	}
-
-	@if $media-orientation != null and ($media-orientation == 'portrait' or $media-orientation == 'landscape') {
-		$breakpoint-orientation: ' and (orientation: #{$media-orientation})';
-	}
-
-	$media: 'only screen' + $breakpoint-min + $breakpoint-max + $breakpoint-orientation + ', print';
-
-	@media #{$media} { @content; };
 }
 
 
@@ -209,7 +289,7 @@
 			margin: 0 0 0 auto;
 		}
 
-		@include responslr-media-query($responslr-grid-container-max-width) {
+		@include responslr-media-query($max-width: $responslr-grid-container-max-width) {
 			margin: 0 $responslr-grid-container-horizontal-margin;
 			width: 100%;
 			max-width: 100%;
@@ -217,12 +297,7 @@
 	}
 
 	.#{$responslr-grid-row-class} {
-		font-size: 0;
-		line-height: 0;
-
-		& > * {
-			@include responslr-typo();
-		}
+		@extend .#{$responslr-typo-reset-class};
 	}
 
 	tr.#{$responslr-grid-row-class} {
@@ -238,10 +313,22 @@
 		display: table-cell;
 	}
 
+	// Line break
+	.#{$responslr-grid-line-break-full-class} {
+		display: block;
+		width: 0;
+		height: 0;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		font-size: 0;
+		line-height: 0;
+	}
+
 	// Grid gutter sizes by breakpoint
 	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
 		@if responslr-grid-breakpoint-index($breakpoint-key) > 1 {
-			@include responslr-media-query($media-end: $breakpoint-key) {
+			@include responslr-media-query($breakpoint-key) {
 				@include responslr-generate-grid-gutter($breakpoint-key);
 			}
 		} @else {
@@ -256,7 +343,7 @@
 			$column-width: 100% / $columns;
 
 			@if responslr-grid-breakpoint-index($breakpoint-key) > 1 {
-				@include responslr-media-query($media-end: $breakpoint-key) {
+				@include responslr-media-query($breakpoint-key) {
 					@include responslr-generate-grid-breakpoint($breakpoint-key, $columns, $column-width);
 				}
 			} @else {
@@ -357,6 +444,7 @@
 	}
 
 	$grid-settings: (
+		mobileFirst: $responslr-grid-mobile-first,
 		containerClass: $responslr-grid-container-class,
 		rowClass: $responslr-grid-row-class,
 		columnClass: $responslr-grid-column-class,

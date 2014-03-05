@@ -55,29 +55,35 @@
 }
 
 @mixin responslr-generate-hiders() {
+	$breakpoint-iterator: 1;
+
 	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
 		$hider-class-name: #{$responslr-visibility-hiders-class-prefix}#{$breakpoint-key};
 
 		// Hider normal
-		@include responslr-media-query($media-end: $breakpoint-key, $media-start: $breakpoint-key) {
+		@include responslr-media-query($max-width: $breakpoint-key, $min-width: $breakpoint-key) {
 			.#{$hider-class-name} {
 				@include responslr-hide();
 			}
 		}
 
 		// Hider up
-		@include responslr-media-query($media-start: $breakpoint-key) {
-			.#{$hider-class-name}#{$responslr-visibility-up-class-suffix} {
-				@include responslr-hide();
+		@if $breakpoint-iterator > 1 {
+			@include responslr-media-query($min-width: $breakpoint-key) {
+				.#{$hider-class-name}#{$responslr-visibility-up-class-suffix} {
+					@include responslr-hide();
+				}
+			}
+
+			// Hider down
+			@include responslr-media-query($max-width: $breakpoint-key) {
+				.#{$hider-class-name}#{$responslr-visibility-down-class-suffix} {
+					@include responslr-hide();
+				}
 			}
 		}
 
-		// Hider down
-		@include responslr-media-query($media-end: $breakpoint-key) {
-			.#{$hider-class-name}#{$responslr-visibility-down-class-suffix} {
-				@include responslr-hide();
-			}
-		}
+		$breakpoint-iterator: $breakpoint-iterator + 1;
 	}
 }
 
@@ -87,17 +93,17 @@
 		@include responslr-hide();
 	}
 
+	$breakpoint-iterator: 1;
+
 	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
 		$shower-class-name: #{$responslr-visibility-showers-class-prefix}#{$breakpoint-key};
 
 		// Shower normal
-		.#{$shower-class-name},
-		.#{$shower-class-name}#{$responslr-visibility-up-class-suffix},
-		.#{$shower-class-name}#{$responslr-visibility-down-class-suffix} {
+		.#{$shower-class-name} {
 			@extend .#{$responslr-visibility-hide-all-class};
 		}
 
-		@include responslr-media-query($media-end: $breakpoint-key, $media-start: $breakpoint-key) {
+		@include responslr-media-query($max-width: $breakpoint-key, $min-width: $breakpoint-key) {
 			.#{$shower-class-name} {
 				@include responslr-show();
 
@@ -112,34 +118,43 @@
 		}
 
 		// Shower up
-		@include responslr-media-query($media-start: $breakpoint-key) {
-			.#{$shower-class-name}#{$responslr-visibility-up-class-suffix} {
-				@include responslr-show();
-
-				&.#{$responslr-grid-column-class} {
-					@include responslr-show(inline-block);
-				}
-			}
-
-			span.#{$shower-class-name}#{$responslr-visibility-up-class-suffix} {
-				@include responslr-show(inline);
-			}
-		}
-
-		// Shower down
-		@include responslr-media-query($media-end: $breakpoint-key) {
+		@if $breakpoint-iterator > 1 {
+			.#{$shower-class-name}#{$responslr-visibility-up-class-suffix},
 			.#{$shower-class-name}#{$responslr-visibility-down-class-suffix} {
-				@include responslr-show();
+				@extend .#{$responslr-visibility-hide-all-class};
+			}
 
-				&.#{$responslr-grid-column-class} {
-					@include responslr-show(inline-block);
+			@include responslr-media-query($min-width: $breakpoint-key) {
+				.#{$shower-class-name}#{$responslr-visibility-up-class-suffix} {
+					@include responslr-show();
+
+					&.#{$responslr-grid-column-class} {
+						@include responslr-show(inline-block);
+					}
+				}
+
+				span.#{$shower-class-name}#{$responslr-visibility-up-class-suffix} {
+					@include responslr-show(inline);
 				}
 			}
 
-			span.#{$shower-class-name}#{$responslr-visibility-down-class-suffix} {
-				@include responslr-show(inline);
+			// Shower down
+			@include responslr-media-query($max-width: $breakpoint-key) {
+				.#{$shower-class-name}#{$responslr-visibility-down-class-suffix} {
+					@include responslr-show();
+
+					&.#{$responslr-grid-column-class} {
+						@include responslr-show(inline-block);
+					}
+				}
+
+				span.#{$shower-class-name}#{$responslr-visibility-down-class-suffix} {
+					@include responslr-show(inline);
+				}
 			}
 		}
+
+		$breakpoint-iterator: $breakpoint-iterator + 1;
 	}
 }
 

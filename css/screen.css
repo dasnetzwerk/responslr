@@ -23,7 +23,7 @@
 	FUNCTIONS
 ***********************************************************************************/
 /***********************************************************************************
-	CLASS GENERATORS
+	CLASS / SETTINGS GENERATORS
 ***********************************************************************************/
 /***********************************************************************************
 	RESPONSLR - SETTINGS
@@ -187,6 +187,15 @@ body *,
 /***********************************************************************************
 	CLASS GENERATOR
 ***********************************************************************************/
+.font-reset, .row {
+  font-size: 0;
+  line-height: 0;
+}
+.font-reset > *, .row > * {
+  font-size: 24px;
+  line-height: 1.4;
+}
+
 @font-face {
   font-family: "lato-light";
   src: url("fonts/lato-light.eot?#iefix") format("embedded-opentype"), url("fonts/lato-light.woff") format("woff"), url("fonts/lato-light.ttf") format("truetype"), url("fonts/lato-light.svg#lato-light") format("svg");
@@ -285,19 +294,6 @@ body *,
   }
 }
 
-.row {
-  font-size: 0;
-  line-height: 0;
-}
-.row > * {
-  -webkit-font-smoothing: antialiased;
-  font-family: "lato-light";
-  font-weight: 300;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1.4;
-}
-
 tr.row {
   display: table-row;
 }
@@ -309,6 +305,17 @@ tr.row {
 
 td.column {
   display: table-cell;
+}
+
+.line-break {
+  display: block;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
 }
 
 .row .row {
@@ -1131,16 +1138,6 @@ td.column {
     display: none !important;
   }
 }
-@media only screen and (min-width: 961px), print {
-  .hide-large-up {
-    display: none !important;
-  }
-}
-@media only screen, print {
-  .hide-large-down {
-    display: none !important;
-  }
-}
 @media only screen and (min-width: 641px) and (max-width: 960px), print {
   .hide-medium {
     display: none !important;
@@ -1171,12 +1168,8 @@ td.column {
     display: none !important;
   }
 }
-.hide-all, .show-large,
-.show-large-up,
-.show-large-down, .show-medium,
-.show-medium-up,
-.show-medium-down, .show-small,
-.show-small-up,
+.hide-all, .show-large, .show-medium, .show-medium-up,
+.show-medium-down, .show-small, .show-small-up,
 .show-small-down {
   display: none !important;
 }
@@ -1190,30 +1183,6 @@ td.column {
   }
 
   span.show-large {
-    display: inline !important;
-  }
-}
-@media only screen and (min-width: 961px), print {
-  .show-large-up {
-    display: inherit !important;
-  }
-  .show-large-up.column {
-    display: inline-block !important;
-  }
-
-  span.show-large-up {
-    display: inline !important;
-  }
-}
-@media only screen, print {
-  .show-large-down {
-    display: inherit !important;
-  }
-  .show-large-down.column {
-    display: inline-block !important;
-  }
-
-  span.show-large-down {
     display: inline !important;
   }
 }
@@ -1354,56 +1323,31 @@ td.column {
 /***********************************************************************************
 	CLASS GENERATOR
 ***********************************************************************************/
-.h-left {
+.h-left, .h-left-large {
   text-align: left;
 }
 
-.h-center {
+.h-center, .h-center-large {
   text-align: center;
 }
 
-.h-right {
+.h-right, .h-right-large {
   text-align: right;
 }
 
-.v-top {
+.v-top, .v-top-large {
   vertical-align: top;
 }
 
-.v-middle {
+.v-middle, .v-middle-large {
   vertical-align: middle;
 }
 
-.v-bottom {
+.v-bottom, .v-bottom-large {
   vertical-align: bottom;
 }
 
-@media only screen and (min-width: 961px), print {
-  .h-left-large {
-    text-align: left;
-  }
-
-  .h-center-large {
-    text-align: center;
-  }
-
-  .h-right-large {
-    text-align: right;
-  }
-
-  .v-top-large {
-    vertical-align: top;
-  }
-
-  .v-middle-large {
-    vertical-align: middle;
-  }
-
-  .v-bottom-large {
-    vertical-align: bottom;
-  }
-}
-@media only screen and (min-width: 641px) and (max-width: 960px), print {
+@media only screen and (max-width: 960px), print {
   .h-left-medium {
     text-align: left;
   }
@@ -1428,7 +1372,7 @@ td.column {
     vertical-align: bottom;
   }
 }
-@media only screen and (min-width: 0) and (max-width: 640px), print {
+@media only screen and (max-width: 640px), print {
   .h-left-small {
     text-align: left;
   }
@@ -2018,7 +1962,7 @@ td.column {
 
 .button-normal, .button-normal-inactive {
   height: 40px;
-  padding: 0 30px;
+  padding: 0 30px 0 30px;
   line-height: 40px;
   white-space: nowrap;
   border-radius: 2px;
@@ -2026,21 +1970,21 @@ td.column {
 
 .button-tiny, .button-tiny-inactive {
   height: 28px;
-  padding: 0 20px;
+  padding: 0 20px 0 20px;
   line-height: 28px;
   white-space: nowrap;
 }
 
 .button-large, .button-large-inactive {
   height: 60px;
-  padding: 0 20px;
+  padding: 0 20px 0 20px;
   line-height: 60px;
   white-space: nowrap;
   border-radius: 4px;
 }
 
 .button-padding, .button-padding-inactive {
-  padding: 20px 20px;
+  padding: 20px;
   white-space: pre-wrap;
   border-radius: 10px;
 }
@@ -2684,7 +2628,7 @@ td.column {
 	CLASS GENERATOR
 ***********************************************************************************/
 html::before {
-  content: '{"grid":{"containerClass":"container","rowClass":"row","columnClass":"column","breakpoints":{"large":{"name":"large","maxWidth":-1,"minWidth":"961px","columns":12,"gutter":"32px"},"medium":{"name":"medium","maxWidth":"960px","minWidth":"641px","columns":6,"gutter":"24px"},"small":{"name":"small","maxWidth":"640px","minWidth":0,"columns":4,"gutter":"20px"}},"helper":{"infoId":"responslr-grid-helper-info","gridId":"responslr-grid-helper","gridShowerClass":"show","show":true,"gridShow":true,"breakpointShow":true}},"visibility":{"showClassPrefix":"show-","hiderClassPrefix":"hide-"}}';
+  content: '{"grid":{"mobileFirst":false,"containerClass":"container","rowClass":"row","columnClass":"column","breakpoints":{"large":{"name":"large","maxWidth":-1,"minWidth":"none","columns":12,"gutter":"32px"},"medium":{"name":"medium","maxWidth":"960px","minWidth":"none","columns":6,"gutter":"24px"},"small":{"name":"small","maxWidth":"640px","minWidth":"none","columns":4,"gutter":"20px"}},"helper":{"infoId":"responslr-grid-helper-info","gridId":"responslr-grid-helper","gridShowerClass":"show","show":true,"gridShow":true,"breakpointShow":true}},"visibility":{"showClassPrefix":"show-","hiderClassPrefix":"hide-"}}';
   visibility: hidden;
   position: absolute;
   font-size: 0;
@@ -2782,7 +2726,7 @@ p {
 }
 
 .test-min-width:before {
-  content: "min-width: 961px";
+  content: "min-width: none";
 }
 
 .test-max-width:before {

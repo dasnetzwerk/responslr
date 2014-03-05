@@ -40,24 +40,14 @@
 	@return $return-height;
 }
 
-@function responslr-button-padding-x($name: null) {
-	$return-padding-x: map-get(responslr-button($name), padding-x);
+@function responslr-button-padding($name: null) {
+	$return-padding: map-get(responslr-button($name), padding);
 
-	@if $return-padding-x == null {
-		$return-padding-x: $responslr-buttons-default-padding-x;
+	@if $return-padding == null {
+		$return-padding: $responslr-buttons-default-padding;
 	}
 
-	@return $return-padding-x;
-}
-
-@function responslr-button-padding-y($name: null) {
-	$return-padding-y: map-get(responslr-button($name), padding-y);
-
-	@if $return-padding-y == null {
-		$return-padding-y: $responslr-buttons-default-padding-y;
-	}
-
-	@return $return-padding-y;
+	@return $return-padding;
 }
 
 @function responslr-button-border-radius($name: null) {
@@ -87,22 +77,21 @@
 	cursor: default;
 }
 
-@mixin responslr-button($name: $responslr-buttons-default, $height: null, $padding-x: null, $padding-y: null, $border-radius: null, $insert-default-styles: true) {
+@mixin responslr-button($name: $responslr-buttons-default, $height: null, $padding: null, $border-radius: null, $insert-default-styles: true) {
 	@if $insert-default-styles {
 		@include responslr-button-default();
 	}
 
 	$height: responslr-button-height($name) !default;
-	$padding-x: responslr-button-padding-x($name) !default;
-	$padding-y: responslr-button-padding-y($name) !default;
+	$padding: responslr-button-padding($name) !default;
 	$border-radius: responslr-button-border-radius($name) !default;
 
 	@if $height == 0 {
-		padding: $padding-y $padding-x;
+		padding: $padding;
 		white-space: pre-wrap;
 	} @else {
 		height: $height;
-		padding: 0 $padding-x;
+		padding: 0 responslr-split-shorthand($padding, right) 0 responslr-split-shorthand($padding, left);
 		line-height: $height;
 		white-space: nowrap;
 	}

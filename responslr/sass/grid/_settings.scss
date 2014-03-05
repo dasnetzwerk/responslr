@@ -2,22 +2,50 @@
 	SETTINGS - GRID
 ***********************************************************************************/
 
-$responslr-grid-breakpoints: (
-	'large': (
-		columns: 12,
-		gutter: 32px
-	),
-	'medium': (
-		max-width: 960px,
-		columns: 6,
-		gutter: 24px
-	),
-	'small': (
-		max-width: 640px,
-		columns: 4,
-		gutter: 20px
-	),
-) !default;
+// Mobile first or desktop first
+$responslr-grid-mobile-first: false !default;
+
+// Breakpoints
+$responslr-grid-default-breakpoints: ();
+
+@if $responslr-grid-mobile-first {
+	$responslr-grid-default-breakpoints: (
+		'small': (
+			columns: 4,
+			gutter: 20px
+		),
+		'medium': (
+			min-width: 641px,
+			columns: 6,
+			gutter: 24px
+		),
+		'large': (
+			min-width: 961px,
+			columns: 12,
+			gutter: 32px
+		)
+	) !global;
+
+} @else {
+	$responslr-grid-default-breakpoints: (
+		'large': (
+			columns: 12,
+			gutter: 32px
+		),
+		'medium': (
+			max-width: 960px,
+			columns: 6,
+			gutter: 24px
+		),
+		'small': (
+			max-width: 640px,
+			columns: 4,
+			gutter: 20px
+		)
+	) !global;
+}
+
+$responslr-grid-breakpoints: $responslr-grid-default-breakpoints !default;
 
 // Default breakpoint
 $responslr-grid-breakpoints-default: responslr-map-getdefault($responslr-grid-breakpoints) !default;
@@ -41,6 +69,8 @@ $responslr-grid-reset-class-prefix: 'reset-' !default;
 
 $responslr-grid-container-class: 'container' !default;
 $responslr-grid-container-full-class: 'container-full' !default;
+
+$responslr-grid-line-break-full-class: 'line-break' !default;
 
 // Grid helper
 $responslr-grid-helper-show: true !default;

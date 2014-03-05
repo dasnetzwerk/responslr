@@ -19,11 +19,12 @@ function responslr_grid() {
 	this.showHelper = function() {
 		var settings = self.settings.helper;
 
-		var defaultBreakpoint = {};
+		var maxColumns = 0;
 
 		for(breakpoint in self.settings.breakpoints) {
-			defaultBreakpoint = self.settings.breakpoints[breakpoint];
-			break;
+			if(maxColumns < self.settings.breakpoints[breakpoint].columns) {
+				maxColumns = self.settings.breakpoints[breakpoint].columns;
+			}
 		}
 
 		if(settings.show) {
@@ -33,7 +34,7 @@ function responslr_grid() {
 				var $grid = $('<div />').addClass(self.settings.rowClass).addClass(self.settings.containerClass);
 
 				// Create column elements
-				for(var i = 1; i <= defaultBreakpoint.columns; i++) {
+				for(var i = 1; i <= maxColumns; i++) {
 					var $column = $('<div></div>').addClass(self.settings.columnClass).append('<div />');
 
 					$grid.append($column);
