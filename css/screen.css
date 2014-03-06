@@ -307,7 +307,7 @@ td.column {
   display: table-cell;
 }
 
-.line-break {
+.inline-break {
   display: block;
   width: 0;
   height: 0;
