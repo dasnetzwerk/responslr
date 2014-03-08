@@ -1736,8 +1736,8 @@ td.column {
   position: absolute;
   border-width: 0;
   border-style: solid;
-  border-right-style: none;
-  border-bottom-style: none;
+  border-right-style: outset;
+  border-bottom-style: outset;
 }
 
 .arrow-up {
@@ -1752,11 +1752,9 @@ td.column {
   width: 12px;
   height: 12px;
   border-color: black;
-  -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg) translateZ(1px);
+  transform: rotate(45deg) translateZ(1px);
   left: 50%;
   right: auto;
   top: 50%;
@@ -1776,11 +1774,9 @@ td.column {
   width: 12px;
   height: 12px;
   border-color: black;
-  -moz-transform: rotate(135deg);
   -ms-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg) translateZ(1px);
+  transform: rotate(135deg) translateZ(1px);
   left: 50%;
   right: auto;
   top: 50%;
@@ -1802,11 +1798,9 @@ td.column {
   width: 12px;
   height: 12px;
   border-color: black;
-  -moz-transform: rotate(225deg);
   -ms-transform: rotate(225deg);
-  -o-transform: rotate(225deg);
-  -webkit-transform: rotate(225deg);
-  transform: rotate(225deg);
+  -webkit-transform: rotate(225deg) translateZ(1px);
+  transform: rotate(225deg) translateZ(1px);
   left: 50%;
   right: auto;
   top: 50%;
@@ -1828,11 +1822,9 @@ td.column {
   width: 12px;
   height: 12px;
   border-color: black;
-  -moz-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg) translateZ(1px);
+  transform: rotate(-45deg) translateZ(1px);
   left: 50%;
   right: auto;
   top: 50%;
@@ -1852,11 +1844,9 @@ td.column {
   width: 12px;
   height: 12px;
   border-color: black;
-  -moz-transform: rotate(135deg);
   -ms-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg) translateZ(1px);
+  transform: rotate(135deg) translateZ(1px);
   left: 50%;
   right: auto;
   top: 50%;
@@ -1877,12 +1867,10 @@ td.column {
   border-left-width: 2px;
   width: 8px;
   height: 8px;
-  border-color: "white";
-  -moz-transform: rotate(135deg);
+  border-color: white;
   -ms-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg) translateZ(1px);
+  transform: rotate(135deg) translateZ(1px);
   right: 10px;
   top: 50%;
   margin-top: -4px;
@@ -1925,12 +1913,10 @@ td.column {
   border-left-width: 10px;
   width: 50px;
   height: 50px;
-  border-color: "white";
-  -moz-transform: rotate(135deg);
+  border-color: white;
   -ms-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg) translateZ(1px);
+  transform: rotate(135deg) translateZ(1px);
   left: 50%;
   right: auto;
   top: 50%;

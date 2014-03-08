@@ -182,25 +182,33 @@
 @mixin responslr-arrow-direction($direction: null, $insert-pseudo-element: null, $pseudo-element: null) {
 	@if $direction == up {
 		@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
-			@include transform(rotate(45deg));
+			-ms-transform: rotate(45deg);
+			-webkit-transform: rotate(45deg) translateZ(1px);
+			transform: rotate(45deg) translateZ(1px);
 		}
 	}
 
 	@if $direction == right {
 		@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
-			@include transform(rotate(135deg));
+			-ms-transform: rotate(135deg);
+			-webkit-transform: rotate(135deg) translateZ(1px);
+			transform: rotate(135deg) translateZ(1px);
 		}
 	}
 
 	@if $direction == down {
 		@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
-			@include transform(rotate(225deg));
+			-ms-transform: rotate(225deg);
+			-webkit-transform: rotate(225deg) translateZ(1px);
+			transform: rotate(225deg) translateZ(1px);
 		}
 	}
 
 	@if $direction == left {
 		@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
-			@include transform(rotate(-45deg));
+			-ms-transform: rotate(-45deg);
+			-webkit-transform: rotate(-45deg) translateZ(1px);
+			transform: rotate(-45deg) translateZ(1px);
 		}
 	}
 }
@@ -221,7 +229,7 @@
 
 @mixin responslr-arrow-color($color: null, $insert-pseudo-element: null, $pseudo-element: null) {
 	@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
-		border-color: $color;
+		border-color: unquote($color);
 	}
 }
 
@@ -434,8 +442,8 @@
 		position: absolute;
 		border-width: 0;
 		border-style: solid;
-		border-right-style: none;
-		border-bottom-style: none;
+		border-right-style: outset;
+		border-bottom-style: outset;
 	}
 
 	.#{$responslr-arrow-class-prefix}up {
