@@ -13,3 +13,11 @@ $responslr-visibility-hide-all-class: 'hide-all' !default;
 
 $responslr-visibility-up-class-suffix: '-up' !default;
 $responslr-visibility-down-class-suffix: '-down' !default;
+
+// Generate css output
+$responslr-generate-visibility: $responslr-generate-classes !default;
+$responslr-generate-visibility-showers: $responslr-generate-visibility !default;
+$responslr-generate-visibility-hiders: $responslr-generate-visibility !default;
+
+// Generate json settings
+$responslr-generate-visibility-settings: $responslr-generate-settings !default;

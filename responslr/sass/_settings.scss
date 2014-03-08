@@ -1,7 +1,18 @@
 /***********************************************************************************
-	RESPONSLR - SETTINGS
+	SETTINGS - GLOBAL
 ***********************************************************************************/
-// Reset
+
+// Generators
+$responslr-generate-classes: true !default;
+$responslr-generate-settings: true !default;
+
+// JSON settings
+$global-settings: ();
+
+/***********************************************************************************
+	SETTINGS - MODULES
+***********************************************************************************/
+
 @import "reset/settings";
 
 // Typo

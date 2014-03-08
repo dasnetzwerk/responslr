@@ -6,3 +6,6 @@ $responslr-forms: () !default;
 
 // Default form
 $responslr-forms-default: responslr-map-getdefault($responslr-forms) !default;
+
+// Generate css output
+$responslr-generate-forms: $responslr-generate-classes !default;

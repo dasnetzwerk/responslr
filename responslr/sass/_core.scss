@@ -2,19 +2,7 @@
 	RESPONSLR CORE
 ***********************************************************************************/
 
-$global-settings: ();
-
-@import "globals";
+@import "functions";
+@import "mixins";
 @import "settings";
 @import "outputs";
-
-@if $responslr-generate-settings != false and $global-settings != () {
-	html::before {
-		content: json-encode($global-settings);
-		visibility: hidden;
-		position: absolute;
-		font-size: 0;
-		line-height: 0;
-		height: 0;
-	}
-}

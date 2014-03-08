@@ -20,3 +20,7 @@ $responslr-button-inactive-text-color: gray !default;
 // Classes
 $responslr-button-class-prefix: 'button-' !default;
 $responslr-button-inactive-class-suffix: '-inactive' !default;
+
+// Generate css output
+$responslr-generate-buttons: $responslr-generate-classes !default;
+$responslr-generate-buttons-inactive: $responslr-generate-buttons !default;

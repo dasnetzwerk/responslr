@@ -1,6 +1,7 @@
 /***********************************************************************************
-	RESPONSLR - OUTPUTS
+	OUTPUTS - MODULES
 ***********************************************************************************/
+
 // Reset
 @import "reset/output";
 
@@ -57,3 +58,19 @@
 
 // Table
 @import "table/output";
+
+
+/***********************************************************************************
+	GENERATE JSON SETTINGS
+***********************************************************************************/
+
+@if $responslr-generate-settings != false and $global-settings != () {
+	html::before {
+		content: json-encode($global-settings);
+		visibility: hidden;
+		position: absolute;
+		font-size: 0;
+		line-height: 0;
+		height: 0;
+	}
+}

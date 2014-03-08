@@ -51,3 +51,9 @@ $responslr-typo-size-class-prefix: 'font-size-' !default;
 // Other classes
 $responslr-typo-no-select-class: 'no-select' !default;
 $responslr-typo-reset-class: 'font-reset' !default;
+
+// Generate css output
+$responslr-generate-typo: $responslr-generate-classes !default;
+$responslr-generate-typo-faces: $responslr-generate-typo !default;
+$responslr-generate-typo-families: $responslr-generate-typo !default;
+$responslr-generate-typo-sizes: $responslr-generate-typo !default;

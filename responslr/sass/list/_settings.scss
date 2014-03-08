@@ -26,3 +26,6 @@ $responslr-list-pseudo-element: 'before' !default;
 // Classes
 $responslr-list-class-prefix: 'list-' !default;
 $responslr-list-no-bullet-class: 'no-bullet' !default;
+
+// Generate css output
+$responslr-generate-lists: $responslr-generate-classes !default;

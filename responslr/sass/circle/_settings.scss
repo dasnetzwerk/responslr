@@ -21,3 +21,6 @@ $responslr-circles-default-vertical-align: center !default;
 // Circle classes
 $responslr-circle-class: 'circle' !default;
 $responslr-circle-class-prefix: 'circle-' !default;
+
+// Generate css output
+$responslr-generate-circles: $responslr-generate-classes !default;

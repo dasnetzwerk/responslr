@@ -10,3 +10,6 @@ $responslr-triangles-default: responslr-map-getdefault($responslr-triangles) !de
 
 // Triangle classes
 $responslr-triangle-class-prefix: 'triangle-' !default;
+
+// Generate css output
+$responslr-generate-triangles: $responslr-generate-classes !default;

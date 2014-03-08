@@ -93,3 +93,10 @@ $responslr-grid-helper-info-position-top: auto !default;
 $responslr-grid-helper-info-position-right: 10px !default;
 $responslr-grid-helper-info-position-bottom: 10px !default;
 $responslr-grid-helper-info-position-left: auto !default;
+
+// Generate css output
+$responslr-generate-grid-breakpoints: $responslr-generate-classes !default;
+$responslr-generate-grid-helper: $responslr-generate-classes !default;
+
+// Generate json settings
+$responslr-generate-grid-settings: $responslr-generate-settings !default;

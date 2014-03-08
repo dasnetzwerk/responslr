@@ -33,3 +33,6 @@ $responslr-tooltip-north-class: 'north' !default;
 $responslr-tooltip-east-class: 'east' !default;
 $responslr-tooltip-south-class: 'south' !default;
 $responslr-tooltip-west-class: 'west' !default;
+
+// Generate css output
+$responslr-generate-tooltips: $responslr-generate-classes !default;

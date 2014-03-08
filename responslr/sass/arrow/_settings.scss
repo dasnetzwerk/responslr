@@ -26,3 +26,6 @@ $responslr-arrows-default-insert-pseudo-element: true !default;
 // Arrow classes
 $responslr-arrow-class: 'arrow' !default;
 $responslr-arrow-class-prefix: 'arrow-' !default;
+
+// Generate css output
+$responslr-generate-arrows: $responslr-generate-classes !default;

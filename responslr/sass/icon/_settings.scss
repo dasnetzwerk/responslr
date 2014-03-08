@@ -16,3 +16,6 @@ $responslr-icons-default-repeat: no-repeat !default;
 
 // Classes
 $responslr-icon-class-prefix: 'icon-' !default;
+
+// Generate css output
+$responslr-generate-icons: $responslr-generate-classes !default;

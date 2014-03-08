@@ -2,6 +2,9 @@
 	SETTINGS - SPRITE
 ***********************************************************************************/
 
+// Generate css output
+$responslr-generate-sprites: false !default;
+
 @if $responslr-generate-sprites {
 	$responslr-sprite-map: sprite-map(
 		"sprite/*.png",

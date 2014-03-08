@@ -15,3 +15,6 @@ $responslr-spacings-default: responslr-map-getdefault($responslr-spacings) !defa
 // Classes
 $responslr-spacing-top-class-prefix: 'spacing-top-' !default;
 $responslr-spacing-bottom-class-prefix: 'spacing-bottom-' !default;
+
+// Generate css output
+$responslr-generate-spacings: $responslr-generate-classes !default;

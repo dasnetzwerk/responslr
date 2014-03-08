@@ -22,3 +22,6 @@ $responslr-aspect-ratio-pseudo-element: 'before' !default;
 // Classes
 $responslr-aspect-ratio-class-prefix: 'aspect-ratio-' !default;
 $responslr-aspect-ratio-content-class: 'aspect-ratio-content' !default;
+
+// Generate css output
+$responslr-generate-aspect-ratios: $responslr-generate-classes !default;

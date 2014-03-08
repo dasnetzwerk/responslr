@@ -16,3 +16,6 @@ $responslr-transitions-default-hardware-acceleration: false !default;
 
 // Classes
 $responslr-transition-class-prefix: 'transition-' !default;
+
+// Generate css output
+$responslr-generate-transitions: $responslr-generate-classes !default;

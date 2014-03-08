@@ -34,3 +34,22 @@ $responslr-color-border-top-focus-class-prefix: 'border-top-focus-' !default;
 $responslr-color-border-right-focus-class-prefix: 'border-right-focus-' !default;
 $responslr-color-border-bottom-focus-class-prefix: 'border-bottom-focus-' !default;
 $responslr-color-border-left-focus-class-prefix: 'border-left-focus-' !default;
+
+// Generate css output
+$responslr-generate-colors: $responslr-generate-classes !default;
+
+$responslr-generate-colors-bg: $responslr-generate-colors !default;
+$responslr-generate-colors-bg-hover: $responslr-generate-colors-bg !default;
+$responslr-generate-colors-bg-focus: false !default;
+
+$responslr-generate-colors-text: $responslr-generate-colors !default;
+$responslr-generate-colors-text-hover: $responslr-generate-colors-text !default;
+$responslr-generate-colors-text-focus: false !default;
+
+$responslr-generate-colors-border: $responslr-generate-colors !default;
+$responslr-generate-colors-border-hover: $responslr-generate-colors-border !default;
+$responslr-generate-colors-border-focus: false !default;
+
+$responslr-generate-colors-border-directions: false !default;
+$responslr-generate-colors-border-directions-hover: $responslr-generate-colors-border-directions !default;
+$responslr-generate-colors-border-directions-focus: false !default;
