@@ -225,36 +225,20 @@
 
 @mixin responslr-generate-grid-breakpoint($name: $responslr-grid-breakpoints-default, $column-index: 0, $current-column-width: 100%) {
 	@if responslr-grid-breakpoint-exists($name) {
-		$column-widths: ();
-
 		@while $column-index > 0 {
 			$sub-column-index: $column-index;
 
 			// Breakpoint
-			$width: $current-column-width * $column-index;
-			$selector: '';
+			.#{$name}-#{$column-index} {
+				width: $current-column-width * $column-index;
 
-			@if map-has-key($column-widths, $width) {
-				$selector: map-get($column-widths, $width) + ', .#{$name}-#{$column-index}';
-			} @else {
-				$selector: '.#{$name}-#{$column-index}';
-			}
+				@while $sub-column-index > 0 {
+					.#{$name}-#{$sub-column-index} {
+						width: (($current-column-width * $sub-column-index) / ($current-column-width * $column-index)) * 100%;
+					}
 
-			$column-widths: map-merge($column-widths, ($width: $selector));
-
-			@while $sub-column-index > 0 {
-				$sub-width: (($current-column-width * $sub-column-index) / ($current-column-width * $column-index)) * 100%;
-				$sub-selector: '';
-
-				@if map-has-key($column-widths, $sub-width) {
-					$sub-selector: map-get($column-widths, $sub-width) + ', .#{$name}-#{$column-index} .#{$name}-#{$sub-column-index}';
-				} @else {
-					$sub-selector: '.#{$name}-#{$column-index} .#{$name}-#{$sub-column-index}';
+					$sub-column-index: $sub-column-index - 1;
 				}
-
-				$column-widths: map-merge($column-widths, ($sub-width: $sub-selector));
-
-				$sub-column-index: $sub-column-index - 1;
 			}
 
 			// Offset
@@ -274,13 +258,6 @@
 
 			$column-index: $column-index - 1;
 		}
-
-		@each $column-width, $selector in $column-widths {
-			#{$selector} {
-				width: unquote($column-width);
-			}
-		}
-
 	}
 }
 
