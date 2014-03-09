@@ -38,20 +38,34 @@ $responslr-buttons: (
 	'normal': (
 		height: 40px,
 		padding: 30px,
-		border-radius: 2px
+		border-radius: 2px,
+		text-color: $black,
+		bg-color: $green
 	),
 	'tiny': (
 		height: 28px,
-		padding: 20px
+		padding: 20px,
+		text-color: $white,
+		bg-color: $blue
 	),
 	'large': (
 		height: 60px,
 		padding: 20px,
-		border-radius: 4px
+		border-radius: 4px,
+		font-family: 'lato-regular',
+		font-size: 'medium',
+		text-color: $black,
+		text-color-hover: $purple,
+		bg-color: $purple,
+		bg-color-hover: $green
 	),
 	'padding': (
 		padding: 20px,
-		border-radius: 10px
+		border-radius: 10px,
+		text-color: $white,
+		text-color-hover: $red,
+		bg-color: $red,
+		bg-color-hover: $grey
 	)
 );
 

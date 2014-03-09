@@ -1947,41 +1947,65 @@ td.column {
 /***********************************************************************************
 	CLASS GENERATOR
 ***********************************************************************************/
-.button-normal, .button-normal-inactive, .button-tiny, .button-tiny-inactive, .button-large, .button-large-inactive, .button-padding, .button-padding-inactive {
+.button-normal, .button-tiny, .button-large, .button-padding {
   display: inline-block;
   cursor: pointer;
+  white-space: nowrap;
 }
 
-.button-normal, .button-normal-inactive {
+.button-normal {
   height: 40px;
   padding: 0 30px 0 30px;
   line-height: 40px;
-  white-space: nowrap;
+  color: #1a2025;
   border-radius: 2px;
+  background-color: #27ae60;
 }
 
-.button-tiny, .button-tiny-inactive {
+.button-tiny {
   height: 28px;
   padding: 0 20px 0 20px;
   line-height: 28px;
-  white-space: nowrap;
+  color: white;
+  background-color: #249cd5;
 }
 
-.button-large, .button-large-inactive {
+.button-large {
+  font-family: "lato-regular";
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 1.4;
   height: 60px;
   padding: 0 20px 0 20px;
   line-height: 60px;
-  white-space: nowrap;
+  color: #1a2025;
   border-radius: 4px;
+  background-color: #8e44ad;
+}
+.button-large:hover, .button-large:focus {
+  color: #8e44ad;
+  background-color: #27ae60;
 }
 
-.button-padding, .button-padding-inactive {
+.button-padding {
   padding: 20px;
   white-space: pre-wrap;
+  color: white;
   border-radius: 10px;
+  background-color: #c0392b;
+}
+.button-padding:hover, .button-padding:focus {
+  color: #c0392b;
+  background-color: #d5d7d9;
 }
 
-.button-normal[disabled], .button-normal-inactive, .button-tiny[disabled], .button-tiny-inactive, .button-large[disabled], .button-large-inactive, .button-padding[disabled], .button-padding-inactive {
+.button-inactive, .button-inactive:hover,
+.button-inactive:focus,
+.button-normal[disabled],
+.button-tiny[disabled],
+.button-large[disabled],
+.button-padding[disabled] {
   background-color: silver;
   border-color: gray;
   color: gray;
