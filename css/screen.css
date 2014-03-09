@@ -2720,26 +2720,6 @@ p {
   margin-bottom: 40px;
 }
 
-.test-min-width:before {
-  content: "min-width: none";
-}
-
-.test-max-width:before {
-  content: "max-width: none";
-}
-
-.test-columns:before {
-  content: "columns: 12";
-}
-
-.test-gutter:before {
-  content: "gutter: 32px";
-}
-
-.text-name:before {
-  content: "breakpoint name: responslr-grid-breakpoint-name(2)";
-}
-
 .intro {
   -webkit-font-smoothing: antialiased;
   font-family: "lato-light";
