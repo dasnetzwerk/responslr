@@ -291,6 +291,7 @@
 	}
 
 	.#{$responslr-grid-column-class} {
+
 		padding-left: responslr-grid-gutter-half($name);
 		padding-right: responslr-grid-gutter-half($name);
 	}
@@ -328,6 +329,7 @@
 	}
 
 	.#{$responslr-grid-column-class} {
+		width: 100%;
 		display: inline-block;
 		vertical-align: top;
 	}

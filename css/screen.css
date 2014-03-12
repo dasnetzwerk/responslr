@@ -305,6 +305,7 @@ tr.row {
 }
 
 .column {
+  width: 100%;
   display: inline-block;
   vertical-align: top;
 }
