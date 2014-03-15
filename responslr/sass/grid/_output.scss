@@ -131,7 +131,6 @@
 	@return (($column-part / $size) * 100%);
 }
 
-
 /***********************************************************************************
 	MIXINS
 ***********************************************************************************/
@@ -149,7 +148,7 @@
 		$breakpoint-name: $name;
 		$breakpoint-only: false;
 
-		@if str-index($name, '-only') != 0 {
+		@if str-index($name, '-only') != null {
 			$breakpoint-name: str-slice($name, 1, str-index($name, '-only') - 1);
 			$breakpoint-only: true;
 		}
