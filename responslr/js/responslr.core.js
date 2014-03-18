@@ -71,9 +71,13 @@ function responslr() {
 	this.init = function() {
 		this.settings = loadAllSettings();
 
-		// Load modules
+		// Load and init modules
 		for(var iModuleIndex in aLoadedModules) {
 			this[aLoadedModules[iModuleIndex]].settings = getModuleSettings(aLoadedModules[iModuleIndex]);
+
+			if(typeof this[aLoadedModules[iModuleIndex]].init != "undefined") {
+				this[aLoadedModules[iModuleIndex]].init();
+			}
 		}
 
 		// Apply fixes
