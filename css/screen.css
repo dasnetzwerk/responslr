@@ -1495,16 +1495,16 @@ td.column {
 .triangle-top {
   width: 0;
   height: 0;
-  border-right: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
   border-bottom: 0.5em solid #1a2025;
-  border-left: 0.5em solid transparent;
+  border-left: 0.5em outset transparent;
 }
 
 .triangle-right {
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
-  border-bottom: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
+  border-bottom: 0.5em outset transparent;
   border-left: 0.5em solid #1a2025;
 }
 
@@ -1512,16 +1512,16 @@ td.column {
   width: 0;
   height: 0;
   border-top: 0.5em solid #1a2025;
-  border-right: 0.5em solid transparent;
-  border-left: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
+  border-left: 0.5em outset transparent;
 }
 
 .triangle-left {
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
   border-right: 0.5em solid #1a2025;
-  border-bottom: 0.5em solid transparent;
+  border-bottom: 0.5em outset transparent;
 }
 
 /***********************************************************************************
@@ -1935,8 +1935,8 @@ td.column {
   width: 0;
   height: 0;
   border-top: 0.5em solid black;
-  border-right: 0.5em solid transparent;
-  border-left: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
+  border-left: 0.5em outset transparent;
 }
 .north[data-tooltip].tooltip-default:after,
 .north.tooltip-default .tooltip-content {
@@ -1948,9 +1948,9 @@ td.column {
   right: -0.75rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
   border-right: 0.5em solid black;
-  border-bottom: 0.5em solid transparent;
+  border-bottom: 0.5em outset transparent;
 }
 .east[data-tooltip].tooltip-default:after,
 .east.tooltip-default .tooltip-content {
@@ -1963,9 +1963,9 @@ td.column {
   top: 1.5rem;
   width: 0;
   height: 0;
-  border-right: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
   border-bottom: 0.5em solid black;
-  border-left: 0.5em solid transparent;
+  border-left: 0.5em outset transparent;
 }
 .south[data-tooltip].tooltip-default:after,
 .south.tooltip-default .tooltip-content {
@@ -1977,8 +1977,8 @@ td.column {
   left: -0.75rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
-  border-bottom: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
+  border-bottom: 0.5em outset transparent;
   border-left: 0.5em solid black;
 }
 .west[data-tooltip].tooltip-default:after,
@@ -2008,9 +2008,9 @@ td.column {
   bottom: 2rem;
   width: 0;
   height: 0;
-  border-right: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
   border-bottom: 0.5em solid white;
-  border-left: 0.5em solid transparent;
+  border-left: 0.5em outset transparent;
 }
 .north[data-tooltip].tooltip-inset:after,
 .north.tooltip-inset .tooltip-content {
@@ -2022,8 +2022,8 @@ td.column {
   right: -1.25rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
-  border-bottom: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
+  border-bottom: 0.5em outset transparent;
   border-left: 0.5em solid white;
 }
 .east[data-tooltip].tooltip-inset:after,
@@ -2038,8 +2038,8 @@ td.column {
   width: 0;
   height: 0;
   border-top: 0.5em solid white;
-  border-right: 0.5em solid transparent;
-  border-left: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
+  border-left: 0.5em outset transparent;
 }
 .south[data-tooltip].tooltip-inset:after,
 .south.tooltip-inset .tooltip-content {
@@ -2051,9 +2051,9 @@ td.column {
   left: -1.25rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
   border-right: 0.5em solid white;
-  border-bottom: 0.5em solid transparent;
+  border-bottom: 0.5em outset transparent;
 }
 .west[data-tooltip].tooltip-inset:after,
 .west.tooltip-inset .tooltip-content {
@@ -2084,8 +2084,8 @@ td.column {
   width: 0;
   height: 0;
   border-top: 0.5em solid blue;
-  border-right: 0.5em solid transparent;
-  border-left: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
+  border-left: 0.5em outset transparent;
 }
 .north[data-tooltip].tooltip-info:after,
 .north.tooltip-info .tooltip-content {
@@ -2097,9 +2097,9 @@ td.column {
   right: -0.75rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
   border-right: 0.5em solid blue;
-  border-bottom: 0.5em solid transparent;
+  border-bottom: 0.5em outset transparent;
 }
 .east[data-tooltip].tooltip-info:after,
 .east.tooltip-info .tooltip-content {
@@ -2112,9 +2112,9 @@ td.column {
   top: 1.5rem;
   width: 0;
   height: 0;
-  border-right: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
   border-bottom: 0.5em solid blue;
-  border-left: 0.5em solid transparent;
+  border-left: 0.5em outset transparent;
 }
 .south[data-tooltip].tooltip-info:after,
 .south.tooltip-info .tooltip-content {
@@ -2126,8 +2126,8 @@ td.column {
   left: -0.75rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
-  border-bottom: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
+  border-bottom: 0.5em outset transparent;
   border-left: 0.5em solid blue;
 }
 .west[data-tooltip].tooltip-info:after,
@@ -2159,8 +2159,8 @@ td.column {
   width: 0;
   height: 0;
   border-top: 0.5em solid red;
-  border-right: 0.5em solid transparent;
-  border-left: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
+  border-left: 0.5em outset transparent;
 }
 .north[data-tooltip].tooltip-error:after,
 .north.tooltip-error .tooltip-content {
@@ -2172,9 +2172,9 @@ td.column {
   right: -0.75rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
   border-right: 0.5em solid red;
-  border-bottom: 0.5em solid transparent;
+  border-bottom: 0.5em outset transparent;
 }
 .east[data-tooltip].tooltip-error:after,
 .east.tooltip-error .tooltip-content {
@@ -2187,9 +2187,9 @@ td.column {
   top: 1.5rem;
   width: 0;
   height: 0;
-  border-right: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
   border-bottom: 0.5em solid red;
-  border-left: 0.5em solid transparent;
+  border-left: 0.5em outset transparent;
 }
 .south[data-tooltip].tooltip-error:after,
 .south.tooltip-error .tooltip-content {
@@ -2201,8 +2201,8 @@ td.column {
   left: -0.75rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
-  border-bottom: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
+  border-bottom: 0.5em outset transparent;
   border-left: 0.5em solid red;
 }
 .west[data-tooltip].tooltip-error:after,
@@ -2234,8 +2234,8 @@ td.column {
   width: 0;
   height: 0;
   border-top: 0.5em solid green;
-  border-right: 0.5em solid transparent;
-  border-left: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
+  border-left: 0.5em outset transparent;
 }
 .north[data-tooltip].tooltip-success:after,
 .north.tooltip-success .tooltip-content {
@@ -2247,9 +2247,9 @@ td.column {
   right: -0.75rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
   border-right: 0.5em solid green;
-  border-bottom: 0.5em solid transparent;
+  border-bottom: 0.5em outset transparent;
 }
 .east[data-tooltip].tooltip-success:after,
 .east.tooltip-success .tooltip-content {
@@ -2262,9 +2262,9 @@ td.column {
   top: 1.5rem;
   width: 0;
   height: 0;
-  border-right: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
   border-bottom: 0.5em solid green;
-  border-left: 0.5em solid transparent;
+  border-left: 0.5em outset transparent;
 }
 .south[data-tooltip].tooltip-success:after,
 .south.tooltip-success .tooltip-content {
@@ -2276,8 +2276,8 @@ td.column {
   left: -0.75rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
-  border-bottom: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
+  border-bottom: 0.5em outset transparent;
   border-left: 0.5em solid green;
 }
 .west[data-tooltip].tooltip-success:after,
@@ -2405,8 +2405,8 @@ td.column {
   content: '';
   width: 0;
   height: 0;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
+  border-top: 5px outset transparent;
+  border-bottom: 5px outset transparent;
   border-left: 10px solid #249cd5;
   height: 10px;
   right: 100%;
@@ -2620,9 +2620,9 @@ p {
   bottom: 2rem;
   width: 0;
   height: 0;
-  border-right: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
   border-bottom: 0.5em solid white;
-  border-left: 0.5em solid transparent;
+  border-left: 0.5em outset transparent;
 }
 .north[data-tooltip].tooltip-inset:after,
 .north.tooltip-inset .tooltip-content {
@@ -2634,8 +2634,8 @@ p {
   right: -1.25rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
-  border-bottom: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
+  border-bottom: 0.5em outset transparent;
   border-left: 0.5em solid white;
 }
 .east[data-tooltip].tooltip-inset:after,
@@ -2650,8 +2650,8 @@ p {
   width: 0;
   height: 0;
   border-top: 0.5em solid white;
-  border-right: 0.5em solid transparent;
-  border-left: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
+  border-left: 0.5em outset transparent;
 }
 .south[data-tooltip].tooltip-inset:after,
 .south.tooltip-inset .tooltip-content {
@@ -2663,9 +2663,9 @@ p {
   left: -1.25rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
   border-right: 0.5em solid white;
-  border-bottom: 0.5em solid transparent;
+  border-bottom: 0.5em outset transparent;
 }
 .west[data-tooltip].tooltip-inset:after,
 .west.tooltip-inset .tooltip-content {
@@ -2696,8 +2696,8 @@ p {
   width: 0;
   height: 0;
   border-top: 0.5em solid blue;
-  border-right: 0.5em solid transparent;
-  border-left: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
+  border-left: 0.5em outset transparent;
 }
 .north[data-tooltip].tooltip-info:after,
 .north.tooltip-info .tooltip-content {
@@ -2709,9 +2709,9 @@ p {
   right: -0.75rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
   border-right: 0.5em solid blue;
-  border-bottom: 0.5em solid transparent;
+  border-bottom: 0.5em outset transparent;
 }
 .east[data-tooltip].tooltip-info:after,
 .east.tooltip-info .tooltip-content {
@@ -2724,9 +2724,9 @@ p {
   top: 1.5rem;
   width: 0;
   height: 0;
-  border-right: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
   border-bottom: 0.5em solid blue;
-  border-left: 0.5em solid transparent;
+  border-left: 0.5em outset transparent;
 }
 .south[data-tooltip].tooltip-info:after,
 .south.tooltip-info .tooltip-content {
@@ -2738,8 +2738,8 @@ p {
   left: -0.75rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
-  border-bottom: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
+  border-bottom: 0.5em outset transparent;
   border-left: 0.5em solid blue;
 }
 .west[data-tooltip].tooltip-info:after,
@@ -2771,8 +2771,8 @@ p {
   width: 0;
   height: 0;
   border-top: 0.5em solid red;
-  border-right: 0.5em solid transparent;
-  border-left: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
+  border-left: 0.5em outset transparent;
 }
 .north[data-tooltip].tooltip-error:after,
 .north.tooltip-error .tooltip-content {
@@ -2784,9 +2784,9 @@ p {
   right: -0.75rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
   border-right: 0.5em solid red;
-  border-bottom: 0.5em solid transparent;
+  border-bottom: 0.5em outset transparent;
 }
 .east[data-tooltip].tooltip-error:after,
 .east.tooltip-error .tooltip-content {
@@ -2799,9 +2799,9 @@ p {
   top: 1.5rem;
   width: 0;
   height: 0;
-  border-right: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
   border-bottom: 0.5em solid red;
-  border-left: 0.5em solid transparent;
+  border-left: 0.5em outset transparent;
 }
 .south[data-tooltip].tooltip-error:after,
 .south.tooltip-error .tooltip-content {
@@ -2813,8 +2813,8 @@ p {
   left: -0.75rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
-  border-bottom: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
+  border-bottom: 0.5em outset transparent;
   border-left: 0.5em solid red;
 }
 .west[data-tooltip].tooltip-error:after,
@@ -2846,8 +2846,8 @@ p {
   width: 0;
   height: 0;
   border-top: 0.5em solid green;
-  border-right: 0.5em solid transparent;
-  border-left: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
+  border-left: 0.5em outset transparent;
 }
 .north[data-tooltip].tooltip-success:after,
 .north.tooltip-success .tooltip-content {
@@ -2859,9 +2859,9 @@ p {
   right: -0.75rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
   border-right: 0.5em solid green;
-  border-bottom: 0.5em solid transparent;
+  border-bottom: 0.5em outset transparent;
 }
 .east[data-tooltip].tooltip-success:after,
 .east.tooltip-success .tooltip-content {
@@ -2874,9 +2874,9 @@ p {
   top: 1.5rem;
   width: 0;
   height: 0;
-  border-right: 0.5em solid transparent;
+  border-right: 0.5em outset transparent;
   border-bottom: 0.5em solid green;
-  border-left: 0.5em solid transparent;
+  border-left: 0.5em outset transparent;
 }
 .south[data-tooltip].tooltip-success:after,
 .south.tooltip-success .tooltip-content {
@@ -2888,8 +2888,8 @@ p {
   left: -0.75rem;
   width: 0;
   height: 0;
-  border-top: 0.5em solid transparent;
-  border-bottom: 0.5em solid transparent;
+  border-top: 0.5em outset transparent;
+  border-bottom: 0.5em outset transparent;
   border-left: 0.5em solid green;
 }
 .west[data-tooltip].tooltip-success:after,
