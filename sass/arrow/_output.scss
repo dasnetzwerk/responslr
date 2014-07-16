@@ -1,0 +1,492 @@
+/***********************************************************************************
+	OUTPUT - ARROW
+***********************************************************************************/
+
+
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS
+***********************************************************************************/
+
+@function responslr-arrow-exists($name) {
+	@return map-has-key($responslr-arrows, $name);
+}
+
+@function responslr-arrow($name: null) {
+	$return-arrow: ();
+
+	@if $name == null {
+		$name: $responslr-arrows-default;
+	}
+
+	@if responslr-arrow-exists($name) {
+		$return-arrow: map-get($responslr-arrows, $name);
+	}
+
+	@return $return-arrow;
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
+***********************************************************************************/
+
+@function responslr-arrow-direction($name: null) {
+	$return-direction: map-get(responslr-arrow($name), direction);
+
+	@if $return-direction == null {
+		$return-direction: $responslr-arrows-default-direction;
+	}
+
+	@return $return-direction;
+}
+
+@function responslr-arrow-size($name: null) {
+	$return-size: map-get(responslr-arrow($name), size);
+
+	@if $return-size == null {
+		$return-size: $responslr-arrows-default-size;
+	}
+
+	@return $return-size;
+}
+
+@function responslr-arrow-width($name: null) {
+	$return-width: map-get(responslr-arrow($name), width);
+
+	@if $return-width == null {
+		$return-width: $responslr-arrows-default-width;
+	}
+
+	@return $return-width;
+}
+
+@function responslr-arrow-color($name: null) {
+	$return-color: map-get(responslr-arrow($name), color);
+
+	@if $return-color == null {
+		$return-color: $responslr-arrows-default-color;
+	}
+
+	@return $return-color;
+}
+
+@function responslr-arrow-position($name: null) {
+	$return-position: map-get(responslr-arrow($name), position);
+
+	@if $return-position == null {
+		$return-position: $responslr-arrows-default-position;
+	}
+
+	@return $return-position;
+}
+
+@function responslr-arrow-position-x($name: null) {
+	$return-position-x: map-get(responslr-arrow($name), position-x);
+
+	@if $return-position-x == null {
+		$return-position-x: $responslr-arrows-default-position-x;
+	}
+
+	@return $return-position-x;
+}
+
+@function responslr-arrow-position-y($name: null) {
+	$return-position-y: map-get(responslr-arrow($name), position-y);
+
+	@if $return-position-y == null {
+		$return-position-y: $responslr-arrows-default-position-y;
+	}
+
+	@return $return-position-y;
+}
+
+@function responslr-arrow-offset-x($name: null) {
+	$return-offset-x: map-get(responslr-arrow($name), offset-x);
+
+	@if $return-offset-x == null {
+		$return-offset-x: $responslr-arrows-default-offset-x;
+	}
+
+	@return $return-offset-x;
+}
+
+@function responslr-arrow-offset-y($name: null) {
+	$return-offset-y: map-get(responslr-arrow($name), offset-y);
+
+	@if $return-offset-y == null {
+		$return-offset-y: $responslr-arrows-default-offset-y;
+	}
+
+	@return $return-offset-y;
+}
+
+@function responslr-arrow-transition-properties($name: null) {
+	$return-transition-properties: map-get(responslr-arrow($name), transition-properties);
+
+	@if $return-transition-properties == null {
+		$return-transition-properties: $responslr-arrows-default-transition-properties;
+	}
+
+	@return $return-transition-properties;
+}
+
+@function responslr-arrow-transition-values($name: null) {
+	$return-transition-values: map-get(responslr-arrow($name), transition-values);
+
+	@if $return-transition-values == null {
+		$return-transition-values: $responslr-arrows-default-transition-values;
+	}
+
+	@return $return-transition-values;
+}
+
+@function responslr-arrow-pseudo-element($name: null) {
+	$return-pseudo-element: map-get(responslr-arrow($name), pseudo-element);
+
+	@if $return-pseudo-element == null {
+		$return-pseudo-element: $responslr-arrows-default-pseudo-element;
+	}
+
+	@return $return-pseudo-element;
+}
+
+
+/***********************************************************************************
+	EXTENDED FUNCTIONS
+***********************************************************************************/
+
+@function responslr-arrow-center-margin($size: $responslr-arrows-default-size, $position-is-alignment: true) {
+	$return-margin: $size;
+
+	@if $position-is-alignment {
+		$return-margin: -($size / 2);
+	} @else {
+		$return-margin: -($size / 3);
+	}
+
+	@return $return-margin;
+}
+
+@function responslr-arrow-offset-correct($offset: 0, $width: $responslr-arrows-default-width) {
+	$return-offset: 0;
+
+	$return-offset: $offset + $width;
+
+	@return $return-offset;
+}
+
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+
+@mixin responslr-arrow-direction($direction: null, $insert-pseudo-element: null, $pseudo-element: null) {
+	@if $direction == up {
+		@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+			-ms-transform: rotate(45deg);
+			-webkit-transform: rotate(45deg) translateZ(1px);
+			transform: rotate(45deg) translateZ(1px);
+		}
+	}
+
+	@if $direction == right {
+		@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+			-ms-transform: rotate(135deg);
+			-webkit-transform: rotate(135deg) translateZ(1px);
+			transform: rotate(135deg) translateZ(1px);
+		}
+	}
+
+	@if $direction == down {
+		@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+			-ms-transform: rotate(225deg);
+			-webkit-transform: rotate(225deg) translateZ(1px);
+			transform: rotate(225deg) translateZ(1px);
+		}
+	}
+
+	@if $direction == left {
+		@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+			-ms-transform: rotate(-45deg);
+			-webkit-transform: rotate(-45deg) translateZ(1px);
+			transform: rotate(-45deg) translateZ(1px);
+		}
+	}
+}
+
+@mixin responslr-arrow-size($size: null, $insert-pseudo-element: null, $pseudo-element: null) {
+	@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+		width: $size;
+		height: $size;
+	}
+}
+
+@mixin responslr-arrow-width($width: null, $insert-pseudo-element: null, $pseudo-element: null) {
+	@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+		border-top-width: $width;
+		border-left-width: $width;
+	}
+}
+
+@mixin responslr-arrow-color($color: null, $insert-pseudo-element: null, $pseudo-element: null) {
+	@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+		border-color: unquote($color);
+	}
+}
+
+@mixin arrow-transition($transition-properties: null, $transition-values: null, $pseudo-element: null) {
+	$transition-properties: unquote($transition-properties);
+	$transition-values: unquote($transition-values);
+
+	@if length($transition-properties) == length($transition-values) {
+		&:#{$pseudo-element} {
+			@include responslr-transition();
+			@include transition-property($transition-properties);
+		}
+
+		&:hover:#{$pseudo-element} {
+			@each $transition-property in $transition-properties {
+				#{$transition-property}: nth($transition-values, index($transition-properties, $transition-property));
+			}
+		}
+	}
+}
+
+@mixin responslr-arrow-custom(
+	$name: null,
+	$direction: null,
+	$size: null,
+	$width: null,
+	$color: null,
+	$position: null,
+	$position-x: null,
+	$position-y: null,
+	$offset-x: null,
+	$offset-y: null,
+	$transition-properties: null,
+	$transition-values: null,
+	$pseudo-element: null,
+	$insert-pseudo-element: true
+) {
+	$direction: responslr-arrow-direction($name) !default;
+	$size: responslr-arrow-size($name) !default;
+	$width: responslr-arrow-width($name) !default;
+	$color: responslr-arrow-color($name) !default;
+	$position: responslr-arrow-position($name) !default;
+	$position-x: responslr-arrow-position-x($name) !default;
+	$position-y: responslr-arrow-position-y($name) !default;
+	$offset-x: responslr-arrow-offset-x($name) !default;
+	$offset-y: responslr-arrow-offset-y($name) !default;
+	$transition-properties: responslr-arrow-transition-properties($name) !default;
+	$transition-values: responslr-arrow-transition-values($name) !default;
+	$pseudo-element: responslr-arrow-pseudo-element($name) !default;
+	$insert-pseudo-element: $responslr-arrows-default-insert-pseudo-element !default;
+
+	$position: unquote($position);
+
+	@if length($position) > 0 {
+		position: $position;
+
+		@if $position != absolute {
+			&.#{$responslr-aspect-ratio-content-class} {
+				position: absolute;
+			}
+		}
+	}
+
+	@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+		@include responslr-arrow-width($width: $width, $insert-pseudo-element: false);
+		@include responslr-arrow-size($size: $size, $insert-pseudo-element: false);
+		@include responslr-arrow-color($color: $color, $insert-pseudo-element: false);
+		@include responslr-arrow-direction($direction: $direction, $insert-pseudo-element: false);
+
+		@if $position-x == center {
+			left: 50%;
+			right: auto;
+		}
+
+		@if $position-x == left {
+			left: responslr-arrow-offset-correct($offset-x, $width);
+		}
+
+		@if $position-x == right {
+			right: responslr-arrow-offset-correct($offset-x, $width);
+		}
+
+		@if $position-y == top {
+			top: responslr-arrow-offset-correct($offset-y, $width);
+		} @else if $position-y == bottom {
+			bottom: responslr-arrow-offset-correct($offset-y, $width);
+		} @else {
+			top: 50%;
+		}
+
+		// direction up
+		@if $direction == up {
+			@if $position-x == center {
+				margin-left: responslr-arrow-center-margin($size);
+			}
+
+			@if $position-y == center {
+				margin-top: responslr-arrow-center-margin($size, false);
+			}
+		}
+
+		// direction right
+		@if $direction == right {
+			@if $position-x == center {
+				right: 50%;
+				margin-right: responslr-arrow-center-margin($size, false);
+				left: auto;
+			}
+
+			@if $position-y == center {
+				margin-top: responslr-arrow-center-margin($size);
+			}
+		}
+
+		// direction down
+		@if $direction == down {
+			@if $position-x == center {
+				margin-left: responslr-arrow-center-margin($size);
+			}
+
+			@if $position-y == center {
+				bottom: 50%;
+				margin-bottom: responslr-arrow-center-margin($size, false);
+				top: auto;
+			}
+		}
+
+		// direction left
+		@if $direction == left {
+			@if $position-x == center {
+				margin-left: responslr-arrow-center-margin($size, false);
+			}
+
+			@if $position-y == center {
+				margin-top: responslr-arrow-center-margin($size);
+			}
+		}
+	}
+
+	$transition-properties: unquote($transition-properties);
+	$transition-values: unquote($transition-values);
+	$transition-new-values: null;
+
+	@if $transition-properties != none and length($transition-properties) > 0 and length($transition-values) > 0 and length($transition-properties) == length($transition-values) {
+		@each $transition-property in $transition-properties {
+			$current-index: index($transition-properties, $transition-property);
+			$current-value: nth($transition-values, $current-index);
+
+			@if index((top,right,bottom,left), $transition-property) {
+				$current-value: arrow-offset-correct($current-value, $width);
+			}
+
+			@if $transition-new-values == null {
+				$transition-new-values: unquote($current-value);
+			} @else {
+				$transition-new-values: append($transition-new-values, unquote($current-value), comma);
+			}
+		}
+
+		$transition-values: $transition-new-values;
+
+		@include arrow-transition($transition-properties: $transition-properties, $transition-values: $transition-values, $pseudo-element: $pseudo-element);
+	}
+}
+
+@mixin responslr-arrow($name: null) {
+
+	@if responslr-arrow-exists($name) {
+		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
+			@extend .#{$responslr-arrow-class};
+		}
+
+		@include responslr-arrow-custom($name: $name);
+	}
+	//@each $arrow-list in $responslr-arrows {
+	//	$current-arrow-name: nth($arrow-list, 1);
+
+	//	@if $current-arrow-name == $name {
+			//@include responslr-arrow-custom(
+			//	$direction: nth($arrow-list, 2),
+			//	$size: nth($arrow-list, 3),
+			//	$width: nth($arrow-list, 4),
+			//	$color: nth($arrow-list, 5),
+			//	$position: nth($arrow-list, 6),
+			//	$position-x: nth($arrow-list, 7),
+			//	$position-y: nth($arrow-list, 8),
+			//	$offset-x: nth($arrow-list, 9),
+			//	$offset-y: nth($arrow-list, 10),
+			//	$transition-properties: nth($arrow-list, 11),
+			//	$transition-values: nth($arrow-list, 12),
+			//	$pseudo-element: nth($arrow-list, 13)
+			//);
+	//	}
+	//}
+}
+
+
+/***********************************************************************************
+	CLASS GENERATOR: ARROW
+***********************************************************************************/
+
+@function responslr-generate-arrows-check() {
+	@return $responslr-generate-arrows;
+}
+
+@mixin generate-arrows() {
+	.#{$responslr-arrow-class} {
+		content: "";
+		display: block;
+		position: absolute;
+		border-width: 0;
+		border-style: solid;
+		border-right-style: outset;
+		border-bottom-style: outset;
+	}
+
+	.#{$responslr-arrow-class-prefix}up {
+		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
+			@extend .#{$responslr-arrow-class};
+		}
+
+		@include responslr-arrow-custom($direction: up);
+	}
+
+	.#{$responslr-arrow-class-prefix}right {
+		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
+			@extend .#{$responslr-arrow-class};
+		}
+
+		@include responslr-arrow-custom($direction: right);
+	}
+
+	.#{$responslr-arrow-class-prefix}down {
+		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
+			@extend .#{$responslr-arrow-class};
+		}
+
+		@include responslr-arrow-custom($direction: down);
+	}
+
+	.#{$responslr-arrow-class-prefix}left {
+		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
+			@extend .#{$responslr-arrow-class};
+		}
+
+		@include responslr-arrow-custom($direction: left);
+	}
+
+	@if responslr-map-isnotempty($responslr-arrows) {
+		@each $arrow-key, $arrow-list in $responslr-arrows {
+			.#{$responslr-arrow-class-prefix}#{$arrow-key} {
+				@include responslr-arrow($name: $arrow-key);
+			}
+		}
+	}
+}
+
+@if responslr-generate-arrows-check() {
+	@include generate-arrows();
+}

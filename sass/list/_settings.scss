@@ -1,0 +1,31 @@
+/***********************************************************************************
+	SETTINGS - LIST
+***********************************************************************************/
+
+$responslr-lists: () !default;
+
+// Default list
+$responslr-lists-default: responslr-map-getdefault($responslr-lists) !default;
+
+// Map value defaults
+$responslr-lists-default-type: vertical !default;
+$responslr-lists-default-bullet-type: none !default;
+$responslr-lists-default-bullet-custom: '' !default;
+$responslr-lists-default-bullet-position: outside !default;
+$responslr-lists-default-bullet-width: 10px !default;
+$responslr-lists-default-bullet-height: auto !default;
+$responslr-lists-default-bullet-margin: 0 !default;
+$responslr-lists-default-bullet-color: null !default;
+$responslr-lists-default-bullet-icon: null !default;
+$responslr-lists-default-item-padding: 0 !default;
+$responslr-lists-default-item-margin: 0 !default;
+
+// Pseudo element (before or after)
+$responslr-list-pseudo-element: 'before' !default;
+
+// Classes
+$responslr-list-class-prefix: 'list-' !default;
+$responslr-list-no-bullet-class: 'no-bullet' !default;
+
+// Generate css output
+$responslr-generate-lists: $responslr-generate-classes !default;

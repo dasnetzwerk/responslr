@@ -1,0 +1,76 @@
+/***********************************************************************************
+	OUTPUTS - MODULES
+***********************************************************************************/
+
+// Reset
+@import "reset/output";
+
+// Typo
+@import "typo/output";
+
+// Grid
+@import "grid/output";
+
+// Color
+@import "color/output";
+
+// Hider
+@import "visibility/output";
+
+// Transition
+@import "transition/output";
+
+// Alignment
+@import "alignment/output";
+
+// Spacing
+@import "spacing/output";
+
+// Aspect Ratio
+@import "aspect-ratio/output";
+
+// Sprite
+@import "sprite/output";
+
+// Icon
+@import "icon/output";
+
+// Circle
+@import "circle/output";
+
+// Triangle
+@import "triangle/output";
+
+// Arrow
+@import "arrow/output";
+
+// Button
+@import "button/output";
+
+// Tooltip
+@import "tooltip/output";
+
+// List
+@import "list/output";
+
+// Form
+@import "form/output";
+
+// Table
+@import "table/output";
+
+
+/***********************************************************************************
+	GENERATE JSON SETTINGS
+***********************************************************************************/
+
+@if $responslr-generate-settings != false and $global-settings != () {
+	html::before {
+		content: json-encode($global-settings);
+		visibility: hidden;
+		position: absolute;
+		font-size: 0;
+		line-height: 0;
+		height: 0;
+	}
+}

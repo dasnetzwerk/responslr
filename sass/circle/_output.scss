@@ -1,0 +1,171 @@
+/***********************************************************************************
+	OUTPUT - CIRCLE
+***********************************************************************************/
+
+
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS (CIRCLE)
+***********************************************************************************/
+
+@function responslr-circle-exists($name) {
+	@return map-has-key($responslr-circles, $name);
+}
+
+@function responslr-circle($name: null) {
+	$return-circle: ();
+
+	@if $name == null {
+		$name: $responslr-circles-default;
+	}
+
+	@if responslr-circle-exists($name) {
+		$return-circle: map-get($responslr-circles, $name);
+	}
+
+	@return $return-circle;
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS (CIRCLE)
+***********************************************************************************/
+
+@function responslr-circle-width($name: null) {
+	$return-width: map-get(responslr-circle($name), width);
+
+	@if $return-width == null {
+		$return-width: $responslr-circles-default-width;
+	}
+
+	@return $return-width;
+}
+
+@function responslr-circle-height($name: null) {
+	$return-height: map-get(responslr-circle($name), height);
+
+	@if $return-height == null {
+		$return-height: $responslr-circles-default-height;
+	}
+
+	@return $return-height;
+}
+
+@function responslr-circle-radius($name: null) {
+	$return-radius: map-get(responslr-circle($name), radius);
+
+	@if $return-radius == null {
+		$return-radius: $responslr-circles-default-radius;
+	}
+
+	@return $return-radius;
+}
+
+@function responslr-circle-display($name: null) {
+	$return-display: map-get(responslr-circle($name), display);
+
+	@if $return-display == null {
+		$return-display: $responslr-circles-default-display;
+	}
+
+	@return $return-display;
+}
+
+@function responslr-circle-overflow($name: null) {
+	$return-overflow: map-get(responslr-circle($name), overflow);
+
+	@if $return-overflow == null {
+		$return-overflow: $responslr-circles-default-overflow;
+	}
+
+	@return $return-overflow;
+}
+
+@function responslr-circle-horizontal-align($name: null) {
+	$return-horizontal-align: map-get(responslr-circle($name), horizontal-align);
+
+	@if $return-horizontal-align == null {
+		$return-horizontal-align: $responslr-circles-default-horizontal-align;
+	}
+
+	@return $return-horizontal-align;
+}
+
+@function responslr-circle-vertical-align($name: null) {
+	$return-vertical-align: map-get(responslr-circle($name), vertical-align);
+
+	@if $return-vertical-align == null {
+		$return-vertical-align: $responslr-circles-default-vertical-align;
+	}
+
+	@return $return-vertical-align;
+}
+
+
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+
+@mixin responslr-circle($name: null, $width: null, $height: null, $radius: null, $display: null, $overflow: null, $horizontal-align: null, $vertical-align: null) {
+	$width: responslr-circle-width($name) !default;
+	$height: responslr-circle-height($name) !default;
+	$radius: responslr-circle-radius($name) !default;
+	$display: responslr-circle-display($name) !default;
+	$overflow: responslr-circle-overflow($name) !default;
+	$horizontal-align: responslr-circle-horizontal-align($name) !default;
+	$vertical-align: responslr-circle-vertical-align($name) !default;
+
+	display: $display;
+	overflow: $overflow;
+	text-align: $horizontal-align;
+
+	@if type-of($width) == number {
+		width: $width;
+	}
+
+	@if type-of($height) == number {
+		height: $height;
+
+		@if $vertical-align == center {
+			line-height: $height;
+		}
+	}
+
+	@if type-of($radius) == number {
+		border-radius: $radius;
+	}
+}
+
+
+/***********************************************************************************
+	CLASS GENERATOR: CIRCLE
+***********************************************************************************/
+
+@function responslr-generate-circles-check() {
+	@return $responslr-generate-circles;
+}
+
+@mixin generate-circles() {
+	.#{$responslr-circle-class} {
+		@include responslr-circle(
+			$width: $responslr-circles-default-width,
+			$height: $responslr-circles-default-height,
+			$radius: $responslr-circles-default-radius,
+			$display: $responslr-circles-default-display,
+			$overflow: $responslr-circles-default-overflow,
+			$horizontal-align: $responslr-circles-default-horizontal-align,
+			$vertical-align: $responslr-circles-default-vertical-align
+		);
+	}
+
+	@if responslr-map-isnotempty($responslr-circles) {
+		@each $circle-key, $circle-list in $responslr-circles {
+			.#{$responslr-circle-class-prefix}#{$circle-key} {
+				@include responslr-circle($name: $circle-key);
+			}
+		}
+	}
+}
+
+@if responslr-generate-circles-check() {
+	@include generate-circles();
+}

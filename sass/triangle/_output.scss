@@ -1,0 +1,161 @@
+/***********************************************************************************
+	OUTPUT - TRIANGLE
+***********************************************************************************/
+
+
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS
+***********************************************************************************/
+
+@function responslr-triangle-exists($name) {
+	@return map-has-key($responslr-triangles, $name);
+}
+
+@function responslr-triangle($name: null) {
+	$return-triangle: ();
+
+	@if $name == null {
+		$name: $responslr-triangles-default;
+	}
+
+	@if responslr-triangle-exists($name) {
+		$return-triangle: map-get($responslr-triangles, $name);
+	}
+
+	@return $return-triangle;
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
+***********************************************************************************/
+
+@function responslr-triangle-width($name: null) {
+	$return-width: map-get(responslr-triangle($name), width);
+
+	@if $return-width == null {
+		@warn responslr-map-required-error("width", "triangle", $name);
+	}
+
+	@return $return-width;
+}
+
+@function responslr-triangle-height($name: null) {
+	$return-height: map-get(responslr-triangle($name), height);
+
+	@if $return-height == null {
+		@warn responslr-map-required-error("height", "triangle", $name);
+	}
+
+	@return $return-height;
+}
+
+
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+
+// TODO: Mixin verbessern und schöner schreiben
+@mixin responslr-triangle($direction: top, $width: 1em, $height: half, $color: $black) {
+	@if ($direction == top or $direction == right or $direction == bottom or $direction == left) {
+		@if ($height == half) {
+			$height: $width / 2;
+		} @else if ($height == auto) {
+			$height: $width;
+		}
+	} @else { // if ($direction == top-left or $direction == top-right or $direction == bottom-left or $direction == bottom-right)
+		@if ($height == half or $height == auto) {
+			$height: $width / 2;
+		}
+
+		// do we need to make a 16px triangle for the median ?
+		// $width: $width/sqrt(2);
+		// $height: $height/sqrt(2);
+	}
+	// width is divided by 2 because it's used twice !
+	$width: $width / 2;
+
+	width: 0;
+	height: 0;
+
+	@if ($direction == top) {
+		// border-top
+		border-right: $width solid transparent;
+		border-bottom: $height solid $color;
+		border-left: $width solid transparent;
+	} @else if ($direction == bottom) {
+		border-top: $height solid $color;
+		border-right: $width solid transparent;
+		// border-bottom
+		border-left: $width solid transparent;
+	} @else if ($direction == left) {
+		border-top: $width solid transparent;
+		border-right: $height solid $color;
+		border-bottom: $width solid transparent;
+		// border-left
+	} @else if ($direction == right) {
+		border-top: $width solid transparent;
+		// border-right
+		border-bottom: $width solid transparent;
+		border-left: $height solid $color;
+	} @else if ($direction == top-left) {
+		border-top: $height solid $color;
+		border-right: $width solid transparent;
+		border-bottom: $height solid transparent;
+		border-left: $width solid $color;
+	} @else if ($direction == top-right) {
+		border-top: $height solid $color;
+		border-right: $width solid $color;
+		border-bottom: $height solid transparent;
+		border-left: $width solid transparent;
+	} @else if ($direction == bottom-left) {
+		border-top: $height solid transparent;
+		border-right: $width solid transparent;
+		border-bottom: $height solid $color;
+		border-left: $width solid $color;
+	} @else if ($direction == bottom-right) {
+		border-top: $height solid transparent;
+		border-right: $width solid $color;
+		border-bottom: $height solid $color;
+		border-left: $width solid transparent;
+	} @else {
+		// https://gist.github.com/1671259
+		@warn "#{error("The direction used does not exist")}";
+	}
+}
+
+
+/***********************************************************************************
+	CLASS GENERATOR: TRIANGLE
+***********************************************************************************/
+
+@function responslr-generate-triangles-check() {
+	@return $responslr-generate-triangles;
+}
+
+@mixin generate-triangles() {
+	.#{$responslr-triangle-class-prefix}top {
+		@include responslr-triangle(top);
+	}
+
+	.#{$responslr-triangle-class-prefix}right {
+		@include responslr-triangle(right);
+	}
+
+	.#{$responslr-triangle-class-prefix}bottom {
+		@include responslr-triangle(bottom);
+	}
+
+	.#{$responslr-triangle-class-prefix}left {
+		@include responslr-triangle(left);
+	}
+
+	// TODO: Generate Triangles by Responslr-Triangle-Map
+	@if responslr-map-isnotempty($responslr-triangles) {
+		// cool shit here
+	}
+}
+
+@if responslr-generate-triangles-check() {
+	@include generate-triangles();
+}

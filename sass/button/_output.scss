@@ -1,0 +1,314 @@
+/***********************************************************************************
+	OUTPUT - BUTTON
+***********************************************************************************/
+
+
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS
+***********************************************************************************/
+
+@function responslr-button-exists($name) {
+	@return map-has-key($responslr-buttons, $name);
+}
+
+@function responslr-button($name: null) {
+	$return-button: ();
+
+	@if $name == null {
+		$name: $responslr-buttons-default;
+	}
+
+	@if responslr-button-exists($name) {
+		$return-button: map-get($responslr-buttons, $name);
+	}
+
+	@return $return-button;
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
+***********************************************************************************/
+
+@function responslr-button-height($name: null) {
+	$return-height: map-get(responslr-button($name), height);
+
+	@if $return-height == null {
+		$return-height: $responslr-buttons-default-height;
+	}
+
+	@return $return-height;
+}
+
+@function responslr-button-padding($name: null) {
+	$return-padding: map-get(responslr-button($name), padding);
+
+	@if $return-padding == null {
+		$return-padding: $responslr-buttons-default-padding;
+	}
+
+	@return $return-padding;
+}
+
+@function responslr-button-font-family($name: null) {
+	$return-font-family: map-get(responslr-button($name), font-family);
+
+	@if $return-font-family == null {
+		$return-font-family: $responslr-buttons-default-font-family;
+	}
+
+	@return $return-font-family;
+}
+
+@function responslr-button-font-size($name: null) {
+	$return-font-size: map-get(responslr-button($name), font-size);
+
+	@if $return-font-size == null {
+		$return-font-size: $responslr-buttons-default-font-size;
+	}
+
+	@return $return-font-size;
+}
+
+@function responslr-button-font-weight($name: null) {
+	$return-font-weight: map-get(responslr-button($name), font-weight);
+
+	@if $return-font-weight == null {
+		$return-font-weight: $responslr-buttons-default-font-weight;
+	}
+
+	@return $return-font-weight;
+}
+
+@function responslr-button-text-color($name: null) {
+	$return-text-color: map-get(responslr-button($name), text-color);
+
+	@if $return-text-color == null {
+		$return-text-color: $responslr-buttons-default-text-color;
+	}
+
+	@return $return-text-color;
+}
+
+@function responslr-button-text-color-hover($name: null) {
+	$return-text-color-hover: map-get(responslr-button($name), text-color-hover);
+
+	@if $return-text-color-hover == null {
+		$return-text-color-hover: $responslr-buttons-default-text-color-hover;
+	}
+
+	@return $return-text-color-hover;
+}
+
+@function responslr-button-border-radius($name: null) {
+	$return-border-radius: map-get(responslr-button($name), border-radius);
+
+	@if $return-border-radius == null {
+		$return-border-radius: $responslr-buttons-default-border-radius;
+	}
+
+	@return $return-border-radius;
+}
+
+@function responslr-button-border($name: null) {
+	$return-border: map-get(responslr-button($name), border);
+
+	@if $return-border == null {
+		$return-border: $responslr-buttons-default-border;
+	}
+
+	@return $return-border;
+}
+
+@function responslr-button-border-hover($name: null) {
+	$return-border-hover: map-get(responslr-button($name), border-hover);
+
+	@if $return-border-hover == null {
+		$return-border-hover: $responslr-buttons-default-border-hover;
+	}
+
+	@return $return-border-hover;
+}
+
+@function responslr-button-bg-color($name: null) {
+	$return-bg-color: map-get(responslr-button($name), bg-color);
+
+	@if $return-bg-color == null {
+		$return-bg-color: $responslr-buttons-default-bg-color;
+	}
+
+	@return $return-bg-color;
+}
+
+@function responslr-button-bg-color-hover($name: null) {
+	$return-bg-color-hover: map-get(responslr-button($name), bg-color-hover);
+
+	@if $return-bg-color-hover == null {
+		$return-bg-color-hover: $responslr-buttons-default-bg-color-hover;
+	}
+
+	@return $return-bg-color-hover;
+}
+
+
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+
+@mixin responslr-button-default() {
+	display: inline-block;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+@mixin responslr-button-inactive() {
+	background-color: $responslr-button-inactive-background-color;
+	border-color: $responslr-button-inactive-text-color;
+	color: $responslr-button-inactive-text-color;
+	cursor: default;
+}
+
+@mixin responslr-button(
+	$name: $responslr-buttons-default,
+
+	$height: null,
+	$padding: null,
+
+	$font-family: null,
+	$font-size: null,
+	$font-weight: null,
+
+	$text-color: null,
+	$text-color-hover: null,
+
+	$border-radius: null,
+	$border: null,
+	$border-hover: null,
+
+	$bg-color: null,
+	$bg-color-hover: null,
+
+	$insert-default-styles: true
+) {
+	@if $insert-default-styles {
+		@include responslr-button-default();
+	}
+
+	$height: responslr-button-height($name) !default;
+	$padding: responslr-button-padding($name) !default;
+
+	$font-family: responslr-button-font-family($name) !default;
+	$font-size: responslr-button-font-size($name) !default;
+	$font-weight: responslr-button-font-weight($name) !default;
+
+	$text-color: responslr-button-text-color($name) !default;
+	$text-color-hover: responslr-button-text-color-hover($name) !default;
+
+	$border-radius: responslr-button-border-radius($name) !default;
+	$border: responslr-button-border($name) !default;
+	$border-hover: responslr-button-border-hover($name) !default;
+
+	$bg-color: responslr-button-bg-color($name) !default;
+	$bg-color-hover: responslr-button-bg-color-hover($name) !default;
+
+	@if $font-family != null {
+		@if responslr-typo-family-exists($font-family) {
+			@include responslr-typo-family($font-family);
+		} @else {
+			font-family: $font-family;
+		}
+	}
+
+	@if $font-size != null {
+		@if responslr-typo-size-exists($font-size) {
+			@include responslr-typo-size($font-size);
+		} @else {
+			font-size: $font-size;
+		}
+	}
+
+	@if $font-weight != null {
+		font-weight: $font-weight;
+	}
+
+	@if $height == 0 {
+		padding: $padding;
+		white-space: pre-wrap;
+	} @else {
+		height: $height;
+		padding: 0 responslr-split-shorthand($padding, right) 0 responslr-split-shorthand($padding, left);
+		line-height: $height;
+	}
+
+	@if $text-color != null {
+		color: $text-color;
+	}
+
+	@if $border-radius != null {
+		border-radius: $border-radius;
+	}
+
+	@if $border != null {
+		border: $border;
+	}
+
+	@if $bg-color != null {
+		background-color: $bg-color;
+	}
+
+	&:hover,
+	&:focus {
+		@if $text-color-hover != null and $text-color-hover != $text-color {
+			color: $text-color-hover;
+		}
+
+		@if $border-hover != null and $border-hover != $border {
+			border: $border-hover;
+		}
+
+		@if $bg-color-hover != null and $bg-color-hover != $bg-color {
+			background-color: $bg-color-hover;
+		}
+	}
+}
+
+
+/***********************************************************************************
+	CLASS GENERATOR
+***********************************************************************************/
+
+@function responslr-generate-buttons-check() {
+	@return $responslr-generate-buttons and responslr-map-isnotempty($responslr-buttons);
+}
+
+@mixin responslr-generate-buttons() {
+	%button {
+		@include responslr-button-default();
+	}
+
+	@each $button-key, $button-list in $responslr-buttons {
+		// Button normal
+		.#{$responslr-button-class-prefix}#{$button-key} {
+			@extend %button;
+
+			@include responslr-button($name: $button-key, $insert-default-styles: false);
+		}
+
+		// Button inactive / disabled
+		@if $responslr-generate-buttons-inactive {
+			.#{$responslr-button-inactive-class}:hover,
+			.#{$responslr-button-inactive-class}:focus,
+			.#{$responslr-button-class-prefix}#{$button-key}[disabled] {
+				@extend .#{$responslr-button-inactive-class};
+			}
+		}
+	}
+
+	.#{$responslr-button-inactive-class} {
+		@include responslr-button-inactive();
+	}
+}
+
+@if responslr-generate-buttons-check() {
+	@include responslr-generate-buttons();
+}

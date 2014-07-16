@@ -1,0 +1,317 @@
+/***********************************************************************************
+	OUTPUT - LIST
+***********************************************************************************/
+
+
+
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS
+***********************************************************************************/
+
+@function responslr-list-exists($name) {
+	@return map-has-key($responslr-lists, $name);
+}
+
+@function responslr-list($name: null) {
+	$return-list: ();
+
+	@if $name == null {
+		$name: $responslr-lists-default;
+	}
+
+	@if responslr-list-exists($name) {
+		$return-list: map-get($responslr-lists, $name);
+	}
+
+	@return $return-list;
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
+***********************************************************************************/
+
+@function responslr-list-type($name: null) {
+	$return-type: map-get(responslr-list($name), type);
+
+	@if $return-type == null {
+		$return-type: $responslr-lists-default-type;
+	}
+
+	@return $return-type;
+}
+
+@function responslr-list-bullet-type($name: null) {
+	$return-bullet-type: map-get(responslr-list($name), bullet-type);
+
+	@if $return-bullet-type == null {
+		$return-bullet-type: $responslr-lists-default-bullet-type;
+	}
+
+	@return $return-bullet-type;
+}
+
+@function responslr-list-bullet-custom($name: null) {
+	$return-bullet-custom: map-get(responslr-list($name), bullet-custom);
+
+	@if $return-bullet-custom == null {
+		$return-bullet-custom: $responslr-lists-default-bullet-custom;
+	}
+
+	@return $return-bullet-custom;
+}
+
+@function responslr-list-bullet-position($name: null) {
+	$return-bullet-position: map-get(responslr-list($name), bullet-position);
+
+	@if $return-bullet-position == null {
+		$return-bullet-position: $responslr-lists-default-bullet-position;
+	}
+
+	@return $return-bullet-position;
+}
+
+@function responslr-list-bullet-width($name: null) {
+	$return-bullet-width: map-get(responslr-list($name), bullet-width);
+
+	@if $return-bullet-width == null {
+		$return-bullet-width: $responslr-lists-default-bullet-width;
+	}
+
+	@return $return-bullet-width;
+}
+
+@function responslr-list-bullet-height($name: null) {
+	$return-bullet-height: map-get(responslr-list($name), bullet-height);
+
+	@if $return-bullet-height == null {
+		$return-bullet-height: $responslr-lists-default-bullet-height;
+	}
+
+	@return $return-bullet-height;
+}
+
+@function responslr-list-bullet-margin($name: null) {
+	$return-bullet-margin: map-get(responslr-list($name), bullet-margin);
+
+	@if $return-bullet-margin == null {
+		$return-bullet-margin: $responslr-lists-default-bullet-margin;
+	}
+
+	@return $return-bullet-margin;
+}
+
+@function responslr-list-bullet-color($name: null) {
+	$return-bullet-color: map-get(responslr-list($name), bullet-color);
+
+	@if $return-bullet-color == null {
+		$return-bullet-color: $responslr-lists-default-bullet-color;
+	}
+
+	@return $return-bullet-color;
+}
+
+@function responslr-list-bullet-icon($name: null) {
+	$return-bullet-icon: map-get(responslr-list($name), bullet-icon);
+
+	@if $return-bullet-icon == null {
+		$return-bullet-icon: $responslr-lists-default-bullet-icon;
+	}
+
+	@return $return-bullet-icon;
+}
+
+@function responslr-list-item-padding($name: null) {
+	$return-item-padding: map-get(responslr-list($name), item-padding);
+
+	@if $return-item-padding == null {
+		$return-item-padding: $responslr-lists-default-item-padding;
+	}
+
+	@return $return-item-padding;
+}
+
+@function responslr-list-item-margin($name: null) {
+	$return-item-margin: map-get(responslr-list($name), item-margin);
+
+	@if $return-item-margin == null {
+		$return-item-margin: $responslr-lists-default-item-margin;
+	}
+
+	@return $return-item-margin;
+}
+
+// TODO: Bullet types arrow and sprite
+
+// TODO: list-padding
+// TODO: list-margin
+// TODO: item-padding-first: 10px 30px,
+// TODO: item-padding-last: 10px 30px,
+// TODO: item-margin-first: 0 5px 5px 0,
+// TODO: item-margin-last: 0 5px 5px 0,
+// TODO: bullet-font-family: 'times-new-roman',
+// TODO: bullet-font-size: 10px,
+// TODO: bullet-line-height: 10px,
+
+
+/***********************************************************************************
+	EXTENDED FUNCTIONS
+***********************************************************************************/
+
+
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+
+@mixin responslr-list-default() {
+	font-size: 0;
+	line-height: 0;
+
+	& > * {
+		position: relative;
+		display: block;
+
+		@include responslr-typo();
+	}
+}
+
+@mixin responslr-list($name: $responslr-lists-default, $type: null, $bullet-type: null, $bullet-custom: null, $bullet-position: null, $bullet-width: null, $bullet-height: null, $bullet-margin: null, $bullet-color: null, $bullet-icon: null, $item-padding: null, $item-margin: null) {
+	$type:  responslr-list-type($name) !default;
+	$bullet-type: responslr-list-bullet-type($name) !default;
+	$bullet-custom: responslr-list-bullet-custom($name) !default;
+	$bullet-position: responslr-list-bullet-position($name) !default;
+	$bullet-width: responslr-list-bullet-width($name) !default;
+	$bullet-height: responslr-list-bullet-height($name) !default;
+	$bullet-margin: responslr-list-bullet-margin($name) !default;
+	$bullet-color: responslr-list-bullet-color($name) !default;
+	$bullet-icon: responslr-list-bullet-icon($name) !default;
+	$item-padding: responslr-list-item-padding($name) !default;
+	$item-margin: responslr-list-item-margin($name) !default;
+
+	& > * {
+		@if $type == horizontal {
+			display: inline-block;
+		}
+
+		padding: $item-padding;
+		margin: $item-margin;
+
+		@if $bullet-type != none {
+			$bullet-margin-left: responslr-split-shorthand($bullet-margin, 'left');
+			$bullet-margin-right: responslr-split-shorthand($bullet-margin, 'right');
+
+			$item-margin-left: responslr-split-shorthand($item-margin, 'left');
+			$item-margin-right: responslr-split-shorthand($item-margin, 'right');
+
+			$item-padding-left: responslr-split-shorthand($item-padding, 'left');
+
+			$item-margin-left: $item-margin-left + $bullet-margin-left + $bullet-margin-right;
+			$item-margin-right: $item-margin-right + $bullet-margin-left + $bullet-margin-right;
+
+			&:not(.#{$responslr-list-no-bullet-class})::#{$responslr-list-pseudo-element} {
+				position: absolute;
+				width: $bullet-width;
+
+				@if $bullet-height != auto {
+					height: $bullet-height;
+				}
+
+				@if $bullet-type == 'custom' {
+					content: $bullet-custom;
+
+					@if $bullet-color != null {
+						color: responslr-color-value($bullet-color);
+					}
+
+					@if index(between-before between-after, $bullet-position) {
+						text-align: center;
+					} @else {
+						text-align: left;
+					}
+				} @else {
+					content: '';
+
+					@if $bullet-type == 'circle' {
+						@include responslr-circle($width: $bullet-width, $height: $bullet-height, $radius: 50%);
+					}
+
+					@if $bullet-type == 'triangle' {
+						@include responslr-triangle($direction: right, $width: $bullet-width, $height: auto, $color: $bullet-color);
+					}
+
+					@if $bullet-type == 'icon' {
+						@if responslr-icon-exists($bullet-icon) {
+							@include responslr-icon($name: $bullet-icon, $size: '#{$bullet-width} auto', $offset-x: null, $offset-y: null, $color: $bullet-color, $repeat: no-repeat);
+						} @else {
+							@include responslr-icon($file: $bullet-icon, $size: '#{$bullet-width} auto', $offset-x: null, $offset-y: null, $color: $bullet-color, $repeat: no-repeat);
+						}
+					}
+
+					@if $bullet-height == auto {
+						height: $bullet-width;
+					}
+				}
+
+				@if $bullet-position == 'inside' {
+					left: $item-padding-left + $bullet-margin-left;
+				} @else {
+					@if $bullet-position == 'between-after' {
+						left: 100%;
+					} @else {
+						right: 100%;
+					}
+				}
+
+				margin: $bullet-margin;
+			}
+
+			@if $bullet-position == 'between-before' {
+				&:not(.#{$responslr-list-no-bullet-class}):not(:first-child) {
+					margin-left: $item-margin-left + $bullet-width;
+				}
+
+				&:first-child::#{$responslr-list-pseudo-element} {
+					display: none;
+				}
+			} @elseif $bullet-position == 'between-after' {
+				&:not(.#{$responslr-list-no-bullet-class}):not(:last-child) {
+					margin-right: $item-margin-right + $bullet-width;
+				}
+
+				&:last-child::#{$responslr-list-pseudo-element} {
+					display: none;
+				}
+			} @elseif $bullet-position == 'outside' {
+				margin-left: $item-margin-left + $bullet-width;
+			} @else {
+				padding-left: $item-padding-left + $bullet-width + $bullet-margin-left + $bullet-margin-right;
+			}
+		}
+	}
+}
+
+/***********************************************************************************
+	CLASS GENERATOR
+***********************************************************************************/
+
+@function responslr-generate-lists-check() {
+	@return $responslr-generate-lists and responslr-map-isnotempty($responslr-lists);
+}
+
+@mixin responslr-generate-lists() {
+	%list {
+		@include responslr-list-default();
+	}
+
+	@each $list-key, $list-list in $responslr-lists {
+		.#{$responslr-list-class-prefix}#{$list-key} {
+			@extend %list;
+
+			@include responslr-list($name: $list-key);
+		}
+	}
+}
+
+@if responslr-generate-lists-check() {
+	@include responslr-generate-lists();
+}

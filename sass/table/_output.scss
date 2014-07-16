@@ -1,0 +1,20 @@
+/***********************************************************************************
+	OUTPUT - TABLE
+***********************************************************************************/
+
+
+/***********************************************************************************
+	CLASS GENERATOR
+***********************************************************************************/
+
+@function responslr-generate-tables-check() {
+	@return $responslr-generate-tables and responslr-map-isnotempty($responslr-tables);
+}
+
+@mixin responslr-generate-tables() {
+
+}
+
+@if responslr-generate-tables-check() {
+	@include responslr-generate-tables();
+}

@@ -1,0 +1,55 @@
+/***********************************************************************************
+	SETTINGS - COLOR
+***********************************************************************************/
+
+$responslr-colors: () !default;
+
+// Default color
+$responslr-colors-default: responslr-map-getdefault($responslr-colors) !default;
+
+// Classes
+$responslr-color-bg-class-prefix: 'bg-' !default;
+$responslr-color-bg-hover-class-prefix: 'bg-hover-' !default;
+$responslr-color-bg-focus-class-prefix: 'bg-focus-' !default;
+
+$responslr-color-text-class-prefix: 'text-' !default;
+$responslr-color-text-hover-class-prefix: 'text-hover-' !default;
+$responslr-color-text-focus-class-prefix: 'text-focus-' !default;
+
+$responslr-color-border-class-prefix: 'border-' !default;
+$responslr-color-border-hover-class-prefix: 'border-hover-' !default;
+$responslr-color-border-focus-class-prefix: 'border-focus-' !default;
+
+$responslr-color-border-top-class-prefix: 'border-top-' !default;
+$responslr-color-border-right-class-prefix: 'border-right-' !default;
+$responslr-color-border-bottom-class-prefix: 'border-bottom-' !default;
+$responslr-color-border-left-class-prefix: 'border-left-' !default;
+
+$responslr-color-border-top-hover-class-prefix: 'border-top-hover-' !default;
+$responslr-color-border-right-hover-class-prefix: 'border-right-hover-' !default;
+$responslr-color-border-bottom-hover-class-prefix: 'border-bottom-hover-' !default;
+$responslr-color-border-left-hover-class-prefix: 'border-left-hover-' !default;
+
+$responslr-color-border-top-focus-class-prefix: 'border-top-focus-' !default;
+$responslr-color-border-right-focus-class-prefix: 'border-right-focus-' !default;
+$responslr-color-border-bottom-focus-class-prefix: 'border-bottom-focus-' !default;
+$responslr-color-border-left-focus-class-prefix: 'border-left-focus-' !default;
+
+// Generate css output
+$responslr-generate-colors: $responslr-generate-classes !default;
+
+$responslr-generate-colors-bg: $responslr-generate-colors !default;
+$responslr-generate-colors-bg-hover: $responslr-generate-colors-bg !default;
+$responslr-generate-colors-bg-focus: false !default;
+
+$responslr-generate-colors-text: $responslr-generate-colors !default;
+$responslr-generate-colors-text-hover: $responslr-generate-colors-text !default;
+$responslr-generate-colors-text-focus: false !default;
+
+$responslr-generate-colors-border: $responslr-generate-colors !default;
+$responslr-generate-colors-border-hover: $responslr-generate-colors-border !default;
+$responslr-generate-colors-border-focus: false !default;
+
+$responslr-generate-colors-border-directions: false !default;
+$responslr-generate-colors-border-directions-hover: $responslr-generate-colors-border-directions !default;
+$responslr-generate-colors-border-directions-focus: false !default;

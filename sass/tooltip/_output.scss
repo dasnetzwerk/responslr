@@ -1,0 +1,396 @@
+/***********************************************************************************
+	OUTPUT - TOOLTIP
+***********************************************************************************/
+
+
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS
+***********************************************************************************/
+
+@function responslr-tooltip-exists($name) {
+	@return map-has-key($responslr-tooltips, $name);
+}
+
+@function responslr-tooltip($name: null) {
+	$return-tooltip: ();
+
+	@if $name == null {
+		$name: $responslr-tooltips-default;
+	}
+
+	@if responslr-tooltip-exists($name) {
+		$return-tooltip: map-get($responslr-tooltips, $name);
+	}
+
+	@return $return-tooltip;
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
+***********************************************************************************/
+
+@function responslr-tooltip-cursor($name: null) {
+	$return-cursor: map-get(responslr-tooltip($name), cursor);
+
+	@if $return-cursor == null {
+		$return-cursor: $responslr-tooltips-default-cursor;
+	}
+
+	@return $return-cursor;
+}
+
+@function responslr-tooltip-offset($name: null) {
+	$return-offset: map-get(responslr-tooltip($name), offset);
+
+	@if $return-offset == null {
+		$return-offset: $responslr-tooltips-default-offset;
+	}
+
+	@return $return-offset;
+}
+
+@function responslr-tooltip-padding($name: null) {
+	$return-padding: map-get(responslr-tooltip($name), padding);
+
+	@if $return-padding == null {
+		$return-padding: $responslr-tooltips-default-padding;
+	}
+
+	@return $return-padding;
+}
+
+@function responslr-tooltip-max-width($name: null) {
+	$return-max-width: map-get(responslr-tooltip($name), max-width);
+
+	@if $return-max-width == null {
+		$return-max-width: $responslr-tooltips-default-max-width;
+	}
+
+	@return $return-max-width;
+}
+
+@function responslr-tooltip-font-size($name: null) {
+	$return-font-size: map-get(responslr-tooltip($name), font-size);
+
+	@if $return-font-size == null {
+		$return-font-size: $responslr-tooltips-default-font-size;
+	}
+
+	@return $return-font-size;
+}
+
+@function responslr-tooltip-font-color($name: null) {
+	$return-font-color: map-get(responslr-tooltip($name), font-color);
+
+	@if $return-font-color == null {
+		$return-font-color: $responslr-tooltips-default-font-color;
+	}
+
+	@return unquote($return-font-color);
+}
+
+@function responslr-tooltip-bg-color($name: null) {
+	$return-bg-color: map-get(responslr-tooltip($name), bg-color);
+
+	@if $return-bg-color == null {
+		$return-bg-color: $responslr-tooltips-default-bg-color;
+	}
+
+	@return unquote($return-bg-color);
+}
+
+@function responslr-tooltip-border-color($name: null) {
+	$return-border-color: map-get(responslr-tooltip($name), border-color);
+
+	@if $return-border-color == null {
+		$return-border-color: $responslr-tooltips-default-border-color;
+	}
+
+	@return unquote($return-border-color);
+}
+
+@function responslr-tooltip-border-width($name: null) {
+	$return-border-width: map-get(responslr-tooltip($name), border-width);
+
+	@if $return-border-width == null {
+		$return-border-width: $responslr-tooltips-default-border-width;
+	}
+
+	@return $return-border-width;
+}
+
+@function responslr-tooltip-border-style($name: null) {
+	$return-border-style: map-get(responslr-tooltip($name), border-style);
+
+	@if $return-border-style == null {
+		$return-border-style: $responslr-tooltips-default-border-style;
+	}
+
+	@return $return-border-style;
+}
+
+@function responslr-tooltip-border-radius($name: null) {
+	$return-border-radius: map-get(responslr-tooltip($name), border-radius);
+
+	@if $return-border-radius == null {
+		$return-border-radius: $responslr-tooltips-default-border-radius;
+	}
+
+	@return $return-border-radius;
+}
+
+@function responslr-tooltip-triangle($name: null) {
+	$return-triangle: map-get(responslr-tooltip($name), triangle);
+
+	@if $return-triangle == null {
+		$return-triangle: $responslr-tooltips-default-triangle;
+	}
+
+	@return $return-triangle;
+}
+
+@function responslr-tooltip-triangle-is-offset($name: null) {
+	$return-triangle-is-offset: map-get(responslr-tooltip($name), triangle-is-offset);
+
+	@if $return-triangle-is-offset == null {
+		$return-triangle-is-offset: $responslr-tooltips-default-triangle-is-offset;
+	}
+
+	@return $return-triangle-is-offset;
+}
+
+@function responslr-tooltip-generate($name: null) {
+	$return-generate: map-get(responslr-tooltip($name), generate);
+
+	@if $return-generate == null {
+		$return-generate: $responslr-tooltips-default-generate;
+	}
+
+	@return $return-generate;
+}
+
+@function responslr-tooltip-directions($name: null) {
+	$return-directions: map-get(responslr-tooltip($name), directions);
+
+	@if $return-directions == null {
+		$return-directions: $responslr-tooltips-default-directions;
+	}
+
+	@return $return-directions;
+}
+
+
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+
+@mixin responslr-tooltip-base() {
+	.#{$responslr-tooltip-content-class} {
+		display: none;
+		visibility: hidden;
+		opacity: 0;
+	}
+
+	%tooltip {
+		position: relative;
+		display: inline-block;
+
+		&:before {
+			z-index: 51;
+		}
+
+		&:before,
+		&[data-tooltip]:after {
+			content: "";
+			position: absolute;
+			display: block;
+			visibility: hidden;
+			opacity: 0;
+		}
+
+		&[data-tooltip]:after,
+		.#{$responslr-tooltip-content-class} {
+			position: absolute;
+			display: block;
+			visibility: hidden;
+			opacity: 0;
+			z-index: 50;
+
+			//@include responslr-transition(default);
+			@include transition(opacity .4s ease-out)
+		}
+
+		&[data-tooltip]:after {
+			content: attr(data-tooltip);
+			white-space: pre-wrap;
+		}
+
+		&:hover {
+			&:before,
+			&[data-tooltip]:after,
+			.#{$responslr-tooltip-content-class} {
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+@mixin responslr-tooltip-generate-class($name: null) {
+
+	%tooltip-#{$name} {
+		cursor: responslr-tooltip-cursor($name);
+
+		&[data-tooltip]:after,
+		.#{$responslr-tooltip-content-class} {
+			width: responslr-tooltip-max-width($name);
+			padding: responslr-tooltip-padding($name);
+			@include responslr-typo-size($font-size: responslr-tooltip-font-size($name));
+			color: responslr-tooltip-font-color($name);
+			background-color: responslr-tooltip-bg-color($name);
+
+			@if(responslr-tooltip-border-width($name) != 0) {
+				border: responslr-tooltip-border-width($name) responslr-tooltip-border-style($name) responslr-tooltip-border-color($name);
+			}
+
+			@if(responslr-tooltip-border-radius($name) != 0) {
+				@include border-radius(responslr-tooltip-border-radius($name));
+			}
+		}
+
+		@if index(responslr-tooltip-directions($name), north) {
+			&.#{$responslr-tooltip-north-class} {
+				@extend %tooltip;
+
+				@if responslr-tooltip-triangle($name) {
+					&:before {
+						left: 1rem;
+						@if responslr-tooltip-triangle-is-offset($name) {
+							bottom: responslr-tooltip-offset($name)+0.75rem;
+							@include responslr-triangle($direction: bottom, $color: responslr-tooltip-border-color($name));
+						} @else {
+							bottom: responslr-tooltip-offset($name)+1.25rem;
+							@include responslr-triangle($direction: top, $color: responslr-tooltip-border-color($name));
+						}
+					}
+				}
+				&[data-tooltip]:after,
+				.#{$responslr-tooltip-content-class} {
+					bottom: responslr-tooltip-offset($name)+1.25rem;
+					left: -0.25rem;
+				}
+			}
+		}
+
+		@if index(responslr-tooltip-directions($name), east) {
+			&.#{$responslr-tooltip-east-class} {
+				@extend %tooltip;
+
+				@if responslr-tooltip-triangle($name) {
+					&:before {
+						top: 0.2rem;
+						@if responslr-tooltip-triangle-is-offset($name) {
+							right: -(responslr-tooltip-offset($name));
+							@include responslr-triangle($direction: left, $color: responslr-tooltip-border-color($name));
+						} @else {
+							right: -(responslr-tooltip-offset($name)+0.5rem);
+							@include responslr-triangle($direction: right, $color: responslr-tooltip-border-color($name));
+						}
+					}
+				}
+				&[data-tooltip]:after,
+				.#{$responslr-tooltip-content-class} {
+					left: 100%;
+					top: -0.1rem;
+					margin-left: responslr-tooltip-offset($name);
+				}
+			}
+		}
+
+		@if index(responslr-tooltip-directions($name), south) {
+			&.#{$responslr-tooltip-south-class} {
+				@extend %tooltip;
+
+				@if responslr-tooltip-triangle($name) {
+					&:before {
+						left: 1rem;
+						@if responslr-tooltip-triangle-is-offset($name) {
+							top: responslr-tooltip-offset($name)+0.75rem;
+							@include responslr-triangle($direction: top, $color: responslr-tooltip-border-color($name));
+						} @else {
+							top: responslr-tooltip-offset($name)+1.25rem;
+							@include responslr-triangle($direction: bottom, $color: responslr-tooltip-border-color($name));
+						}
+					}
+				}
+
+				&[data-tooltip]:after,
+				.#{$responslr-tooltip-content-class} {
+					top: responslr-tooltip-offset($name)+1.25rem;
+					left: -0.25rem;
+				}
+			}
+		}
+
+		@if index(responslr-tooltip-directions($name), west) {
+			&.#{$responslr-tooltip-west-class} {
+				@extend %tooltip;
+
+				@if responslr-tooltip-triangle($name) {
+					&:before {
+						top: 0.2rem;
+						@if responslr-tooltip-triangle-is-offset($name) {
+							left: -(responslr-tooltip-offset($name));
+							@include responslr-triangle($direction: right, $color: responslr-tooltip-border-color($name));
+						} @else {
+							left: -(responslr-tooltip-offset($name)+0.5rem);
+							@include responslr-triangle($direction: left, $color: responslr-tooltip-border-color($name));
+						}
+					}
+				}
+
+				&[data-tooltip]:after,
+				.#{$responslr-tooltip-content-class} {
+					right: 100%;
+					top: -0.1rem;
+					margin-right: responslr-tooltip-offset($name);
+				}
+			}
+		}
+	}
+}
+
+
+/***********************************************************************************
+	CLASS GENERATOR: TOOLTIP
+***********************************************************************************/
+
+@function responslr-generate-tooltips-check() {
+	@return $responslr-generate-tooltips and responslr-map-isnotempty($responslr-tooltips);
+}
+
+@if responslr-generate-tooltips-check() {
+	@include responslr-tooltip-base();
+
+	@each $tooltip-key, $tooltip-list in $responslr-tooltips {
+		@if responslr-tooltip-generate-class($tooltip-key) {
+			@include responslr-tooltip-generate-class($tooltip-key)
+		}
+	}
+}
+
+/***********************************************************************************
+	EXAMPLE: TOOLTIP usage if enable-ui-tooltip is false
+
+	@include responslr-tooltip-base();
+	@include responslr-tooltip-generate-class(responslr-tooltip(info));
+	.tooltip-info {
+		@extend %tooltip-info;
+	}
+
+	@include responslr-tooltip-generate-class(responslr-tooltip(error));
+	.tooltip-error {
+		@extend %tooltip-error;
+	}
+***********************************************************************************/

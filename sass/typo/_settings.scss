@@ -1,0 +1,59 @@
+/***********************************************************************************
+	SETTINGS - TYPO
+***********************************************************************************/
+
+// Default line-height
+$responslr-typo-line-height-default: 1.4 !default;
+
+// Font families
+$responslr-typo-families: (
+	'arial': (
+		name: 'Arial'
+	)
+) !default;
+
+
+// Font-families default
+$responslr-typo-families-default: responslr-map-getdefault($responslr-typo-families) !default;
+
+// Font-families map value defaults
+$responslr-typo-families-default-file: null !default;
+$responslr-typo-families-default-import: null !default;
+$responslr-typo-families-default-font-weight: null !default;
+$responslr-typo-families-default-font-style: null !default;
+
+// Font-families classes
+$responslr-typo-family-class-prefix: 'font-family-' !default;
+
+
+// Font sizes
+$responslr-typo-sizes: (
+	'small': (
+		value: 12px
+	),
+	'medium': (
+		value: 24px
+	),
+	'large': (
+		value: 48px
+	)
+) !default;
+
+// Font-sizes default
+$responslr-typo-sizes-default: responslr-map-getdefault($responslr-typo-sizes) !default;
+
+// Font-sizes map value defaults
+$responslr-typo-sizes-default-line-height: $responslr-typo-line-height-default !default;
+
+// Font-sizes classes
+$responslr-typo-size-class-prefix: 'font-size-' !default;
+
+// Other classes
+$responslr-typo-no-select-class: 'no-select' !default;
+$responslr-typo-reset-class: 'font-reset' !default;
+
+// Generate css output
+$responslr-generate-typo: $responslr-generate-classes !default;
+$responslr-generate-typo-faces: $responslr-generate-typo !default;
+$responslr-generate-typo-families: $responslr-generate-typo !default;
+$responslr-generate-typo-sizes: $responslr-generate-typo !default;

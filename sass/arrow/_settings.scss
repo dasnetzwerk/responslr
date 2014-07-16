@@ -1,0 +1,31 @@
+/***********************************************************************************
+	SETTINGS - ARROW
+***********************************************************************************/
+
+// Arrows
+$responslr-arrows: () !default;
+
+// Default arrow
+$responslr-arrows-default: responslr-map-getdefault($responslr-arrows) !default;
+
+// Arrows map value defaults
+$responslr-arrows-default-direction: right !default;
+$responslr-arrows-default-size: 12px !default;
+$responslr-arrows-default-width: 3px !default;
+$responslr-arrows-default-color: black !default;
+$responslr-arrows-default-position: relative !default;
+$responslr-arrows-default-position-x: center !default;
+$responslr-arrows-default-position-y: center !default;
+$responslr-arrows-default-offset-x: 0 !default;
+$responslr-arrows-default-offset-y: 0 !default;
+$responslr-arrows-default-transition-properties: () !default;
+$responslr-arrows-default-transition-values: () !default;
+$responslr-arrows-default-pseudo-element: 'before' !default;
+$responslr-arrows-default-insert-pseudo-element: true !default;
+
+// Arrow classes
+$responslr-arrow-class: 'arrow' !default;
+$responslr-arrow-class-prefix: 'arrow-' !default;
+
+// Generate css output
+$responslr-generate-arrows: $responslr-generate-classes !default;

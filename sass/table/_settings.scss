@@ -1,0 +1,11 @@
+/***********************************************************************************
+	SETTINGS - TABLE
+***********************************************************************************/
+
+$responslr-tables: () !default;
+
+// Default form
+$responslr-tables-default: responslr-map-getdefault($responslr-tables) !default;
+
+// Generate css output
+$responslr-generate-tables: $responslr-generate-classes !default;

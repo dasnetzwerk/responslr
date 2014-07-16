@@ -1,0 +1,191 @@
+/***********************************************************************************
+	OUTPUT - VISIBILITY
+***********************************************************************************/
+
+
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+
+@mixin responslr-hide() {
+	display: none !important;
+}
+
+@mixin responslr-show($display-value: $responslr-visiblity-showers-default-display-value) {
+	display: $display-value !important;
+}
+
+@mixin responslr-visibility($visibility-name) {
+	@extend .#{$visibility-name} !optional;
+}
+
+// Shower
+@mixin responslr-visibility-show($breakpoint-name) {
+	@include responslr-visibility('#{$responslr-visibility-showers-class-prefix}#{$breakpoint-name}');
+}
+
+@mixin responslr-visibility-show-up($breakpoint-name) {
+	@include responslr-visibility('#{$responslr-visibility-showers-class-prefix}#{$breakpoint-name}#{$responslr-visibility-up-class-suffix}');
+}
+
+@mixin responslr-visibility-show-down($breakpoint-name) {
+	@include responslr-visibility('#{$responslr-visibility-showers-class-prefix}#{$breakpoint-name}#{$responslr-visibility-down-class-suffix}');
+}
+
+// Hider
+@mixin responslr-visibility-hide($breakpoint-name) {
+	@include responslr-visibility('#{$responslr-visibility-hiders-class-prefix}#{$breakpoint-name}');
+}
+
+@mixin responslr-visibility-hide-up($breakpoint-name) {
+	@include responslr-visibility('#{$responslr-visibility-hiders-class-prefix}#{$breakpoint-name}#{$responslr-visibility-up-class-suffix}');
+}
+
+@mixin responslr-visibility-hide-down($breakpoint-name) {
+	@include responslr-visibility('#{$responslr-visibility-hiders-class-prefix}#{$breakpoint-name}#{$responslr-visibility-down-class-suffix}');
+}
+
+
+/***********************************************************************************
+	CLASS GENERATOR
+***********************************************************************************/
+
+@function responslr-generate-visibility-check() {
+	@return $responslr-generate-visibility;
+}
+
+@mixin responslr-generate-hiders() {
+	$breakpoint-iterator: 1;
+
+	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
+		$hider-class-name: #{$responslr-visibility-hiders-class-prefix}#{$breakpoint-key};
+
+		// Hider normal
+		@include responslr-media-query($max-width: $breakpoint-key, $min-width: $breakpoint-key) {
+			.#{$hider-class-name} {
+				@include responslr-hide();
+			}
+		}
+
+		// Hider up
+		@if $breakpoint-iterator > 1 {
+			@include responslr-media-query($min-width: $breakpoint-key) {
+				.#{$hider-class-name}#{$responslr-visibility-up-class-suffix} {
+					@include responslr-hide();
+				}
+			}
+
+			// Hider down
+			@include responslr-media-query($max-width: $breakpoint-key) {
+				.#{$hider-class-name}#{$responslr-visibility-down-class-suffix} {
+					@include responslr-hide();
+				}
+			}
+		}
+
+		$breakpoint-iterator: $breakpoint-iterator + 1;
+	}
+}
+
+@mixin responslr-generate-showers() {
+	// Hide all
+	.#{$responslr-visibility-hide-all-class} {
+		@include responslr-hide();
+	}
+
+	$breakpoint-iterator: 1;
+
+	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
+		$shower-class-name: #{$responslr-visibility-showers-class-prefix}#{$breakpoint-key};
+
+		// Shower normal
+		.#{$shower-class-name} {
+			@extend .#{$responslr-visibility-hide-all-class};
+		}
+
+		@include responslr-media-query($max-width: $breakpoint-key, $min-width: $breakpoint-key) {
+			.#{$shower-class-name} {
+				@include responslr-show();
+
+				&.#{$responslr-grid-column-class} {
+					@include responslr-show(inline-block);
+				}
+			}
+
+			span.#{$shower-class-name} {
+				@include responslr-show(inline);
+			}
+		}
+
+		// Shower up
+		@if $breakpoint-iterator > 1 {
+			.#{$shower-class-name}#{$responslr-visibility-up-class-suffix},
+			.#{$shower-class-name}#{$responslr-visibility-down-class-suffix} {
+				@extend .#{$responslr-visibility-hide-all-class};
+			}
+
+			@include responslr-media-query($min-width: $breakpoint-key) {
+				.#{$shower-class-name}#{$responslr-visibility-up-class-suffix} {
+					@include responslr-show();
+
+					&.#{$responslr-grid-column-class} {
+						@include responslr-show(inline-block);
+					}
+				}
+
+				span.#{$shower-class-name}#{$responslr-visibility-up-class-suffix} {
+					@include responslr-show(inline);
+				}
+			}
+
+			// Shower down
+			@include responslr-media-query($max-width: $breakpoint-key) {
+				.#{$shower-class-name}#{$responslr-visibility-down-class-suffix} {
+					@include responslr-show();
+
+					&.#{$responslr-grid-column-class} {
+						@include responslr-show(inline-block);
+					}
+				}
+
+				span.#{$shower-class-name}#{$responslr-visibility-down-class-suffix} {
+					@include responslr-show(inline);
+				}
+			}
+		}
+
+		$breakpoint-iterator: $breakpoint-iterator + 1;
+	}
+}
+
+@if responslr-generate-visibility-check() {
+	@if $responslr-generate-visibility-hiders {
+		@include responslr-generate-hiders();
+	}
+
+	@if $responslr-generate-visibility-showers {
+		@include responslr-generate-showers();
+	}
+}
+
+
+/***********************************************************************************
+	SETTINGS GENERATOR
+***********************************************************************************/
+
+@function responslr-generate-visibility-settings-check() {
+	@return $responslr-generate-visibility-settings;
+}
+
+@mixin responslr-generate-visibility-settings() {
+	$visibility-settings: (
+		showClassPrefix: $responslr-visibility-showers-class-prefix,
+		hiderClassPrefix: $responslr-visibility-hiders-class-prefix
+	);
+
+	$global-settings: map-merge($global-settings, ( visibility: $visibility-settings ) ) !global;
+}
+
+@if responslr-generate-visibility-settings-check() {
+	@include responslr-generate-visibility-settings();
+}

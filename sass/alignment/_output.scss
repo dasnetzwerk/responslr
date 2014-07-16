@@ -1,0 +1,115 @@
+/***********************************************************************************
+	OUTPUT - ALIGNMENT
+***********************************************************************************/
+
+
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+
+@mixin responslr-alignment($alignment: left) {
+	@if index(left right center, $alignment) {
+		text-align: $alignment;
+	} @else {
+		vertical-align: $alignment;
+	}
+}
+
+
+/***********************************************************************************
+	CLASS GENERATOR
+***********************************************************************************/
+
+@function responslr-generate-alignments-check() {
+	@return $responslr-generate-alignments;
+}
+
+@mixin responslr-generate-alignments() {
+	// Default Alignments
+	.#{$responslr-alignment-horizonal-left-class} {
+		@include responslr-alignment(left);
+	}
+
+	.#{$responslr-alignment-horizonal-center-class} {
+		@include responslr-alignment(center);
+	}
+
+	.#{$responslr-alignment-horizonal-right-class} {
+		@include responslr-alignment(right);
+	}
+
+	.#{$responslr-alignment-vertical-top-class} {
+		@include responslr-alignment(top);
+	}
+
+	.#{$responslr-alignment-vertical-middle-class} {
+		@include responslr-alignment(middle);
+	}
+
+	.#{$responslr-alignment-vertical-bottom-class} {
+		@include responslr-alignment(bottom);
+	}
+
+	// Alignments for each breakpoint
+	$breakpoint-iterator: 1;
+
+	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
+		@if $breakpoint-iterator == 1 {
+			.#{$responslr-alignment-horizonal-left-class}-#{$breakpoint-key} {
+				@extend .#{$responslr-alignment-horizonal-left-class};
+			}
+
+			.#{$responslr-alignment-horizonal-center-class}-#{$breakpoint-key} {
+				@extend .#{$responslr-alignment-horizonal-center-class};
+			}
+
+			.#{$responslr-alignment-horizonal-right-class}-#{$breakpoint-key} {
+				@extend .#{$responslr-alignment-horizonal-right-class};
+			}
+
+			.#{$responslr-alignment-vertical-top-class}-#{$breakpoint-key} {
+				@extend .#{$responslr-alignment-vertical-top-class};
+			}
+
+			.#{$responslr-alignment-vertical-middle-class}-#{$breakpoint-key} {
+				@extend .#{$responslr-alignment-vertical-middle-class};
+			}
+
+			.#{$responslr-alignment-vertical-bottom-class}-#{$breakpoint-key} {
+				@extend .#{$responslr-alignment-vertical-bottom-class};
+			}
+		} @else {
+			@include responslr-media-query($breakpoint-key) {
+				.#{$responslr-alignment-horizonal-left-class}-#{$breakpoint-key} {
+					@include responslr-alignment(left);
+				}
+
+				.#{$responslr-alignment-horizonal-center-class}-#{$breakpoint-key} {
+					@include responslr-alignment(center);
+				}
+
+				.#{$responslr-alignment-horizonal-right-class}-#{$breakpoint-key} {
+					@include responslr-alignment(right);
+				}
+
+				.#{$responslr-alignment-vertical-top-class}-#{$breakpoint-key} {
+					@include responslr-alignment(top);
+				}
+
+				.#{$responslr-alignment-vertical-middle-class}-#{$breakpoint-key} {
+					@include responslr-alignment(middle);
+				}
+
+				.#{$responslr-alignment-vertical-bottom-class}-#{$breakpoint-key} {
+					@include responslr-alignment(bottom);
+				}
+			}
+		}
+
+		$breakpoint-iterator: $breakpoint-iterator + 1;
+	}
+}
+
+@if responslr-generate-alignments-check() {
+	@include responslr-generate-alignments();
+}

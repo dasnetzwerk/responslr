@@ -1,0 +1,13 @@
+/***********************************************************************************
+	INSERT PSEUDO ELEMENT
+***********************************************************************************/
+
+@mixin responslr-insert-pseudo-element($write: true, $pseudo-element: before) {
+	@if $write {
+		&::#{$pseudo-element} {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}

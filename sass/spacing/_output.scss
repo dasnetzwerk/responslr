@@ -1,0 +1,93 @@
+/***********************************************************************************
+	OUTPUT - SPACING
+***********************************************************************************/
+
+
+/***********************************************************************************
+	DEFAULT MAP FUNCTIONS
+***********************************************************************************/
+
+@function responslr-spacing-exists($name) {
+	@return map-has-key($responslr-spacings, $name);
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
+***********************************************************************************/
+
+@function responslr-spacing-size($name: null) {
+	$return-spacing: null;
+
+	@if $name == null {
+		$name: $responslr-spacings-default;
+	}
+
+	@if responslr-spacing-exists($name) {
+		$return-spacing: map-get($responslr-spacings, $name);
+	}
+
+	@return $return-spacing;
+}
+
+
+/***********************************************************************************
+	MIXINS
+***********************************************************************************/
+
+@mixin responslr-spacing($spacing-size-top: null, $spacing-size-right: null, $spacing-size-bottom: null, $spacing-size-left: null, $property: margin) {
+	@if $spacing-size-top {
+		#{$property}-top: $spacing-size-top;
+	}
+
+	@if $spacing-size-right {
+		#{$property}-right: $spacing-size-right;
+	}
+
+	@if $spacing-size-bottom {
+		#{$property}-bottom: $spacing-size-bottom;
+	}
+
+	@if $spacing-size-left {
+		#{$property}-left: $spacing-size-left;
+	}
+}
+
+// Apply leading whitespace as margin.
+@mixin responslr-spacing-top($name: $responslr-spacings-default, $spacing-size: null, $property: margin) {
+	$spacing-size: responslr-spacing-size($name) !default;
+
+	@include responslr-spacing($spacing-size-top: $spacing-size, $property: $property);
+}
+
+// Apply trailing whitespace as margin.
+@mixin responslr-spacing-bottom($name: $responslr-spacings-default, $spacing-size: null, $property: margin) {
+	$spacing-size: responslr-spacing-size($name) !default;
+
+	@include responslr-spacing($spacing-size-bottom: $spacing-size, $property: $property);
+}
+
+
+/***********************************************************************************
+	CLASS GENERATOR
+***********************************************************************************/
+
+@function responslr-generate-spacings-check() {
+	@return $responslr-generate-spacings and responslr-map-isnotempty($responslr-spacings);
+}
+
+@mixin responslr-generate-spacings() {
+	@each $spacing-key, $spacing-value in $responslr-spacings {
+		.#{$responslr-spacing-top-class-prefix}#{$spacing-key} {
+			@include responslr-spacing-top($name: $spacing-key);
+		}
+
+		.#{$responslr-spacing-bottom-class-prefix}#{$spacing-key} {
+			@include responslr-spacing-bottom($name: $spacing-key);
+		}
+	}
+}
+
+@if responslr-generate-spacings-check() {
+	@include responslr-generate-spacings();
+}

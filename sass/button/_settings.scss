@@ -1,0 +1,39 @@
+/***********************************************************************************
+	BUTTON - SETTINGS
+***********************************************************************************/
+
+$responslr-buttons: () !default;
+
+// Default button
+$responslr-buttons-default: responslr-map-getdefault($responslr-buttons) !default;
+
+// Map value defaults
+$responslr-buttons-default-height: 0 !default;
+$responslr-buttons-default-padding: 0 !default;
+
+$responslr-buttons-default-font-family: null !default;
+$responslr-buttons-default-font-size: null !default;
+$responslr-buttons-default-font-weight: null !default;
+
+$responslr-buttons-default-text-color: null !default;
+$responslr-buttons-default-text-color-hover: null !default;
+
+$responslr-buttons-default-border-radius: null !default;
+$responslr-buttons-default-border: null !default;
+$responslr-buttons-default-border-hover: null !default;
+
+$responslr-buttons-default-bg-color: null !default;
+$responslr-buttons-default-bg-color-hover: null !default;
+
+// Inactive state
+$responslr-button-inactive-background-color: silver !default;
+$responslr-button-inactive-border-color: silver !default;
+$responslr-button-inactive-text-color: gray !default;
+
+// Classes
+$responslr-button-class-prefix: 'button-' !default;
+$responslr-button-inactive-class: 'button-inactive' !default;
+
+// Generate css output
+$responslr-generate-buttons: $responslr-generate-classes !default;
+$responslr-generate-buttons-inactive: $responslr-generate-buttons !default;

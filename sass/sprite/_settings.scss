@@ -1,0 +1,26 @@
+/***********************************************************************************
+	SETTINGS - SPRITE
+***********************************************************************************/
+
+// Generate css output
+$responslr-generate-sprites: false !default;
+
+@if $responslr-generate-sprites {
+	$responslr-sprite-map: sprite-map(
+		"sprite/*.png",
+
+		$spacing: 50px
+
+		/* $sprite-icon-facebook-position: 50% */
+	) !default;
+
+	$responslr-sprite-map-retina: sprite-map(
+		"retina-sprite/*.png",
+
+		$spacing: 50px
+
+		/* $retina-sprite-icon-facebook-position: 50%,  */
+	) !default;
+}
+
+// TODO: Spritemaps über dieses File konfigurierbar machen und die eigentliche Erstellung + Abfrage ins Output verlegen
