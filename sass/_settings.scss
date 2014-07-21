@@ -1,381 +1,70 @@
 /***********************************************************************************
-	RESPONSLR VARIABLES
+	SETTINGS - GLOBAL
 ***********************************************************************************/
 
-// Set your ninja-its-magic variables here:
+// Generators
+$responslr-generate-classes: true !default;
+$responslr-generate-settings: true !default;
 
-// Colors
+// JSON settings
+$global-settings: ();
 
-$white: rgb(255,255,255);
-$black: rgb(26,32,37);
-$grey: rgb(213,215,217);
-$grey-light: rgb(234,235,235);
-$grey-dark: rgb(45,55,63);
-$green: rgb(39,174,96);
-$blue: rgb(36,156,213);
-$purple: rgb(142,68,173);
-$red: rgb(192,57,43);
-$orange: rgb(242,98,50);
+/***********************************************************************************
+	SETTINGS - MODULES
+***********************************************************************************/
 
-$responslr-colors: (
-	'white':		$white,
-	'black':		$black,
-	'grey':			$grey,
-	'grey-light':	$grey-light,
-	'grey-dark':	$grey-dark,
-	'green':		$green,
-	'blue':			$blue,
-	'purple':		$purple,
-	'red':			$red,
-	'orange':		$orange
-);
+@import "reset/settings";
 
-// Grid (siehe default)
+// Typo
+@import "typo/settings";
 
-// Buttons
+// Grid
+@import "grid/settings";
 
-$responslr-buttons: (
-	'normal': (
-		height: 40px,
-		padding: 30px,
-		border-radius: 2px,
-		text-color: $black,
-		bg-color: $green
-	),
-	'tiny': (
-		height: 28px,
-		padding: 20px,
-		text-color: $white,
-		bg-color: $blue
-	),
-	'large': (
-		height: 60px,
-		padding: 20px,
-		border-radius: 4px,
-		font-family: 'lato-regular',
-		font-size: 'medium',
-		text-color: $black,
-		text-color-hover: $purple,
-		bg-color: $purple,
-		bg-color-hover: $green
-	),
-	'padding': (
-		padding: 20px,
-		border-radius: 10px,
-		text-color: $white,
-		text-color-hover: $red,
-		bg-color: $red,
-		bg-color-hover: $grey
-	)
-);
+// Color
+@import "color/settings";
 
-// Aspect-ratios
-
-$responslr-aspect-ratios: (
-	'1-1': (
-		width: 1,
-		height: 1
-	),
-	'2-1': (
-		width: 2,
-		height: 1
-	),
-	'4-3': (
-		width: 4,
-		height: 3
-	),
-	'16-9': (
-		width: 16,
-		height: 9
-	)
-);
-
-// Icons
-
-$responslr-icons: (
-	'equalizer': (
-		file: 'svg/equalizer.svg',
-		size: 'auto 100px'
-	),
-	'dots': (
-		file: 'svg/vertical-dots.svg',
-		size: 'auto 100px',
-		offset-x: 40%,
-		offset-y: 60%,
-		color: $orange
-	),
-	'drinking-horn': (
-		file: 'svg/drinking-horn.svg',
-		size: 'contain',
-		offset-x: 100%,
-		color: 'grey-light'
-	)
-);
-
-// Lists
-
-$responslr-lists: (
-	'breadcrumb': (
-		type: 'horizontal',
-		bullet-type: 'custom',
-		bullet-custom: '/',
-		bullet-position: 'between-before',
-		bullet-width: 10px,
-		bullet-margin: 0 10px 0 0,
-		item-padding: 5px 10px,
-		item-margin: 0 10px 10px 0
-	),
-	'breadcrumb-after': (
-		type: 'horizontal',
-		bullet-type: 'circle',
-		bullet-position: 'between-after',
-		bullet-width: 10px,
-		bullet-margin: 12px 0 0 10px,
-		item-padding: 5px 10px,
-		item-margin: 0 10px 10px 0
-	),
-	'hashtags': (
-		type: 'horizontal',
-		bullet-type: 'custom',
-		bullet-custom: '#',
-		bullet-position: 'inside',
-		bullet-width: 14px,
-		item-padding: 10px 30px,
-		item-margin: 0 5px 5px 0
-	),
-	'triangle': (
-		bullet-type: 'triangle',
-		bullet-width: 10px,
-		bullet-margin: 9px 10px 0 0,
-		bullet-color: $blue,
-		item-margin: 0 0 10px 0
-	),
-	'icon': (
-		bullet-type: 'icon',
-		bullet-icon: 'equalizer',
-		bullet-width: 15px,
-		bullet-margin: 9px 10px 0 0,
-		bullet-color: $red,
-		item-margin: 0 0 10px 0
-	)
-);
-
-
-// Circles
-
-$responslr-circles: (
-	'auto': (
-		width: auto,
-		height: auto
-	),
-	'default': (
-		width: 50px,
-		height: 50px
-	),
-	'small': (
-		width: 30px,
-		height: 30px
-	),
-	'large': (
-		width: 100px,
-		height: 100px
-	),
-	'oval': (
-		width: 100px,
-		height: 80px
-	)
-);
-
-// Triangles
-
-$responslr-triangles: (
-	'default': (
-		width: 10px,
-		height: 10px
-	)
-);
-
-// Arrow
-
-$responslr-arrows: (
-	'default': (
-		size: 12px,
-		width: 3px
-	),
-	'button': (
-		size: 8px,
-		width: 2px,
-		color: 'white',
-		position-x: right,
-		offset-x: 8px,
-		transition-properties: (right,border-color),
-		transition-values: (6px,$black)
-	),
-	'circle-large': (
-		size: 50px,
-		width: 10px,
-		color: 'white',
-		offset-x: 10px
-	)
-);
-
-// Spacing
-
-$responslr-spacings: (
-	'none':			0,
-	'default':		80px,
-	'tiny':			20px,
-	'small':		40px,
-	'medium':		60px,
-	'large':		100px,
-	'xlarge':		160px
-);
+// Hider
+@import "visibility/settings";
 
 // Transition
+@import "transition/settings";
 
-$responslr-transitions: (
-	'default': (
-		property: 'color,background-color,border-color',
-		duration: .25s,
-		timing-function: ease
-	),
-	'box': (
-		property: 'height,width',
-		duration: .5s,
-		timing-function: linear
-	)
-);
+// Alignment
+@import "alignment/settings";
 
-// Font-families
+// Spacing
+@import "spacing/settings";
 
-$responslr-typo-families: (
-	'lato-light': (
-		name: 'lato-light',
-		file: 'fonts/lato-light',
-		font-weight: 300,
-		font-style: normal
-	),
-	'lato-regular': (
-		name: 'lato-regular',
-		file: 'fonts/lato-regular',
-		font-weight: 400,
-		font-style: normal
-	),
-	'times-new-roman': (
-		name: 'Times New Roman',
-		font-weight: 400,
-		font-style: italic
-	)
-);
+// Aspect Ratio
+@import "aspect-ratio/settings";
 
-// Font-sizes
-$responslr-typo-sizes: (
-	'default': (
-		value: 24px
-	),
-	'tiny': (
-		value: 14px
-	),
-	'small': (
-		value: 18px
-	),
-	'medium': (
-		value: 30px
-	),
-	'large': (
-		value: 48px
-	),
-	'xlarge': (
-		value: 62px,
-		line-height: 80px
-	)
-);
+// Sprite
+@import "sprite/settings";
 
-// Tooltips
+// Icon
+@import "icon/settings";
 
-$responslr-tooltips: (
-	'default': (
-		offset: 0.75rem,
-		padding: 5px,
-		max-width: 320px,
-		font-size: tiny,
-		font-color: 'white',
-		bg-color: 'black',
-		border-color: 'black',
-		border-width: 2px,
-		border-style: solid,
-		border-radius: 3px,
-		triangle: true,
-		triangle-is-offset: true,
-		generate: true,
-		directions: north south east west
-	),
-	'inset': (
-		cursor: help,
-		offset: 0.75rem,
-		padding: 5px,
-		max-width: 320px,
-		font-size: tiny,
-		font-color: 'white',
-		bg-color: 'black',
-		border-color: 'white',
-		border-width: 0,
-		border-style: solid,
-		border-radius: 3px,
-		triangle: true,
-		triangle-is-offset: false,
-		generate: false,
-		directions: north south east west
-	),
-	'info': (
-		cursor: help,
-		offset: 0.75rem,
-		padding: 5px,
-		max-width: 320px,
-		font-size: tiny,
-		font-color: 'white',
-		bg-color: 'blue',
-		border-color: 'blue',
-		border-width: 2px,
-		border-style: solid,
-		border-radius: 3px,
-		triangle: true,
-		triangle-is-offset: true,
-		generate: false,
-		directions: north south east west
-	),
-	'error': (
-		cursor: help,
-		offset: 0.75rem,
-		padding: 5px,
-		max-width: 320px,
-		font-size: tiny,
-		font-color: 'white',
-		bg-color: 'red',
-		border-color: 'red',
-		border-width: 2px,
-		border-style: solid,
-		border-radius: 3px,
-		triangle: true,
-		triangle-is-offset: true,
-		generate: false,
-		directions: north south east west
-	),
-	'success': (
-		cursor: help,
-		offset: 0.75rem,
-		padding: 5px,
-		max-width: 320px,
-		font-size: tiny,
-		font-color: 'white',
-		bg-color: 'green',
-		border-color: 'green',
-		border-width: 2px,
-		border-style: solid,
-		border-radius: 3px,
-		triangle: true,
-		triangle-is-offset: true,
-		generate: false,
-		directions: north south east west
-	)
-);
+// Circle
+@import "circle/settings";
+
+// Triangle
+@import "triangle/settings";
+
+// Arrow
+@import "arrow/settings";
+
+// Button
+@import "button/settings";
+
+// Tooltip
+@import "tooltip/settings";
+
+// List
+@import "list/settings";
+
+// Form
+@import "form/settings";
+
+// Table
+@import "table/settings";
