@@ -74,6 +74,16 @@
 	@return $return-gutter;
 }
 
+@function responslr-grid-base-size($name: null) {
+	$return-base-size: map-get(responslr-grid-breakpoint($name), base-size);
+
+	@if $return-base-size == null {
+		$return-base-size: $responslr-grid-breakpoints-default-base-size;
+	}
+
+	@return $return-base-size;
+}
+
 
 /***********************************************************************************
 	EXTENDED FUNCTIONS
@@ -297,6 +307,19 @@
 }
 
 @mixin responslr-generate-grid-breakpoints() {
+	// Base-Size
+	html {
+		@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
+			@if responslr-grid-breakpoint-index($breakpoint-key) > 1 {
+				@include responslr-media-query($breakpoint-key) {
+					font-size: responslr-grid-base-size($name: $breakpoint-key);
+				}
+			} @else {
+				font-size: responslr-grid-base-size($name: $breakpoint-key);
+			}
+		}
+	}
+
 	// Container
 	.#{$responslr-grid-container-class},
 	.#{$responslr-grid-container-full-class} {

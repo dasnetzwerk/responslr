@@ -15,7 +15,7 @@ function responslr_grid() {
 	***********************************************************************************/
 	this.init = function() {
 		// Set initial breakpoint
-		oCurrentBreakpoint = checkCurrentBreakpoint();
+		//oCurrentBreakpoint = checkCurrentBreakpoint();
 	}
 
 	/***********************************************************************************
@@ -210,7 +210,11 @@ function responslr_grid() {
 
 	// Get current breakpoint
 	this.getCurrentBreakpoint = function() {
-		return oCurrentBreakpoint;
+		if(typeof oCurrentBreakpoint.name === 'undefined') {
+			return checkCurrentBreakpoint();
+		} else {
+			return oCurrentBreakpoint;
+		}
 	}
 
 	// Get previous breakpoint
