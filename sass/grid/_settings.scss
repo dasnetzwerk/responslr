@@ -53,6 +53,7 @@ $responslr-grid-breakpoints-default: responslr-map-getdefault($responslr-grid-br
 // Map value defaults
 $responslr-grid-breakpoints-default-columns: 12 !default;
 $responslr-grid-breakpoints-default-gutter: 12px !default;
+$responslr-grid-breakpoints-default-base-size: null !default;
 
 // Container
 $responslr-grid-container-max-width: 1140px !default;
