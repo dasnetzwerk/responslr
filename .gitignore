@@ -1,0 +1,8 @@
+.DS_Store
+
+*.scssc
+*.css
+css/*.css
+config.rb
+
+WEB-INF/*
