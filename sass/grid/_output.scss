@@ -342,10 +342,6 @@
 		}
 	}
 
-	.#{$responslr-grid-row-class} {
-		@extend .#{$responslr-typo-reset-class};
-	}
-
 	tr.#{$responslr-grid-row-class} {
 		display: table-row;
 	}
@@ -407,7 +403,8 @@
 			padding: $responslr-grid-helper-info-padding;
 			background-color: $responslr-grid-helper-info-background-color;
 			color: $responslr-grid-helper-info-text-color;
-			@include responslr-typo-size();
+			font-size: $responslr-grid-helper-info-text-size;
+			line-height: 1;
 
 			@if type-of($responslr-grid-helper-info-position-top) == number {
 				top: $responslr-grid-helper-info-position-top;

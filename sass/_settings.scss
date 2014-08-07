@@ -16,11 +16,11 @@ $global-settings: ();
 // Reset
 @import "reset/settings";
 
-// Typo
-@import "typo/settings";
-
 // Grid
 @import "grid/settings";
+
+// Typo
+@import "typo/settings";
 
 // Color
 @import "color/settings";

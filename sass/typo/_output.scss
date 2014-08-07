@@ -195,7 +195,8 @@
 @mixin responslr-generate-typo() {
 
 	// Font reset
-	.#{$responslr-typo-reset-class} {
+	.#{$responslr-typo-reset-class},
+	.#{$responslr-grid-row-class} {
 		@include responslr-typo-reset();
 	}
 

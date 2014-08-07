@@ -1,8 +1,17 @@
 /***********************************************************************************
+	IMPORT COMPASS
+***********************************************************************************/
+
+@import "compass";
+@import "compass/utilities/general/clearfix";
+@import "compass/css3";
+@import "compass/css3/user-interface";
+@import "compass/support";
+
+
+/***********************************************************************************
 	RESPONSLR CORE
 ***********************************************************************************/
 
 @import "functions";
 @import "mixins";
-@import "settings";
-@import "outputs";
