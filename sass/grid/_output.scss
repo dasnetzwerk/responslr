@@ -74,6 +74,16 @@
 	@return $return-gutter;
 }
 
+@function responslr-grid-base-size($name: null) {
+	$return-base-size: map-get(responslr-grid-breakpoint($name), base-size);
+
+	@if $return-base-size == null {
+		$return-base-size: $responslr-grid-breakpoints-default-base-size;
+	}
+
+	@return $return-base-size;
+}
+
 
 /***********************************************************************************
 	EXTENDED FUNCTIONS
@@ -297,6 +307,19 @@
 }
 
 @mixin responslr-generate-grid-breakpoints() {
+	// Base-Size
+	html {
+		@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
+			@if responslr-grid-breakpoint-index($breakpoint-key) > 1 {
+				@include responslr-media-query($breakpoint-key) {
+					font-size: responslr-grid-base-size($name: $breakpoint-key);
+				}
+			} @else {
+				font-size: responslr-grid-base-size($name: $breakpoint-key);
+			}
+		}
+	}
+
 	// Container
 	.#{$responslr-grid-container-class},
 	.#{$responslr-grid-container-full-class} {
@@ -454,11 +477,22 @@
 	$grid-breakpoints: ();
 
 	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
+		$min-width-value: 0;
+		$max-width-value: 0;
+
+		@if $responslr-grid-mobile-first {
+			$min-width-value: if($breakpoint-key == nth(map-keys($responslr-grid-breakpoints), 1), -1, responslr-grid-min-width($breakpoint-key));
+			$max-width-value: responslr-grid-calculate-max-width($breakpoint-key);
+		} @else {
+			$min-width-value: responslr-grid-calculate-min-width($breakpoint-key);
+			$max-width-value: if($breakpoint-key == nth(map-keys($responslr-grid-breakpoints), 1), -1, responslr-grid-max-width($breakpoint-key));
+		}
+
 		$breakpoint-map: (
 			$breakpoint-key: (
 				name: $breakpoint-key,
-				maxWidth: if($breakpoint-key == nth(map-keys($responslr-grid-breakpoints), 1), -1, responslr-grid-max-width($breakpoint-key)),
-				minWidth: responslr-grid-min-width($breakpoint-key),
+				maxWidth: $max-width-value,
+				minWidth: $min-width-value,
 				columns: responslr-grid-columns($breakpoint-key),
 				gutter: responslr-grid-gutter($breakpoint-key)
 			)

@@ -10,6 +10,13 @@ function responslr_grid() {
 	var oPreviousBreakpoint = {};
 	var oCurrentBreakpoint = {};
 
+	/***********************************************************************************
+		INIT
+	***********************************************************************************/
+	this.init = function() {
+		// Set initial breakpoint
+		//oCurrentBreakpoint = checkCurrentBreakpoint();
+	}
 
 	/***********************************************************************************
 		PUBLIC GRIDHELPER METHODS
@@ -142,7 +149,6 @@ function responslr_grid() {
 		return self.getBreakpointByWidth(self.getWindowWidth());
 	};
 
-
 	/***********************************************************************************
 		PUBLIC BREAKPOINT METHODS
 	***********************************************************************************/
@@ -204,7 +210,11 @@ function responslr_grid() {
 
 	// Get current breakpoint
 	this.getCurrentBreakpoint = function() {
-		return oCurrentBreakpoint;
+		if(typeof oCurrentBreakpoint.name === 'undefined') {
+			return checkCurrentBreakpoint();
+		} else {
+			return oCurrentBreakpoint;
+		}
 	}
 
 	// Get previous breakpoint

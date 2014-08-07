@@ -80,44 +80,44 @@
 
 	@if ($direction == top) {
 		// border-top
-		border-right: $width solid transparent;
+		border-right: $width outset transparent;
 		border-bottom: $height solid $color;
-		border-left: $width solid transparent;
+		border-left: $width outset transparent;
 	} @else if ($direction == bottom) {
 		border-top: $height solid $color;
-		border-right: $width solid transparent;
+		border-right: $width outset transparent;
 		// border-bottom
-		border-left: $width solid transparent;
+		border-left: $width outset transparent;
 	} @else if ($direction == left) {
-		border-top: $width solid transparent;
+		border-top: $width outset transparent;
 		border-right: $height solid $color;
-		border-bottom: $width solid transparent;
+		border-bottom: $width outset transparent;
 		// border-left
 	} @else if ($direction == right) {
-		border-top: $width solid transparent;
+		border-top: $width outset transparent;
 		// border-right
-		border-bottom: $width solid transparent;
+		border-bottom: $width outset transparent;
 		border-left: $height solid $color;
 	} @else if ($direction == top-left) {
 		border-top: $height solid $color;
-		border-right: $width solid transparent;
-		border-bottom: $height solid transparent;
+		border-right: $width outset transparent;
+		border-bottom: $height outset transparent;
 		border-left: $width solid $color;
 	} @else if ($direction == top-right) {
 		border-top: $height solid $color;
 		border-right: $width solid $color;
-		border-bottom: $height solid transparent;
-		border-left: $width solid transparent;
+		border-bottom: $height outset transparent;
+		border-left: $width outset transparent;
 	} @else if ($direction == bottom-left) {
-		border-top: $height solid transparent;
-		border-right: $width solid transparent;
+		border-top: $height outset transparent;
+		border-right: $width outset transparent;
 		border-bottom: $height solid $color;
 		border-left: $width solid $color;
 	} @else if ($direction == bottom-right) {
-		border-top: $height solid transparent;
+		border-top: $height outset transparent;
 		border-right: $width solid $color;
 		border-bottom: $height solid $color;
-		border-left: $width solid transparent;
+		border-left: $width outset transparent;
 	} @else {
 		// https://gist.github.com/1671259
 		@warn "#{error("The direction used does not exist")}";
