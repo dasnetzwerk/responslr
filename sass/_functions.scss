@@ -74,15 +74,16 @@
 ***********************************************************************************/
 
 @function responslr-rem($values) {
-	$base-size: responslr-grid-base-size(nth(map-keys($responslr-grid-breakpoints), 1));
 	$rem-return: ();
+	$base-breakpoint: map-get($responslr-grid-breakpoints, nth(map-keys($responslr-grid-breakpoints), 1));
+	$base-size: map-get($base-breakpoint, base-size);
 
-	@if type-of($base-size) == number {
-		@each $current-value in $values {
-			$rem-return: append($rem-return, #{$current-value / $base-size}rem);
-		}
-	} @else {
-		$rem-return: 1rem;
+	@if type-of($base-size) != number {
+		$base-size: 16px;
+	}
+
+	@each $current-value in $values {
+		$rem-return: append($rem-return, #{$current-value / $base-size}rem);
 	}
 
 	@return $rem-return;
