@@ -2,20 +2,20 @@
 	SETTINGS - ICON
 ***********************************************************************************/
 
-$responslr-icons: () !default;
+$rr-icons: () !default;
 
 // Default icon
-$responslr-icons-default: responslr-map-getdefault($responslr-icons) !default;
+$rr-icons-default: rr-map-getdefault($rr-icons) !default;
 
 // Map value defaults
-$responslr-icons-default-size: auto !default;
-$responslr-icons-default-offset-x: 50% !default;
-$responslr-icons-default-offset-y: 50% !default;
-$responslr-icons-default-color: null !default;
-$responslr-icons-default-repeat: no-repeat !default;
+$rr-icons-default-size: auto !default;
+$rr-icons-default-offset-x: 50% !default;
+$rr-icons-default-offset-y: 50% !default;
+$rr-icons-default-color: null !default;
+$rr-icons-default-repeat: no-repeat !default;
 
 // Classes
-$responslr-icon-class-prefix: 'icon-' !default;
+$rr-icon-class-prefix: 'icon-' !default;
 
 // Generate css output
-$responslr-generate-icons: $responslr-generate-classes !default;
+$rr-generate-icons: $rr-generate-classes !default;

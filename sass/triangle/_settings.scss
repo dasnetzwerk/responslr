@@ -3,13 +3,13 @@
 ***********************************************************************************/
 
 // Triangles
-$responslr-triangles: () !default;
+$rr-triangles: () !default;
 
 // Default triangle
-$responslr-triangles-default: responslr-map-getdefault($responslr-triangles) !default;
+$rr-triangles-default: rr-map-getdefault($rr-triangles) !default;
 
 // Triangle classes
-$responslr-triangle-class-prefix: 'triangle-' !default;
+$rr-triangle-class-prefix: 'triangle-' !default;
 
 // Generate css output
-$responslr-generate-triangles: $responslr-generate-classes !default;
+$rr-generate-triangles: $rr-generate-classes !default;

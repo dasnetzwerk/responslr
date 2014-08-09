@@ -4,23 +4,23 @@
 
 
 // Circles
-$responslr-circles: () !default;
+$rr-circles: () !default;
 
 // Default circle
-$responslr-circles-default: responslr-map-getdefault($responslr-circles) !default;
+$rr-circles-default: rr-map-getdefault($rr-circles) !default;
 
 // Circle map value defaults
-$responslr-circles-default-width: auto !default;
-$responslr-circles-default-height: auto !default;
-$responslr-circles-default-radius: 50% !default;
-$responslr-circles-default-display: inline-block !default;
-$responslr-circles-default-overflow: hidden !default;
-$responslr-circles-default-horizontal-align: center !default;
-$responslr-circles-default-vertical-align: center !default;
+$rr-circles-default-width: auto !default;
+$rr-circles-default-height: auto !default;
+$rr-circles-default-radius: 50% !default;
+$rr-circles-default-display: inline-block !default;
+$rr-circles-default-overflow: hidden !default;
+$rr-circles-default-horizontal-align: center !default;
+$rr-circles-default-vertical-align: center !default;
 
 // Circle classes
-$responslr-circle-class: 'circle' !default;
-$responslr-circle-class-prefix: 'circle-' !default;
+$rr-circle-class: 'circle' !default;
+$rr-circle-class-prefix: 'circle-' !default;
 
 // Generate css output
-$responslr-generate-circles: $responslr-generate-classes !default;
+$rr-generate-circles: $rr-generate-classes !default;

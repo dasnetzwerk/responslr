@@ -3,13 +3,13 @@
 ***********************************************************************************/
 
 // Mobile first or desktop first
-$responslr-grid-mobile-first: false !default;
+$rr-grid-mobile-first: false !default;
 
 // Breakpoints
-$responslr-grid-default-breakpoints: ();
+$rr-grid-default-breakpoints: ();
 
-@if $responslr-grid-mobile-first {
-	$responslr-grid-default-breakpoints: (
+@if $rr-grid-mobile-first {
+	$rr-grid-default-breakpoints: (
 		'small': (
 			columns: 4,
 			gutter: 20px
@@ -27,7 +27,7 @@ $responslr-grid-default-breakpoints: ();
 	) !global;
 
 } @else {
-	$responslr-grid-default-breakpoints: (
+	$rr-grid-default-breakpoints: (
 		'large': (
 			columns: 12,
 			gutter: 32px
@@ -45,60 +45,60 @@ $responslr-grid-default-breakpoints: ();
 	) !global;
 }
 
-$responslr-grid-breakpoints: $responslr-grid-default-breakpoints !default;
+$rr-grid-breakpoints: $rr-grid-default-breakpoints !default;
 
 // Default breakpoint
-$responslr-grid-breakpoints-default: responslr-map-getdefault($responslr-grid-breakpoints) !default;
+$rr-grid-breakpoints-default: rr-map-getdefault($rr-grid-breakpoints) !default;
 
 // Map value defaults
-$responslr-grid-breakpoints-default-columns: 12 !default;
-$responslr-grid-breakpoints-default-gutter: 12px !default;
-$responslr-grid-breakpoints-default-base-size: null !default;
+$rr-grid-breakpoints-default-columns: 12 !default;
+$rr-grid-breakpoints-default-gutter: 12px !default;
+$rr-grid-breakpoints-default-base-size: null !default;
 
 // Container
-$responslr-grid-container-max-width: 1140px !default;
-$responslr-grid-container-align: center !default;
-$responslr-grid-container-horizontal-margin: 0 !default;
+$rr-grid-container-max-width: 1140px !default;
+$rr-grid-container-align: center !default;
+$rr-grid-container-horizontal-margin: 0 !default;
 
 // Classes
-$responslr-grid-row-class: 'row' !default;
-$responslr-grid-column-class: 'column' !default;
+$rr-grid-row-class: 'row' !default;
+$rr-grid-column-class: 'column' !default;
 
-$responslr-grid-offset-class-prefix: 'offset-' !default;
-$responslr-grid-inset-class-prefix: 'inset-' !default;
-$responslr-grid-reset-class-prefix: 'reset-' !default;
+$rr-grid-offset-class-prefix: 'offset-' !default;
+$rr-grid-inset-class-prefix: 'inset-' !default;
+$rr-grid-reset-class-prefix: 'reset-' !default;
 
-$responslr-grid-container-class: 'container' !default;
-$responslr-grid-container-full-class: 'container-full' !default;
+$rr-grid-container-class: 'container' !default;
+$rr-grid-container-full-class: 'container-full' !default;
 
-$responslr-grid-line-break-full-class: 'inline-break' !default;
+$rr-grid-line-break-full-class: 'inline-break' !default;
 
 // Grid helper
-$responslr-grid-helper-show: true !default;
-$responslr-grid-helper-show-grid: $responslr-grid-helper-show !default;
-$responslr-grid-helper-show-breakpoint: $responslr-grid-helper-show !default;
+$rr-grid-helper-show: true !default;
+$rr-grid-helper-show-grid: $rr-grid-helper-show !default;
+$rr-grid-helper-show-breakpoint: $rr-grid-helper-show !default;
 
-$responslr-grid-helper-info-id: 'responslr-grid-helper-info' !default;
-$responslr-grid-helper-grid-id: 'responslr-grid-helper' !default;
-$responslr-grid-helper-grid-shower-class: 'show' !default;
+$rr-grid-helper-info-id: 'rr-grid-helper-info' !default;
+$rr-grid-helper-grid-id: 'rr-grid-helper' !default;
+$rr-grid-helper-grid-shower-class: 'show' !default;
 
-$responslr-grid-helper-z-index: 100000 !default;
-$responslr-grid-helper-column-background-color: rgba(36,156,213,.5) !default;
-$responslr-grid-helper-gutter-background-color: rgba(39,174,96,.25) !default;
+$rr-grid-helper-z-index: 100000 !default;
+$rr-grid-helper-column-background-color: rgba(36,156,213,.5) !default;
+$rr-grid-helper-gutter-background-color: rgba(39,174,96,.25) !default;
 
-$responslr-grid-helper-info-z-index: 100001 !default;
-$responslr-grid-helper-info-background-color: rgba(0,0,0,.7) !default;
-$responslr-grid-helper-info-text-color: white !default;
-$responslr-grid-helper-info-text-size: 16px !default; // cant use the typo functionality here :(
-$responslr-grid-helper-info-padding: 5px !default;
-$responslr-grid-helper-info-position-top: auto !default;
-$responslr-grid-helper-info-position-right: 10px !default;
-$responslr-grid-helper-info-position-bottom: 10px !default;
-$responslr-grid-helper-info-position-left: auto !default;
+$rr-grid-helper-info-z-index: 100001 !default;
+$rr-grid-helper-info-background-color: rgba(0,0,0,.7) !default;
+$rr-grid-helper-info-text-color: white !default;
+$rr-grid-helper-info-text-size: 16px !default; // cant use the typo functionality here :(
+$rr-grid-helper-info-padding: 5px !default;
+$rr-grid-helper-info-position-top: auto !default;
+$rr-grid-helper-info-position-right: 10px !default;
+$rr-grid-helper-info-position-bottom: 10px !default;
+$rr-grid-helper-info-position-left: auto !default;
 
 // Generate css output
-$responslr-generate-grid-breakpoints: $responslr-generate-classes !default;
-$responslr-generate-grid-helper: $responslr-generate-classes !default;
+$rr-generate-grid-breakpoints: $rr-generate-classes !default;
+$rr-generate-grid-helper: $rr-generate-classes !default;
 
 // Generate json settings
-$responslr-generate-grid-settings: $responslr-generate-settings !default;
+$rr-generate-grid-settings: $rr-generate-settings !default;

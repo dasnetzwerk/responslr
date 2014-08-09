@@ -7,19 +7,19 @@
 	DEFAULT MAP FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-triangle-exists($name) {
-	@return map-has-key($responslr-triangles, $name);
+@function rr-triangle-exists($name) {
+	@return map-has-key($rr-triangles, $name);
 }
 
-@function responslr-triangle($name: null) {
+@function rr-triangle($name: null) {
 	$return-triangle: ();
 
 	@if $name == null {
-		$name: $responslr-triangles-default;
+		$name: $rr-triangles-default;
 	}
 
-	@if responslr-triangle-exists($name) {
-		$return-triangle: map-get($responslr-triangles, $name);
+	@if rr-triangle-exists($name) {
+		$return-triangle: map-get($rr-triangles, $name);
 	}
 
 	@return $return-triangle;
@@ -30,21 +30,21 @@
 	MAP VALUE FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-triangle-width($name: null) {
-	$return-width: map-get(responslr-triangle($name), width);
+@function rr-triangle-width($name: null) {
+	$return-width: map-get(rr-triangle($name), width);
 
 	@if $return-width == null {
-		@warn responslr-map-required-error("width", "triangle", $name);
+		@warn rr-map-required-error("width", "triangle", $name);
 	}
 
 	@return $return-width;
 }
 
-@function responslr-triangle-height($name: null) {
-	$return-height: map-get(responslr-triangle($name), height);
+@function rr-triangle-height($name: null) {
+	$return-height: map-get(rr-triangle($name), height);
 
 	@if $return-height == null {
-		@warn responslr-map-required-error("height", "triangle", $name);
+		@warn rr-map-required-error("height", "triangle", $name);
 	}
 
 	@return $return-height;
@@ -56,7 +56,7 @@
 ***********************************************************************************/
 
 // TODO: Mixin verbessern und schöner schreiben
-@mixin responslr-triangle($direction: top, $width: 1em, $height: half, $color: $black) {
+@mixin rr-triangle($direction: top, $width: 1em, $height: half, $color: $black) {
 	@if ($direction == top or $direction == right or $direction == bottom or $direction == left) {
 		@if ($height == half) {
 			$height: $width / 2;
@@ -129,33 +129,33 @@
 	CLASS GENERATOR: TRIANGLE
 ***********************************************************************************/
 
-@function responslr-generate-triangles-check() {
-	@return $responslr-generate-triangles;
+@function rr-generate-triangles-check() {
+	@return $rr-generate-triangles;
 }
 
 @mixin generate-triangles() {
-	.#{$responslr-triangle-class-prefix}top {
-		@include responslr-triangle(top);
+	.#{$rr-triangle-class-prefix}top {
+		@include rr-triangle(top);
 	}
 
-	.#{$responslr-triangle-class-prefix}right {
-		@include responslr-triangle(right);
+	.#{$rr-triangle-class-prefix}right {
+		@include rr-triangle(right);
 	}
 
-	.#{$responslr-triangle-class-prefix}bottom {
-		@include responslr-triangle(bottom);
+	.#{$rr-triangle-class-prefix}bottom {
+		@include rr-triangle(bottom);
 	}
 
-	.#{$responslr-triangle-class-prefix}left {
-		@include responslr-triangle(left);
+	.#{$rr-triangle-class-prefix}left {
+		@include rr-triangle(left);
 	}
 
 	// TODO: Generate Triangles by Responslr-Triangle-Map
-	@if responslr-map-isnotempty($responslr-triangles) {
+	@if rr-map-isnotempty($rr-triangles) {
 		// cool shit here
 	}
 }
 
-@if responslr-generate-triangles-check() {
+@if rr-generate-triangles-check() {
 	@include generate-triangles();
 }

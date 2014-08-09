@@ -7,19 +7,19 @@
 	DEFAULT MAP FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-arrow-exists($name) {
-	@return map-has-key($responslr-arrows, $name);
+@function rr-arrow-exists($name) {
+	@return map-has-key($rr-arrows, $name);
 }
 
-@function responslr-arrow($name: null) {
+@function rr-arrow($name: null) {
 	$return-arrow: ();
 
 	@if $name == null {
-		$name: $responslr-arrows-default;
+		$name: $rr-arrows-default;
 	}
 
-	@if responslr-arrow-exists($name) {
-		$return-arrow: map-get($responslr-arrows, $name);
+	@if rr-arrow-exists($name) {
+		$return-arrow: map-get($rr-arrows, $name);
 	}
 
 	@return $return-arrow;
@@ -30,121 +30,121 @@
 	MAP VALUE FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-arrow-direction($name: null) {
-	$return-direction: map-get(responslr-arrow($name), direction);
+@function rr-arrow-direction($name: null) {
+	$return-direction: map-get(rr-arrow($name), direction);
 
 	@if $return-direction == null {
-		$return-direction: $responslr-arrows-default-direction;
+		$return-direction: $rr-arrows-default-direction;
 	}
 
 	@return $return-direction;
 }
 
-@function responslr-arrow-size($name: null) {
-	$return-size: map-get(responslr-arrow($name), size);
+@function rr-arrow-size($name: null) {
+	$return-size: map-get(rr-arrow($name), size);
 
 	@if $return-size == null {
-		$return-size: $responslr-arrows-default-size;
+		$return-size: $rr-arrows-default-size;
 	}
 
 	@return $return-size;
 }
 
-@function responslr-arrow-width($name: null) {
-	$return-width: map-get(responslr-arrow($name), width);
+@function rr-arrow-width($name: null) {
+	$return-width: map-get(rr-arrow($name), width);
 
 	@if $return-width == null {
-		$return-width: $responslr-arrows-default-width;
+		$return-width: $rr-arrows-default-width;
 	}
 
 	@return $return-width;
 }
 
-@function responslr-arrow-color($name: null) {
-	$return-color: map-get(responslr-arrow($name), color);
+@function rr-arrow-color($name: null) {
+	$return-color: map-get(rr-arrow($name), color);
 
 	@if $return-color == null {
-		$return-color: $responslr-arrows-default-color;
+		$return-color: $rr-arrows-default-color;
 	}
 
 	@return $return-color;
 }
 
-@function responslr-arrow-position($name: null) {
-	$return-position: map-get(responslr-arrow($name), position);
+@function rr-arrow-position($name: null) {
+	$return-position: map-get(rr-arrow($name), position);
 
 	@if $return-position == null {
-		$return-position: $responslr-arrows-default-position;
+		$return-position: $rr-arrows-default-position;
 	}
 
 	@return $return-position;
 }
 
-@function responslr-arrow-position-x($name: null) {
-	$return-position-x: map-get(responslr-arrow($name), position-x);
+@function rr-arrow-position-x($name: null) {
+	$return-position-x: map-get(rr-arrow($name), position-x);
 
 	@if $return-position-x == null {
-		$return-position-x: $responslr-arrows-default-position-x;
+		$return-position-x: $rr-arrows-default-position-x;
 	}
 
 	@return $return-position-x;
 }
 
-@function responslr-arrow-position-y($name: null) {
-	$return-position-y: map-get(responslr-arrow($name), position-y);
+@function rr-arrow-position-y($name: null) {
+	$return-position-y: map-get(rr-arrow($name), position-y);
 
 	@if $return-position-y == null {
-		$return-position-y: $responslr-arrows-default-position-y;
+		$return-position-y: $rr-arrows-default-position-y;
 	}
 
 	@return $return-position-y;
 }
 
-@function responslr-arrow-offset-x($name: null) {
-	$return-offset-x: map-get(responslr-arrow($name), offset-x);
+@function rr-arrow-offset-x($name: null) {
+	$return-offset-x: map-get(rr-arrow($name), offset-x);
 
 	@if $return-offset-x == null {
-		$return-offset-x: $responslr-arrows-default-offset-x;
+		$return-offset-x: $rr-arrows-default-offset-x;
 	}
 
 	@return $return-offset-x;
 }
 
-@function responslr-arrow-offset-y($name: null) {
-	$return-offset-y: map-get(responslr-arrow($name), offset-y);
+@function rr-arrow-offset-y($name: null) {
+	$return-offset-y: map-get(rr-arrow($name), offset-y);
 
 	@if $return-offset-y == null {
-		$return-offset-y: $responslr-arrows-default-offset-y;
+		$return-offset-y: $rr-arrows-default-offset-y;
 	}
 
 	@return $return-offset-y;
 }
 
-@function responslr-arrow-transition-properties($name: null) {
-	$return-transition-properties: map-get(responslr-arrow($name), transition-properties);
+@function rr-arrow-transition-properties($name: null) {
+	$return-transition-properties: map-get(rr-arrow($name), transition-properties);
 
 	@if $return-transition-properties == null {
-		$return-transition-properties: $responslr-arrows-default-transition-properties;
+		$return-transition-properties: $rr-arrows-default-transition-properties;
 	}
 
 	@return $return-transition-properties;
 }
 
-@function responslr-arrow-transition-values($name: null) {
-	$return-transition-values: map-get(responslr-arrow($name), transition-values);
+@function rr-arrow-transition-values($name: null) {
+	$return-transition-values: map-get(rr-arrow($name), transition-values);
 
 	@if $return-transition-values == null {
-		$return-transition-values: $responslr-arrows-default-transition-values;
+		$return-transition-values: $rr-arrows-default-transition-values;
 	}
 
 	@return $return-transition-values;
 }
 
-@function responslr-arrow-pseudo-element($name: null) {
-	$return-pseudo-element: map-get(responslr-arrow($name), pseudo-element);
+@function rr-arrow-pseudo-element($name: null) {
+	$return-pseudo-element: map-get(rr-arrow($name), pseudo-element);
 
 	@if $return-pseudo-element == null {
-		$return-pseudo-element: $responslr-arrows-default-pseudo-element;
+		$return-pseudo-element: $rr-arrows-default-pseudo-element;
 	}
 
 	@return $return-pseudo-element;
@@ -155,7 +155,7 @@
 	EXTENDED FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-arrow-center-margin($size: $responslr-arrows-default-size, $position-is-alignment: true) {
+@function rr-arrow-center-margin($size: $rr-arrows-default-size, $position-is-alignment: true) {
 	$return-margin: $size;
 
 	@if $position-is-alignment {
@@ -167,7 +167,7 @@
 	@return $return-margin;
 }
 
-@function responslr-arrow-offset-correct($offset: 0, $width: $responslr-arrows-default-width) {
+@function rr-arrow-offset-correct($offset: 0, $width: $rr-arrows-default-width) {
 	$return-offset: 0;
 
 	$return-offset: $offset + $width;
@@ -179,9 +179,9 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-arrow-direction($direction: null, $insert-pseudo-element: null, $pseudo-element: null) {
+@mixin rr-arrow-direction($direction: null, $insert-pseudo-element: null, $pseudo-element: null) {
 	@if $direction == up {
-		@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+		@include rr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 			-ms-transform: rotate(45deg);
 			-webkit-transform: rotate(45deg) translateZ(1px);
 			transform: rotate(45deg) translateZ(1px);
@@ -189,7 +189,7 @@
 	}
 
 	@if $direction == right {
-		@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+		@include rr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 			-ms-transform: rotate(135deg);
 			-webkit-transform: rotate(135deg) translateZ(1px);
 			transform: rotate(135deg) translateZ(1px);
@@ -197,7 +197,7 @@
 	}
 
 	@if $direction == down {
-		@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+		@include rr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 			-ms-transform: rotate(225deg);
 			-webkit-transform: rotate(225deg) translateZ(1px);
 			transform: rotate(225deg) translateZ(1px);
@@ -205,7 +205,7 @@
 	}
 
 	@if $direction == left {
-		@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+		@include rr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 			-ms-transform: rotate(-45deg);
 			-webkit-transform: rotate(-45deg) translateZ(1px);
 			transform: rotate(-45deg) translateZ(1px);
@@ -213,22 +213,22 @@
 	}
 }
 
-@mixin responslr-arrow-size($size: null, $insert-pseudo-element: null, $pseudo-element: null) {
-	@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+@mixin rr-arrow-size($size: null, $insert-pseudo-element: null, $pseudo-element: null) {
+	@include rr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 		width: $size;
 		height: $size;
 	}
 }
 
-@mixin responslr-arrow-width($width: null, $insert-pseudo-element: null, $pseudo-element: null) {
-	@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+@mixin rr-arrow-width($width: null, $insert-pseudo-element: null, $pseudo-element: null) {
+	@include rr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 		border-top-width: $width;
 		border-left-width: $width;
 	}
 }
 
-@mixin responslr-arrow-color($color: null, $insert-pseudo-element: null, $pseudo-element: null) {
-	@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+@mixin rr-arrow-color($color: null, $insert-pseudo-element: null, $pseudo-element: null) {
+	@include rr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 		border-color: unquote($color);
 	}
 }
@@ -239,7 +239,7 @@
 
 	@if length($transition-properties) == length($transition-values) {
 		&:#{$pseudo-element} {
-			@include responslr-transition();
+			@include rr-transition();
 			@include transition-property($transition-properties);
 		}
 
@@ -251,7 +251,7 @@
 	}
 }
 
-@mixin responslr-arrow-custom(
+@mixin rr-arrow-custom(
 	$name: null,
 	$direction: null,
 	$size: null,
@@ -267,19 +267,19 @@
 	$pseudo-element: null,
 	$insert-pseudo-element: true
 ) {
-	$direction: responslr-arrow-direction($name) !default;
-	$size: responslr-arrow-size($name) !default;
-	$width: responslr-arrow-width($name) !default;
-	$color: responslr-arrow-color($name) !default;
-	$position: responslr-arrow-position($name) !default;
-	$position-x: responslr-arrow-position-x($name) !default;
-	$position-y: responslr-arrow-position-y($name) !default;
-	$offset-x: responslr-arrow-offset-x($name) !default;
-	$offset-y: responslr-arrow-offset-y($name) !default;
-	$transition-properties: responslr-arrow-transition-properties($name) !default;
-	$transition-values: responslr-arrow-transition-values($name) !default;
-	$pseudo-element: responslr-arrow-pseudo-element($name) !default;
-	$insert-pseudo-element: $responslr-arrows-default-insert-pseudo-element !default;
+	$direction: rr-arrow-direction($name) !default;
+	$size: rr-arrow-size($name) !default;
+	$width: rr-arrow-width($name) !default;
+	$color: rr-arrow-color($name) !default;
+	$position: rr-arrow-position($name) !default;
+	$position-x: rr-arrow-position-x($name) !default;
+	$position-y: rr-arrow-position-y($name) !default;
+	$offset-x: rr-arrow-offset-x($name) !default;
+	$offset-y: rr-arrow-offset-y($name) !default;
+	$transition-properties: rr-arrow-transition-properties($name) !default;
+	$transition-values: rr-arrow-transition-values($name) !default;
+	$pseudo-element: rr-arrow-pseudo-element($name) !default;
+	$insert-pseudo-element: $rr-arrows-default-insert-pseudo-element !default;
 
 	$position: unquote($position);
 
@@ -287,17 +287,17 @@
 		position: $position;
 
 		@if $position != absolute {
-			&.#{$responslr-aspect-ratio-content-class} {
+			&.#{$rr-aspect-ratio-content-class} {
 				position: absolute;
 			}
 		}
 	}
 
-	@include responslr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
-		@include responslr-arrow-width($width: $width, $insert-pseudo-element: false);
-		@include responslr-arrow-size($size: $size, $insert-pseudo-element: false);
-		@include responslr-arrow-color($color: $color, $insert-pseudo-element: false);
-		@include responslr-arrow-direction($direction: $direction, $insert-pseudo-element: false);
+	@include rr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
+		@include rr-arrow-width($width: $width, $insert-pseudo-element: false);
+		@include rr-arrow-size($size: $size, $insert-pseudo-element: false);
+		@include rr-arrow-color($color: $color, $insert-pseudo-element: false);
+		@include rr-arrow-direction($direction: $direction, $insert-pseudo-element: false);
 
 		@if $position-x == center {
 			left: 50%;
@@ -305,17 +305,17 @@
 		}
 
 		@if $position-x == left {
-			left: responslr-arrow-offset-correct($offset-x, $width);
+			left: rr-arrow-offset-correct($offset-x, $width);
 		}
 
 		@if $position-x == right {
-			right: responslr-arrow-offset-correct($offset-x, $width);
+			right: rr-arrow-offset-correct($offset-x, $width);
 		}
 
 		@if $position-y == top {
-			top: responslr-arrow-offset-correct($offset-y, $width);
+			top: rr-arrow-offset-correct($offset-y, $width);
 		} @else if $position-y == bottom {
-			bottom: responslr-arrow-offset-correct($offset-y, $width);
+			bottom: rr-arrow-offset-correct($offset-y, $width);
 		} @else {
 			top: 50%;
 		}
@@ -323,11 +323,11 @@
 		// direction up
 		@if $direction == up {
 			@if $position-x == center {
-				margin-left: responslr-arrow-center-margin($size);
+				margin-left: rr-arrow-center-margin($size);
 			}
 
 			@if $position-y == center {
-				margin-top: responslr-arrow-center-margin($size, false);
+				margin-top: rr-arrow-center-margin($size, false);
 			}
 		}
 
@@ -335,24 +335,24 @@
 		@if $direction == right {
 			@if $position-x == center {
 				right: 50%;
-				margin-right: responslr-arrow-center-margin($size, false);
+				margin-right: rr-arrow-center-margin($size, false);
 				left: auto;
 			}
 
 			@if $position-y == center {
-				margin-top: responslr-arrow-center-margin($size);
+				margin-top: rr-arrow-center-margin($size);
 			}
 		}
 
 		// direction down
 		@if $direction == down {
 			@if $position-x == center {
-				margin-left: responslr-arrow-center-margin($size);
+				margin-left: rr-arrow-center-margin($size);
 			}
 
 			@if $position-y == center {
 				bottom: 50%;
-				margin-bottom: responslr-arrow-center-margin($size, false);
+				margin-bottom: rr-arrow-center-margin($size, false);
 				top: auto;
 			}
 		}
@@ -360,11 +360,11 @@
 		// direction left
 		@if $direction == left {
 			@if $position-x == center {
-				margin-left: responslr-arrow-center-margin($size, false);
+				margin-left: rr-arrow-center-margin($size, false);
 			}
 
 			@if $position-y == center {
-				margin-top: responslr-arrow-center-margin($size);
+				margin-top: rr-arrow-center-margin($size);
 			}
 		}
 	}
@@ -395,20 +395,20 @@
 	}
 }
 
-@mixin responslr-arrow($name: null) {
+@mixin rr-arrow($name: null) {
 
-	@if responslr-arrow-exists($name) {
-		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
-			@extend .#{$responslr-arrow-class};
+	@if rr-arrow-exists($name) {
+		@include rr-insert-pseudo-element($write: true, $pseudo-element: $rr-arrows-default-pseudo-element) {
+			@extend .#{$rr-arrow-class};
 		}
 
-		@include responslr-arrow-custom($name: $name);
+		@include rr-arrow-custom($name: $name);
 	}
-	//@each $arrow-list in $responslr-arrows {
+	//@each $arrow-list in $rr-arrows {
 	//	$current-arrow-name: nth($arrow-list, 1);
 
 	//	@if $current-arrow-name == $name {
-			//@include responslr-arrow-custom(
+			//@include rr-arrow-custom(
 			//	$direction: nth($arrow-list, 2),
 			//	$size: nth($arrow-list, 3),
 			//	$width: nth($arrow-list, 4),
@@ -431,12 +431,12 @@
 	CLASS GENERATOR: ARROW
 ***********************************************************************************/
 
-@function responslr-generate-arrows-check() {
-	@return $responslr-generate-arrows;
+@function rr-generate-arrows-check() {
+	@return $rr-generate-arrows;
 }
 
 @mixin generate-arrows() {
-	.#{$responslr-arrow-class} {
+	.#{$rr-arrow-class} {
 		content: "";
 		display: block;
 		position: absolute;
@@ -446,47 +446,47 @@
 		border-bottom-style: outset;
 	}
 
-	.#{$responslr-arrow-class-prefix}up {
-		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
-			@extend .#{$responslr-arrow-class};
+	.#{$rr-arrow-class-prefix}up {
+		@include rr-insert-pseudo-element($write: true, $pseudo-element: $rr-arrows-default-pseudo-element) {
+			@extend .#{$rr-arrow-class};
 		}
 
-		@include responslr-arrow-custom($direction: up);
+		@include rr-arrow-custom($direction: up);
 	}
 
-	.#{$responslr-arrow-class-prefix}right {
-		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
-			@extend .#{$responslr-arrow-class};
+	.#{$rr-arrow-class-prefix}right {
+		@include rr-insert-pseudo-element($write: true, $pseudo-element: $rr-arrows-default-pseudo-element) {
+			@extend .#{$rr-arrow-class};
 		}
 
-		@include responslr-arrow-custom($direction: right);
+		@include rr-arrow-custom($direction: right);
 	}
 
-	.#{$responslr-arrow-class-prefix}down {
-		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
-			@extend .#{$responslr-arrow-class};
+	.#{$rr-arrow-class-prefix}down {
+		@include rr-insert-pseudo-element($write: true, $pseudo-element: $rr-arrows-default-pseudo-element) {
+			@extend .#{$rr-arrow-class};
 		}
 
-		@include responslr-arrow-custom($direction: down);
+		@include rr-arrow-custom($direction: down);
 	}
 
-	.#{$responslr-arrow-class-prefix}left {
-		@include responslr-insert-pseudo-element($write: true, $pseudo-element: $responslr-arrows-default-pseudo-element) {
-			@extend .#{$responslr-arrow-class};
+	.#{$rr-arrow-class-prefix}left {
+		@include rr-insert-pseudo-element($write: true, $pseudo-element: $rr-arrows-default-pseudo-element) {
+			@extend .#{$rr-arrow-class};
 		}
 
-		@include responslr-arrow-custom($direction: left);
+		@include rr-arrow-custom($direction: left);
 	}
 
-	@if responslr-map-isnotempty($responslr-arrows) {
-		@each $arrow-key, $arrow-list in $responslr-arrows {
-			.#{$responslr-arrow-class-prefix}#{$arrow-key} {
-				@include responslr-arrow($name: $arrow-key);
+	@if rr-map-isnotempty($rr-arrows) {
+		@each $arrow-key, $arrow-list in $rr-arrows {
+			.#{$rr-arrow-class-prefix}#{$arrow-key} {
+				@include rr-arrow($name: $arrow-key);
 			}
 		}
 	}
 }
 
-@if responslr-generate-arrows-check() {
+@if rr-generate-arrows-check() {
 	@include generate-arrows();
 }

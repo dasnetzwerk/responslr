@@ -2,10 +2,10 @@
 	SETTINGS - FORM
 ***********************************************************************************/
 
-$responslr-forms: () !default;
+$rr-forms: () !default;
 
 // Default form
-$responslr-forms-default: responslr-map-getdefault($responslr-forms) !default;
+$rr-forms-default: rr-map-getdefault($rr-forms) !default;
 
 // Generate css output
-$responslr-generate-forms: $responslr-generate-classes !default;
+$rr-generate-forms: $rr-generate-classes !default;

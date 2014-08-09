@@ -64,7 +64,7 @@
 	GENERATE JSON SETTINGS
 ***********************************************************************************/
 
-@if $responslr-generate-settings != false and $global-settings != () {
+@if $rr-generate-settings != false and $global-settings != () {
 	html::before {
 		content: json-encode($global-settings);
 		visibility: hidden;

@@ -2,20 +2,20 @@
 	SETTINGS - TRANSITION
 ***********************************************************************************/
 
-$responslr-transitions: () !default;
+$rr-transitions: () !default;
 
 // Default transition
-$responslr-transitions-default: responslr-map-getdefault($responslr-transitions) !default;
+$rr-transitions-default: rr-map-getdefault($rr-transitions) !default;
 
 // Map value defaults
-$responslr-transitions-default-property: all !default;
-$responslr-transitions-default-duration: .25s !default;
-$responslr-transitions-default-timing-function: ease !default;
-$responslr-transitions-default-delay: 0 !default;
-$responslr-transitions-default-hardware-acceleration: false !default;
+$rr-transitions-default-property: all !default;
+$rr-transitions-default-duration: .25s !default;
+$rr-transitions-default-timing-function: ease !default;
+$rr-transitions-default-delay: 0 !default;
+$rr-transitions-default-hardware-acceleration: false !default;
 
 // Classes
-$responslr-transition-class-prefix: 'transition-' !default;
+$rr-transition-class-prefix: 'transition-' !default;
 
 // Generate css output
-$responslr-generate-transitions: $responslr-generate-classes !default;
+$rr-generate-transitions: $rr-generate-classes !default;

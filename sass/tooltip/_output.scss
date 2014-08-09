@@ -7,19 +7,19 @@
 	DEFAULT MAP FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-tooltip-exists($name) {
-	@return map-has-key($responslr-tooltips, $name);
+@function rr-tooltip-exists($name) {
+	@return map-has-key($rr-tooltips, $name);
 }
 
-@function responslr-tooltip($name: null) {
+@function rr-tooltip($name: null) {
 	$return-tooltip: ();
 
 	@if $name == null {
-		$name: $responslr-tooltips-default;
+		$name: $rr-tooltips-default;
 	}
 
-	@if responslr-tooltip-exists($name) {
-		$return-tooltip: map-get($responslr-tooltips, $name);
+	@if rr-tooltip-exists($name) {
+		$return-tooltip: map-get($rr-tooltips, $name);
 	}
 
 	@return $return-tooltip;
@@ -30,151 +30,151 @@
 	MAP VALUE FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-tooltip-cursor($name: null) {
-	$return-cursor: map-get(responslr-tooltip($name), cursor);
+@function rr-tooltip-cursor($name: null) {
+	$return-cursor: map-get(rr-tooltip($name), cursor);
 
 	@if $return-cursor == null {
-		$return-cursor: $responslr-tooltips-default-cursor;
+		$return-cursor: $rr-tooltips-default-cursor;
 	}
 
 	@return $return-cursor;
 }
 
-@function responslr-tooltip-offset($name: null) {
-	$return-offset: map-get(responslr-tooltip($name), offset);
+@function rr-tooltip-offset($name: null) {
+	$return-offset: map-get(rr-tooltip($name), offset);
 
 	@if $return-offset == null {
-		$return-offset: $responslr-tooltips-default-offset;
+		$return-offset: $rr-tooltips-default-offset;
 	}
 
 	@return $return-offset;
 }
 
-@function responslr-tooltip-padding($name: null) {
-	$return-padding: map-get(responslr-tooltip($name), padding);
+@function rr-tooltip-padding($name: null) {
+	$return-padding: map-get(rr-tooltip($name), padding);
 
 	@if $return-padding == null {
-		$return-padding: $responslr-tooltips-default-padding;
+		$return-padding: $rr-tooltips-default-padding;
 	}
 
 	@return $return-padding;
 }
 
-@function responslr-tooltip-max-width($name: null) {
-	$return-max-width: map-get(responslr-tooltip($name), max-width);
+@function rr-tooltip-max-width($name: null) {
+	$return-max-width: map-get(rr-tooltip($name), max-width);
 
 	@if $return-max-width == null {
-		$return-max-width: $responslr-tooltips-default-max-width;
+		$return-max-width: $rr-tooltips-default-max-width;
 	}
 
 	@return $return-max-width;
 }
 
-@function responslr-tooltip-font-size($name: null) {
-	$return-font-size: map-get(responslr-tooltip($name), font-size);
+@function rr-tooltip-font-size($name: null) {
+	$return-font-size: map-get(rr-tooltip($name), font-size);
 
 	@if $return-font-size == null {
-		$return-font-size: $responslr-tooltips-default-font-size;
+		$return-font-size: $rr-tooltips-default-font-size;
 	}
 
 	@return $return-font-size;
 }
 
-@function responslr-tooltip-font-color($name: null) {
-	$return-font-color: map-get(responslr-tooltip($name), font-color);
+@function rr-tooltip-font-color($name: null) {
+	$return-font-color: map-get(rr-tooltip($name), font-color);
 
 	@if $return-font-color == null {
-		$return-font-color: $responslr-tooltips-default-font-color;
+		$return-font-color: $rr-tooltips-default-font-color;
 	}
 
 	@return unquote($return-font-color);
 }
 
-@function responslr-tooltip-bg-color($name: null) {
-	$return-bg-color: map-get(responslr-tooltip($name), bg-color);
+@function rr-tooltip-bg-color($name: null) {
+	$return-bg-color: map-get(rr-tooltip($name), bg-color);
 
 	@if $return-bg-color == null {
-		$return-bg-color: $responslr-tooltips-default-bg-color;
+		$return-bg-color: $rr-tooltips-default-bg-color;
 	}
 
 	@return unquote($return-bg-color);
 }
 
-@function responslr-tooltip-border-color($name: null) {
-	$return-border-color: map-get(responslr-tooltip($name), border-color);
+@function rr-tooltip-border-color($name: null) {
+	$return-border-color: map-get(rr-tooltip($name), border-color);
 
 	@if $return-border-color == null {
-		$return-border-color: $responslr-tooltips-default-border-color;
+		$return-border-color: $rr-tooltips-default-border-color;
 	}
 
 	@return unquote($return-border-color);
 }
 
-@function responslr-tooltip-border-width($name: null) {
-	$return-border-width: map-get(responslr-tooltip($name), border-width);
+@function rr-tooltip-border-width($name: null) {
+	$return-border-width: map-get(rr-tooltip($name), border-width);
 
 	@if $return-border-width == null {
-		$return-border-width: $responslr-tooltips-default-border-width;
+		$return-border-width: $rr-tooltips-default-border-width;
 	}
 
 	@return $return-border-width;
 }
 
-@function responslr-tooltip-border-style($name: null) {
-	$return-border-style: map-get(responslr-tooltip($name), border-style);
+@function rr-tooltip-border-style($name: null) {
+	$return-border-style: map-get(rr-tooltip($name), border-style);
 
 	@if $return-border-style == null {
-		$return-border-style: $responslr-tooltips-default-border-style;
+		$return-border-style: $rr-tooltips-default-border-style;
 	}
 
 	@return $return-border-style;
 }
 
-@function responslr-tooltip-border-radius($name: null) {
-	$return-border-radius: map-get(responslr-tooltip($name), border-radius);
+@function rr-tooltip-border-radius($name: null) {
+	$return-border-radius: map-get(rr-tooltip($name), border-radius);
 
 	@if $return-border-radius == null {
-		$return-border-radius: $responslr-tooltips-default-border-radius;
+		$return-border-radius: $rr-tooltips-default-border-radius;
 	}
 
 	@return $return-border-radius;
 }
 
-@function responslr-tooltip-triangle($name: null) {
-	$return-triangle: map-get(responslr-tooltip($name), triangle);
+@function rr-tooltip-triangle($name: null) {
+	$return-triangle: map-get(rr-tooltip($name), triangle);
 
 	@if $return-triangle == null {
-		$return-triangle: $responslr-tooltips-default-triangle;
+		$return-triangle: $rr-tooltips-default-triangle;
 	}
 
 	@return $return-triangle;
 }
 
-@function responslr-tooltip-triangle-is-offset($name: null) {
-	$return-triangle-is-offset: map-get(responslr-tooltip($name), triangle-is-offset);
+@function rr-tooltip-triangle-is-offset($name: null) {
+	$return-triangle-is-offset: map-get(rr-tooltip($name), triangle-is-offset);
 
 	@if $return-triangle-is-offset == null {
-		$return-triangle-is-offset: $responslr-tooltips-default-triangle-is-offset;
+		$return-triangle-is-offset: $rr-tooltips-default-triangle-is-offset;
 	}
 
 	@return $return-triangle-is-offset;
 }
 
-@function responslr-tooltip-generate($name: null) {
-	$return-generate: map-get(responslr-tooltip($name), generate);
+@function rr-tooltip-generate($name: null) {
+	$return-generate: map-get(rr-tooltip($name), generate);
 
 	@if $return-generate == null {
-		$return-generate: $responslr-tooltips-default-generate;
+		$return-generate: $rr-tooltips-default-generate;
 	}
 
 	@return $return-generate;
 }
 
-@function responslr-tooltip-directions($name: null) {
-	$return-directions: map-get(responslr-tooltip($name), directions);
+@function rr-tooltip-directions($name: null) {
+	$return-directions: map-get(rr-tooltip($name), directions);
 
 	@if $return-directions == null {
-		$return-directions: $responslr-tooltips-default-directions;
+		$return-directions: $rr-tooltips-default-directions;
 	}
 
 	@return $return-directions;
@@ -185,8 +185,8 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-tooltip-base() {
-	.#{$responslr-tooltip-content-class} {
+@mixin rr-tooltip-base() {
+	.#{$rr-tooltip-content-class} {
 		display: none;
 		visibility: hidden;
 		opacity: 0;
@@ -210,14 +210,14 @@
 		}
 
 		&[data-tooltip]:after,
-		.#{$responslr-tooltip-content-class} {
+		.#{$rr-tooltip-content-class} {
 			position: absolute;
 			display: block;
 			visibility: hidden;
 			opacity: 0;
 			z-index: 50;
 
-			//@include responslr-transition(default);
+			//@include rr-transition(default);
 			@include transition(opacity .4s ease-out)
 		}
 
@@ -229,7 +229,7 @@
 		&:hover {
 			&:before,
 			&[data-tooltip]:after,
-			.#{$responslr-tooltip-content-class} {
+			.#{$rr-tooltip-content-class} {
 				visibility: visible;
 				opacity: 1;
 			}
@@ -237,124 +237,124 @@
 	}
 }
 
-@mixin responslr-tooltip-generate-class($name: null) {
+@mixin rr-tooltip-generate-class($name: null) {
 
 	%tooltip-#{$name} {
-		cursor: responslr-tooltip-cursor($name);
+		cursor: rr-tooltip-cursor($name);
 
 		&[data-tooltip]:after,
-		.#{$responslr-tooltip-content-class} {
-			width: responslr-tooltip-max-width($name);
-			padding: responslr-tooltip-padding($name);
-			@include responslr-typo-size($font-size: responslr-tooltip-font-size($name));
-			color: responslr-tooltip-font-color($name);
-			background-color: responslr-tooltip-bg-color($name);
+		.#{$rr-tooltip-content-class} {
+			width: rr-tooltip-max-width($name);
+			padding: rr-tooltip-padding($name);
+			@include rr-typo-size($font-size: rr-tooltip-font-size($name));
+			color: rr-tooltip-font-color($name);
+			background-color: rr-tooltip-bg-color($name);
 
-			@if(responslr-tooltip-border-width($name) != 0) {
-				border: responslr-tooltip-border-width($name) responslr-tooltip-border-style($name) responslr-tooltip-border-color($name);
+			@if(rr-tooltip-border-width($name) != 0) {
+				border: rr-tooltip-border-width($name) rr-tooltip-border-style($name) rr-tooltip-border-color($name);
 			}
 
-			@if(responslr-tooltip-border-radius($name) != 0) {
-				@include border-radius(responslr-tooltip-border-radius($name));
+			@if(rr-tooltip-border-radius($name) != 0) {
+				@include border-radius(rr-tooltip-border-radius($name));
 			}
 		}
 
-		@if index(responslr-tooltip-directions($name), north) {
-			&.#{$responslr-tooltip-north-class} {
+		@if index(rr-tooltip-directions($name), north) {
+			&.#{$rr-tooltip-north-class} {
 				@extend %tooltip;
 
-				@if responslr-tooltip-triangle($name) {
+				@if rr-tooltip-triangle($name) {
 					&:before {
 						left: 1rem;
-						@if responslr-tooltip-triangle-is-offset($name) {
-							bottom: responslr-tooltip-offset($name)+0.75rem;
-							@include responslr-triangle($direction: bottom, $color: responslr-tooltip-border-color($name));
+						@if rr-tooltip-triangle-is-offset($name) {
+							bottom: rr-tooltip-offset($name)+0.75rem;
+							@include rr-triangle($direction: bottom, $color: rr-tooltip-border-color($name));
 						} @else {
-							bottom: responslr-tooltip-offset($name)+1.25rem;
-							@include responslr-triangle($direction: top, $color: responslr-tooltip-border-color($name));
+							bottom: rr-tooltip-offset($name)+1.25rem;
+							@include rr-triangle($direction: top, $color: rr-tooltip-border-color($name));
 						}
 					}
 				}
 				&[data-tooltip]:after,
-				.#{$responslr-tooltip-content-class} {
-					bottom: responslr-tooltip-offset($name)+1.25rem;
+				.#{$rr-tooltip-content-class} {
+					bottom: rr-tooltip-offset($name)+1.25rem;
 					left: -0.25rem;
 				}
 			}
 		}
 
-		@if index(responslr-tooltip-directions($name), east) {
-			&.#{$responslr-tooltip-east-class} {
+		@if index(rr-tooltip-directions($name), east) {
+			&.#{$rr-tooltip-east-class} {
 				@extend %tooltip;
 
-				@if responslr-tooltip-triangle($name) {
+				@if rr-tooltip-triangle($name) {
 					&:before {
 						top: 0.2rem;
-						@if responslr-tooltip-triangle-is-offset($name) {
-							right: -(responslr-tooltip-offset($name));
-							@include responslr-triangle($direction: left, $color: responslr-tooltip-border-color($name));
+						@if rr-tooltip-triangle-is-offset($name) {
+							right: -(rr-tooltip-offset($name));
+							@include rr-triangle($direction: left, $color: rr-tooltip-border-color($name));
 						} @else {
-							right: -(responslr-tooltip-offset($name)+0.5rem);
-							@include responslr-triangle($direction: right, $color: responslr-tooltip-border-color($name));
+							right: -(rr-tooltip-offset($name)+0.5rem);
+							@include rr-triangle($direction: right, $color: rr-tooltip-border-color($name));
 						}
 					}
 				}
 				&[data-tooltip]:after,
-				.#{$responslr-tooltip-content-class} {
+				.#{$rr-tooltip-content-class} {
 					left: 100%;
 					top: -0.1rem;
-					margin-left: responslr-tooltip-offset($name);
+					margin-left: rr-tooltip-offset($name);
 				}
 			}
 		}
 
-		@if index(responslr-tooltip-directions($name), south) {
-			&.#{$responslr-tooltip-south-class} {
+		@if index(rr-tooltip-directions($name), south) {
+			&.#{$rr-tooltip-south-class} {
 				@extend %tooltip;
 
-				@if responslr-tooltip-triangle($name) {
+				@if rr-tooltip-triangle($name) {
 					&:before {
 						left: 1rem;
-						@if responslr-tooltip-triangle-is-offset($name) {
-							top: responslr-tooltip-offset($name)+0.75rem;
-							@include responslr-triangle($direction: top, $color: responslr-tooltip-border-color($name));
+						@if rr-tooltip-triangle-is-offset($name) {
+							top: rr-tooltip-offset($name)+0.75rem;
+							@include rr-triangle($direction: top, $color: rr-tooltip-border-color($name));
 						} @else {
-							top: responslr-tooltip-offset($name)+1.25rem;
-							@include responslr-triangle($direction: bottom, $color: responslr-tooltip-border-color($name));
+							top: rr-tooltip-offset($name)+1.25rem;
+							@include rr-triangle($direction: bottom, $color: rr-tooltip-border-color($name));
 						}
 					}
 				}
 
 				&[data-tooltip]:after,
-				.#{$responslr-tooltip-content-class} {
-					top: responslr-tooltip-offset($name)+1.25rem;
+				.#{$rr-tooltip-content-class} {
+					top: rr-tooltip-offset($name)+1.25rem;
 					left: -0.25rem;
 				}
 			}
 		}
 
-		@if index(responslr-tooltip-directions($name), west) {
-			&.#{$responslr-tooltip-west-class} {
+		@if index(rr-tooltip-directions($name), west) {
+			&.#{$rr-tooltip-west-class} {
 				@extend %tooltip;
 
-				@if responslr-tooltip-triangle($name) {
+				@if rr-tooltip-triangle($name) {
 					&:before {
 						top: 0.2rem;
-						@if responslr-tooltip-triangle-is-offset($name) {
-							left: -(responslr-tooltip-offset($name));
-							@include responslr-triangle($direction: right, $color: responslr-tooltip-border-color($name));
+						@if rr-tooltip-triangle-is-offset($name) {
+							left: -(rr-tooltip-offset($name));
+							@include rr-triangle($direction: right, $color: rr-tooltip-border-color($name));
 						} @else {
-							left: -(responslr-tooltip-offset($name)+0.5rem);
-							@include responslr-triangle($direction: left, $color: responslr-tooltip-border-color($name));
+							left: -(rr-tooltip-offset($name)+0.5rem);
+							@include rr-triangle($direction: left, $color: rr-tooltip-border-color($name));
 						}
 					}
 				}
 
 				&[data-tooltip]:after,
-				.#{$responslr-tooltip-content-class} {
+				.#{$rr-tooltip-content-class} {
 					right: 100%;
 					top: -0.1rem;
-					margin-right: responslr-tooltip-offset($name);
+					margin-right: rr-tooltip-offset($name);
 				}
 			}
 		}
@@ -366,16 +366,16 @@
 	CLASS GENERATOR: TOOLTIP
 ***********************************************************************************/
 
-@function responslr-generate-tooltips-check() {
-	@return $responslr-generate-tooltips and responslr-map-isnotempty($responslr-tooltips);
+@function rr-generate-tooltips-check() {
+	@return $rr-generate-tooltips and rr-map-isnotempty($rr-tooltips);
 }
 
-@if responslr-generate-tooltips-check() {
-	@include responslr-tooltip-base();
+@if rr-generate-tooltips-check() {
+	@include rr-tooltip-base();
 
-	@each $tooltip-key, $tooltip-list in $responslr-tooltips {
-		@if responslr-tooltip-generate-class($tooltip-key) {
-			@include responslr-tooltip-generate-class($tooltip-key)
+	@each $tooltip-key, $tooltip-list in $rr-tooltips {
+		@if rr-tooltip-generate-class($tooltip-key) {
+			@include rr-tooltip-generate-class($tooltip-key)
 		}
 	}
 }
@@ -383,13 +383,13 @@
 /***********************************************************************************
 	EXAMPLE: TOOLTIP usage if enable-ui-tooltip is false
 
-	@include responslr-tooltip-base();
-	@include responslr-tooltip-generate-class(responslr-tooltip(info));
+	@include rr-tooltip-base();
+	@include rr-tooltip-generate-class(rr-tooltip(info));
 	.tooltip-info {
 		@extend %tooltip-info;
 	}
 
-	@include responslr-tooltip-generate-class(responslr-tooltip(error));
+	@include rr-tooltip-generate-class(rr-tooltip(error));
 	.tooltip-error {
 		@extend %tooltip-error;
 	}

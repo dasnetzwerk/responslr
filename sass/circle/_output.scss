@@ -7,19 +7,19 @@
 	DEFAULT MAP FUNCTIONS (CIRCLE)
 ***********************************************************************************/
 
-@function responslr-circle-exists($name) {
-	@return map-has-key($responslr-circles, $name);
+@function rr-circle-exists($name) {
+	@return map-has-key($rr-circles, $name);
 }
 
-@function responslr-circle($name: null) {
+@function rr-circle($name: null) {
 	$return-circle: ();
 
 	@if $name == null {
-		$name: $responslr-circles-default;
+		$name: $rr-circles-default;
 	}
 
-	@if responslr-circle-exists($name) {
-		$return-circle: map-get($responslr-circles, $name);
+	@if rr-circle-exists($name) {
+		$return-circle: map-get($rr-circles, $name);
 	}
 
 	@return $return-circle;
@@ -30,71 +30,71 @@
 	MAP VALUE FUNCTIONS (CIRCLE)
 ***********************************************************************************/
 
-@function responslr-circle-width($name: null) {
-	$return-width: map-get(responslr-circle($name), width);
+@function rr-circle-width($name: null) {
+	$return-width: map-get(rr-circle($name), width);
 
 	@if $return-width == null {
-		$return-width: $responslr-circles-default-width;
+		$return-width: $rr-circles-default-width;
 	}
 
 	@return $return-width;
 }
 
-@function responslr-circle-height($name: null) {
-	$return-height: map-get(responslr-circle($name), height);
+@function rr-circle-height($name: null) {
+	$return-height: map-get(rr-circle($name), height);
 
 	@if $return-height == null {
-		$return-height: $responslr-circles-default-height;
+		$return-height: $rr-circles-default-height;
 	}
 
 	@return $return-height;
 }
 
-@function responslr-circle-radius($name: null) {
-	$return-radius: map-get(responslr-circle($name), radius);
+@function rr-circle-radius($name: null) {
+	$return-radius: map-get(rr-circle($name), radius);
 
 	@if $return-radius == null {
-		$return-radius: $responslr-circles-default-radius;
+		$return-radius: $rr-circles-default-radius;
 	}
 
 	@return $return-radius;
 }
 
-@function responslr-circle-display($name: null) {
-	$return-display: map-get(responslr-circle($name), display);
+@function rr-circle-display($name: null) {
+	$return-display: map-get(rr-circle($name), display);
 
 	@if $return-display == null {
-		$return-display: $responslr-circles-default-display;
+		$return-display: $rr-circles-default-display;
 	}
 
 	@return $return-display;
 }
 
-@function responslr-circle-overflow($name: null) {
-	$return-overflow: map-get(responslr-circle($name), overflow);
+@function rr-circle-overflow($name: null) {
+	$return-overflow: map-get(rr-circle($name), overflow);
 
 	@if $return-overflow == null {
-		$return-overflow: $responslr-circles-default-overflow;
+		$return-overflow: $rr-circles-default-overflow;
 	}
 
 	@return $return-overflow;
 }
 
-@function responslr-circle-horizontal-align($name: null) {
-	$return-horizontal-align: map-get(responslr-circle($name), horizontal-align);
+@function rr-circle-horizontal-align($name: null) {
+	$return-horizontal-align: map-get(rr-circle($name), horizontal-align);
 
 	@if $return-horizontal-align == null {
-		$return-horizontal-align: $responslr-circles-default-horizontal-align;
+		$return-horizontal-align: $rr-circles-default-horizontal-align;
 	}
 
 	@return $return-horizontal-align;
 }
 
-@function responslr-circle-vertical-align($name: null) {
-	$return-vertical-align: map-get(responslr-circle($name), vertical-align);
+@function rr-circle-vertical-align($name: null) {
+	$return-vertical-align: map-get(rr-circle($name), vertical-align);
 
 	@if $return-vertical-align == null {
-		$return-vertical-align: $responslr-circles-default-vertical-align;
+		$return-vertical-align: $rr-circles-default-vertical-align;
 	}
 
 	@return $return-vertical-align;
@@ -105,14 +105,14 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-circle($name: null, $width: null, $height: null, $radius: null, $display: null, $overflow: null, $horizontal-align: null, $vertical-align: null) {
-	$width: responslr-circle-width($name) !default;
-	$height: responslr-circle-height($name) !default;
-	$radius: responslr-circle-radius($name) !default;
-	$display: responslr-circle-display($name) !default;
-	$overflow: responslr-circle-overflow($name) !default;
-	$horizontal-align: responslr-circle-horizontal-align($name) !default;
-	$vertical-align: responslr-circle-vertical-align($name) !default;
+@mixin rr-circle($name: null, $width: null, $height: null, $radius: null, $display: null, $overflow: null, $horizontal-align: null, $vertical-align: null) {
+	$width: rr-circle-width($name) !default;
+	$height: rr-circle-height($name) !default;
+	$radius: rr-circle-radius($name) !default;
+	$display: rr-circle-display($name) !default;
+	$overflow: rr-circle-overflow($name) !default;
+	$horizontal-align: rr-circle-horizontal-align($name) !default;
+	$vertical-align: rr-circle-vertical-align($name) !default;
 
 	display: $display;
 	overflow: $overflow;
@@ -140,32 +140,32 @@
 	CLASS GENERATOR: CIRCLE
 ***********************************************************************************/
 
-@function responslr-generate-circles-check() {
-	@return $responslr-generate-circles;
+@function rr-generate-circles-check() {
+	@return $rr-generate-circles;
 }
 
 @mixin generate-circles() {
-	.#{$responslr-circle-class} {
-		@include responslr-circle(
-			$width: $responslr-circles-default-width,
-			$height: $responslr-circles-default-height,
-			$radius: $responslr-circles-default-radius,
-			$display: $responslr-circles-default-display,
-			$overflow: $responslr-circles-default-overflow,
-			$horizontal-align: $responslr-circles-default-horizontal-align,
-			$vertical-align: $responslr-circles-default-vertical-align
+	.#{$rr-circle-class} {
+		@include rr-circle(
+			$width: $rr-circles-default-width,
+			$height: $rr-circles-default-height,
+			$radius: $rr-circles-default-radius,
+			$display: $rr-circles-default-display,
+			$overflow: $rr-circles-default-overflow,
+			$horizontal-align: $rr-circles-default-horizontal-align,
+			$vertical-align: $rr-circles-default-vertical-align
 		);
 	}
 
-	@if responslr-map-isnotempty($responslr-circles) {
-		@each $circle-key, $circle-list in $responslr-circles {
-			.#{$responslr-circle-class-prefix}#{$circle-key} {
-				@include responslr-circle($name: $circle-key);
+	@if rr-map-isnotempty($rr-circles) {
+		@each $circle-key, $circle-list in $rr-circles {
+			.#{$rr-circle-class-prefix}#{$circle-key} {
+				@include rr-circle($name: $circle-key);
 			}
 		}
 	}
 }
 
-@if responslr-generate-circles-check() {
+@if rr-generate-circles-check() {
 	@include generate-circles();
 }

@@ -7,8 +7,8 @@
 	DEFAULT MAP FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-spacing-exists($name) {
-	@return map-has-key($responslr-spacings, $name);
+@function rr-spacing-exists($name) {
+	@return map-has-key($rr-spacings, $name);
 }
 
 
@@ -16,15 +16,15 @@
 	MAP VALUE FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-spacing-size($name: null) {
+@function rr-spacing-size($name: null) {
 	$return-spacing: null;
 
 	@if $name == null {
-		$name: $responslr-spacings-default;
+		$name: $rr-spacings-default;
 	}
 
-	@if responslr-spacing-exists($name) {
-		$return-spacing: map-get($responslr-spacings, $name);
+	@if rr-spacing-exists($name) {
+		$return-spacing: map-get($rr-spacings, $name);
 	}
 
 	@return $return-spacing;
@@ -35,7 +35,7 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-spacing($spacing-size-top: null, $spacing-size-right: null, $spacing-size-bottom: null, $spacing-size-left: null, $property: margin) {
+@mixin rr-spacing($spacing-size-top: null, $spacing-size-right: null, $spacing-size-bottom: null, $spacing-size-left: null, $property: margin) {
 	@if $spacing-size-top {
 		#{$property}-top: $spacing-size-top;
 	}
@@ -54,17 +54,17 @@
 }
 
 // Apply leading whitespace as margin.
-@mixin responslr-spacing-top($name: $responslr-spacings-default, $spacing-size: null, $property: margin) {
-	$spacing-size: responslr-spacing-size($name) !default;
+@mixin rr-spacing-top($name: $rr-spacings-default, $spacing-size: null, $property: margin) {
+	$spacing-size: rr-spacing-size($name) !default;
 
-	@include responslr-spacing($spacing-size-top: $spacing-size, $property: $property);
+	@include rr-spacing($spacing-size-top: $spacing-size, $property: $property);
 }
 
 // Apply trailing whitespace as margin.
-@mixin responslr-spacing-bottom($name: $responslr-spacings-default, $spacing-size: null, $property: margin) {
-	$spacing-size: responslr-spacing-size($name) !default;
+@mixin rr-spacing-bottom($name: $rr-spacings-default, $spacing-size: null, $property: margin) {
+	$spacing-size: rr-spacing-size($name) !default;
 
-	@include responslr-spacing($spacing-size-bottom: $spacing-size, $property: $property);
+	@include rr-spacing($spacing-size-bottom: $spacing-size, $property: $property);
 }
 
 
@@ -72,22 +72,22 @@
 	CLASS GENERATOR
 ***********************************************************************************/
 
-@function responslr-generate-spacings-check() {
-	@return $responslr-generate-spacings and responslr-map-isnotempty($responslr-spacings);
+@function rr-generate-spacings-check() {
+	@return $rr-generate-spacings and rr-map-isnotempty($rr-spacings);
 }
 
-@mixin responslr-generate-spacings() {
-	@each $spacing-key, $spacing-value in $responslr-spacings {
-		.#{$responslr-spacing-top-class-prefix}#{$spacing-key} {
-			@include responslr-spacing-top($name: $spacing-key);
+@mixin rr-generate-spacings() {
+	@each $spacing-key, $spacing-value in $rr-spacings {
+		.#{$rr-spacing-top-class-prefix}#{$spacing-key} {
+			@include rr-spacing-top($name: $spacing-key);
 		}
 
-		.#{$responslr-spacing-bottom-class-prefix}#{$spacing-key} {
-			@include responslr-spacing-bottom($name: $spacing-key);
+		.#{$rr-spacing-bottom-class-prefix}#{$spacing-key} {
+			@include rr-spacing-bottom($name: $spacing-key);
 		}
 	}
 }
 
-@if responslr-generate-spacings-check() {
-	@include responslr-generate-spacings();
+@if rr-generate-spacings-check() {
+	@include rr-generate-spacings();
 }

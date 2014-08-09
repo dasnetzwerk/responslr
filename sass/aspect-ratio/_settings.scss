@@ -2,7 +2,7 @@
 	SETTINGS - ASPECT-RATIO
 ***********************************************************************************/
 
-$responslr-aspect-ratios: (
+$rr-aspect-ratios: (
 	'1-1': (
 		width: 1,
 		height: 1
@@ -14,14 +14,14 @@ $responslr-aspect-ratios: (
 ) !default;
 
 // Default aspect ratio
-$responslr-aspect-ratios-default: responslr-map-getdefault($responslr-aspect-ratios) !default;
+$rr-aspect-ratios-default: rr-map-getdefault($rr-aspect-ratios) !default;
 
 // Pseudo element (before or after)
-$responslr-aspect-ratio-pseudo-element: 'before' !default;
+$rr-aspect-ratio-pseudo-element: 'before' !default;
 
 // Classes
-$responslr-aspect-ratio-class-prefix: 'aspect-ratio-' !default;
-$responslr-aspect-ratio-content-class: 'aspect-ratio-content' !default;
+$rr-aspect-ratio-class-prefix: 'aspect-ratio-' !default;
+$rr-aspect-ratio-content-class: 'aspect-ratio-content' !default;
 
 // Generate css output
-$responslr-generate-aspect-ratios: $responslr-generate-classes !default;
+$rr-generate-aspect-ratios: $rr-generate-classes !default;

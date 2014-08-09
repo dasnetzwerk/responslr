@@ -2,7 +2,7 @@
 	SETTINGS - SPACING
 ***********************************************************************************/
 
-$responslr-spacings: (
+$rr-spacings: (
 	'none': 0,
 	'small': 20px,
 	'medium': 40px,
@@ -10,11 +10,11 @@ $responslr-spacings: (
 ) !default;
 
 // Default spacing
-$responslr-spacings-default: responslr-map-getdefault($responslr-spacings) !default;
+$rr-spacings-default: rr-map-getdefault($rr-spacings) !default;
 
 // Classes
-$responslr-spacing-top-class-prefix: 'spacing-top-' !default;
-$responslr-spacing-bottom-class-prefix: 'spacing-bottom-' !default;
+$rr-spacing-top-class-prefix: 'spacing-top-' !default;
+$rr-spacing-bottom-class-prefix: 'spacing-bottom-' !default;
 
 // Generate css output
-$responslr-generate-spacings: $responslr-generate-classes !default;
+$rr-generate-spacings: $rr-generate-classes !default;

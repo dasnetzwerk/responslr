@@ -7,19 +7,19 @@
 	DEFAULT MAP FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-grid-breakpoint-exists($name) {
-	@return map-has-key($responslr-grid-breakpoints, $name);
+@function rr-grid-breakpoint-exists($name) {
+	@return map-has-key($rr-grid-breakpoints, $name);
 }
 
-@function responslr-grid-breakpoint($name: null) {
+@function rr-grid-breakpoint($name: null) {
 	$return-grid-breakpoint: ();
 
 	@if $name == null {
-		$name: $responslr-grid-breakpoints-default;
+		$name: $rr-grid-breakpoints-default;
 	}
 
-	@if responslr-grid-breakpoint-exists($name) {
-		$return-grid-breakpoint: map-get($responslr-grid-breakpoints, $name);
+	@if rr-grid-breakpoint-exists($name) {
+		$return-grid-breakpoint: map-get($rr-grid-breakpoints, $name);
 	}
 
 	@return $return-grid-breakpoint;
@@ -30,8 +30,8 @@
 	MAP VALUE FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-grid-min-width($name: null) {
-	$return-min-width: map-get(responslr-grid-breakpoint($name), min-width);
+@function rr-grid-min-width($name: null) {
+	$return-min-width: map-get(rr-grid-breakpoint($name), min-width);
 
 	@if $return-min-width == null {
 		$return-min-width: none;
@@ -40,8 +40,8 @@
 	@return $return-min-width;
 }
 
-@function responslr-grid-max-width($name: null) {
-	$return-max-width: map-get(responslr-grid-breakpoint($name), max-width);
+@function rr-grid-max-width($name: null) {
+	$return-max-width: map-get(rr-grid-breakpoint($name), max-width);
 
 	@if $return-max-width == null {
 		$return-max-width: none;
@@ -50,21 +50,21 @@
 	@return $return-max-width;
 }
 
-@function responslr-grid-columns($name: null) {
-	$return-columns: map-get(responslr-grid-breakpoint($name), columns);
+@function rr-grid-columns($name: null) {
+	$return-columns: map-get(rr-grid-breakpoint($name), columns);
 
 	@if $return-columns == null {
-		$return-columns: $responslr-grid-breakpoints-default-columns;
+		$return-columns: $rr-grid-breakpoints-default-columns;
 	}
 
 	@return $return-columns;
 }
 
-@function responslr-grid-gutter($name: null, $multiplier: 1) {
-	$return-gutter: map-get(responslr-grid-breakpoint($name), gutter);
+@function rr-grid-gutter($name: null, $multiplier: 1) {
+	$return-gutter: map-get(rr-grid-breakpoint($name), gutter);
 
 	@if $return-gutter == null {
-		$return-gutter: $responslr-grid-breakpoints-default-gutter;
+		$return-gutter: $rr-grid-breakpoints-default-gutter;
 	}
 
 	@if type-of($return-gutter) == number and type-of($multiplier) == number {
@@ -79,30 +79,30 @@
 	EXTENDED FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-grid-breakpoint-index($name) {
-	@return index(map-keys($responslr-grid-breakpoints), $name);
+@function rr-grid-breakpoint-index($name) {
+	@return index(map-keys($rr-grid-breakpoints), $name);
 }
 
-@function responslr-grid-gutter-half($name: null) {
-	$return-gutter-half: responslr-grid-gutter($name, 0.5);
+@function rr-grid-gutter-half($name: null) {
+	$return-gutter-half: rr-grid-gutter($name, 0.5);
 
 	@return $return-gutter-half;
 }
 
-@function responslr-grid-gutter-double($name: null) {
-	$return-gutter-double: responslr-grid-gutter($name, 2);
+@function rr-grid-gutter-double($name: null) {
+	$return-gutter-double: rr-grid-gutter($name, 2);
 
 	@return $return-gutter-double;
 }
 
-@function responslr-grid-calculate-min-width($name: null) {
-	@if responslr-grid-breakpoint-exists($name) {
+@function rr-grid-calculate-min-width($name: null) {
+	@if rr-grid-breakpoint-exists($name) {
 		$return-min-width: 0;
-		$breakpoint-index: responslr-grid-breakpoint-index($name) + 1;
+		$breakpoint-index: rr-grid-breakpoint-index($name) + 1;
 
-		@if $breakpoint-index > 0 and $breakpoint-index <= length($responslr-grid-breakpoints) {
-			$min-width-name: nth(map-keys($responslr-grid-breakpoints), $breakpoint-index);
-			$return-min-width: responslr-grid-max-width($min-width-name) + 1;
+		@if $breakpoint-index > 0 and $breakpoint-index <= length($rr-grid-breakpoints) {
+			$min-width-name: nth(map-keys($rr-grid-breakpoints), $breakpoint-index);
+			$return-min-width: rr-grid-max-width($min-width-name) + 1;
 		}
 
 		@return $return-min-width;
@@ -111,14 +111,14 @@
 	}
 }
 
-@function responslr-grid-calculate-max-width($name: null) {
-	@if responslr-grid-breakpoint-exists($name) {
+@function rr-grid-calculate-max-width($name: null) {
+	@if rr-grid-breakpoint-exists($name) {
 		$return-max-width: 0;
-		$breakpoint-index: responslr-grid-breakpoint-index($name) + 1;
+		$breakpoint-index: rr-grid-breakpoint-index($name) + 1;
 
-		@if $breakpoint-index > 0 and $breakpoint-index <= length($responslr-grid-breakpoints) {
-			$max-width-name: nth(map-keys($responslr-grid-breakpoints), $breakpoint-index);
-			$return-max-width: responslr-grid-min-width($max-width-name) - 1;
+		@if $breakpoint-index > 0 and $breakpoint-index <= length($rr-grid-breakpoints) {
+			$max-width-name: nth(map-keys($rr-grid-breakpoints), $breakpoint-index);
+			$return-max-width: rr-grid-min-width($max-width-name) - 1;
 		}
 
 		@return $return-max-width;
@@ -127,7 +127,7 @@
 	}
 }
 
-@function responslr-grid-column-width($column-count, $size) {
+@function rr-grid-column-width($column-count, $size) {
 	@return (($column-part / $size) * 100%);
 }
 
@@ -136,7 +136,7 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-media-query($name: null, $max-width: null, $min-width: null, $media-orientation: null) {
+@mixin rr-media-query($name: null, $max-width: null, $min-width: null, $media-orientation: null) {
 	$breakpoint-max: '';
 	$breakpoint-min: '';
 	$breakpoint-orientation: '';
@@ -154,17 +154,17 @@
 			$breakpoint-only: true;
 		}
 
-		@if $responslr-grid-mobile-first {
-			$min-width-content: responslr-grid-min-width($breakpoint-name);
+		@if $rr-grid-mobile-first {
+			$min-width-content: rr-grid-min-width($breakpoint-name);
 
 			@if $breakpoint-only {
-				$max-width-content: responslr-grid-calculate-max-width($breakpoint-name);
+				$max-width-content: rr-grid-calculate-max-width($breakpoint-name);
 			}
 		} @else {
-			$max-width-content: responslr-grid-max-width($breakpoint-name);
+			$max-width-content: rr-grid-max-width($breakpoint-name);
 
 			@if $breakpoint-only {
-				$min-width-content: responslr-grid-calculate-min-width($breakpoint-name);
+				$min-width-content: rr-grid-calculate-min-width($breakpoint-name);
 			}
 		}
 
@@ -174,20 +174,20 @@
 			$max-width-content: $max-width;
 		} @else {
 
-			@if $responslr-grid-mobile-first {
-				$max-width-content: responslr-grid-calculate-max-width($max-width);
+			@if $rr-grid-mobile-first {
+				$max-width-content: rr-grid-calculate-max-width($max-width);
 			} @else {
-				$max-width-content: responslr-grid-max-width($max-width);
+				$max-width-content: rr-grid-max-width($max-width);
 			}
 		}
 
 		@if type-of($min-width) == number {
 			$min-width-content: $min-width;
 		} @else {
-			@if $responslr-grid-mobile-first == false {
-				$min-width-content: responslr-grid-calculate-min-width($min-width);
+			@if $rr-grid-mobile-first == false {
+				$min-width-content: rr-grid-calculate-min-width($min-width);
 			} @else {
-				$min-width-content: responslr-grid-min-width($min-width);
+				$min-width-content: rr-grid-min-width($min-width);
 			}
 		}
 
@@ -219,12 +219,12 @@
 	CLASS GENERATOR
 ***********************************************************************************/
 
-@function responslr-generate-grid-breakpoints-check() {
-	@return $responslr-generate-grid-breakpoints and responslr-map-isnotempty($responslr-grid-breakpoints);
+@function rr-generate-grid-breakpoints-check() {
+	@return $rr-generate-grid-breakpoints and rr-map-isnotempty($rr-grid-breakpoints);
 }
 
-@mixin responslr-generate-grid-breakpoint($name: $responslr-grid-breakpoints-default, $column-index: 0, $current-column-width: 100%) {
-	@if responslr-grid-breakpoint-exists($name) {
+@mixin rr-generate-grid-breakpoint($name: $rr-grid-breakpoints-default, $column-index: 0, $current-column-width: 100%) {
+	@if rr-grid-breakpoint-exists($name) {
 		@while $column-index > 0 {
 			$sub-column-index: $column-index;
 
@@ -242,17 +242,17 @@
 			}
 
 			// Offset
-			.#{$responslr-grid-offset-class-prefix}#{$name}-#{$column-index} {
+			.#{$rr-grid-offset-class-prefix}#{$name}-#{$column-index} {
 				margin-left: $current-column-width * $column-index;
 			}
 
 			// Inset
-			.#{$responslr-grid-inset-class-prefix}#{$name}-#{$column-index} {
+			.#{$rr-grid-inset-class-prefix}#{$name}-#{$column-index} {
 				margin-left: (-$current-column-width * $column-index) - 0.02%;
 			}
 
 			// Reset
-			.#{$responslr-grid-reset-class-prefix}#{$name} {
+			.#{$rr-grid-reset-class-prefix}#{$name} {
 				margin-left: 0;
 			}
 
@@ -261,60 +261,60 @@
 	}
 }
 
-@mixin responslr-generate-grid-gutter($name: null) {
-	.#{$responslr-grid-row-class} .#{$responslr-grid-row-class} {
-		margin-left: -(responslr-grid-gutter-half($name));
-		margin-right: -(responslr-grid-gutter-half($name));;
+@mixin rr-generate-grid-gutter($name: null) {
+	.#{$rr-grid-row-class} .#{$rr-grid-row-class} {
+		margin-left: -(rr-grid-gutter-half($name));
+		margin-right: -(rr-grid-gutter-half($name));;
 	}
 
-	.#{$responslr-grid-column-class} {
-		padding-left: responslr-grid-gutter-half($name);
-		padding-right: responslr-grid-gutter-half($name);
+	.#{$rr-grid-column-class} {
+		padding-left: rr-grid-gutter-half($name);
+		padding-right: rr-grid-gutter-half($name);
 	}
 }
 
-@mixin responslr-generate-grid-breakpoints() {
+@mixin rr-generate-grid-breakpoints() {
 	// Container
-	.#{$responslr-grid-container-class},
-	.#{$responslr-grid-container-full-class} {
+	.#{$rr-grid-container-class},
+	.#{$rr-grid-container-full-class} {
 		position: relative;
 	}
 
-	.#{$responslr-grid-container-class} {
-		max-width: $responslr-grid-container-max-width;
+	.#{$rr-grid-container-class} {
+		max-width: $rr-grid-container-max-width;
 
-		@if $responslr-grid-container-align == center {
+		@if $rr-grid-container-align == center {
 			margin: 0 auto;
-		} @elseif $responslr-grid-container-align == right {
+		} @elseif $rr-grid-container-align == right {
 			margin: 0 0 0 auto;
 		}
 
-		@include responslr-media-query($max-width: $responslr-grid-container-max-width) {
-			margin: 0 $responslr-grid-container-horizontal-margin;
+		@include rr-media-query($max-width: $rr-grid-container-max-width) {
+			margin: 0 $rr-grid-container-horizontal-margin;
 			width: 100%;
 			max-width: 100%;
 		}
 	}
 
-	.#{$responslr-grid-row-class} {
-		@extend .#{$responslr-typo-reset-class};
+	.#{$rr-grid-row-class} {
+		@extend .#{$rr-typo-reset-class};
 	}
 
-	tr.#{$responslr-grid-row-class} {
+	tr.#{$rr-grid-row-class} {
 		display: table-row;
 	}
 
-	.#{$responslr-grid-column-class} {
+	.#{$rr-grid-column-class} {
 		display: inline-block;
 		vertical-align: top;
 	}
 
-	td.#{$responslr-grid-column-class} {
+	td.#{$rr-grid-column-class} {
 		display: table-cell;
 	}
 
 	// Line break
-	.#{$responslr-grid-line-break-full-class} {
+	.#{$rr-grid-line-break-full-class} {
 		display: block;
 		width: 0;
 		height: 0;
@@ -326,117 +326,117 @@
 	}
 
 	// Grid gutter sizes by breakpoint
-	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
-		@if responslr-grid-breakpoint-index($breakpoint-key) > 1 {
-			@include responslr-media-query($breakpoint-key) {
-				@include responslr-generate-grid-gutter($breakpoint-key);
+	@each $breakpoint-key, $breakpoint-list in $rr-grid-breakpoints {
+		@if rr-grid-breakpoint-index($breakpoint-key) > 1 {
+			@include rr-media-query($breakpoint-key) {
+				@include rr-generate-grid-gutter($breakpoint-key);
 			}
 		} @else {
-			@include responslr-generate-grid-gutter($breakpoint-key);
+			@include rr-generate-grid-gutter($breakpoint-key);
 		}
 	}
 
 	// Grid column sizes by breakpoint
-	.#{$responslr-grid-row-class} {
-		@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
-			$columns: responslr-grid-columns($breakpoint-key);
+	.#{$rr-grid-row-class} {
+		@each $breakpoint-key, $breakpoint-list in $rr-grid-breakpoints {
+			$columns: rr-grid-columns($breakpoint-key);
 			$column-width: 100% / $columns;
 
-			@if responslr-grid-breakpoint-index($breakpoint-key) > 1 {
-				@include responslr-media-query($breakpoint-key) {
-					@include responslr-generate-grid-breakpoint($breakpoint-key, $columns, $column-width);
+			@if rr-grid-breakpoint-index($breakpoint-key) > 1 {
+				@include rr-media-query($breakpoint-key) {
+					@include rr-generate-grid-breakpoint($breakpoint-key, $columns, $column-width);
 				}
 			} @else {
-				@include responslr-generate-grid-breakpoint($breakpoint-key, $columns, $column-width);
+				@include rr-generate-grid-breakpoint($breakpoint-key, $columns, $column-width);
 			}
 		}
 	}
 
 	// Grid helpers
-	@if $responslr-generate-grid-helper {
-		##{$responslr-grid-helper-info-id} {
+	@if $rr-generate-grid-helper {
+		##{$rr-grid-helper-info-id} {
 			position: fixed;
-			z-index: $responslr-grid-helper-info-z-index;
-			padding: $responslr-grid-helper-info-padding;
-			background-color: $responslr-grid-helper-info-background-color;
-			color: $responslr-grid-helper-info-text-color;
-			@include responslr-typo-size();
+			z-index: $rr-grid-helper-info-z-index;
+			padding: $rr-grid-helper-info-padding;
+			background-color: $rr-grid-helper-info-background-color;
+			color: $rr-grid-helper-info-text-color;
+			@include rr-typo-size();
 
-			@if type-of($responslr-grid-helper-info-position-top) == number {
-				top: $responslr-grid-helper-info-position-top;
+			@if type-of($rr-grid-helper-info-position-top) == number {
+				top: $rr-grid-helper-info-position-top;
 			}
 
-			@if type-of($responslr-grid-helper-info-position-right) == number {
-				right: $responslr-grid-helper-info-position-right;
+			@if type-of($rr-grid-helper-info-position-right) == number {
+				right: $rr-grid-helper-info-position-right;
 			}
 
-			@if type-of($responslr-grid-helper-info-position-bottom) == number {
-				bottom: $responslr-grid-helper-info-position-bottom;
+			@if type-of($rr-grid-helper-info-position-bottom) == number {
+				bottom: $rr-grid-helper-info-position-bottom;
 			}
 
-			@if type-of($responslr-grid-helper-info-position-left) == number {
-				left: $responslr-grid-helper-info-position-left;
+			@if type-of($rr-grid-helper-info-position-left) == number {
+				left: $rr-grid-helper-info-position-left;
 			}
 
 			span + input[type=checkbox] {
-				margin-left: $responslr-grid-helper-info-padding;
+				margin-left: $rr-grid-helper-info-padding;
 			}
 		}
 
-		##{$responslr-grid-helper-grid-id} {
+		##{$rr-grid-helper-grid-id} {
 			display: none;
 			position: fixed;
-			z-index: $responslr-grid-helper-z-index;
+			z-index: $rr-grid-helper-z-index;
 			top: 0;
 			bottom: 0;
 			width: 100%;
 			overflow: hidden;
 
-			&.#{$responslr-grid-helper-grid-shower-class} {
+			&.#{$rr-grid-helper-grid-shower-class} {
 				display: block;
 			}
 
-			.#{$responslr-grid-row-class} {
+			.#{$rr-grid-row-class} {
 				height: 100%;
-				background-color: $responslr-grid-helper-gutter-background-color;
+				background-color: $rr-grid-helper-gutter-background-color;
 			}
 
-			.#{$responslr-grid-column-class} {
+			.#{$rr-grid-column-class} {
 				display: inline-block;
 				height: 100%;
 
 				div {
 					height: 100%;
-					background-color: $responslr-grid-helper-column-background-color;
+					background-color: $rr-grid-helper-column-background-color;
 				}
 			}
 		}
 	}
 }
 
-@if responslr-generate-grid-breakpoints-check() {
-	@include responslr-generate-grid-breakpoints();
+@if rr-generate-grid-breakpoints-check() {
+	@include rr-generate-grid-breakpoints();
 }
 
 /***********************************************************************************
 	SETTINGS GENERATOR
 ***********************************************************************************/
 
-@function responslr-generate-grid-settings-check() {
-	@return $responslr-generate-grid-settings;
+@function rr-generate-grid-settings-check() {
+	@return $rr-generate-grid-settings;
 }
 
-@mixin responslr-generate-grid-settings() {
+@mixin rr-generate-grid-settings() {
 	$grid-breakpoints: ();
 
-	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
+	@each $breakpoint-key, $breakpoint-list in $rr-grid-breakpoints {
 		$breakpoint-map: (
 			$breakpoint-key: (
 				name: $breakpoint-key,
-				maxWidth: if($breakpoint-key == nth(map-keys($responslr-grid-breakpoints), 1), -1, responslr-grid-max-width($breakpoint-key)),
-				minWidth: responslr-grid-min-width($breakpoint-key),
-				columns: responslr-grid-columns($breakpoint-key),
-				gutter: responslr-grid-gutter($breakpoint-key)
+				maxWidth: if($breakpoint-key == nth(map-keys($rr-grid-breakpoints), 1), -1, rr-grid-max-width($breakpoint-key)),
+				minWidth: rr-grid-min-width($breakpoint-key),
+				columns: rr-grid-columns($breakpoint-key),
+				gutter: rr-grid-gutter($breakpoint-key)
 			)
 		);
 
@@ -444,25 +444,25 @@
 	}
 
 	$grid-settings: (
-		mobileFirst: $responslr-grid-mobile-first,
-		containerClass: $responslr-grid-container-class,
-		rowClass: $responslr-grid-row-class,
-		columnClass: $responslr-grid-column-class,
+		mobileFirst: $rr-grid-mobile-first,
+		containerClass: $rr-grid-container-class,
+		rowClass: $rr-grid-row-class,
+		columnClass: $rr-grid-column-class,
 		breakpoints: $grid-breakpoints,
 		helper: (
-			infoId: $responslr-grid-helper-info-id,
-			gridId: $responslr-grid-helper-grid-id,
-			gridShowerClass: $responslr-grid-helper-grid-shower-class,
+			infoId: $rr-grid-helper-info-id,
+			gridId: $rr-grid-helper-grid-id,
+			gridShowerClass: $rr-grid-helper-grid-shower-class,
 
-			show: $responslr-grid-helper-show,
-			gridShow: $responslr-grid-helper-show-grid,
-			breakpointShow: $responslr-grid-helper-show-breakpoint
+			show: $rr-grid-helper-show,
+			gridShow: $rr-grid-helper-show-grid,
+			breakpointShow: $rr-grid-helper-show-breakpoint
 		)
 	);
 
 	$global-settings: map-merge($global-settings, ( grid: $grid-settings ) ) !global;
 }
 
-@if responslr-generate-grid-settings-check() {
-	@include responslr-generate-grid-settings();
+@if rr-generate-grid-settings-check() {
+	@include rr-generate-grid-settings();
 }

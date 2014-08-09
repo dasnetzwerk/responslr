@@ -7,19 +7,19 @@
 	DEFAULT MAP FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-button-exists($name) {
-	@return map-has-key($responslr-buttons, $name);
+@function rr-button-exists($name) {
+	@return map-has-key($rr-buttons, $name);
 }
 
-@function responslr-button($name: null) {
+@function rr-button($name: null) {
 	$return-button: ();
 
 	@if $name == null {
-		$name: $responslr-buttons-default;
+		$name: $rr-buttons-default;
 	}
 
-	@if responslr-button-exists($name) {
-		$return-button: map-get($responslr-buttons, $name);
+	@if rr-button-exists($name) {
+		$return-button: map-get($rr-buttons, $name);
 	}
 
 	@return $return-button;
@@ -30,121 +30,121 @@
 	MAP VALUE FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-button-height($name: null) {
-	$return-height: map-get(responslr-button($name), height);
+@function rr-button-height($name: null) {
+	$return-height: map-get(rr-button($name), height);
 
 	@if $return-height == null {
-		$return-height: $responslr-buttons-default-height;
+		$return-height: $rr-buttons-default-height;
 	}
 
 	@return $return-height;
 }
 
-@function responslr-button-padding($name: null) {
-	$return-padding: map-get(responslr-button($name), padding);
+@function rr-button-padding($name: null) {
+	$return-padding: map-get(rr-button($name), padding);
 
 	@if $return-padding == null {
-		$return-padding: $responslr-buttons-default-padding;
+		$return-padding: $rr-buttons-default-padding;
 	}
 
 	@return $return-padding;
 }
 
-@function responslr-button-font-family($name: null) {
-	$return-font-family: map-get(responslr-button($name), font-family);
+@function rr-button-font-family($name: null) {
+	$return-font-family: map-get(rr-button($name), font-family);
 
 	@if $return-font-family == null {
-		$return-font-family: $responslr-buttons-default-font-family;
+		$return-font-family: $rr-buttons-default-font-family;
 	}
 
 	@return $return-font-family;
 }
 
-@function responslr-button-font-size($name: null) {
-	$return-font-size: map-get(responslr-button($name), font-size);
+@function rr-button-font-size($name: null) {
+	$return-font-size: map-get(rr-button($name), font-size);
 
 	@if $return-font-size == null {
-		$return-font-size: $responslr-buttons-default-font-size;
+		$return-font-size: $rr-buttons-default-font-size;
 	}
 
 	@return $return-font-size;
 }
 
-@function responslr-button-font-weight($name: null) {
-	$return-font-weight: map-get(responslr-button($name), font-weight);
+@function rr-button-font-weight($name: null) {
+	$return-font-weight: map-get(rr-button($name), font-weight);
 
 	@if $return-font-weight == null {
-		$return-font-weight: $responslr-buttons-default-font-weight;
+		$return-font-weight: $rr-buttons-default-font-weight;
 	}
 
 	@return $return-font-weight;
 }
 
-@function responslr-button-text-color($name: null) {
-	$return-text-color: map-get(responslr-button($name), text-color);
+@function rr-button-text-color($name: null) {
+	$return-text-color: map-get(rr-button($name), text-color);
 
 	@if $return-text-color == null {
-		$return-text-color: $responslr-buttons-default-text-color;
+		$return-text-color: $rr-buttons-default-text-color;
 	}
 
 	@return $return-text-color;
 }
 
-@function responslr-button-text-color-hover($name: null) {
-	$return-text-color-hover: map-get(responslr-button($name), text-color-hover);
+@function rr-button-text-color-hover($name: null) {
+	$return-text-color-hover: map-get(rr-button($name), text-color-hover);
 
 	@if $return-text-color-hover == null {
-		$return-text-color-hover: $responslr-buttons-default-text-color-hover;
+		$return-text-color-hover: $rr-buttons-default-text-color-hover;
 	}
 
 	@return $return-text-color-hover;
 }
 
-@function responslr-button-border-radius($name: null) {
-	$return-border-radius: map-get(responslr-button($name), border-radius);
+@function rr-button-border-radius($name: null) {
+	$return-border-radius: map-get(rr-button($name), border-radius);
 
 	@if $return-border-radius == null {
-		$return-border-radius: $responslr-buttons-default-border-radius;
+		$return-border-radius: $rr-buttons-default-border-radius;
 	}
 
 	@return $return-border-radius;
 }
 
-@function responslr-button-border($name: null) {
-	$return-border: map-get(responslr-button($name), border);
+@function rr-button-border($name: null) {
+	$return-border: map-get(rr-button($name), border);
 
 	@if $return-border == null {
-		$return-border: $responslr-buttons-default-border;
+		$return-border: $rr-buttons-default-border;
 	}
 
 	@return $return-border;
 }
 
-@function responslr-button-border-hover($name: null) {
-	$return-border-hover: map-get(responslr-button($name), border-hover);
+@function rr-button-border-hover($name: null) {
+	$return-border-hover: map-get(rr-button($name), border-hover);
 
 	@if $return-border-hover == null {
-		$return-border-hover: $responslr-buttons-default-border-hover;
+		$return-border-hover: $rr-buttons-default-border-hover;
 	}
 
 	@return $return-border-hover;
 }
 
-@function responslr-button-bg-color($name: null) {
-	$return-bg-color: map-get(responslr-button($name), bg-color);
+@function rr-button-bg-color($name: null) {
+	$return-bg-color: map-get(rr-button($name), bg-color);
 
 	@if $return-bg-color == null {
-		$return-bg-color: $responslr-buttons-default-bg-color;
+		$return-bg-color: $rr-buttons-default-bg-color;
 	}
 
 	@return $return-bg-color;
 }
 
-@function responslr-button-bg-color-hover($name: null) {
-	$return-bg-color-hover: map-get(responslr-button($name), bg-color-hover);
+@function rr-button-bg-color-hover($name: null) {
+	$return-bg-color-hover: map-get(rr-button($name), bg-color-hover);
 
 	@if $return-bg-color-hover == null {
-		$return-bg-color-hover: $responslr-buttons-default-bg-color-hover;
+		$return-bg-color-hover: $rr-buttons-default-bg-color-hover;
 	}
 
 	@return $return-bg-color-hover;
@@ -155,21 +155,21 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-button-default() {
+@mixin rr-button-default() {
 	display: inline-block;
 	cursor: pointer;
 	white-space: nowrap;
 }
 
-@mixin responslr-button-inactive() {
-	background-color: $responslr-button-inactive-background-color;
-	border-color: $responslr-button-inactive-text-color;
-	color: $responslr-button-inactive-text-color;
+@mixin rr-button-inactive() {
+	background-color: $rr-button-inactive-background-color;
+	border-color: $rr-button-inactive-text-color;
+	color: $rr-button-inactive-text-color;
 	cursor: default;
 }
 
-@mixin responslr-button(
-	$name: $responslr-buttons-default,
+@mixin rr-button(
+	$name: $rr-buttons-default,
 
 	$height: null,
 	$padding: null,
@@ -191,37 +191,37 @@
 	$insert-default-styles: true
 ) {
 	@if $insert-default-styles {
-		@include responslr-button-default();
+		@include rr-button-default();
 	}
 
-	$height: responslr-button-height($name) !default;
-	$padding: responslr-button-padding($name) !default;
+	$height: rr-button-height($name) !default;
+	$padding: rr-button-padding($name) !default;
 
-	$font-family: responslr-button-font-family($name) !default;
-	$font-size: responslr-button-font-size($name) !default;
-	$font-weight: responslr-button-font-weight($name) !default;
+	$font-family: rr-button-font-family($name) !default;
+	$font-size: rr-button-font-size($name) !default;
+	$font-weight: rr-button-font-weight($name) !default;
 
-	$text-color: responslr-button-text-color($name) !default;
-	$text-color-hover: responslr-button-text-color-hover($name) !default;
+	$text-color: rr-button-text-color($name) !default;
+	$text-color-hover: rr-button-text-color-hover($name) !default;
 
-	$border-radius: responslr-button-border-radius($name) !default;
-	$border: responslr-button-border($name) !default;
-	$border-hover: responslr-button-border-hover($name) !default;
+	$border-radius: rr-button-border-radius($name) !default;
+	$border: rr-button-border($name) !default;
+	$border-hover: rr-button-border-hover($name) !default;
 
-	$bg-color: responslr-button-bg-color($name) !default;
-	$bg-color-hover: responslr-button-bg-color-hover($name) !default;
+	$bg-color: rr-button-bg-color($name) !default;
+	$bg-color-hover: rr-button-bg-color-hover($name) !default;
 
 	@if $font-family != null {
-		@if responslr-typo-family-exists($font-family) {
-			@include responslr-typo-family($font-family);
+		@if rr-typo-family-exists($font-family) {
+			@include rr-typo-family($font-family);
 		} @else {
 			font-family: $font-family;
 		}
 	}
 
 	@if $font-size != null {
-		@if responslr-typo-size-exists($font-size) {
-			@include responslr-typo-size($font-size);
+		@if rr-typo-size-exists($font-size) {
+			@include rr-typo-size($font-size);
 		} @else {
 			font-size: $font-size;
 		}
@@ -236,7 +236,7 @@
 		white-space: pre-wrap;
 	} @else {
 		height: $height;
-		padding: 0 responslr-split-shorthand($padding, right) 0 responslr-split-shorthand($padding, left);
+		padding: 0 rr-split-shorthand($padding, right) 0 rr-split-shorthand($padding, left);
 		line-height: $height;
 	}
 
@@ -277,38 +277,38 @@
 	CLASS GENERATOR
 ***********************************************************************************/
 
-@function responslr-generate-buttons-check() {
-	@return $responslr-generate-buttons and responslr-map-isnotempty($responslr-buttons);
+@function rr-generate-buttons-check() {
+	@return $rr-generate-buttons and rr-map-isnotempty($rr-buttons);
 }
 
-@mixin responslr-generate-buttons() {
+@mixin rr-generate-buttons() {
 	%button {
-		@include responslr-button-default();
+		@include rr-button-default();
 	}
 
-	@each $button-key, $button-list in $responslr-buttons {
+	@each $button-key, $button-list in $rr-buttons {
 		// Button normal
-		.#{$responslr-button-class-prefix}#{$button-key} {
+		.#{$rr-button-class-prefix}#{$button-key} {
 			@extend %button;
 
-			@include responslr-button($name: $button-key, $insert-default-styles: false);
+			@include rr-button($name: $button-key, $insert-default-styles: false);
 		}
 
 		// Button inactive / disabled
-		@if $responslr-generate-buttons-inactive {
-			.#{$responslr-button-inactive-class}:hover,
-			.#{$responslr-button-inactive-class}:focus,
-			.#{$responslr-button-class-prefix}#{$button-key}[disabled] {
-				@extend .#{$responslr-button-inactive-class};
+		@if $rr-generate-buttons-inactive {
+			.#{$rr-button-inactive-class}:hover,
+			.#{$rr-button-inactive-class}:focus,
+			.#{$rr-button-class-prefix}#{$button-key}[disabled] {
+				@extend .#{$rr-button-inactive-class};
 			}
 		}
 	}
 
-	.#{$responslr-button-inactive-class} {
-		@include responslr-button-inactive();
+	.#{$rr-button-inactive-class} {
+		@include rr-button-inactive();
 	}
 }
 
-@if responslr-generate-buttons-check() {
-	@include responslr-generate-buttons();
+@if rr-generate-buttons-check() {
+	@include rr-generate-buttons();
 }

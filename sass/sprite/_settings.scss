@@ -3,10 +3,10 @@
 ***********************************************************************************/
 
 // Generate css output
-$responslr-generate-sprites: false !default;
+$rr-generate-sprites: false !default;
 
-@if $responslr-generate-sprites {
-	$responslr-sprite-map: sprite-map(
+@if $rr-generate-sprites {
+	$rr-sprite-map: sprite-map(
 		"sprite/*.png",
 
 		$spacing: 50px
@@ -14,7 +14,7 @@ $responslr-generate-sprites: false !default;
 		/* $sprite-icon-facebook-position: 50% */
 	) !default;
 
-	$responslr-sprite-map-retina: sprite-map(
+	$rr-sprite-map-retina: sprite-map(
 		"retina-sprite/*.png",
 
 		$spacing: 50px

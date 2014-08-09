@@ -7,11 +7,11 @@
 	CLASS GENERATOR
 ***********************************************************************************/
 
-@function responslr-generate-reset-check() {
-	@return $responslr-generate-reset;
+@function rr-generate-reset-check() {
+	@return $rr-generate-reset;
 }
 
-@mixin responslr-generate-resets() {
+@mixin rr-generate-resets() {
 	html, body, div, span, applet, object, iframe,
 	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 	a, abbr, acronym, address, big, cite, code,
@@ -83,6 +83,6 @@
 	}
 }
 
-@if responslr-generate-reset-check() {
-	@include responslr-generate-resets();
+@if rr-generate-reset-check() {
+	@include rr-generate-resets();
 }

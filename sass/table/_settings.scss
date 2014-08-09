@@ -2,10 +2,10 @@
 	SETTINGS - TABLE
 ***********************************************************************************/
 
-$responslr-tables: () !default;
+$rr-tables: () !default;
 
 // Default form
-$responslr-tables-default: responslr-map-getdefault($responslr-tables) !default;
+$rr-tables-default: rr-map-getdefault($rr-tables) !default;
 
 // Generate css output
-$responslr-generate-tables: $responslr-generate-classes !default;
+$rr-generate-tables: $rr-generate-classes !default;

@@ -3,21 +3,21 @@
 ***********************************************************************************/
 
 // Default Setting
-$responslr-visiblity-showers-default-display-value: inherit !default;
+$rr-visiblity-showers-default-display-value: inherit !default;
 
 // Classes
-$responslr-visibility-showers-class-prefix: 'show-' !default;
-$responslr-visibility-hiders-class-prefix: 'hide-' !default;
+$rr-visibility-showers-class-prefix: 'show-' !default;
+$rr-visibility-hiders-class-prefix: 'hide-' !default;
 
-$responslr-visibility-hide-all-class: 'hide-all' !default;
+$rr-visibility-hide-all-class: 'hide-all' !default;
 
-$responslr-visibility-up-class-suffix: '-up' !default;
-$responslr-visibility-down-class-suffix: '-down' !default;
+$rr-visibility-up-class-suffix: '-up' !default;
+$rr-visibility-down-class-suffix: '-down' !default;
 
 // Generate css output
-$responslr-generate-visibility: $responslr-generate-classes !default;
-$responslr-generate-visibility-showers: $responslr-generate-visibility !default;
-$responslr-generate-visibility-hiders: $responslr-generate-visibility !default;
+$rr-generate-visibility: $rr-generate-classes !default;
+$rr-generate-visibility-showers: $rr-generate-visibility !default;
+$rr-generate-visibility-hiders: $rr-generate-visibility !default;
 
 // Generate json settings
-$responslr-generate-visibility-settings: $responslr-generate-settings !default;
+$rr-generate-visibility-settings: $rr-generate-settings !default;

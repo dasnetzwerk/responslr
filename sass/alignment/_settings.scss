@@ -3,13 +3,13 @@
 ***********************************************************************************/
 
 // Classes
-$responslr-alignment-horizonal-left-class: 'h-left' !default;
-$responslr-alignment-horizonal-center-class: 'h-center' !default;
-$responslr-alignment-horizonal-right-class: 'h-right' !default;
+$rr-alignment-horizonal-left-class: 'h-left' !default;
+$rr-alignment-horizonal-center-class: 'h-center' !default;
+$rr-alignment-horizonal-right-class: 'h-right' !default;
 
-$responslr-alignment-vertical-top-class: 'v-top' !default;
-$responslr-alignment-vertical-middle-class: 'v-middle' !default;
-$responslr-alignment-vertical-bottom-class: 'v-bottom' !default;
+$rr-alignment-vertical-top-class: 'v-top' !default;
+$rr-alignment-vertical-middle-class: 'v-middle' !default;
+$rr-alignment-vertical-bottom-class: 'v-bottom' !default;
 
 // Generate css output
-$responslr-generate-alignments: $responslr-generate-classes !default;
+$rr-generate-alignments: $rr-generate-classes !default;

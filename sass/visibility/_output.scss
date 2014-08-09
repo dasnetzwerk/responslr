@@ -7,42 +7,42 @@
 	MIXINS
 ***********************************************************************************/
 
-@mixin responslr-hide() {
+@mixin rr-hide() {
 	display: none !important;
 }
 
-@mixin responslr-show($display-value: $responslr-visiblity-showers-default-display-value) {
+@mixin rr-show($display-value: $rr-visiblity-showers-default-display-value) {
 	display: $display-value !important;
 }
 
-@mixin responslr-visibility($visibility-name) {
+@mixin rr-visibility($visibility-name) {
 	@extend .#{$visibility-name} !optional;
 }
 
 // Shower
-@mixin responslr-visibility-show($breakpoint-name) {
-	@include responslr-visibility('#{$responslr-visibility-showers-class-prefix}#{$breakpoint-name}');
+@mixin rr-visibility-show($breakpoint-name) {
+	@include rr-visibility('#{$rr-visibility-showers-class-prefix}#{$breakpoint-name}');
 }
 
-@mixin responslr-visibility-show-up($breakpoint-name) {
-	@include responslr-visibility('#{$responslr-visibility-showers-class-prefix}#{$breakpoint-name}#{$responslr-visibility-up-class-suffix}');
+@mixin rr-visibility-show-up($breakpoint-name) {
+	@include rr-visibility('#{$rr-visibility-showers-class-prefix}#{$breakpoint-name}#{$rr-visibility-up-class-suffix}');
 }
 
-@mixin responslr-visibility-show-down($breakpoint-name) {
-	@include responslr-visibility('#{$responslr-visibility-showers-class-prefix}#{$breakpoint-name}#{$responslr-visibility-down-class-suffix}');
+@mixin rr-visibility-show-down($breakpoint-name) {
+	@include rr-visibility('#{$rr-visibility-showers-class-prefix}#{$breakpoint-name}#{$rr-visibility-down-class-suffix}');
 }
 
 // Hider
-@mixin responslr-visibility-hide($breakpoint-name) {
-	@include responslr-visibility('#{$responslr-visibility-hiders-class-prefix}#{$breakpoint-name}');
+@mixin rr-visibility-hide($breakpoint-name) {
+	@include rr-visibility('#{$rr-visibility-hiders-class-prefix}#{$breakpoint-name}');
 }
 
-@mixin responslr-visibility-hide-up($breakpoint-name) {
-	@include responslr-visibility('#{$responslr-visibility-hiders-class-prefix}#{$breakpoint-name}#{$responslr-visibility-up-class-suffix}');
+@mixin rr-visibility-hide-up($breakpoint-name) {
+	@include rr-visibility('#{$rr-visibility-hiders-class-prefix}#{$breakpoint-name}#{$rr-visibility-up-class-suffix}');
 }
 
-@mixin responslr-visibility-hide-down($breakpoint-name) {
-	@include responslr-visibility('#{$responslr-visibility-hiders-class-prefix}#{$breakpoint-name}#{$responslr-visibility-down-class-suffix}');
+@mixin rr-visibility-hide-down($breakpoint-name) {
+	@include rr-visibility('#{$rr-visibility-hiders-class-prefix}#{$breakpoint-name}#{$rr-visibility-down-class-suffix}');
 }
 
 
@@ -50,35 +50,35 @@
 	CLASS GENERATOR
 ***********************************************************************************/
 
-@function responslr-generate-visibility-check() {
-	@return $responslr-generate-visibility;
+@function rr-generate-visibility-check() {
+	@return $rr-generate-visibility;
 }
 
-@mixin responslr-generate-hiders() {
+@mixin rr-generate-hiders() {
 	$breakpoint-iterator: 1;
 
-	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
-		$hider-class-name: #{$responslr-visibility-hiders-class-prefix}#{$breakpoint-key};
+	@each $breakpoint-key, $breakpoint-list in $rr-grid-breakpoints {
+		$hider-class-name: #{$rr-visibility-hiders-class-prefix}#{$breakpoint-key};
 
 		// Hider normal
-		@include responslr-media-query($max-width: $breakpoint-key, $min-width: $breakpoint-key) {
+		@include rr-media-query($max-width: $breakpoint-key, $min-width: $breakpoint-key) {
 			.#{$hider-class-name} {
-				@include responslr-hide();
+				@include rr-hide();
 			}
 		}
 
 		// Hider up
 		@if $breakpoint-iterator > 1 {
-			@include responslr-media-query($min-width: $breakpoint-key) {
-				.#{$hider-class-name}#{$responslr-visibility-up-class-suffix} {
-					@include responslr-hide();
+			@include rr-media-query($min-width: $breakpoint-key) {
+				.#{$hider-class-name}#{$rr-visibility-up-class-suffix} {
+					@include rr-hide();
 				}
 			}
 
 			// Hider down
-			@include responslr-media-query($max-width: $breakpoint-key) {
-				.#{$hider-class-name}#{$responslr-visibility-down-class-suffix} {
-					@include responslr-hide();
+			@include rr-media-query($max-width: $breakpoint-key) {
+				.#{$hider-class-name}#{$rr-visibility-down-class-suffix} {
+					@include rr-hide();
 				}
 			}
 		}
@@ -87,69 +87,69 @@
 	}
 }
 
-@mixin responslr-generate-showers() {
+@mixin rr-generate-showers() {
 	// Hide all
-	.#{$responslr-visibility-hide-all-class} {
-		@include responslr-hide();
+	.#{$rr-visibility-hide-all-class} {
+		@include rr-hide();
 	}
 
 	$breakpoint-iterator: 1;
 
-	@each $breakpoint-key, $breakpoint-list in $responslr-grid-breakpoints {
-		$shower-class-name: #{$responslr-visibility-showers-class-prefix}#{$breakpoint-key};
+	@each $breakpoint-key, $breakpoint-list in $rr-grid-breakpoints {
+		$shower-class-name: #{$rr-visibility-showers-class-prefix}#{$breakpoint-key};
 
 		// Shower normal
 		.#{$shower-class-name} {
-			@extend .#{$responslr-visibility-hide-all-class};
+			@extend .#{$rr-visibility-hide-all-class};
 		}
 
-		@include responslr-media-query($max-width: $breakpoint-key, $min-width: $breakpoint-key) {
+		@include rr-media-query($max-width: $breakpoint-key, $min-width: $breakpoint-key) {
 			.#{$shower-class-name} {
-				@include responslr-show();
+				@include rr-show();
 
-				&.#{$responslr-grid-column-class} {
-					@include responslr-show(inline-block);
+				&.#{$rr-grid-column-class} {
+					@include rr-show(inline-block);
 				}
 			}
 
 			span.#{$shower-class-name} {
-				@include responslr-show(inline);
+				@include rr-show(inline);
 			}
 		}
 
 		// Shower up
 		@if $breakpoint-iterator > 1 {
-			.#{$shower-class-name}#{$responslr-visibility-up-class-suffix},
-			.#{$shower-class-name}#{$responslr-visibility-down-class-suffix} {
-				@extend .#{$responslr-visibility-hide-all-class};
+			.#{$shower-class-name}#{$rr-visibility-up-class-suffix},
+			.#{$shower-class-name}#{$rr-visibility-down-class-suffix} {
+				@extend .#{$rr-visibility-hide-all-class};
 			}
 
-			@include responslr-media-query($min-width: $breakpoint-key) {
-				.#{$shower-class-name}#{$responslr-visibility-up-class-suffix} {
-					@include responslr-show();
+			@include rr-media-query($min-width: $breakpoint-key) {
+				.#{$shower-class-name}#{$rr-visibility-up-class-suffix} {
+					@include rr-show();
 
-					&.#{$responslr-grid-column-class} {
-						@include responslr-show(inline-block);
+					&.#{$rr-grid-column-class} {
+						@include rr-show(inline-block);
 					}
 				}
 
-				span.#{$shower-class-name}#{$responslr-visibility-up-class-suffix} {
-					@include responslr-show(inline);
+				span.#{$shower-class-name}#{$rr-visibility-up-class-suffix} {
+					@include rr-show(inline);
 				}
 			}
 
 			// Shower down
-			@include responslr-media-query($max-width: $breakpoint-key) {
-				.#{$shower-class-name}#{$responslr-visibility-down-class-suffix} {
-					@include responslr-show();
+			@include rr-media-query($max-width: $breakpoint-key) {
+				.#{$shower-class-name}#{$rr-visibility-down-class-suffix} {
+					@include rr-show();
 
-					&.#{$responslr-grid-column-class} {
-						@include responslr-show(inline-block);
+					&.#{$rr-grid-column-class} {
+						@include rr-show(inline-block);
 					}
 				}
 
-				span.#{$shower-class-name}#{$responslr-visibility-down-class-suffix} {
-					@include responslr-show(inline);
+				span.#{$shower-class-name}#{$rr-visibility-down-class-suffix} {
+					@include rr-show(inline);
 				}
 			}
 		}
@@ -158,13 +158,13 @@
 	}
 }
 
-@if responslr-generate-visibility-check() {
-	@if $responslr-generate-visibility-hiders {
-		@include responslr-generate-hiders();
+@if rr-generate-visibility-check() {
+	@if $rr-generate-visibility-hiders {
+		@include rr-generate-hiders();
 	}
 
-	@if $responslr-generate-visibility-showers {
-		@include responslr-generate-showers();
+	@if $rr-generate-visibility-showers {
+		@include rr-generate-showers();
 	}
 }
 
@@ -173,19 +173,19 @@
 	SETTINGS GENERATOR
 ***********************************************************************************/
 
-@function responslr-generate-visibility-settings-check() {
-	@return $responslr-generate-visibility-settings;
+@function rr-generate-visibility-settings-check() {
+	@return $rr-generate-visibility-settings;
 }
 
-@mixin responslr-generate-visibility-settings() {
+@mixin rr-generate-visibility-settings() {
 	$visibility-settings: (
-		showClassPrefix: $responslr-visibility-showers-class-prefix,
-		hiderClassPrefix: $responslr-visibility-hiders-class-prefix
+		showClassPrefix: $rr-visibility-showers-class-prefix,
+		hiderClassPrefix: $rr-visibility-hiders-class-prefix
 	);
 
 	$global-settings: map-merge($global-settings, ( visibility: $visibility-settings ) ) !global;
 }
 
-@if responslr-generate-visibility-settings-check() {
-	@include responslr-generate-visibility-settings();
+@if rr-generate-visibility-settings-check() {
+	@include rr-generate-visibility-settings();
 }

@@ -2,7 +2,7 @@
 	CHECK IF MAP IS EMPTY
 ***********************************************************************************/
 
-@function responslr-map-isnotempty($map) {
+@function rr-map-isnotempty($map) {
 	@return length($map) > 0;
 }
 
@@ -11,10 +11,10 @@
 	GET DEFAULT VALUE FROM MAP
 ***********************************************************************************/
 
-@function responslr-map-getdefault($map) {
+@function rr-map-getdefault($map) {
 	$map-default: null;
 
-	@if responslr-map-isnotempty($map){
+	@if rr-map-isnotempty($map){
 		@if map-has-key($map, default) {
 			$map-default: default;
 		} @else {
@@ -25,7 +25,7 @@
 	@return $map-default;
 }
 
-@function responslr-map-required-error($param-name, $map-name, $item-key) {
+@function rr-map-required-error($param-name, $map-name, $item-key) {
 	@return 'Parameter "#{$param-name}" for the #{$map-name} "#{$item-key}" is required.';
 }
 
@@ -34,7 +34,7 @@
 	SPLIT SHORTHAND (MARGIN OR PADDING)
 ***********************************************************************************/
 
-@function responslr-split-shorthand($padding-string, $part) {
+@function rr-split-shorthand($padding-string, $part) {
 	$length: length(unquote($padding-string));
 	$return-value: $padding-string;
 
@@ -73,9 +73,9 @@
 	CALCULATE / CONVERTER FUNCTIONS
 ***********************************************************************************/
 
-@function responslr-rem($values) {
+@function rr-rem($values) {
 	$rem-return: ();
-	$base-breakpoint: map-get($responslr-grid-breakpoints, nth(map-keys($responslr-grid-breakpoints), 1));
+	$base-breakpoint: map-get($rr-grid-breakpoints, nth(map-keys($rr-grid-breakpoints), 1));
 	$base-size: map-get($base-breakpoint, base-size);
 
 	@if type-of($base-size) != number {

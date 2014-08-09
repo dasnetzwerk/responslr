@@ -7,14 +7,14 @@
 	CLASS GENERATOR
 ***********************************************************************************/
 
-@function responslr-generate-tables-check() {
-	@return $responslr-generate-tables and responslr-map-isnotempty($responslr-tables);
+@function rr-generate-tables-check() {
+	@return $rr-generate-tables and rr-map-isnotempty($rr-tables);
 }
 
-@mixin responslr-generate-tables() {
+@mixin rr-generate-tables() {
 
 }
 
-@if responslr-generate-tables-check() {
-	@include responslr-generate-tables();
+@if rr-generate-tables-check() {
+	@include rr-generate-tables();
 }
