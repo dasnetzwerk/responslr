@@ -13,7 +13,9 @@ $rr-buttons-default-padding: 0 !default;
 
 $rr-buttons-default-font-family: null !default;
 $rr-buttons-default-font-size: null !default;
+
 $rr-buttons-default-font-weight: null !default;
+$rr-buttons-default-font-weight-hover: null !default;
 
 $rr-buttons-default-text-color: null !default;
 $rr-buttons-default-text-color-hover: null !default;
@@ -24,6 +26,9 @@ $rr-buttons-default-border-hover: null !default;
 
 $rr-buttons-default-bg-color: null !default;
 $rr-buttons-default-bg-color-hover: null !default;
+
+// Default darken amount
+$rr-buttons-default-darken-amount: 10% !default;
 
 // Inactive state
 $rr-button-inactive-background-color: silver !default;

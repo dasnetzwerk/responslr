@@ -452,6 +452,8 @@
 				div {
 					height: 100%;
 					background-color: $rr-grid-helper-column-background-color;
+					border-left: 1px solid $rr-grid-helper-column-border-color;
+					border-right: 1px solid $rr-grid-helper-column-border-color;
 				}
 			}
 		}

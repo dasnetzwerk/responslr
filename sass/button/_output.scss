@@ -80,6 +80,16 @@
 	@return $return-font-weight;
 }
 
+@function rr-button-font-weight-hover($name: null) {
+	$return-font-weight-hover: map-get(rr-button($name), font-weight-hover);
+
+	@if $return-font-weight-hover == null {
+		$return-font-weight-hover: $rr-buttons-default-font-weight-hover;
+	}
+
+	@return $return-font-weight-hover;
+}
+
 @function rr-button-text-color($name: null) {
 	$return-text-color: map-get(rr-button($name), text-color);
 
@@ -95,6 +105,10 @@
 
 	@if $return-text-color-hover == null {
 		$return-text-color-hover: $rr-buttons-default-text-color-hover;
+	}
+
+	@if $return-text-color-hover == null {
+		$return-text-color-hover: darken(rr-button-text-color($name), $rr-buttons-default-darken-amount);
 	}
 
 	@return $return-text-color-hover;
@@ -147,6 +161,10 @@
 		$return-bg-color-hover: $rr-buttons-default-bg-color-hover;
 	}
 
+	@if $return-bg-color-hover == null {
+		$return-bg-color-hover: darken(rr-button-bg-color($name), $rr-buttons-default-darken-amount);
+	}
+
 	@return $return-bg-color-hover;
 }
 
@@ -176,7 +194,9 @@
 
 	$font-family: null,
 	$font-size: null,
+
 	$font-weight: null,
+	$font-weight-hover: null,
 
 	$text-color: null,
 	$text-color-hover: null,
@@ -199,7 +219,9 @@
 
 	$font-family: rr-button-font-family($name) !default;
 	$font-size: rr-button-font-size($name) !default;
+
 	$font-weight: rr-button-font-weight($name) !default;
+	$font-weight-hover: rr-button-font-weight-hover($name) !default;
 
 	$text-color: rr-button-text-color($name) !default;
 	$text-color-hover: rr-button-text-color-hover($name) !default;
@@ -258,6 +280,10 @@
 
 	&:hover,
 	&:focus {
+		@if $font-weight-hover != null and $font-weight-hover != $font-weight {
+			font-weight: $font-weight-hover;
+		}
+
 		@if $text-color-hover != null and $text-color-hover != $text-color {
 			color: $text-color-hover;
 		}
