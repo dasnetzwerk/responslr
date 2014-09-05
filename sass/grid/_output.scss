@@ -141,6 +141,11 @@
 	@return (($column-part / $size) * 100%);
 }
 
+@function rr-grid-gutter-current($multiplier: 1) {
+	@return rr-grid-gutter($rr-current-breakpoint-name) * $multiplier;
+}
+
+
 /***********************************************************************************
 	MIXINS
 ***********************************************************************************/
@@ -156,6 +161,7 @@
 
 	@if $name != null {
 		$breakpoint-name: $name;
+		$rr-current-breakpoint-name: $breakpoint-name !global;
 		$breakpoint-only: false;
 
 		@if str-index($name, '-only') != null {
@@ -178,7 +184,6 @@
 		}
 
 	} @else {
-
 		@if type-of($max-width) == number {
 			$max-width-content: $max-width;
 		} @else {
@@ -199,7 +204,6 @@
 				$min-width-content: rr-grid-min-width($min-width);
 			}
 		}
-
 	}
 
 	@if $min-width-content != none or $max-width-content != none or $media-orientation == 'portrait' or $media-orientation == 'landscape' {
@@ -221,6 +225,8 @@
 	} @else {
 		@content;
 	}
+
+	$rr-current-breakpoint-name: unquote($rr-grid-breakpoints-default) !global;
 }
 
 
@@ -296,13 +302,19 @@
 @mixin rr-generate-grid-gutter($name: null) {
 	.#{$rr-grid-row-class} .#{$rr-grid-row-class} {
 		margin-left: -(rr-grid-gutter-half($name));
-		margin-right: -(rr-grid-gutter-half($name));;
+		margin-right: -(rr-grid-gutter-half($name));
 	}
 
 	.#{$rr-grid-column-class} {
-
 		padding-left: rr-grid-gutter-half($name);
 		padding-right: rr-grid-gutter-half($name);
+	}
+
+	// Gutter property classes
+	@each $gutter-property-name in $rr-grid-gutter-property-classes {
+		.#{$rr-grid-gutter-property-classes-prefix}#{$gutter-property-name} {
+			#{$gutter-property-name}: rr-grid-gutter($name);
+		}
 	}
 }
 
@@ -463,6 +475,7 @@
 @if rr-generate-grid-breakpoints-check() {
 	@include rr-generate-grid-breakpoints();
 }
+
 
 /***********************************************************************************
 	SETTINGS GENERATOR

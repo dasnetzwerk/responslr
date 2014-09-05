@@ -60,6 +60,9 @@ $rr-grid-container-max-width: 1140px !default;
 $rr-grid-container-align: center !default;
 $rr-grid-container-horizontal-margin: 0 !default;
 
+// Generate gutter classes for this properties
+$rr-grid-gutter-property-classes: () !default;
+
 // Classes
 $rr-grid-row-class: 'row' !default;
 $rr-grid-column-class: 'column' !default;
@@ -72,6 +75,8 @@ $rr-grid-container-class: 'container' !default;
 $rr-grid-container-full-class: 'container-full' !default;
 
 $rr-grid-line-break-full-class: 'inline-break' !default;
+
+$rr-grid-gutter-property-classes-prefix: 'grid-gutter-' !default;
 
 // Grid helper
 $rr-grid-helper-show: true !default;
@@ -103,3 +108,6 @@ $rr-generate-grid-helper: $rr-generate-classes !default;
 
 // Generate json settings
 $rr-generate-grid-settings: $rr-generate-settings !default;
+
+// Set current breakpoint to default
+$rr-current-breakpoint-name: unquote($rr-grid-breakpoints-default);
