@@ -11,13 +11,8 @@
 	@return map-has-key($rr-spacings, $name);
 }
 
-
-/***********************************************************************************
-	MAP VALUE FUNCTIONS
-***********************************************************************************/
-
-@function rr-spacing-size($name: null) {
-	$return-spacing: null;
+@function rr-spacing($name: null) {
+	$return-spacing: ();
 
 	@if $name == null {
 		$name: $rr-spacings-default;
@@ -28,6 +23,21 @@
 	}
 
 	@return $return-spacing;
+}
+
+
+/***********************************************************************************
+	MAP VALUE FUNCTIONS
+***********************************************************************************/
+
+@function rr-spacing-value($name: null) {
+	$return-value: map-get(rr-spacing($name), value);
+
+	@if $return-value == null {
+		@warn rr-map-required-error("value", "spacing", $name);
+	}
+
+	@return $return-value;
 }
 
 
@@ -54,17 +64,43 @@
 }
 
 // Apply leading whitespace as margin.
-@mixin rr-spacing-top($name: $rr-spacings-default, $spacing-size: null, $property: margin) {
-	$spacing-size: rr-spacing-size($name) !default;
+@mixin rr-spacing-top($name: null, $spacing-size: null, $property: margin) {
+	$spacing-size: rr-spacing-value($name) !default;
 
 	@include rr-spacing($spacing-size-top: $spacing-size, $property: $property);
+
+	// Breakpoint overwrites
+	@if $name != null {
+		$spacing-overwrites: rr-map-breakpoint-overwrites(spacing, $name);
+
+		@each $breakpoint-key, $overwrite-list in $spacing-overwrites {
+			@include rr-media-query($breakpoint-key) {
+				@if map-has-key($overwrite-list, 'value') {
+					@include rr-spacing($spacing-size-top: map-get($overwrite-list, 'value'), $property: $property);
+				}
+			}
+		}
+	}
 }
 
 // Apply trailing whitespace as margin.
-@mixin rr-spacing-bottom($name: $rr-spacings-default, $spacing-size: null, $property: margin) {
-	$spacing-size: rr-spacing-size($name) !default;
+@mixin rr-spacing-bottom($name: null, $spacing-size: null, $property: margin) {
+	$spacing-size: rr-spacing-value($name) !default;
 
 	@include rr-spacing($spacing-size-bottom: $spacing-size, $property: $property);
+
+	// Breakpoint overwrites
+	@if $name != null {
+		$spacing-overwrites: rr-map-breakpoint-overwrites(spacing, $name);
+
+		@each $breakpoint-key, $overwrite-list in $spacing-overwrites {
+			@include rr-media-query($breakpoint-key) {
+				@if map-has-key($overwrite-list, 'value') {
+					@include rr-spacing($spacing-size-bottom: map-get($overwrite-list, 'value'), $property: $property);
+				}
+			}
+		}
+	}
 }
 
 

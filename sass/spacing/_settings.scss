@@ -3,10 +3,18 @@
 ***********************************************************************************/
 
 $rr-spacings: (
-	'none': 0,
-	'small': 20px,
-	'medium': 40px,
-	'large': 80px
+	'none': (
+		value: 0
+	),
+	'small': (
+		value: 20px
+	),
+	'medium': (
+		value: 40px
+	),
+	'large': (
+		value: 80px
+	)
 ) !default;
 
 // Default spacing
