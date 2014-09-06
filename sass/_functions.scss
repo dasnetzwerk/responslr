@@ -31,6 +31,30 @@
 
 
 /***********************************************************************************
+	GET MAP VALUE OVERWRITES BY ITEMNAME AND ROW-KEY
+***********************************************************************************/
+
+@function rr-map-breakpoint-overwrites($map-item-name, $row-key) {
+	$return-overwrites: ();
+
+	@if function-exists('rr-#{$map-item-name}-exists') and function-exists('rr-#{$map-item-name}') {
+		@if call('rr-#{$map-item-name}-exists', $row-key) {
+			@each $breakpoint-key, $breakpoint-list in $rr-grid-breakpoints {
+				@if map-has-key(call('rr-#{$map-item-name}', $row-key), 'breakpoint-#{$breakpoint-key}') {
+					$breakpoint-overwrite: ( $breakpoint-key: map-get(call('rr-#{$map-item-name}', $row-key), 'breakpoint-#{$breakpoint-key}') );
+					$return-overwrites: map-merge($return-overwrites, $breakpoint-overwrite);
+				}
+			}
+		}
+	} @else {
+		@warn 'Function "rr-#{$map-item-name}-exists" or "rr-#{$map-item-name}" does not exist.';
+	}
+
+	@return $return-overwrites;
+}
+
+
+/***********************************************************************************
 	SPLIT SHORTHAND (MARGIN OR PADDING)
 ***********************************************************************************/
 
@@ -68,6 +92,7 @@
 
 	@return $return-value;
 }
+
 
 /***********************************************************************************
 	CALCULATE / CONVERTER FUNCTIONS

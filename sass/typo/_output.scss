@@ -137,7 +137,7 @@
 	-webkit-font-smoothing: antialiased;
 }
 
-@mixin rr-typo-family($name: $rr-typo-families-default, $font-family: null, $font-weight: null, $font-style: null) {
+@mixin rr-typo-family($name: null, $font-family: null, $font-weight: null, $font-style: null) {
 	$font-family: rr-typo-family-name($name) !default;
 	$font-weight: rr-typo-family-font-weight($name) !default;
 	$font-style: rr-typo-family-font-style($name) !default;
@@ -147,12 +147,29 @@
 	font-style: $font-style;
 }
 
-@mixin rr-typo-size($name: $rr-typo-sizes-default, $font-size: null, $line-height: null) {
+@mixin rr-typo-size($name: null, $font-size: null, $line-height: null) {
 	$font-size: rr-typo-size-value($name) !default;
 	$line-height: rr-typo-size-line-height($name) !default;
 
 	font-size: $font-size;
 	line-height: $line-height;
+
+	// Breakpoint overwrites
+	@if $name != null {
+		$typo-size-overwrites: rr-map-breakpoint-overwrites(typo-size, $name);
+
+		@each $breakpoint-key, $overwrite-list in $typo-size-overwrites {
+			@include rr-media-query($breakpoint-key) {
+				@if map-has-key($overwrite-list, 'value') {
+					font-size: map-get($overwrite-list, 'value');
+				}
+
+				@if map-has-key($overwrite-list, 'line-height') {
+					line-height: map-get($overwrite-list, 'line-height');
+				}
+			}
+		}
+	}
 }
 
 @mixin rr-typo($font-family: null, $font-weight: null, $font-style: null, $font-size: null, $line-height: null) {
