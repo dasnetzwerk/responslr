@@ -243,19 +243,6 @@
 		@while $column-index > 0 {
 			$sub-column-index: $column-index;
 
-			// Breakpoint
-			.#{$name}-#{$column-index} {
-				width: $current-column-width * $column-index;
-
-				@while $sub-column-index > 0 {
-					.#{$name}-#{$sub-column-index} {
-						width: (($current-column-width * $sub-column-index) / ($current-column-width * $column-index)) * 100%;
-					}
-
-					$sub-column-index: $sub-column-index - 1;
-				}
-			}
-
 			// Offset
 			.#{$rr-grid-offset-class-prefix}#{$name}-#{$column-index} {
 				margin-left: $current-column-width * $column-index;
@@ -264,6 +251,30 @@
 			// Inset
 			.#{$rr-grid-inset-class-prefix}#{$name}-#{$column-index} {
 				margin-left: (-$current-column-width * $column-index) - 0.02%;
+			}
+
+			// Breakpoint
+			.#{$name}-#{$column-index} {
+				width: $current-column-width * $column-index;
+
+				@while $sub-column-index > 0 {
+					// Breakpoint nested
+					.#{$name}-#{$sub-column-index} {
+						width: (($current-column-width * $sub-column-index) / ($current-column-width * $column-index)) * 100%;
+					}
+
+					// Offset nested
+					.#{$rr-grid-offset-class-prefix}#{$name}-#{$sub-column-index} {
+						margin-left: (($current-column-width * $sub-column-index) / ($current-column-width * $column-index)) * 100%;
+					}
+
+					// Inset nested
+					.#{$rr-grid-inset-class-prefix}#{$name}-#{$sub-column-index} {
+						margin-left: (((-$current-column-width * $sub-column-index) / ($current-column-width * $column-index)) * 100%) - 0.02%;
+					}
+
+					$sub-column-index: $sub-column-index - 1;
+				}
 			}
 
 			// Reset
