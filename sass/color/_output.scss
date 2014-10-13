@@ -95,7 +95,8 @@
 
 			// background-color focus
 			@if $rr-generate-colors-bg-focus {
-				.#{$rr-color-bg-focus-class-prefix}#{$color-key}:focus {
+				.#{$rr-color-bg-focus-class-prefix}#{$color-key}:focus,
+				.#{$rr-color-bg-focus-class-prefix}#{$color-key}:active {
 					@extend .#{$rr-color-bg-class-prefix}#{$color-key};
 				}
 			}
@@ -116,7 +117,8 @@
 
 			// text-color focus
 			@if $rr-generate-colors-text-focus {
-				.#{$rr-color-text-focus-class-prefix}#{$color-key}:focus {
+				.#{$rr-color-text-focus-class-prefix}#{$color-key}:focus,
+				.#{$rr-color-text-focus-class-prefix}#{$color-key}:active {
 					@extend .#{$rr-color-text-class-prefix}#{$color-key};
 				}
 			}
@@ -137,7 +139,8 @@
 
 			// border-color focus
 			@if $rr-generate-colors-border-focus {
-				.#{$rr-color-border-focus-class-prefix}#{$color-key}:focus {
+				.#{$rr-color-border-focus-class-prefix}#{$color-key}:focus,
+				.#{$rr-color-border-focus-class-prefix}#{$color-key}:active {
 					@extend .#{$rr-color-border-class-prefix}#{$color-key};
 				}
 			}
@@ -146,19 +149,19 @@
 		// border-color-directions
 		@if $rr-generate-colors-border-directions {
 			.#{$rr-color-border-top-class-prefix}#{$color-key} {
-				@include rr-border-color($color: $color-key, $property: border-top);
+				@include rr-border-color($name: $color-key, $property: border-top);
 			}
 
 			.#{$rr-color-border-right-class-prefix}#{$color-key} {
-				@include rr-border-color($color: $color-key, $property: border-right);
+				@include rr-border-color($name: $color-key, $property: border-right);
 			}
 
 			.#{$rr-color-border-bottom-class-prefix}#{$color-key} {
-				@include rr-border-color($color: $color-key, $property: border-bottom);
+				@include rr-border-color($name: $color-key, $property: border-bottom);
 			}
 
 			.#{$rr-color-border-left-class-prefix}#{$color-key} {
-				@include rr-border-color($color: $color-key, $property: border-left);
+				@include rr-border-color($name: $color-key, $property: border-left);
 			}
 
 			// border-color-directions hover
