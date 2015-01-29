@@ -254,7 +254,8 @@
 			}
 
 			// Breakpoint
-			.#{$name}-#{$column-index} {
+			.#{$name}-#{$column-index},
+			.#{$rr-grid-row-class}.#{$rr-grid-reset-class} .#{$name}-#{$column-index} {
 				width: $current-column-width * $column-index;
 
 				@while $sub-column-index > 0 {
@@ -326,7 +327,9 @@
 		position: relative;
 	}
 
-	.#{$rr-grid-container-class} {
+	.#{$rr-grid-container-class},
+	.#{$rr-grid-row-class} .#{$rr-grid-row-class}.#{$rr-grid-container-class} {
+		padding: 0;
 		max-width: $rr-grid-container-max-width;
 
 		@if $rr-grid-container-align == center {
