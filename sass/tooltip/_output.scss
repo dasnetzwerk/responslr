@@ -87,7 +87,7 @@
 		$return-font-color: $rr-tooltips-default-font-color;
 	}
 
-	@return unquote($return-font-color);
+	@return rr-unquote($return-font-color);
 }
 
 @function rr-tooltip-bg-color($name: null) {
@@ -97,7 +97,7 @@
 		$return-bg-color: $rr-tooltips-default-bg-color;
 	}
 
-	@return unquote($return-bg-color);
+	@return rr-unquote($return-bg-color);
 }
 
 @function rr-tooltip-border-color($name: null) {
@@ -107,7 +107,7 @@
 		$return-border-color: $rr-tooltips-default-border-color;
 	}
 
-	@return unquote($return-border-color);
+	@return rr-unquote($return-border-color);
 }
 
 @function rr-tooltip-border-width($name: null) {

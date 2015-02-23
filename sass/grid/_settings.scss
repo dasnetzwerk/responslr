@@ -112,4 +112,4 @@ $rr-generate-grid-helper: $rr-generate-classes !default;
 $rr-generate-grid-settings: $rr-generate-settings !default;
 
 // Set current breakpoint to default
-$rr-current-breakpoint-name: unquote($rr-grid-breakpoints-default);
+$rr-current-breakpoint-name: rr-unquote($rr-grid-breakpoints-default);

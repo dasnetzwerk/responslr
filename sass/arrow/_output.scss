@@ -229,13 +229,13 @@
 
 @mixin rr-arrow-color($color: null, $insert-pseudo-element: null, $pseudo-element: null) {
 	@include rr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
-		border-color: unquote($color);
+		border-color: rr-unquote($color);
 	}
 }
 
 @mixin arrow-transition($transition-properties: null, $transition-values: null, $pseudo-element: null) {
-	$transition-properties: unquote($transition-properties);
-	$transition-values: unquote($transition-values);
+	$transition-properties: rr-unquote($transition-properties);
+	$transition-values: rr-unquote($transition-values);
 
 	@if length($transition-properties) == length($transition-values) {
 		&:#{$pseudo-element} {
@@ -281,7 +281,7 @@
 	$pseudo-element: rr-arrow-pseudo-element($name) !default;
 	$insert-pseudo-element: $rr-arrows-default-insert-pseudo-element !default;
 
-	$position: unquote($position);
+	$position: rr-unquote($position);
 
 	@if length($position) > 0 {
 		position: $position;
@@ -369,8 +369,8 @@
 		}
 	}
 
-	$transition-properties: unquote($transition-properties);
-	$transition-values: unquote($transition-values);
+	$transition-properties: rr-unquote($transition-properties);
+	$transition-values: rr-unquote($transition-values);
 	$transition-new-values: null;
 
 	@if $transition-properties != none and length($transition-properties) > 0 and length($transition-values) > 0 and length($transition-properties) == length($transition-values) {
@@ -383,9 +383,9 @@
 			}
 
 			@if $transition-new-values == null {
-				$transition-new-values: unquote($current-value);
+				$transition-new-values: rr-unquote($current-value);
 			} @else {
-				$transition-new-values: append($transition-new-values, unquote($current-value), comma);
+				$transition-new-values: append($transition-new-values, rr-unquote($current-value), comma);
 			}
 		}
 

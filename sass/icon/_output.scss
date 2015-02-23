@@ -139,7 +139,7 @@
 @mixin rr-icon-size($name: $rr-icons-default, $size: null) {
 	$size: rr-icon-size($name) !default;
 
-	background-size: unquote($size);
+	background-size: rr-unquote($size);
 }
 
 @mixin rr-icon-position($name: $rr-icons-default, $offset-x: null, $offset-y: null) {

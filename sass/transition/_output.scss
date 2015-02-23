@@ -96,10 +96,10 @@
 	$hardware-acceleration: rr-transition-hardware-acceleration($name) !default;
 
 	// Property
-	@include transition-property(unquote($property));
+	@include transition-property(rr-unquote($property));
 
 	// Duration
-	@include transition-duration(unquote($duration));
+	@include transition-duration(rr-unquote($duration));
 
 	// Timing-function
 	$timing-function: str-replace($timing-function, easeInQuad, 'cubic-bezier(0.550, 0.085, 0.680, 0.530)');
@@ -129,10 +129,10 @@
 	$timing-function: str-replace($timing-function, easeInOutCirc, 'cubic-bezier(0.785, 0.135, 0.150, 0.860)');
 	$timing-function: str-replace($timing-function, easeInOutBack, 'cubic-bezier(0.680, -0.550, 0.265, 1.550)');
 
-	@include transition-timing-function(unquote($timing-function));
+	@include transition-timing-function(rr-unquote($timing-function));
 
 	// Delay
-	@include transition-delay(unquote($delay));
+	@include transition-delay(rr-unquote($delay));
 
 	@if $hardware-acceleration {
 		@include rr-transition-hardware-acceleration();

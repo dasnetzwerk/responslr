@@ -226,7 +226,7 @@
 		@content;
 	}
 
-	$rr-current-breakpoint-name: unquote($rr-grid-breakpoints-default) !global;
+	$rr-current-breakpoint-name: rr-unquote($rr-grid-breakpoints-default) !global;
 }
 
 
