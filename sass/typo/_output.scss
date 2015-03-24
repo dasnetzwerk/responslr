@@ -224,8 +224,8 @@
 				@font-face {
 					font-family: rr-typo-family-name($font-family-key);
 					src: url('#{rr-typo-family-file($font-family-key)}.eot?#iefix') format('embedded-opentype'),
-						 url('#{rr-typo-family-file($font-family-key)}.woff') format('woff'),
 						 url('#{rr-typo-family-file($font-family-key)}.woff2') format('woff2'),
+						 url('#{rr-typo-family-file($font-family-key)}.woff') format('woff'),
 						 url('#{rr-typo-family-file($font-family-key)}.ttf') format('truetype'),
 						 url('#{rr-typo-family-file($font-family-key)}.svg##{rr-typo-family-name($font-family-key)}') format('svg');
 				}
