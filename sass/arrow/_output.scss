@@ -183,32 +183,32 @@
 	@if $direction == up {
 		@include rr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 			-ms-transform: rotate(45deg);
-			-webkit-transform: rotate(45deg) translateZ(1px);
-			transform: rotate(45deg) translateZ(1px);
+			-webkit-transform: rotate(45deg) translate3d(0,0,0);
+			transform: rotate(45deg) translate3d(0,0,0);
 		}
 	}
 
 	@if $direction == right {
 		@include rr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 			-ms-transform: rotate(135deg);
-			-webkit-transform: rotate(135deg) translateZ(1px);
-			transform: rotate(135deg) translateZ(1px);
+			-webkit-transform: rotate(135deg) translate3d(0,0,0);
+			transform: rotate(135deg) translate3d(0,0,0);
 		}
 	}
 
 	@if $direction == down {
 		@include rr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 			-ms-transform: rotate(225deg);
-			-webkit-transform: rotate(225deg) translateZ(1px);
-			transform: rotate(225deg) translateZ(1px);
+			-webkit-transform: rotate(225deg) translate3d(0,0,0);
+			transform: rotate(225deg) translate3d(0,0,0);
 		}
 	}
 
 	@if $direction == left {
 		@include rr-insert-pseudo-element($write: $insert-pseudo-element, $pseudo-element: $pseudo-element) {
 			-ms-transform: rotate(-45deg);
-			-webkit-transform: rotate(-45deg) translateZ(1px);
-			transform: rotate(-45deg) translateZ(1px);
+			-webkit-transform: rotate(-45deg) translate3d(0,0,0);
+			transform: rotate(-45deg) translate3d(0,0,0);
 		}
 	}
 }
