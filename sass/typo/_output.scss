@@ -209,14 +209,13 @@
 	@return $rr-generate-typo;
 }
 
+// Font reset
+.#{$rr-typo-reset-class},
+.#{$rr-grid-row-class} {
+	@include rr-typo-reset();
+}
+
 @mixin rr-generate-typo() {
-
-	// Font reset
-	.#{$rr-typo-reset-class},
-	.#{$rr-grid-row-class} {
-		@include rr-typo-reset();
-	}
-
 	@if $rr-generate-typo-faces and rr-map-isnotempty($rr-typo-families) {
 		@each $font-family-key, $font-family-list in $rr-typo-families {
 			// Generate font-faces
