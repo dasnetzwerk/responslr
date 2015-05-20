@@ -426,7 +426,10 @@
 			}
 
 			span + input[type=checkbox] {
-				margin-left: $rr-grid-helper-info-padding;
+				margin: 0 !important;
+				margin-left: $rr-grid-helper-info-padding !important;
+				height: 1em !important;
+				width: 1em !important;
 			}
 		}
 
