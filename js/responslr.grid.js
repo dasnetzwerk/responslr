@@ -199,6 +199,10 @@ function responslr_grid() {
 			var iMinWidth = parseInt(oBreakpoint.minWidth);
 			var iMaxWidth = parseInt(oBreakpoint.maxWidth);
 
+			if(iMaxWidth == 0) {
+				iMaxWidth = iWidth;
+			}
+
 			if(iMinWidth <= iWidth && (iMaxWidth >= iWidth || iMaxWidth == -1)) {
 				oMatchedBreakpoint = oBreakpoint;
 				break;
