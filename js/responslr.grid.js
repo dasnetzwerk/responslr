@@ -9,6 +9,8 @@ function responslr_grid() {
 	var aBreakpointEvents = [];
 	var oPreviousBreakpoint = {};
 	var oCurrentBreakpoint = {};
+	var oEvents = $({});
+	var sResizeEventName = 'resize:responslr';
 
 	/***********************************************************************************
 		INIT
@@ -16,6 +18,12 @@ function responslr_grid() {
 	this.init = function() {
 		// Set initial breakpoint
 		//oCurrentBreakpoint = checkCurrentBreakpoint();
+
+		// Bind resize
+		$(window).bind('resize.responslr', function() {
+			// Trigger resize
+			self.triggerResize();
+		});
 	}
 
 	/***********************************************************************************
@@ -87,6 +95,30 @@ function responslr_grid() {
 		$('#' + settings.gridId + ', #' + settings.infoId).remove();
 	};
 
+	// Add resize event
+	this.resize = function() {
+		switch(arguments.length) {
+			case 1:
+				oEvents.bind(sResizeEventName, arguments[0]);
+				break;
+			case 2:
+				oEvents.bind(sResizeEventName, arguments[0], arguments[1]);
+				break;
+			default:
+				self.triggerResize();
+		}
+	};
+
+	// Trigger resize event
+	this.triggerResize = function(data) {
+		data = data || null;
+
+		if(data == null) {
+			oEvents.trigger(sResizeEventName);
+		} else {
+			oEvents.trigger(sResizeEventName, data);
+		}
+	};
 
 	/***********************************************************************************
 		PRIVATE BREAKPOINT METHODS
@@ -95,12 +127,18 @@ function responslr_grid() {
 	// Bind resize
 	var bindResize = function() {
 		if(!bResizeAlreadyBound) {
-			$(window).resize(function() {
+			$(window).unbind('resize.responslr');
+
+			$(window).bind('resize.responslr', function() {
 				var oNewBreakpoint = checkCurrentBreakpoint();
 
+				// Trigger breakpoint change
 				if(oNewBreakpoint.name != oCurrentBreakpoint.name) {
 					oPreviousBreakpoint = oCurrentBreakpoint;
 					oCurrentBreakpoint = oNewBreakpoint;
+
+					// Trigger resize
+					self.triggerResize();
 
 					// Single breakpoint leave
 					if(typeof aBreakpointEvents[oPreviousBreakpoint.name] != 'undefined') {
@@ -137,6 +175,9 @@ function responslr_grid() {
 							aAllEnterCallbacks[iAllEnterCallbackIndex](oCurrentBreakpoint, oPreviousBreakpoint);
 						}
 					}
+				} else {
+					// Trigger resize
+					self.triggerResize();
 				}
 			});
 
@@ -193,6 +234,7 @@ function responslr_grid() {
 	// Get breakpoint by width
 	this.getBreakpointByWidth = function(iWidth) {
 		var oMatchedBreakpoint = {};
+
 
 		for(var sBreakpointName in self.settings.breakpoints) {
 			var oBreakpoint = self.settings.breakpoints[sBreakpointName];
