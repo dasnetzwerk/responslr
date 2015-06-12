@@ -233,7 +233,7 @@
 	}
 }
 
-@mixin arrow-transition($transition-properties: null, $transition-values: null, $pseudo-element: null) {
+@mixin rr-arrow-transition($transition-properties: null, $transition-values: null, $pseudo-element: null) {
 	$transition-properties: rr-unquote($transition-properties);
 	$transition-values: rr-unquote($transition-values);
 
@@ -391,7 +391,7 @@
 
 		$transition-values: $transition-new-values;
 
-		@include arrow-transition($transition-properties: $transition-properties, $transition-values: $transition-values, $pseudo-element: $pseudo-element);
+		@include rr-arrow-transition($transition-properties: $transition-properties, $transition-values: $transition-values, $pseudo-element: $pseudo-element);
 	}
 }
 
@@ -435,7 +435,7 @@
 	@return $rr-generate-arrows;
 }
 
-@mixin generate-arrows() {
+@mixin rr-generate-arrows() {
 	.#{$rr-arrow-class} {
 		content: "";
 		display: block;
@@ -488,5 +488,5 @@
 }
 
 @if rr-generate-arrows-check() {
-	@include generate-arrows();
+	@include rr-generate-arrows();
 }

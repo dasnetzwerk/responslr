@@ -144,7 +144,7 @@
 	@return $rr-generate-circles;
 }
 
-@mixin generate-circles() {
+@mixin rr-generate-circles() {
 	.#{$rr-circle-class} {
 		@include rr-circle(
 			$width: $rr-circles-default-width,
@@ -167,5 +167,5 @@
 }
 
 @if rr-generate-circles-check() {
-	@include generate-circles();
+	@include rr-generate-circles();
 }

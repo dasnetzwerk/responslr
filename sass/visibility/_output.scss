@@ -11,7 +11,7 @@
 	display: none !important;
 }
 
-@mixin rr-show($display-value: $rr-visiblity-showers-default-display-value) {
+@mixin rr-show($display-value: $rr-visibility-showers-default-display-value) {
 	display: $display-value !important;
 }
 

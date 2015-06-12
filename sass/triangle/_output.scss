@@ -133,7 +133,7 @@
 	@return $rr-generate-triangles;
 }
 
-@mixin generate-triangles() {
+@mixin rr-generate-triangles() {
 	.#{$rr-triangle-class-prefix}top {
 		@include rr-triangle(top);
 	}
@@ -157,5 +157,5 @@
 }
 
 @if rr-generate-triangles-check() {
-	@include generate-triangles();
+	@include rr-generate-triangles();
 }
