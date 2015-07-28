@@ -194,8 +194,10 @@
 @mixin rr-typo-reset($font-size: null) {
 	font-size: 0;
 	line-height: 0;
+	letter-spacing: 0;
 
 	& > * {
+		letter-spacing: normal;
 		@include rr-typo-size($font-size);
 	}
 }
