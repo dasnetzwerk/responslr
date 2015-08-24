@@ -112,8 +112,7 @@
 	CALCULATE / CONVERTER FUNCTIONS
 ***********************************************************************************/
 
-@function rr-rem($values) {
-	$rem-return: ();
+@function rr-rem($value) {
 	$base-breakpoint: map-get($rr-grid-breakpoints, nth(map-keys($rr-grid-breakpoints), 1));
 	$base-size: map-get($base-breakpoint, base-size);
 
@@ -121,8 +120,14 @@
 		$base-size: 16px;
 	}
 
+	@return ($value / $base-size * 1rem);
+}
+
+@function rr-rem-map($values) {
+	$rem-return: ();
+
 	@each $current-value in $values {
-		$rem-return: append($rem-return, #{$current-value / $base-size}rem);
+		$rem-return: append($rem-return, rr-rem($current-value));
 	}
 
 	@return $rem-return;
