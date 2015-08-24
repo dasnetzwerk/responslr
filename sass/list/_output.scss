@@ -175,7 +175,7 @@
 	}
 }
 
-@mixin rr-list($name: $rr-lists-default, $type: null, $bullet-type: null, $bullet-custom: null, $bullet-position: null, $bullet-width: null, $bullet-height: null, $bullet-margin: null, $bullet-color: null, $bullet-icon: null, $item-padding: null, $item-margin: null) {
+@mixin rr-list($name: $rr-lists-default, $type: null, $bullet-type: null, $bullet-custom: null, $bullet-position: null, $bullet-width: null, $bullet-height: null, $bullet-margin: null, $bullet-color: null, $bullet-icon: null, $item-padding: null, $item-margin: null, $is-generator: false) {
 	$type:  rr-list-type($name) !default;
 	$bullet-type: rr-list-bullet-type($name) !default;
 	$bullet-custom: rr-list-bullet-custom($name) !default;
@@ -187,6 +187,10 @@
 	$bullet-icon: rr-list-bullet-icon($name) !default;
 	$item-padding: rr-list-item-padding($name) !default;
 	$item-margin: rr-list-item-margin($name) !default;
+
+	@if($is-generator == false) {
+		@include rr-list-default();
+	}
 
 	& > * {
 		@if $type == horizontal {
@@ -307,7 +311,7 @@
 		.#{$rr-list-class-prefix}#{$list-key} {
 			@extend %list;
 
-			@include rr-list($name: $list-key);
+			@include rr-list($name: $list-key, $is-generator: true);
 		}
 	}
 }
