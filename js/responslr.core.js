@@ -17,6 +17,7 @@ function responslr() {
 	var self = this;
 	var aLoadedModules = [];
 
+	var sClassesElement = document.querySelector('html');
 	var sSettingsElement = 'html';
 	var sSettingsPseudo = '::before';
 
@@ -56,10 +57,111 @@ function responslr() {
 		document.addEventListener('touchstart', function(){}, true);
 	}
 
-	// Check touch support
-	var checkBrowserSupport = function() {
-		// Touch
-		self.support.touch = ('ontouchstart' in window || 'onmsgesturechange' in window);
+	// Check support
+	var checkFeatures = function() {
+		// Features to check
+		var features = [
+			{
+				key: 'touch',
+				classes: ['touch'],
+				support: ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 || typeof window.DocumentTouch != 'undefined')
+			}
+		];
+
+		// Check features
+		for(var feature_index in features) {
+			self.support[features[feature_index].key] = features[feature_index].support;
+
+			if(features[feature_index].support) {
+				for(var classes_index in features[feature_index].classes) {
+					sClassesElement.classList.add(features[feature_index].classes[classes_index]);
+				}
+			}
+		};
+	}
+
+	// Check devices
+	var checkDevices = function() {
+		// Devices to check
+		var devices = [
+			{
+				classes: ['mobile', 'iphone'],
+				pattern: /iPhone/i
+			},
+			{
+				classes: ['tablet', 'ipad'],
+				pattern: /iPad/i
+			},
+			{
+				classes: ['mobile', 'android'],
+				pattern: /Android.*Mobile/i
+			},
+			{
+				classes: ['tablet', 'android'],
+				pattern: /Android/i
+			},
+			{
+				classes: ['mobile', 'windowsphone'],
+				pattern: /Windows Phone/i
+			},
+			{
+				classes: ['mobile', 'blackberry'],
+				pattern: /BlackBerry/i
+			},
+			{
+				classes: ['tablet', 'playbook'],
+				pattern: /PlayBook/i
+			},
+			{
+				classes: ['mobile', 'operamobile'],
+				pattern: /Opera Mobi/i
+			},
+			{
+				classes: ['tablet', 'kindlefire'],
+				pattern: /Kindle Fire/i
+			},
+			{
+				classes: ['tablet', 'kindle'],
+				pattern: /Kindle/i
+			}
+		];
+
+		// Check devices
+		for(var devices_index in devices) {
+			var matched = devices[devices_index].pattern.test(navigator.userAgent);
+
+			if(matched) {
+				for(var classes_index in devices[devices_index].classes) {
+					sClassesElement.classList.add(devices[devices_index].classes[classes_index]);
+				}
+
+				break;
+			}
+		};
+	}
+
+	// Check browser
+	var checkBrowser = function() {
+		// Browser to check
+		var browser = [
+			{
+				classes: ['ie'],
+				pattern: /(MSIE|Trident)/i
+			}
+		];
+
+		// Check browser
+		for(var browser_index in browser) {
+			var matched = browser[browser_index].pattern.test(navigator.userAgent);
+
+			if(matched) {
+				for(var classes_index in browser[browser_index].classes) {
+					sClassesElement.classList.add(browser[browser_index].classes[classes_index]);
+				}
+
+				break;
+			}
+		};
 	}
 
 
@@ -84,7 +186,13 @@ function responslr() {
 		applyFixes();
 
 		// Check browser support
-		checkBrowserSupport();
+		checkFeatures();
+
+		// Check devices
+		checkDevices();
+
+		// Check browser
+		checkBrowser();
 	}
 
 	// Add module to the core
