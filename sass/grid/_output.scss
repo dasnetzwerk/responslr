@@ -240,6 +240,11 @@
 
 @mixin rr-generate-grid-breakpoint($name: $rr-grid-breakpoints-default, $column-index: 0, $current-column-width: 100%) {
 	@if rr-grid-breakpoint-exists($name) {
+		// Reset
+		.#{$rr-grid-reset-class-prefix}#{$name} {
+			margin-left: 0;
+		}
+
 		@while $column-index > 0 {
 			$sub-column-index: $column-index;
 
@@ -255,7 +260,7 @@
 
 			// Breakpoint
 			.#{$name}-#{$column-index},
-			.#{$rr-grid-row-class}.#{$rr-grid-reset-class} .#{$name}-#{$column-index} {
+			.#{$rr-grid-reset-class} .#{$name}-#{$column-index} {
 				width: $current-column-width * $column-index;
 
 				@while $sub-column-index > 0 {
@@ -276,11 +281,6 @@
 
 					$sub-column-index: $sub-column-index - 1;
 				}
-			}
-
-			// Reset
-			.#{$rr-grid-reset-class-prefix}#{$name} {
-				margin-left: 0;
 			}
 
 			$column-index: $column-index - 1;
@@ -383,18 +383,16 @@
 	}
 
 	// Grid column sizes by breakpoint
-	.#{$rr-grid-row-class} {
-		@each $breakpoint-key, $breakpoint-list in $rr-grid-breakpoints {
-			$columns: rr-grid-columns($breakpoint-key);
-			$column-width: 100% / $columns;
+	@each $breakpoint-key, $breakpoint-list in $rr-grid-breakpoints {
+		$columns: rr-grid-columns($breakpoint-key);
+		$column-width: 100% / $columns;
 
-			@if rr-grid-breakpoint-index($breakpoint-key) > 1 {
-				@include rr-media-query($breakpoint-key) {
-					@include rr-generate-grid-breakpoint($breakpoint-key, $columns, $column-width);
-				}
-			} @else {
+		@if rr-grid-breakpoint-index($breakpoint-key) > 1 {
+			@include rr-media-query($breakpoint-key) {
 				@include rr-generate-grid-breakpoint($breakpoint-key, $columns, $column-width);
 			}
+		} @else {
+			@include rr-generate-grid-breakpoint($breakpoint-key, $columns, $column-width);
 		}
 	}
 
