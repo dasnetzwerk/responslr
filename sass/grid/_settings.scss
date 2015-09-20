@@ -107,6 +107,9 @@ $rr-grid-helper-info-position-left: auto !default;
 // Generate css output
 $rr-generate-grid-breakpoints: $rr-generate-classes !default;
 $rr-generate-grid-helper: $rr-generate-classes !default;
+@if compass-env() == production {
+	$rr-generate-grid-helper: false;
+}
 
 // Generate json settings
 $rr-generate-grid-settings: $rr-generate-settings !default;
