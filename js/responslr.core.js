@@ -74,7 +74,9 @@ function responslr() {
 
 			if(features[feature_index].support) {
 				for(var classes_index in features[feature_index].classes) {
-					sClassesElement.classList.add(features[feature_index].classes[classes_index]);
+					var classList = ( sClassesElement.className != '' ? sClassesElement.className.split(' ') : [] );
+					classList.push(features[feature_index].classes[classes_index]);
+					sClassesElement.className = classList.join(' ');
 				}
 			}
 		};
@@ -132,7 +134,9 @@ function responslr() {
 
 			if(matched) {
 				for(var classes_index in devices[devices_index].classes) {
-					sClassesElement.classList.add(devices[devices_index].classes[classes_index]);
+					var classList = ( sClassesElement.className != '' ? sClassesElement.className.split(' ') : [] );
+					classList.push(devices[devices_index].classes[classes_index]);
+					sClassesElement.className = classList.join(' ');
 				}
 
 				break;
@@ -156,7 +160,9 @@ function responslr() {
 
 			if(matched) {
 				for(var classes_index in browser[browser_index].classes) {
-					sClassesElement.classList.add(browser[browser_index].classes[classes_index]);
+					var classList = ( sClassesElement.className != '' ? sClassesElement.className.split(' ') : [] );
+					classList.push(browser[browser_index].classes[classes_index]);
+					sClassesElement.className = classList.join(' ');
 				}
 
 				break;
