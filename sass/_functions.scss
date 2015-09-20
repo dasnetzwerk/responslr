@@ -73,7 +73,7 @@
 ***********************************************************************************/
 
 @function rr-split-shorthand($padding-string, $part) {
-	$length: length(unquote($padding-string));
+	$length: length(rr-unquote($padding-string));
 	$return-value: $padding-string;
 
 	@if $length == 4 {
