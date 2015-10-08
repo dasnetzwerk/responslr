@@ -82,6 +82,40 @@ function responslr() {
 		};
 	}
 
+	// Check OS
+	var checkOS = function() {
+		// OS to check
+		var os = [
+			{
+				classes: ['win'],
+				pattern: /(Windows)/i
+			},
+			{
+				classes: ['mac'],
+				pattern: /(Macintosh)/i
+			},
+			{
+				classes: ['linux'],
+				pattern: /(Linux)/i
+			}
+		];
+
+		// Check OS
+		for(var os_index in os) {
+			var matched = os[os_index].pattern.test(navigator.userAgent);
+
+			if(matched) {
+				for(var classes_index in os[os_index].classes) {
+					var classList = ( sClassesElement.className != '' ? sClassesElement.className.split(' ') : [] );
+					classList.push(os[os_index].classes[classes_index]);
+					sClassesElement.className = classList.join(' ');
+				}
+
+				break;
+			}
+		};
+	}
+
 	// Check devices
 	var checkDevices = function() {
 		// Devices to check
@@ -149,8 +183,24 @@ function responslr() {
 		// Browser to check
 		var browser = [
 			{
-				classes: ['ie'],
+				classes: ['ie', 'trident'],
 				pattern: /(MSIE|Trident)/i
+			},
+			{
+				classes: ['edge', 'trident'],
+				pattern: /(Edge\/)/i
+			},
+			{
+				classes: ['chrome', 'webkit', 'blink'],
+				pattern: /(Chrome\/)/i
+			},
+			{
+				classes: ['safari', 'webkit'],
+				pattern: /(Version\/.*Safari\/)/i
+			},
+			{
+				classes: ['firefox', 'gecko'],
+				pattern: /(Gecko\/.*Firefox\/)/i
 			}
 		];
 
@@ -193,6 +243,9 @@ function responslr() {
 
 		// Check browser support
 		checkFeatures();
+
+		// Check OS
+		checkOS();
 
 		// Check devices
 		checkDevices();
