@@ -107,12 +107,16 @@ $rr-grid-helper-info-position-left: auto !default;
 // Generate css output
 $rr-generate-grid-breakpoints: $rr-generate-classes !default;
 $rr-generate-grid-helper: $rr-generate-classes !default;
-@if compass-env() == production {
-	$rr-generate-grid-helper: false;
-}
 
 // Generate json settings
 $rr-generate-grid-settings: $rr-generate-settings !default;
 
 // Set current breakpoint to default
 $rr-current-breakpoint-name: rr-unquote($rr-grid-breakpoints-default);
+
+@if compass-env() == production {
+	$rr-generate-grid-helper: false;
+	$rr-grid-helper-show: false;
+	$rr-grid-helper-show-grid: $rr-grid-helper-show;
+	$rr-grid-helper-show-breakpoint: $rr-grid-helper-show;
+}
