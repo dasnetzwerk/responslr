@@ -309,7 +309,7 @@
 
 @mixin rr-generate-grid-breakpoints() {
 	// Base-Size
-	html {
+	html, body {
 		@each $breakpoint-key, $breakpoint-list in $rr-grid-breakpoints {
 			@if rr-grid-breakpoint-index($breakpoint-key) > 1 {
 				@include rr-media-query($breakpoint-key) {

@@ -57,6 +57,28 @@ function responslr() {
 		document.addEventListener('touchstart', function(){}, true);
 	}
 
+	// Detect css support
+	var detectCssSupport = function(featurename) {
+		var supported = false;
+		var domPrefixes = 'Webkit Moz O ms Khtml'.split(' ');
+		var elm = document.createElement('div');
+
+		if(elm.style[featurename] !== undefined ) {
+			supported = true;
+		}
+
+		if(supported === false) {
+			for(var i = 0; i < domPrefixes.length; i++) {
+				if(elm.style[domPrefixes[i] + featurename] !== undefined) {
+					supported = true;
+					break;
+				}
+			}
+		}
+
+		return supported;
+	}
+
 	// Check support
 	var checkFeatures = function() {
 		// Features to check
@@ -65,14 +87,33 @@ function responslr() {
 				key: 'touch',
 				classes: ['touch'],
 				support: ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 || typeof window.DocumentTouch != 'undefined')
+			},
+			{
+				key: 'transform',
+				classes: ['no-transform'],
+				negate: true,
+				support: detectCssSupport('transform')
+			},
+			{
+				key: 'transition',
+				classes: ['no-transition'],
+				negate: true,
+				support: detectCssSupport('transition')
 			}
 		];
 
 		// Check features
 		for(var feature_index in features) {
-			self.support[features[feature_index].key] = features[feature_index].support;
+			var addClass = features[feature_index].support;
 
-			if(features[feature_index].support) {
+			self.support[features[feature_index].key] = features[feature_index].support;
+			features[feature_index].negate = features[feature_index].negate || false;
+
+			if(features[feature_index].negate) {
+				addClass = !addClass;
+			}
+
+			if(addClass) {
 				for(var classes_index in features[feature_index].classes) {
 					var classList = ( sClassesElement.className != '' ? sClassesElement.className.split(' ') : [] );
 					classList.push(features[feature_index].classes[classes_index]);
@@ -183,6 +224,14 @@ function responslr() {
 		// Browser to check
 		var browser = [
 			{
+				classes: ['ie', 'ie8', 'trident'],
+				pattern: /(MSIE 8)/i
+			},
+			{
+				classes: ['ie', 'ie9', 'trident'],
+				pattern: /(MSIE 9)/i
+			},
+			{
 				classes: ['ie', 'trident'],
 				pattern: /(MSIE|Trident)/i
 			},
@@ -219,7 +268,6 @@ function responslr() {
 			}
 		};
 	}
-
 
 	/***********************************************************************************
 		PUBLIC CORE METHODS
