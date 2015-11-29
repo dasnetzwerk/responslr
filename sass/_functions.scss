@@ -133,6 +133,22 @@
 	@return $rem-return;
 }
 
+@function rr-rem-breakpoint($value, $breakpoint: '') {
+	@if $breakpoint == '' {
+		$breakpoint: nth(map-keys($rr-grid-breakpoints), length(map-keys($rr-grid-breakpoints)));
+	}
+
+	$smallest-breakpoint: map-get($rr-grid-breakpoints, nth(map-keys($rr-grid-breakpoints), 1));
+	$smallest-base-size: map-get($smallest-breakpoint, base-size);
+
+	$output-breakpoint: map-get($rr-grid-breakpoints, $breakpoint);
+	$output-base-size: map-get($output-breakpoint, base-size);
+
+	$output-base-size-modifier: ($smallest-base-size / $output-base-size);
+
+	@return rr-rem($value) * $output-base-size-modifier;
+}
+
 
 /***********************************************************************************
 	CREATE JSON STRING
