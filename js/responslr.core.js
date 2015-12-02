@@ -162,6 +162,14 @@ function responslr() {
 		// Devices to check
 		var devices = [
 			{
+				classes: ['mobile', 'iphone', 'ios', 'fb'],
+				pattern: /iPhone.*?FBIOS/i
+			},
+			{
+				classes: ['tablet', 'ipad', 'ios', 'fb'],
+				pattern: /iPad.*?FBIOS/i
+			},
+			{
 				classes: ['mobile', 'iphone', 'ios'],
 				pattern: /iPhone/i
 			},
