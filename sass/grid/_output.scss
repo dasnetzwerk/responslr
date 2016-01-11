@@ -260,7 +260,7 @@
 
 			// Breakpoint
 			.#{$name}-#{$column-index},
-			.#{$rr-grid-reset-class} .#{$name}-#{$column-index} {
+			.#{$rr-grid-row-class}.#{$rr-grid-reset-class} .#{$name}-#{$column-index} {
 				width: $current-column-width * $column-index;
 
 				@while $sub-column-index > 0 {
