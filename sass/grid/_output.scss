@@ -84,6 +84,23 @@
 	@return $return-base-size;
 }
 
+@function rr-grid-container-max-width($name: null) {
+	$return-container-max-width: map-get(rr-grid-breakpoint($name), container-max-width);
+
+	@return $return-container-max-width;
+}
+
+@function rr-grid-container-align($name: null) {
+	$return-container-align: map-get(rr-grid-breakpoint($name), container-align);
+
+	@return $return-container-align;
+}
+
+@function rr-grid-container-horizontal-margin($name: null) {
+	$return-container-horizontal-margin: map-get(rr-grid-breakpoint($name), container-horizontal-margin);
+
+	@return $return-container-horizontal-margin;
+}
 
 /***********************************************************************************
 	EXTENDED FUNCTIONS
@@ -327,21 +344,63 @@
 		position: relative;
 	}
 
-	.#{$rr-grid-container-class},
-	.#{$rr-grid-row-class} .#{$rr-grid-row-class}.#{$rr-grid-container-class} {
+	.#{$rr-grid-container-class} {
 		padding: 0;
-		max-width: $rr-grid-container-max-width;
+	}
 
-		@if $rr-grid-container-align == center {
-			margin: 0 auto;
-		} @elseif $rr-grid-container-align == right {
-			margin: 0 0 0 auto;
+	$current-container-max-width: $rr-grid-container-max-width;
+	$current-container-align: $rr-grid-container-align;
+	$current-container-horizontal-margin: $rr-grid-container-horizontal-margin;
+
+	// set container vars by breakpoint
+	@each $breakpoint-key, $breakpoint-list in $rr-grid-breakpoints {
+		$breakpoint-container-max-width: rr-grid-container-max-width($breakpoint-key);
+		$breakpoint-container-align: rr-grid-container-align($breakpoint-key);
+		$breakpoint-container-horizontal-margin: rr-grid-container-horizontal-margin($breakpoint-key);
+
+		@if $breakpoint-container-max-width == null {
+			$breakpoint-container-max-width: $current-container-max-width;
+		} @else {
+			$current-container-max-width: $breakpoint-container-max-width;
+		}
+		@if $breakpoint-container-align == null {
+			$breakpoint-container-align: $current-container-align;
+		} @else {
+			$current-container-align: $breakpoint-container-align;
+		}
+		@if $breakpoint-container-horizontal-margin == null {
+			$breakpoint-container-horizontal-margin: $current-container-horizontal-margin;
+		} @else {
+			$current-container-horizontal-margin: $breakpoint-container-horizontal-margin;
 		}
 
-		@include rr-media-query($max-width: $rr-grid-container-max-width) {
-			margin: 0 $rr-grid-container-horizontal-margin;
-			width: 100%;
-			max-width: 100%;
+		.#{$rr-grid-container-class} {
+			@include rr-media-query($breakpoint-key) {
+				max-width: $breakpoint-container-max-width;
+
+				@if $breakpoint-container-align == center {
+					margin: 0 auto;
+				} @elseif $breakpoint-container-align == right {
+					margin: 0 $breakpoint-container-horizontal-margin 0 auto;
+				} @elseif $breakpoint-container-align == left {
+					margin: 0 auto 0 $breakpoint-container-horizontal-margin;
+				}
+			}
+
+			$media-query-min-width: rr-grid-min-width($breakpoint-key);
+			@if $media-query-min-width == null {
+				$media-query-min-width: rr-grid-calculate-min-width($breakpoint-key);
+			}
+
+			$media-query-max-width: $breakpoint-container-max-width;
+			@if comparable($breakpoint-container-max-width, $breakpoint-container-horizontal-margin) {
+				$media-query-max-width: $breakpoint-container-max-width + (2 * $breakpoint-container-horizontal-margin);
+			}
+
+			@include rr-media-query($min-width: $media-query-min-width, $max-width: $media-query-max-width) {
+				margin: 0 $breakpoint-container-horizontal-margin;
+				width: calc(100% - #{2 * $breakpoint-container-horizontal-margin});
+			}
 		}
 	}
 
