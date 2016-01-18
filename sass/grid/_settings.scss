@@ -11,18 +11,18 @@ $rr-grid-default-breakpoints: ();
 @if $rr-grid-mobile-first {
 	$rr-grid-default-breakpoints: (
 		'small': (
-			columns: 4,
-			gutter: 20px
+			columns: 6,
+			gutter: 32px
 		),
 		'medium': (
 			min-width: 641px,
-			columns: 6,
-			gutter: 24px
+			columns: 12,
+			gutter: 32px
 		),
 		'large': (
 			min-width: 961px,
 			columns: 12,
-			gutter: 32px
+			gutter: 24px
 		)
 	) !global;
 
@@ -30,17 +30,17 @@ $rr-grid-default-breakpoints: ();
 	$rr-grid-default-breakpoints: (
 		'large': (
 			columns: 12,
-			gutter: 32px
+			gutter: 24px
 		),
 		'medium': (
 			max-width: 960px,
-			columns: 6,
-			gutter: 24px
+			columns: 12,
+			gutter: 32px
 		),
 		'small': (
 			max-width: 640px,
-			columns: 4,
-			gutter: 20px
+			columns: 6,
+			gutter: 32px
 		)
 	) !global;
 }
