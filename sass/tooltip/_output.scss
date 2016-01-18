@@ -196,12 +196,12 @@
 		position: relative;
 		display: inline-block;
 
-		&:before {
+		&::before {
 			z-index: 51;
 		}
 
-		&:before,
-		&[data-tooltip]:after {
+		&::before,
+		&[data-tooltip]::after {
 			content: "";
 			position: absolute;
 			display: block;
@@ -209,7 +209,7 @@
 			opacity: 0;
 		}
 
-		&[data-tooltip]:after,
+		&[data-tooltip]::after,
 		.#{$rr-tooltip-content-class} {
 			position: absolute;
 			display: block;
@@ -221,14 +221,14 @@
 			@include transition(opacity .4s ease-out)
 		}
 
-		&[data-tooltip]:after {
+		&[data-tooltip]::after {
 			content: attr(data-tooltip);
 			white-space: pre-wrap;
 		}
 
 		&:hover {
-			&:before,
-			&[data-tooltip]:after,
+			&::before,
+			&[data-tooltip]::after,
 			.#{$rr-tooltip-content-class} {
 				visibility: visible;
 				opacity: 1;
@@ -242,7 +242,7 @@
 	%tooltip-#{$name} {
 		cursor: rr-tooltip-cursor($name);
 
-		&[data-tooltip]:after,
+		&[data-tooltip]::after,
 		.#{$rr-tooltip-content-class} {
 			width: rr-tooltip-max-width($name);
 			padding: rr-tooltip-padding($name);
@@ -264,7 +264,7 @@
 				@extend %tooltip;
 
 				@if rr-tooltip-triangle($name) {
-					&:before {
+					&::before {
 						left: 1rem;
 						@if rr-tooltip-triangle-is-offset($name) {
 							bottom: rr-tooltip-offset($name)+0.75rem;
@@ -275,7 +275,7 @@
 						}
 					}
 				}
-				&[data-tooltip]:after,
+				&[data-tooltip]::after,
 				.#{$rr-tooltip-content-class} {
 					bottom: rr-tooltip-offset($name)+1.25rem;
 					left: -0.25rem;
@@ -288,7 +288,7 @@
 				@extend %tooltip;
 
 				@if rr-tooltip-triangle($name) {
-					&:before {
+					&::before {
 						top: 0.2rem;
 						@if rr-tooltip-triangle-is-offset($name) {
 							right: -(rr-tooltip-offset($name));
@@ -299,7 +299,7 @@
 						}
 					}
 				}
-				&[data-tooltip]:after,
+				&[data-tooltip]::after,
 				.#{$rr-tooltip-content-class} {
 					left: 100%;
 					top: -0.1rem;
@@ -313,7 +313,7 @@
 				@extend %tooltip;
 
 				@if rr-tooltip-triangle($name) {
-					&:before {
+					&::before {
 						left: 1rem;
 						@if rr-tooltip-triangle-is-offset($name) {
 							top: rr-tooltip-offset($name)+0.75rem;
@@ -325,7 +325,7 @@
 					}
 				}
 
-				&[data-tooltip]:after,
+				&[data-tooltip]::after,
 				.#{$rr-tooltip-content-class} {
 					top: rr-tooltip-offset($name)+1.25rem;
 					left: -0.25rem;
@@ -338,7 +338,7 @@
 				@extend %tooltip;
 
 				@if rr-tooltip-triangle($name) {
-					&:before {
+					&::before {
 						top: 0.2rem;
 						@if rr-tooltip-triangle-is-offset($name) {
 							left: -(rr-tooltip-offset($name));
@@ -350,7 +350,7 @@
 					}
 				}
 
-				&[data-tooltip]:after,
+				&[data-tooltip]::after,
 				.#{$rr-tooltip-content-class} {
 					right: 100%;
 					top: -0.1rem;
