@@ -186,7 +186,7 @@
 ***********************************************************************************/
 
 @function json-value-quote($value) {
-	@return '"' + $value + '"';
+	@return '"#{$value}"';
 }
 
 @function json-encode-string($string) {
