@@ -134,7 +134,11 @@
 ***********************************************************************************/
 
 @mixin rr-typo-fix() {
+	font-smooth: always;
+	font-smoothing: antialiased;
 	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 @mixin rr-typo-family($name: null, $font-family: null, $font-weight: null, $font-style: null) {
