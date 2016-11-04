@@ -249,6 +249,8 @@
 				@font-face {
 					font-family: rr-typo-family-name($font-family-key);
 					src: rr-typo-src($font-family-key);
+					font-weight: rr-typo-family-font-weight($font-family-key);
+					font-style: rr-typo-family-font-style($font-family-key);
 				}
 			}
 
