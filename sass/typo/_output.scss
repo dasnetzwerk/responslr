@@ -40,7 +40,7 @@
 	@return $return-name;
 }
 
-@function rr-typo-family-file($name: null) {
+@function rr-typo-file($name: null) {
 	$return-file: map-get(rr-typo-family($name), file);
 
 	@if $return-file == null {
@@ -48,6 +48,26 @@
 	}
 
 	@return $return-file;
+}
+
+@function rr-typo-file-formats($name: null) {
+	$return-formats: map-get(rr-typo-family($name), formats);
+
+	@if $return-formats == null {
+		$return-formats: $rr-typo-families-default-formats;
+	}
+
+	@return $return-formats;
+}
+
+@function rr-typo-src($name: null) {
+	$src: ();
+	$file: rr-typo-file($name);
+
+	@each $format in rr-typo-file-formats($name) {
+		$src: append($src, url($file + "." + unquote($format)) format(quote($format)), "comma");
+	}
+	@return $src;
 }
 
 @function rr-typo-family-import($name: null) {
@@ -225,14 +245,10 @@
 	@if $rr-generate-typo-faces and rr-map-isnotempty($rr-typo-families) {
 		@each $font-family-key, $font-family-list in $rr-typo-families {
 			// Generate font-faces
-			@if rr-typo-family-file($font-family-key) {
+			@if rr-typo-file($font-family-key) {
 				@font-face {
 					font-family: rr-typo-family-name($font-family-key);
-					src: url('#{rr-typo-family-file($font-family-key)}.eot?#iefix') format('embedded-opentype'),
-						 url('#{rr-typo-family-file($font-family-key)}.woff2') format('woff2'),
-						 url('#{rr-typo-family-file($font-family-key)}.woff') format('woff'),
-						 url('#{rr-typo-family-file($font-family-key)}.ttf') format('truetype'),
-						 url('#{rr-typo-family-file($font-family-key)}.svg##{rr-typo-family-name($font-family-key)}') format('svg');
+					src: rr-typo-src($font-family-key);
 				}
 			}
 

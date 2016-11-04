@@ -18,6 +18,7 @@ $rr-typo-families-default: rr-map-getdefault($rr-typo-families) !default;
 
 // Font-families map value defaults
 $rr-typo-families-default-file: null !default;
+$rr-typo-families-default-formats: (woff2, woff) !default;
 $rr-typo-families-default-import: null !default;
 $rr-typo-families-default-font-weight: null !default;
 $rr-typo-families-default-font-style: null !default;
