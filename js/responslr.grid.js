@@ -42,7 +42,7 @@ function responslr_grid() {
 			}
 		}
 
-		if(settings.show) {
+		if(typeof settings !== 'undefined' && settings.show) {
 			// Grid
 			if(settings.gridShow) {
 				var $gridContainer = $('<div />').attr('id', settings.gridId);
