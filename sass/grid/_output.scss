@@ -154,8 +154,8 @@
 	}
 }
 
-@function rr-grid-column-width($column-count, $size) {
-	@return (($column-part / $size) * 100%);
+@function rr-grid-column-width($columns-size, $columns-max) {
+	@return (($columns-size / $columns-max) * 100%);
 }
 
 @function rr-grid-gutter-current($multiplier: 1) {
