@@ -262,6 +262,24 @@ function responslr_grid() {
 			return oCurrentBreakpoint;
 		}
 	}
+	
+	// Check if breakpoint
+	this.isBreakpoint = function(breakpoint) {
+		if(typeof breakpoint === 'string') {
+			breakpoint = breakpoint.split(',');
+		}
+
+		var isBreakpoint = false;
+
+		for(i in breakpoint) {
+			if(this.getCurrentBreakpoint().name === breakpoint[i]) {
+				isBreakpoint = true;
+				break;
+			}
+		}
+
+		return isBreakpoint;
+	}
 
 	// Get previous breakpoint
 	this.getPreviousBreakpoint = function() {
