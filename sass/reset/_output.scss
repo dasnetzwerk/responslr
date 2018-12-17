@@ -163,7 +163,7 @@
 		&:focus,
 		&:active {
 			@include box-shadow(none);
-			z-index: 1;
+			//z-index: 1;
 		}
 	}
 
@@ -173,6 +173,7 @@
 	input[type="submit"] {
 		-webkit-appearance: button;
 		cursor: pointer;
+		border-radius: 0;
 	}
 
 	button[disabled],
