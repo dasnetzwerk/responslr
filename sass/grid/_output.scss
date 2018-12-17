@@ -298,6 +298,11 @@
 
 					$sub-column-index: $sub-column-index - 1;
 				}
+
+				// Reset nested columns
+				&.#{$rr-grid-reset-class-prefix}#{$name} {
+					margin-left: 0;
+				}
 			}
 
 			$column-index: $column-index - 1;
@@ -498,6 +503,7 @@
 			bottom: 0;
 			width: 100%;
 			overflow: hidden;
+			pointer-events: none;
 
 			&.#{$rr-grid-helper-grid-shower-class} {
 				display: block;
