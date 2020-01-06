@@ -277,7 +277,7 @@
 				&:first-child::#{$rr-list-pseudo-element} {
 					display: none;
 				}
-			} @elseif $bullet-position == 'between-after' {
+			} @else if $bullet-position == 'between-after' {
 				&:not(.#{$rr-list-no-bullet-class}):not(:last-child) {
 					margin-right: $item-margin-right + $bullet-width;
 				}
@@ -285,7 +285,7 @@
 				&:last-child::#{$rr-list-pseudo-element} {
 					display: none;
 				}
-			} @elseif $bullet-position == 'outside' {
+			} @else if $bullet-position == 'outside' {
 				margin-left: $item-margin-left + $bullet-width;
 			} @else {
 				padding-left: $item-padding-left + $bullet-width + $bullet-margin-left + $bullet-margin-right;

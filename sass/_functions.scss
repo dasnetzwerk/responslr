@@ -51,17 +51,35 @@
 @function rr-map-breakpoint-overwrites($map-item-name, $row-key) {
 	$return-overwrites: ();
 
-	@if function-exists('rr-#{$map-item-name}-exists') and function-exists('rr-#{$map-item-name}') {
-		@if call('rr-#{$map-item-name}-exists', $row-key) {
-			@each $breakpoint-key, $breakpoint-list in $rr-grid-breakpoints {
-				@if map-has-key(call('rr-#{$map-item-name}', $row-key), 'breakpoint-#{$breakpoint-key}') {
-					$breakpoint-overwrite: ( $breakpoint-key: map-get(call('rr-#{$map-item-name}', $row-key), 'breakpoint-#{$breakpoint-key}') );
-					$return-overwrites: map-merge($return-overwrites, $breakpoint-overwrite);
+	@if function-exists('get-function') {
+		@if function-exists('rr-#{$map-item-name}-exists') and function-exists('rr-#{$map-item-name}') {
+			@if call(get-function('rr-#{$map-item-name}-exists'), $row-key) {
+				@each $breakpoint-key, $breakpoint-list in $rr-grid-breakpoints {
+					@if map-has-key(call(get-function('rr-#{$map-item-name}'), $row-key), 'breakpoint-#{$breakpoint-key}') {
+						$breakpoint-overwrite: ($breakpoint-key: map-get($map, 'breakpoint-#{$breakpoint-key}'));
+						$return-overwrites: map-merge($return-overwrites, $breakpoint-overwrite);
+					}
+				}
+			}
+		} @else {
+			@warn 'Function "rr-#{$map-item-name}-exists" or "rr-#{$map-item-name}" does not exist.';
+		}
+	} @else {
+		@if function-exists('rr-#{$map-item-name}-exists') and function-exists('rr-#{$map-item-name}') {
+			@if call('rr-#{$map-item-name}-exists', $row-key) {
+
+				@each $breakpoint-key, $breakpoint-list in $rr-grid-breakpoints {
+					@if map-has-key(call('rr-#{$map-item-name}', $row-key), 'breakpoint-#{$breakpoint-key}') {
+						$breakpoint-overwrite: ($breakpoint-key: map-get(call('rr-#{$map-item-name}', $row-key), 'breakpoint-#{$breakpoint-key}'));
+						$return-overwrites: map-merge($return-overwrites, $breakpoint-overwrite);
+					}
 				}
 			}
 		}
-	} @else {
-		@warn 'Function "rr-#{$map-item-name}-exists" or "rr-#{$map-item-name}" does not exist.';
+
+		@else {
+			@warn 'Function "rr-#{$map-item-name}-exists" or "rr-#{$map-item-name}" does not exist.';
+		}
 	}
 
 	@return $return-overwrites;
@@ -110,25 +128,25 @@
 	@if $length == 4 {
 		@if $part == top {
 			$return-value: nth($padding-string, 1);
-		} @elseif $part == right {
+		} @else if $part == right {
 			$return-value: nth($padding-string, 2);
-		} @elseif $part == bottom {
+		} @else if $part == bottom {
 			$return-value: nth($padding-string, 3);
 		} @else {
 			$return-value: nth($padding-string, 4);
 		}
-	} @elseif $length == 3 {
+	} @else if $length == 3 {
 		@if $part == top {
 			$return-value: nth($padding-string, 1);
-		} @elseif $part == bottom {
+		} @else if $part == bottom {
 			$return-value: nth($padding-string, 3);
 		} @else {
 			$return-value: nth($padding-string, 2);
 		}
-	} @elseif $length == 2 {
+	} @else if $length == 2 {
 		@if $part == top {
 			$return-value: nth($padding-string, 1);
-		} @elseif $part == bottom {
+		} @else if $part == bottom {
 			$return-value: nth($padding-string, 1);
 		} @else {
 			$return-value: nth($padding-string, 2);
@@ -251,7 +269,9 @@
 @function json-encode($value) {
 	$value-type: type-of($value);
 
-	@if function_exists("json-encode-#{$value-type}") {
+	@if function_exists('get-function') {
+		@return call(get-function("json-encode-#{$value-type}"), $value);
+	} @else {
 		@return call("json-encode-#{$value-type}", $value);
 	}
 

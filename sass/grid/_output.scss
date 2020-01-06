@@ -385,9 +385,9 @@
 
 				@if $breakpoint-container-align == center {
 					margin: 0 auto;
-				} @elseif $breakpoint-container-align == right {
+				} @else if $breakpoint-container-align == right {
 					margin: 0 $breakpoint-container-horizontal-margin 0 auto;
-				} @elseif $breakpoint-container-align == left {
+				} @else if $breakpoint-container-align == left {
 					margin: 0 auto 0 $breakpoint-container-horizontal-margin;
 				}
 			}
